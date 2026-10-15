@@ -1,0 +1,413 @@
+{
+  "run_id": "20261005_042507",
+  "phase": "phase2-fixed-baseline",
+  "status": "complete",
+  "start_time": "2026-10-05T04:25:07.750990",
+  "env": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "gpu": "Tesla T4"
+  },
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "t5_tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "tests": [
+    {
+      "label": "p0_c1-1_21f",
+      "prompt": "A cat sitting on a windowsill watching birds",
+      "seed": 17,
+      "num_frames_requested": 21,
+      "ok": true,
+      "latent_shape": [
+        16,
+        6,
+        60,
+        104
+      ],
+      "chunks": 6,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 6.39,
+      "peak_vram_gb": 4.589,
+      "vae_s": 42.95,
+      "decoded_frame_count": 21,
+      "temporal_mean_l1": 0.010415,
+      "temporal_std_l1": 0.021968,
+      "latent_temporal_mean_l1": 0.174431,
+      "temporal_stability_proxy": 0.989692,
+      "frames_saved": true
+    },
+    {
+      "label": "p0_c3-3_21f",
+      "prompt": "A cat sitting on a windowsill watching birds",
+      "seed": 17,
+      "num_frames_requested": 21,
+      "ok": true,
+      "latent_shape": [
+        16,
+        6,
+        60,
+        104
+      ],
+      "chunks": 2,
+      "steps_per_chunk": [
+        4,
+        4
+      ],
+      "dit_s": 13.82,
+      "peak_vram_gb": 4.73,
+      "vae_s": 45.57,
+      "decoded_frame_count": 21,
+      "temporal_mean_l1": 0.012996,
+      "temporal_std_l1": 0.037437,
+      "latent_temporal_mean_l1": 0.219684,
+      "temporal_stability_proxy": 0.987171,
+      "frames_saved": true
+    },
+    {
+      "label": "p0_c1-1_33f",
+      "prompt": "A cat sitting on a windowsill watching birds",
+      "seed": 17,
+      "num_frames_requested": 33,
+      "ok": true,
+      "latent_shape": [
+        16,
+        9,
+        60,
+        104
+      ],
+      "chunks": 9,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 9.95,
+      "peak_vram_gb": 5.401,
+      "vae_s": 73.5,
+      "decoded_frame_count": 33,
+      "temporal_mean_l1": 0.02142,
+      "temporal_std_l1": 0.05755,
+      "latent_temporal_mean_l1": 0.235673,
+      "temporal_stability_proxy": 0.979029,
+      "frames_saved": true
+    },
+    {
+      "label": "p0_c3-3_33f",
+      "prompt": "A cat sitting on a windowsill watching birds",
+      "seed": 17,
+      "num_frames_requested": 33,
+      "ok": true,
+      "latent_shape": [
+        16,
+        9,
+        60,
+        104
+      ],
+      "chunks": 3,
+      "steps_per_chunk": [
+        4,
+        4,
+        4
+      ],
+      "dit_s": 23.4,
+      "peak_vram_gb": 5.543,
+      "vae_s": 76.22,
+      "decoded_frame_count": 33,
+      "temporal_mean_l1": 0.016219,
+      "temporal_std_l1": 0.037048,
+      "latent_temporal_mean_l1": 0.180729,
+      "temporal_stability_proxy": 0.98404,
+      "frames_saved": true
+    },
+    {
+      "label": "p0_c1-1_45f",
+      "prompt": "A cat sitting on a windowsill watching birds",
+      "seed": 17,
+      "num_frames_requested": 45,
+      "ok": true,
+      "latent_shape": [
+        16,
+        12,
+        60,
+        104
+      ],
+      "chunks": 12,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 14.37,
+      "peak_vram_gb": 6.214,
+      "vae_s": 104.71,
+      "decoded_frame_count": 45,
+      "temporal_mean_l1": 0.01386,
+      "temporal_std_l1": 0.032384,
+      "latent_temporal_mean_l1": 0.187585,
+      "temporal_stability_proxy": 0.986329,
+      "frames_saved": true
+    },
+    {
+      "label": "p0_c3-3_45f",
+      "prompt": "A cat sitting on a windowsill watching birds",
+      "seed": 17,
+      "num_frames_requested": 45,
+      "ok": true,
+      "latent_shape": [
+        16,
+        12,
+        60,
+        104
+      ],
+      "chunks": 4,
+      "steps_per_chunk": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "dit_s": 34.92,
+      "peak_vram_gb": 6.355,
+      "vae_s": 108.04,
+      "decoded_frame_count": 45,
+      "temporal_mean_l1": 0.017563,
+      "temporal_std_l1": 0.037022,
+      "latent_temporal_mean_l1": 0.178468,
+      "temporal_stability_proxy": 0.98274,
+      "frames_saved": true
+    },
+    {
+      "label": "p1_c1-1_21f",
+      "prompt": "Ocean waves crashing on a beach at sunset",
+      "seed": 17,
+      "num_frames_requested": 21,
+      "ok": true,
+      "latent_shape": [
+        16,
+        6,
+        60,
+        104
+      ],
+      "chunks": 6,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 6.37,
+      "peak_vram_gb": 4.589,
+      "vae_s": 45.92,
+      "decoded_frame_count": 21,
+      "temporal_mean_l1": 0.0381,
+      "temporal_std_l1": 0.062525,
+      "latent_temporal_mean_l1": 0.244178,
+      "temporal_stability_proxy": 0.963298,
+      "frames_saved": true
+    },
+    {
+      "label": "p1_c3-3_21f",
+      "prompt": "Ocean waves crashing on a beach at sunset",
+      "seed": 17,
+      "num_frames_requested": 21,
+      "ok": true,
+      "latent_shape": [
+        16,
+        6,
+        60,
+        104
+      ],
+      "chunks": 2,
+      "steps_per_chunk": [
+        4,
+        4
+      ],
+      "dit_s": 13.88,
+      "peak_vram_gb": 4.73,
+      "vae_s": 45.96,
+      "decoded_frame_count": 21,
+      "temporal_mean_l1": 0.037812,
+      "temporal_std_l1": 0.072989,
+      "latent_temporal_mean_l1": 0.240905,
+      "temporal_stability_proxy": 0.963566,
+      "frames_saved": true
+    },
+    {
+      "label": "p1_c1-1_33f",
+      "prompt": "Ocean waves crashing on a beach at sunset",
+      "seed": 17,
+      "num_frames_requested": 33,
+      "ok": true,
+      "latent_shape": [
+        16,
+        9,
+        60,
+        104
+      ],
+      "chunks": 9,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 9.93,
+      "peak_vram_gb": 5.401,
+      "vae_s": 73.26,
+      "decoded_frame_count": 33,
+      "temporal_mean_l1": 0.020997,
+      "temporal_std_l1": 0.038739,
+      "latent_temporal_mean_l1": 0.193147,
+      "temporal_stability_proxy": 0.979435,
+      "frames_saved": true
+    },
+    {
+      "label": "p1_c3-3_33f",
+      "prompt": "Ocean waves crashing on a beach at sunset",
+      "seed": 17,
+      "num_frames_requested": 33,
+      "ok": true,
+      "latent_shape": [
+        16,
+        9,
+        60,
+        104
+      ],
+      "chunks": 3,
+      "steps_per_chunk": [
+        4,
+        4,
+        4
+      ],
+      "dit_s": 23.26,
+      "peak_vram_gb": 5.543,
+      "vae_s": 75.51,
+      "decoded_frame_count": 33,
+      "temporal_mean_l1": 0.023693,
+      "temporal_std_l1": 0.041075,
+      "latent_temporal_mean_l1": 0.191862,
+      "temporal_stability_proxy": 0.976855,
+      "frames_saved": true
+    },
+    {
+      "label": "p1_c1-1_45f",
+      "prompt": "Ocean waves crashing on a beach at sunset",
+      "seed": 17,
+      "num_frames_requested": 45,
+      "ok": true,
+      "latent_shape": [
+        16,
+        12,
+        60,
+        104
+      ],
+      "chunks": 12,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 14.29,
+      "peak_vram_gb": 6.214,
+      "vae_s": 103.92,
+      "decoded_frame_count": 45,
+      "temporal_mean_l1": 0.038601,
+      "temporal_std_l1": 0.056677,
+      "latent_temporal_mean_l1": 0.212856,
+      "temporal_stability_proxy": 0.962834,
+      "frames_saved": true
+    },
+    {
+      "label": "p1_c3-3_45f",
+      "prompt": "Ocean waves crashing on a beach at sunset",
+      "seed": 17,
+      "num_frames_requested": 45,
+      "ok": true,
+      "latent_shape": [
+        16,
+        12,
+        60,
+        104
+      ],
+      "chunks": 4,
+      "steps_per_chunk": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "dit_s": 34.88,
+      "peak_vram_gb": 6.355,
+      "vae_s": 107.84,
+      "decoded_frame_count": 45,
+      "temporal_mean_l1": 0.036954,
+      "temporal_std_l1": 0.053105,
+      "latent_temporal_mean_l1": 0.234571,
+      "temporal_stability_proxy": 0.964363,
+      "frames_saved": true
+    }
+  ],
+  "verdict": {
+    "overall": "FAIL",
+    "n_passed": 12,
+    "n_total": 12,
+    "protocol": {
+      "prompts": [
+        "A cat sitting on a windowsill watching birds",
+        "Ocean waves crashing on a beach at sunset"
+      ],
+      "seed": 17,
+      "horizons": [
+        21,
+        33,
+        45
+      ],
+      "action_lambda": 0.0,
+      "quality_proxy": "temporal_stability_proxy",
+      "note": "No reference videos; no FVD/PSNR/LPIPS claimed."
+    }
+  },
+  "end_time": "2026-10-05T05:20:22.887499"
+}

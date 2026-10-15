@@ -1,0 +1,237 @@
+{
+  "source": "results/jev_signal/jev_answers.jsonl (57f)",
+  "rule": "static->hold, moderate->coarse, fast/scene_change->fine",
+  "traces": {
+    "0": [
+      "coarse",
+      "coarse",
+      "coarse",
+      "coarse"
+    ],
+    "1": [
+      "hold",
+      "hold",
+      "hold",
+      "hold"
+    ],
+    "2": [
+      "hold",
+      "hold",
+      "coarse",
+      "hold"
+    ],
+    "3": [
+      "fine",
+      "coarse",
+      "hold",
+      "hold"
+    ],
+    "4": [
+      "fine",
+      "fine",
+      "coarse",
+      "coarse"
+    ],
+    "5": [
+      "coarse",
+      "coarse",
+      "coarse",
+      "coarse"
+    ],
+    "6": [
+      "fine",
+      "fine",
+      "fine",
+      "fine"
+    ],
+    "7": [
+      "coarse",
+      "coarse",
+      "coarse",
+      "coarse"
+    ]
+  },
+  "mode_counts": {
+    "coarse": 16,
+    "hold": 9,
+    "fine": 7
+  },
+  "detail": {
+    "0": {
+      "1": {
+        "motion": "moderate",
+        "drift": 0.54,
+        "difficulty": 1.5
+      },
+      "2": {
+        "motion": "moderate",
+        "drift": 0.61,
+        "difficulty": 1.75
+      },
+      "3": {
+        "motion": "moderate",
+        "drift": 0.63,
+        "difficulty": 2.13
+      },
+      "4": {
+        "motion": "moderate",
+        "drift": 0.64,
+        "difficulty": 2.05
+      }
+    },
+    "1": {
+      "1": {
+        "motion": "static",
+        "drift": 0.3,
+        "difficulty": 0.99
+      },
+      "2": {
+        "motion": "static",
+        "drift": 0.35,
+        "difficulty": 1.21
+      },
+      "3": {
+        "motion": "static",
+        "drift": 0.33,
+        "difficulty": 1.13
+      },
+      "4": {
+        "motion": "static",
+        "drift": 0.29,
+        "difficulty": 0.85
+      }
+    },
+    "2": {
+      "1": {
+        "motion": "static",
+        "drift": 0.3,
+        "difficulty": 0.97
+      },
+      "2": {
+        "motion": "static",
+        "drift": 0.3,
+        "difficulty": 1.19
+      },
+      "3": {
+        "motion": "moderate",
+        "drift": 0.47,
+        "difficulty": 1.9
+      },
+      "4": {
+        "motion": "static",
+        "drift": 0.27,
+        "difficulty": 1.04
+      }
+    },
+    "3": {
+      "1": {
+        "motion": "fast",
+        "drift": 0.68,
+        "difficulty": 2.68
+      },
+      "2": {
+        "motion": "moderate",
+        "drift": 0.58,
+        "difficulty": 2.41
+      },
+      "3": {
+        "motion": "static",
+        "drift": 0.31,
+        "difficulty": 0.99
+      },
+      "4": {
+        "motion": "static",
+        "drift": 0.31,
+        "difficulty": 1.06
+      }
+    },
+    "4": {
+      "1": {
+        "motion": "fast",
+        "drift": 0.73,
+        "difficulty": 2.31
+      },
+      "2": {
+        "motion": "fast",
+        "drift": 0.79,
+        "difficulty": 2.5
+      },
+      "3": {
+        "motion": "moderate",
+        "drift": 0.73,
+        "difficulty": 2.4
+      },
+      "4": {
+        "motion": "moderate",
+        "drift": 0.7,
+        "difficulty": 2.19
+      }
+    },
+    "5": {
+      "1": {
+        "motion": "moderate",
+        "drift": 0.53,
+        "difficulty": 1.81
+      },
+      "2": {
+        "motion": "moderate",
+        "drift": 0.45,
+        "difficulty": 1.63
+      },
+      "3": {
+        "motion": "moderate",
+        "drift": 0.43,
+        "difficulty": 1.67
+      },
+      "4": {
+        "motion": "moderate",
+        "drift": 0.61,
+        "difficulty": 2.0
+      }
+    },
+    "6": {
+      "1": {
+        "motion": "fast",
+        "drift": 0.79,
+        "difficulty": 3.39
+      },
+      "2": {
+        "motion": "fast",
+        "drift": 0.83,
+        "difficulty": 3.18
+      },
+      "3": {
+        "motion": "fast",
+        "drift": 0.82,
+        "difficulty": 2.84
+      },
+      "4": {
+        "motion": "fast",
+        "drift": 0.81,
+        "difficulty": 2.76
+      }
+    },
+    "7": {
+      "1": {
+        "motion": "moderate",
+        "drift": 0.61,
+        "difficulty": 1.61
+      },
+      "2": {
+        "motion": "moderate",
+        "drift": 0.64,
+        "difficulty": 1.68
+      },
+      "3": {
+        "motion": "moderate",
+        "drift": 0.58,
+        "difficulty": 1.64
+      },
+      "4": {
+        "motion": "moderate",
+        "drift": 0.56,
+        "difficulty": 1.54
+      }
+    }
+  }
+}

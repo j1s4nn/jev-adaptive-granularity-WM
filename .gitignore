@@ -1,0 +1,129 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ---------------------------------------------------------------------------
+# Secrets and credentials (never commit)
+# ---------------------------------------------------------------------------
+.kaggle/
+kaggle.json
+.env
+*.env
+.env.*
+secrets/
+.secrets/
+*.key
+*.pem
+credentials.json
+typesafe.env
+telegram.env
+
+# ---------------------------------------------------------------------------
+# Model weights and checkpoints (never commit)
+# ---------------------------------------------------------------------------
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+*.safetensors
+
+# ---------------------------------------------------------------------------
+# Large media and archives (hosted externally: Kaggle / GitHub Releases)
+# ---------------------------------------------------------------------------
+**/*.mp4
+**/*.avi
+**/*.mov
+**/*.webm
+**/*.mkv
+**/*.tar.gz
+**/*.zip
+results/*/videos/
+results/**/rcm/
+
+# ---------------------------------------------------------------------------
+# Agent / tooling state (never publish)
+# ---------------------------------------------------------------------------
+.kilo/
+.remember/
+01_Code/
+
+# ---------------------------------------------------------------------------
+# Internal and historical notes (never publish)
+# ---------------------------------------------------------------------------
+CLAUDE.md
+old/
+STATUS.md
+PROGRESS.md
+Mater_plan_final.md
+LINKS.md
+
+# ---------------------------------------------------------------------------
+# LaTeX build artifacts (paper source and figures are kept)
+# ---------------------------------------------------------------------------
+paper/build/
+paper/build_updated2/
+paper/main.pdf
+paper/main_updated.pdf
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+
+# Paper staging area
+paper_materials/
+paper/figures_src/candidates/
+
+# ---------------------------------------------------------------------------
+# Logs and temporary files
+# ---------------------------------------------------------------------------
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keep empty directories
+!.gitkeep

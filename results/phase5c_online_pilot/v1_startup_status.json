@@ -1,0 +1,12 @@
+{
+  "kernel": "ajjisan/phase-5c-online-feasibility-pilot",
+  "version": 1,
+  "submission": "accepted",
+  "immediate_status": "KernelWorkerStatus.ERROR",
+  "failure_message": null,
+  "remote_logs": [],
+  "output_files": [],
+  "phase5c_policy_results": 0,
+  "interpretation": "Startup failure with no script output; cause undetermined",
+  "automatic_retry_started": false
+}

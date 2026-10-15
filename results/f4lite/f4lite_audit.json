@@ -1,0 +1,245 @@
+{
+  "phase": "F4-lite-audit",
+  "generated_utc": "2026-10-11T13:07:56.896194+00:00",
+  "input_sha256": "464656b445729d74dbfbb19ab146b5151312437cb27e0d58491855b1972a40bc",
+  "n_rollouts": 40,
+  "by_policy": {
+    "fixed_coarse": {
+      "n": 8,
+      "fine_fraction_mean": 0.0,
+      "switch_count_mean": 0.0,
+      "mean_reference_l1": 0.31857657665386796,
+      "dit_s": 34.95895418524742,
+      "vae_s": 110.43430283665657,
+      "total_s": 202.10361042618752,
+      "nfe": 20.0,
+      "signal_s": 0.0,
+      "peak_vram_gb": 11.292667388916016
+    },
+    "fixed_fine": {
+      "n": 8,
+      "fine_fraction_mean": 1.0,
+      "switch_count_mean": 0.0,
+      "mean_reference_l1": 0.29982313700020313,
+      "dit_s": 18.050363808870316,
+      "vae_s": 110.90356504917145,
+      "total_s": 184.06624576449394,
+      "nfe": 16.0,
+      "signal_s": 0.0,
+      "peak_vram_gb": 11.292667388916016
+    },
+    "random50": {
+      "n": 8,
+      "fine_fraction_mean": 0.5,
+      "switch_count_mean": 2.125,
+      "mean_reference_l1": 0.3101977021433413,
+      "dit_s": 26.534309893846512,
+      "vae_s": 110.71130236983299,
+      "total_s": 187.48390811681747,
+      "nfe": 18.0,
+      "signal_s": 0.0,
+      "peak_vram_gb": 11.292667388916016
+    },
+    "alternating50": {
+      "n": 8,
+      "fine_fraction_mean": 0.5,
+      "switch_count_mean": 3.0,
+      "mean_reference_l1": 0.3057822114787996,
+      "dit_s": 26.509876668453217,
+      "vae_s": 110.77093842625618,
+      "total_s": 187.2725819349289,
+      "nfe": 18.0,
+      "signal_s": 0.0,
+      "peak_vram_gb": 11.292667388916016
+    },
+    "adaptive_warp": {
+      "n": 8,
+      "fine_fraction_mean": 0.75,
+      "switch_count_mean": 0.0,
+      "mean_reference_l1": 0.29486956913024187,
+      "dit_s": 22.14665710926056,
+      "vae_s": 321.6195784807205,
+      "total_s": 397.78348302841187,
+      "nfe": 17.0,
+      "signal_s": 0.648021399974823,
+      "peak_vram_gb": 11.292667388916016
+    }
+  },
+  "paired_vs_best_fixed": {
+    "fixed_coarse": {
+      "n": 8,
+      "mean_refL1_diff": 0.018753439653664827,
+      "min": -0.03141109645366669,
+      "max": 0.11473474279046059
+    },
+    "random50": {
+      "n": 8,
+      "mean_refL1_diff": 0.01037456514313817,
+      "min": -0.02070637047290802,
+      "max": 0.07799143716692924
+    },
+    "alternating50": {
+      "n": 8,
+      "mean_refL1_diff": 0.005959074478596449,
+      "min": -0.02444039285182953,
+      "max": 0.06141006946563721
+    },
+    "adaptive_warp": {
+      "n": 8,
+      "mean_refL1_diff": -0.004953567869961262,
+      "min": -0.03141109645366669,
+      "max": 0.0
+    }
+  },
+  "per_prompt": {
+    "0": {
+      "prompt": "a boat",
+      "stratum": "object_class",
+      "refL1": {
+        "fixed_coarse": 0.289318211376667,
+        "fixed_fine": 0.2632603049278259,
+        "random50": 0.290275439620018,
+        "alternating50": 0.2648233324289322,
+        "adaptive_warp": 0.2632603049278259
+      },
+      "dit_s": {
+        "fixed_coarse": 34.95911264419556,
+        "fixed_fine": 18.023460149765015,
+        "random50": 26.5335373878479,
+        "alternating50": 26.46667242050171,
+        "adaptive_warp": 18.006389617919922
+      }
+    },
+    "1": {
+      "prompt": "a book",
+      "stratum": "object_class",
+      "refL1": {
+        "fixed_coarse": 0.21786246821284294,
+        "fixed_fine": 0.22178824618458748,
+        "random50": 0.21656739339232445,
+        "alternating50": 0.23238555341959,
+        "adaptive_warp": 0.22178824618458748
+      },
+      "dit_s": {
+        "fixed_coarse": 34.94812989234924,
+        "fixed_fine": 18.049567699432373,
+        "random50": 26.54271101951599,
+        "alternating50": 26.524878978729248,
+        "adaptive_warp": 17.967050790786743
+      }
+    },
+    "2": {
+      "prompt": "baseball stadium",
+      "stratum": "scene",
+      "refL1": {
+        "fixed_coarse": 0.33230743557214737,
+        "fixed_fine": 0.353421688079834,
+        "random50": 0.33271531760692596,
+        "alternating50": 0.3296097368001938,
+        "adaptive_warp": 0.353421688079834
+      },
+      "dit_s": {
+        "fixed_coarse": 34.95836162567139,
+        "fixed_fine": 18.03223943710327,
+        "random50": 26.551280736923218,
+        "alternating50": 26.516305208206177,
+        "adaptive_warp": 17.978718757629395
+      }
+    },
+    "3": {
+      "prompt": "basement",
+      "stratum": "scene",
+      "refL1": {
+        "fixed_coarse": 0.3317224830389023,
+        "fixed_fine": 0.3200322389602661,
+        "random50": 0.31410910934209824,
+        "alternating50": 0.31410910934209824,
+        "adaptive_warp": 0.3200322389602661
+      },
+      "dit_s": {
+        "fixed_coarse": 34.94632863998413,
+        "fixed_fine": 18.035170555114746,
+        "random50": 26.526742219924927,
+        "alternating50": 26.53550934791565,
+        "adaptive_warp": 17.957684993743896
+      }
+    },
+    "4": {
+      "prompt": "a bird flying over a snowy forest",
+      "stratum": "motion",
+      "refL1": {
+        "fixed_coarse": 0.30704544484615326,
+        "fixed_fine": 0.31526289135217667,
+        "random50": 0.29654503613710403,
+        "alternating50": 0.30374757945537567,
+        "adaptive_warp": 0.30704544484615326
+      },
+      "dit_s": {
+        "fixed_coarse": 34.96730351448059,
+        "fixed_fine": 18.06005024909973,
+        "random50": 26.56169819831848,
+        "alternating50": 26.561192274093628,
+        "adaptive_warp": 34.6527144908905
+      }
+    },
+    "5": {
+      "prompt": "a bird soaring gracefully in the sky",
+      "stratum": "motion",
+      "refL1": {
+        "fixed_coarse": 0.37486017495393753,
+        "fixed_fine": 0.26012543216347694,
+        "random50": 0.3381168693304062,
+        "alternating50": 0.32153550162911415,
+        "adaptive_warp": 0.26012543216347694
+      },
+      "dit_s": {
+        "fixed_coarse": 34.964377880096436,
+        "fixed_fine": 18.07431697845459,
+        "random50": 26.49609613418579,
+        "alternating50": 26.48439860343933,
+        "adaptive_warp": 18.00005078315735
+      }
+    },
+    "6": {
+      "prompt": "A person is bungee jumping",
+      "stratum": "human_action",
+      "refL1": {
+        "fixed_coarse": 0.3693397417664528,
+        "fixed_fine": 0.3071265444159508,
+        "random50": 0.346919521689415,
+        "alternating50": 0.346919521689415,
+        "adaptive_warp": 0.3071265444159508
+      },
+      "dit_s": {
+        "fixed_coarse": 34.96268105506897,
+        "fixed_fine": 18.069809913635254,
+        "random50": 26.511736392974854,
+        "alternating50": 26.490869283676147,
+        "adaptive_warp": 17.998026371002197
+      }
+    },
+    "7": {
+      "prompt": "A person is canoeing or kayaking",
+      "stratum": "human_action",
+      "refL1": {
+        "fixed_coarse": 0.3261566534638405,
+        "fixed_fine": 0.35756774991750717,
+        "random50": 0.34633293002843857,
+        "alternating50": 0.33312735706567764,
+        "adaptive_warp": 0.3261566534638405
+      },
+      "dit_s": {
+        "fixed_coarse": 34.96533823013306,
+        "fixed_fine": 18.058295488357544,
+        "random50": 26.550677061080933,
+        "alternating50": 26.499187231063843,
+        "adaptive_warp": 34.61262106895447
+      }
+    }
+  },
+  "fixed_policies_refL1": {
+    "fixed_coarse": 0.31857657665386796,
+    "fixed_fine": 0.29982313700020313
+  },
+  "best_fixed_policy": "fixed_fine"
+}

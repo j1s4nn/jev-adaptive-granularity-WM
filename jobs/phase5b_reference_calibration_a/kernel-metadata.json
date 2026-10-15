@@ -1,0 +1,19 @@
+{
+  "id": "ajjisan/phase-5b-reference-calibration-a",
+  "title": "Phase 5B Reference Calibration A",
+  "code_file": "phase5b_reference_calibration.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "ajjisan/causal-rcm-ckpts",
+    "ajjisan/wan21-t5",
+    "ajjisan/wan21-dit-vae"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

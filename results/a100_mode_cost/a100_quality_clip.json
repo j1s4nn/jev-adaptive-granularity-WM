@@ -1,0 +1,533 @@
+{
+  "phase": "A100-A1-clip-independent-quality",
+  "generated_utc": "2026-10-12T10:36:38.733918+00:00",
+  "model": "openai/clip-vit-base-patch32",
+  "note": "Independent of the internal c1-1 reference.",
+  "n_videos": 54,
+  "by_mode": {
+    "ref_c1_1_s4": {
+      "n": 9,
+      "subject_consistency": 0.9913867049747043,
+      "text_alignment": 0.30209961699114907,
+      "text_alignment_std": 0.005199078172962699
+    },
+    "fine_c1_1_s1": {
+      "n": 9,
+      "subject_consistency": 0.9889676637119718,
+      "text_alignment": 0.2974274787637923,
+      "text_alignment_std": 0.005297012057983213
+    },
+    "fine_c1_1_s2": {
+      "n": 9,
+      "subject_consistency": 0.9907469484541152,
+      "text_alignment": 0.29768360820081496,
+      "text_alignment_std": 0.0055802161029229564
+    },
+    "coarse_c3_3_s4": {
+      "n": 9,
+      "subject_consistency": 0.9903252588378059,
+      "text_alignment": 0.29869794680012596,
+      "text_alignment_std": 0.005430494797312551
+    },
+    "coarse_c3_3_s2": {
+      "n": 9,
+      "subject_consistency": 0.9879659414291382,
+      "text_alignment": 0.29968880779213375,
+      "text_alignment_std": 0.0055073019789738786
+    },
+    "coarse_c3_3_s1": {
+      "n": 9,
+      "subject_consistency": 0.9879809021949768,
+      "text_alignment": 0.30100860860612655,
+      "text_alignment_std": 0.005479110378978981
+    }
+  },
+  "per_video": {
+    "dev_human_seed17_h45_coarse_c3_3_s1": {
+      "case": "dev_human_seed17_h45",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9651346206665039,
+      "text_alignment": 0.2491840422153473,
+      "text_alignment_std": 0.009381099604070187
+    },
+    "dev_human_seed17_h45_coarse_c3_3_s2": {
+      "case": "dev_human_seed17_h45",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9631294012069702,
+      "text_alignment": 0.24655435979366302,
+      "text_alignment_std": 0.006503584329038858
+    },
+    "dev_human_seed17_h45_coarse_c3_3_s4": {
+      "case": "dev_human_seed17_h45",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9814825057983398,
+      "text_alignment": 0.23181627690792084,
+      "text_alignment_std": 0.006618495099246502
+    },
+    "dev_human_seed17_h45_fine_c1_1_s1": {
+      "case": "dev_human_seed17_h45",
+      "mode": "fine_c1_1_s1",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9903531670570374,
+      "text_alignment": 0.25389793515205383,
+      "text_alignment_std": 0.0028639447409659624
+    },
+    "dev_human_seed17_h45_fine_c1_1_s2": {
+      "case": "dev_human_seed17_h45",
+      "mode": "fine_c1_1_s2",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9915979504585266,
+      "text_alignment": 0.25136980414390564,
+      "text_alignment_std": 0.003422653302550316
+    },
+    "dev_human_seed17_h45_ref_c1_1_s4": {
+      "case": "dev_human_seed17_h45",
+      "mode": "ref_c1_1_s4",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9903875589370728,
+      "text_alignment": 0.24409465491771698,
+      "text_alignment_std": 0.0032365911174565554
+    },
+    "dev_human_seed17_h57_coarse_c3_3_s1": {
+      "case": "dev_human_seed17_h57",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9849197268486023,
+      "text_alignment": 0.25119102001190186,
+      "text_alignment_std": 0.003657309804111719
+    },
+    "dev_human_seed17_h57_coarse_c3_3_s2": {
+      "case": "dev_human_seed17_h57",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9854264855384827,
+      "text_alignment": 0.2492883950471878,
+      "text_alignment_std": 0.003926233854144812
+    },
+    "dev_human_seed17_h57_coarse_c3_3_s4": {
+      "case": "dev_human_seed17_h57",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9855003952980042,
+      "text_alignment": 0.2666266858577728,
+      "text_alignment_std": 0.0046277595683932304
+    },
+    "dev_human_seed17_h57_fine_c1_1_s1": {
+      "case": "dev_human_seed17_h57",
+      "mode": "fine_c1_1_s1",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9939879179000854,
+      "text_alignment": 0.21153989434242249,
+      "text_alignment_std": 0.006018795073032379
+    },
+    "dev_human_seed17_h57_fine_c1_1_s2": {
+      "case": "dev_human_seed17_h57",
+      "mode": "fine_c1_1_s2",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9923499226570129,
+      "text_alignment": 0.21114875376224518,
+      "text_alignment_std": 0.004748149309307337
+    },
+    "dev_human_seed17_h57_ref_c1_1_s4": {
+      "case": "dev_human_seed17_h57",
+      "mode": "ref_c1_1_s4",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9849875569343567,
+      "text_alignment": 0.23957835137844086,
+      "text_alignment_std": 0.004157281946390867
+    },
+    "dev_human_seed17_h81_coarse_c3_3_s1": {
+      "case": "dev_human_seed17_h81",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9849127531051636,
+      "text_alignment": 0.24865013360977173,
+      "text_alignment_std": 0.005310718901455402
+    },
+    "dev_human_seed17_h81_coarse_c3_3_s2": {
+      "case": "dev_human_seed17_h81",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9835898280143738,
+      "text_alignment": 0.24874745309352875,
+      "text_alignment_std": 0.007293699774891138
+    },
+    "dev_human_seed17_h81_coarse_c3_3_s4": {
+      "case": "dev_human_seed17_h81",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9810054898262024,
+      "text_alignment": 0.2613040804862976,
+      "text_alignment_std": 0.0060179815627634525
+    },
+    "dev_human_seed17_h81_fine_c1_1_s1": {
+      "case": "dev_human_seed17_h81",
+      "mode": "fine_c1_1_s1",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9844115972518921,
+      "text_alignment": 0.26278987526893616,
+      "text_alignment_std": 0.00789458304643631
+    },
+    "dev_human_seed17_h81_fine_c1_1_s2": {
+      "case": "dev_human_seed17_h81",
+      "mode": "fine_c1_1_s2",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9909566640853882,
+      "text_alignment": 0.2614402770996094,
+      "text_alignment_std": 0.005252095405012369
+    },
+    "dev_human_seed17_h81_ref_c1_1_s4": {
+      "case": "dev_human_seed17_h81",
+      "mode": "ref_c1_1_s4",
+      "prompt": "A person is air drumming",
+      "n_frames_used": 41,
+      "subject_consistency": 0.985919177532196,
+      "text_alignment": 0.24880750477313995,
+      "text_alignment_std": 0.00880374200642109
+    },
+    "dev_motion_seed17_h45_coarse_c3_3_s1": {
+      "case": "dev_motion_seed17_h45",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9863271713256836,
+      "text_alignment": 0.3475534915924072,
+      "text_alignment_std": 0.005295639391988516
+    },
+    "dev_motion_seed17_h45_coarse_c3_3_s2": {
+      "case": "dev_motion_seed17_h45",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9892399311065674,
+      "text_alignment": 0.3494443893432617,
+      "text_alignment_std": 0.004879366140812635
+    },
+    "dev_motion_seed17_h45_coarse_c3_3_s4": {
+      "case": "dev_motion_seed17_h45",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9889113903045654,
+      "text_alignment": 0.34073445200920105,
+      "text_alignment_std": 0.007085454650223255
+    },
+    "dev_motion_seed17_h45_fine_c1_1_s1": {
+      "case": "dev_motion_seed17_h45",
+      "mode": "fine_c1_1_s1",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9833930730819702,
+      "text_alignment": 0.36197033524513245,
+      "text_alignment_std": 0.006006371229887009
+    },
+    "dev_motion_seed17_h45_fine_c1_1_s2": {
+      "case": "dev_motion_seed17_h45",
+      "mode": "fine_c1_1_s2",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9883884191513062,
+      "text_alignment": 0.3612930476665497,
+      "text_alignment_std": 0.004015547689050436
+    },
+    "dev_motion_seed17_h45_ref_c1_1_s4": {
+      "case": "dev_motion_seed17_h45",
+      "mode": "ref_c1_1_s4",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9831587076187134,
+      "text_alignment": 0.3583564758300781,
+      "text_alignment_std": 0.006206758785992861
+    },
+    "dev_motion_seed17_h57_coarse_c3_3_s1": {
+      "case": "dev_motion_seed17_h57",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9918700456619263,
+      "text_alignment": 0.33949288725852966,
+      "text_alignment_std": 0.006629548035562038
+    },
+    "dev_motion_seed17_h57_coarse_c3_3_s2": {
+      "case": "dev_motion_seed17_h57",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9917184710502625,
+      "text_alignment": 0.34130042791366577,
+      "text_alignment_std": 0.00693150470033288
+    },
+    "dev_motion_seed17_h57_coarse_c3_3_s4": {
+      "case": "dev_motion_seed17_h57",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9917895197868347,
+      "text_alignment": 0.34174102544784546,
+      "text_alignment_std": 0.005768686532974243
+    },
+    "dev_motion_seed17_h57_fine_c1_1_s1": {
+      "case": "dev_motion_seed17_h57",
+      "mode": "fine_c1_1_s1",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9752817749977112,
+      "text_alignment": 0.34011584520339966,
+      "text_alignment_std": 0.007625968661159277
+    },
+    "dev_motion_seed17_h57_fine_c1_1_s2": {
+      "case": "dev_motion_seed17_h57",
+      "mode": "fine_c1_1_s2",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9816303253173828,
+      "text_alignment": 0.3374885618686676,
+      "text_alignment_std": 0.008526450954377651
+    },
+    "dev_motion_seed17_h57_ref_c1_1_s4": {
+      "case": "dev_motion_seed17_h57",
+      "mode": "ref_c1_1_s4",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9938384294509888,
+      "text_alignment": 0.3580076992511749,
+      "text_alignment_std": 0.004022346343845129
+    },
+    "dev_motion_seed17_h81_coarse_c3_3_s1": {
+      "case": "dev_motion_seed17_h81",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9901725053787231,
+      "text_alignment": 0.3375178873538971,
+      "text_alignment_std": 0.005823473911732435
+    },
+    "dev_motion_seed17_h81_coarse_c3_3_s2": {
+      "case": "dev_motion_seed17_h81",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9891155362129211,
+      "text_alignment": 0.33270540833473206,
+      "text_alignment_std": 0.009201564826071262
+    },
+    "dev_motion_seed17_h81_coarse_c3_3_s4": {
+      "case": "dev_motion_seed17_h81",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9895216226577759,
+      "text_alignment": 0.33368340134620667,
+      "text_alignment_std": 0.009812192060053349
+    },
+    "dev_motion_seed17_h81_fine_c1_1_s1": {
+      "case": "dev_motion_seed17_h81",
+      "mode": "fine_c1_1_s1",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9816707372665405,
+      "text_alignment": 0.31967657804489136,
+      "text_alignment_std": 0.007983021438121796
+    },
+    "dev_motion_seed17_h81_fine_c1_1_s2": {
+      "case": "dev_motion_seed17_h81",
+      "mode": "fine_c1_1_s2",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9778202772140503,
+      "text_alignment": 0.33083751797676086,
+      "text_alignment_std": 0.014472262933850288
+    },
+    "dev_motion_seed17_h81_ref_c1_1_s4": {
+      "case": "dev_motion_seed17_h81",
+      "mode": "ref_c1_1_s4",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9928655624389648,
+      "text_alignment": 0.34927991032600403,
+      "text_alignment_std": 0.006416755728423595
+    },
+    "dev_object_seed17_h45_coarse_c3_3_s1": {
+      "case": "dev_object_seed17_h45",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "a banana",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9961761832237244,
+      "text_alignment": 0.31292468309402466,
+      "text_alignment_std": 0.006510537583380938
+    },
+    "dev_object_seed17_h45_coarse_c3_3_s2": {
+      "case": "dev_object_seed17_h45",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "a banana",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9953075647354126,
+      "text_alignment": 0.31132397055625916,
+      "text_alignment_std": 0.005308087915182114
+    },
+    "dev_object_seed17_h45_coarse_c3_3_s4": {
+      "case": "dev_object_seed17_h45",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "a banana",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9963537454605103,
+      "text_alignment": 0.29959937930107117,
+      "text_alignment_std": 0.002117593539878726
+    },
+    "dev_object_seed17_h45_fine_c1_1_s1": {
+      "case": "dev_object_seed17_h45",
+      "mode": "fine_c1_1_s1",
+      "prompt": "a banana",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9980003833770752,
+      "text_alignment": 0.3078126907348633,
+      "text_alignment_std": 0.0022605282720178366
+    },
+    "dev_object_seed17_h45_fine_c1_1_s2": {
+      "case": "dev_object_seed17_h45",
+      "mode": "fine_c1_1_s2",
+      "prompt": "a banana",
+      "n_frames_used": 23,
+      "subject_consistency": 0.997958242893219,
+      "text_alignment": 0.3084295690059662,
+      "text_alignment_std": 0.0023803324438631535
+    },
+    "dev_object_seed17_h45_ref_c1_1_s4": {
+      "case": "dev_object_seed17_h45",
+      "mode": "ref_c1_1_s4",
+      "prompt": "a banana",
+      "n_frames_used": 23,
+      "subject_consistency": 0.9949748516082764,
+      "text_alignment": 0.3023649752140045,
+      "text_alignment_std": 0.007032537832856178
+    },
+    "dev_object_seed17_h57_coarse_c3_3_s1": {
+      "case": "dev_object_seed17_h57",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "a banana",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9932217001914978,
+      "text_alignment": 0.32026901841163635,
+      "text_alignment_std": 0.004467656370252371
+    },
+    "dev_object_seed17_h57_coarse_c3_3_s2": {
+      "case": "dev_object_seed17_h57",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "a banana",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9947826266288757,
+      "text_alignment": 0.3161987066268921,
+      "text_alignment_std": 0.0032665312755852938
+    },
+    "dev_object_seed17_h57_coarse_c3_3_s4": {
+      "case": "dev_object_seed17_h57",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "a banana",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9992491006851196,
+      "text_alignment": 0.30149391293525696,
+      "text_alignment_std": 0.0033635091967880726
+    },
+    "dev_object_seed17_h57_fine_c1_1_s1": {
+      "case": "dev_object_seed17_h57",
+      "mode": "fine_c1_1_s1",
+      "prompt": "a banana",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9967463612556458,
+      "text_alignment": 0.3158784806728363,
+      "text_alignment_std": 0.002597501967102289
+    },
+    "dev_object_seed17_h57_fine_c1_1_s2": {
+      "case": "dev_object_seed17_h57",
+      "mode": "fine_c1_1_s2",
+      "prompt": "a banana",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9979209303855896,
+      "text_alignment": 0.3174867033958435,
+      "text_alignment_std": 0.0028524037916213274
+    },
+    "dev_object_seed17_h57_ref_c1_1_s4": {
+      "case": "dev_object_seed17_h57",
+      "mode": "ref_c1_1_s4",
+      "prompt": "a banana",
+      "n_frames_used": 29,
+      "subject_consistency": 0.9970393180847168,
+      "text_alignment": 0.3191589117050171,
+      "text_alignment_std": 0.0052815950475633144
+    },
+    "dev_object_seed17_h81_coarse_c3_3_s1": {
+      "case": "dev_object_seed17_h81",
+      "mode": "coarse_c3_3_s1",
+      "prompt": "a banana",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9990934133529663,
+      "text_alignment": 0.3022943139076233,
+      "text_alignment_std": 0.002236009808257222
+    },
+    "dev_object_seed17_h81_coarse_c3_3_s2": {
+      "case": "dev_object_seed17_h81",
+      "mode": "coarse_c3_3_s2",
+      "prompt": "a banana",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9993836283683777,
+      "text_alignment": 0.3016361594200134,
+      "text_alignment_std": 0.0022551449947059155
+    },
+    "dev_object_seed17_h81_coarse_c3_3_s4": {
+      "case": "dev_object_seed17_h81",
+      "mode": "coarse_c3_3_s4",
+      "prompt": "a banana",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9991135597229004,
+      "text_alignment": 0.31128230690956116,
+      "text_alignment_std": 0.0034627809654921293
+    },
+    "dev_object_seed17_h81_fine_c1_1_s1": {
+      "case": "dev_object_seed17_h81",
+      "mode": "fine_c1_1_s1",
+      "prompt": "a banana",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9968639612197876,
+      "text_alignment": 0.3031656742095947,
+      "text_alignment_std": 0.004422394093126059
+    },
+    "dev_object_seed17_h81_fine_c1_1_s2": {
+      "case": "dev_object_seed17_h81",
+      "mode": "fine_c1_1_s2",
+      "prompt": "a banana",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9980998039245605,
+      "text_alignment": 0.29965823888778687,
+      "text_alignment_std": 0.004552049096673727
+    },
+    "dev_object_seed17_h81_ref_c1_1_s4": {
+      "case": "dev_object_seed17_h81",
+      "mode": "ref_c1_1_s4",
+      "prompt": "a banana",
+      "n_frames_used": 41,
+      "subject_consistency": 0.9993091821670532,
+      "text_alignment": 0.299248069524765,
+      "text_alignment_std": 0.0016340947477146983
+    }
+  }
+}

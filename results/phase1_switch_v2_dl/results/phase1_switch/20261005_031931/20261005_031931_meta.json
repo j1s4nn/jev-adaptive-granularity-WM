@@ -1,0 +1,124 @@
+{
+  "run_id": "20261005_031931",
+  "phase": "phase1-switch-smoke",
+  "status": "complete",
+  "start_time": "2026-10-05T03:19:31.556767",
+  "protocol": {
+    "prompt": "A cinematic shot of a snowy mountain at sunrise",
+    "sequence": [
+      "c1-1_initial",
+      "c3-3_i2v_continuation",
+      "c1-1_i2v_continuation"
+    ],
+    "action_lambda": 0.0,
+    "resolution": "480p 16:9",
+    "seed": 17
+  },
+  "env": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "gpu": "Tesla T4"
+  },
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "segments": [
+    {
+      "label": "c1-1_initial",
+      "latent_shape": [
+        1,
+        16,
+        3,
+        60,
+        104
+      ],
+      "load_s": 24.552,
+      "sample_s": 3.496,
+      "peak_vram": {
+        "cuda": true,
+        "device": "Tesla T4",
+        "total_gb": 14.562,
+        "allocated_gb": 2.897,
+        "reserved_gb": 3.734,
+        "peak_allocated_gb": 3.777
+      }
+    },
+    {
+      "label": "c3-3_i2v_continuation",
+      "latent_shape": [
+        1,
+        16,
+        4,
+        60,
+        104
+      ],
+      "load_s": 23.564,
+      "sample_s": 6.565,
+      "peak_vram": {
+        "cuda": true,
+        "device": "Tesla T4",
+        "total_gb": 14.562,
+        "allocated_gb": 2.898,
+        "reserved_gb": 4.023,
+        "peak_allocated_gb": 4.192
+      },
+      "remaining_t": 3,
+      "chunk_t": 3
+    },
+    {
+      "label": "c1-1_i2v_continuation",
+      "latent_shape": [
+        1,
+        16,
+        3,
+        60,
+        104
+      ],
+      "load_s": 9.189,
+      "sample_s": 1.943,
+      "peak_vram": {
+        "cuda": true,
+        "device": "Tesla T4",
+        "total_gb": 14.562,
+        "allocated_gb": 2.896,
+        "reserved_gb": 3.734,
+        "peak_allocated_gb": 3.775
+      },
+      "remaining_t": 2,
+      "chunk_t": 1
+    }
+  ],
+  "combined_latent_shape": [
+    1,
+    16,
+    8,
+    60,
+    104
+  ],
+  "decode_s": 53.03,
+  "decode_peak_vram": {
+    "cuda": true,
+    "device": "Tesla T4",
+    "total_gb": 14.562,
+    "allocated_gb": 0.379,
+    "reserved_gb": 13.98,
+    "peak_allocated_gb": 11.224
+  },
+  "frames_saved": true,
+  "boundary_diagnostics": {
+    "c1_to_c3_latent_l1": 0.0,
+    "c3_to_c1_latent_l1": 0.0,
+    "note": "Lower is smoother; no universal pass threshold is claimed in this smoke test."
+  },
+  "verdict": {
+    "overall": "PASS",
+    "switch_sequence_completed": true,
+    "context_strategy": "last latent frame passed through causal_i2v_rollout_sampling",
+    "caveat": "This validates executable boundary transfer, not quality superiority."
+  },
+  "end_time": "2026-10-05T03:26:21.519316"
+}

@@ -1,0 +1,84 @@
+{
+  "run_id": "20261012_011402",
+  "phase": "E-JEV-3-hold-mode",
+  "status": "complete",
+  "start_time": "2026-10-12T01:14:02.771149",
+  "protocol": {
+    "seed": 17,
+    "horizon": 57,
+    "policies": [
+      "fixed_fine",
+      "fixed_coarse",
+      "fixed_hold",
+      "jev_routed",
+      "jev_routed_nohold"
+    ],
+    "jev_routing": {
+      "0": [
+        "coarse",
+        "coarse",
+        "coarse",
+        "coarse"
+      ],
+      "1": [
+        "hold",
+        "hold",
+        "hold",
+        "hold"
+      ],
+      "2": [
+        "hold",
+        "hold",
+        "coarse",
+        "hold"
+      ],
+      "3": [
+        "fine",
+        "coarse",
+        "hold",
+        "hold"
+      ],
+      "4": [
+        "fine",
+        "fine",
+        "coarse",
+        "coarse"
+      ],
+      "5": [
+        "coarse",
+        "coarse",
+        "coarse",
+        "coarse"
+      ],
+      "6": [
+        "fine",
+        "fine",
+        "fine",
+        "fine"
+      ],
+      "7": [
+        "coarse",
+        "coarse",
+        "coarse",
+        "coarse"
+      ]
+    },
+    "structure": "shared coarse prefix + 4 segment decisions of 3 latent frames",
+    "hold_mode": "copy boundary latent frame x3, no generation (cost ~0)",
+    "metric": "decoded-pixel L1 to internal c1-1 step-4 reference"
+  },
+  "gpu": "Tesla T4",
+  "upstream_rcm_commit": "ed3cb14dd936f92cdc9f9381af7369991509b41f",
+  "dataset_paths": {
+    "fine": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "reference": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "coarse": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "n_complete": 40,
+  "n_expected": 40,
+  "verdict": "PASS",
+  "end_time": "2026-10-12T04:07:30.249885"
+}

@@ -1,0 +1,142 @@
+{
+  "manifest_version": "a100-phase3",
+  "source": "results\\phase3_calibration_rerun\\rcm\\evaluation\\vbench_text2video\\prompts.json",
+  "selection_rule": "fresh, disjoint from A100-01 / Phase 5B / F4-lite",
+  "n_excluded": 76,
+  "horizons": [
+    57
+  ],
+  "seeds": [
+    17,
+    29,
+    41
+  ],
+  "strata": [
+    "object_class",
+    "scene",
+    "motion_smoothness",
+    "human_action"
+  ],
+  "prompts": [
+    {
+      "manifest_id": "p3_00",
+      "stratum": "object_class",
+      "prompt": "a cat"
+    },
+    {
+      "manifest_id": "p3_01",
+      "stratum": "object_class",
+      "prompt": "a cell phone"
+    },
+    {
+      "manifest_id": "p3_02",
+      "stratum": "object_class",
+      "prompt": "a chair"
+    },
+    {
+      "manifest_id": "p3_03",
+      "stratum": "object_class",
+      "prompt": "a clock"
+    },
+    {
+      "manifest_id": "p3_04",
+      "stratum": "object_class",
+      "prompt": "a couch"
+    },
+    {
+      "manifest_id": "p3_05",
+      "stratum": "object_class",
+      "prompt": "a cow"
+    },
+    {
+      "manifest_id": "p3_06",
+      "stratum": "scene",
+      "prompt": "campsite"
+    },
+    {
+      "manifest_id": "p3_07",
+      "stratum": "scene",
+      "prompt": "campus"
+    },
+    {
+      "manifest_id": "p3_08",
+      "stratum": "scene",
+      "prompt": "carrousel"
+    },
+    {
+      "manifest_id": "p3_09",
+      "stratum": "scene",
+      "prompt": "castle"
+    },
+    {
+      "manifest_id": "p3_10",
+      "stratum": "scene",
+      "prompt": "cemetery"
+    },
+    {
+      "manifest_id": "p3_11",
+      "stratum": "scene",
+      "prompt": "classroom"
+    },
+    {
+      "manifest_id": "p3_12",
+      "stratum": "motion_smoothness",
+      "prompt": "a car accelerating to gain speed"
+    },
+    {
+      "manifest_id": "p3_13",
+      "stratum": "motion_smoothness",
+      "prompt": "a car slowing down to stop"
+    },
+    {
+      "manifest_id": "p3_14",
+      "stratum": "motion_smoothness",
+      "prompt": "a car stuck in traffic during rush hour"
+    },
+    {
+      "manifest_id": "p3_15",
+      "stratum": "motion_smoothness",
+      "prompt": "a car turning a corner"
+    },
+    {
+      "manifest_id": "p3_16",
+      "stratum": "motion_smoothness",
+      "prompt": "a cat grooming itself meticulously with its tongue"
+    },
+    {
+      "manifest_id": "p3_17",
+      "stratum": "motion_smoothness",
+      "prompt": "a cat playing in park"
+    },
+    {
+      "manifest_id": "p3_18",
+      "stratum": "human_action",
+      "prompt": "A person is climbing a rope"
+    },
+    {
+      "manifest_id": "p3_19",
+      "stratum": "human_action",
+      "prompt": "A person is counting money"
+    },
+    {
+      "manifest_id": "p3_20",
+      "stratum": "human_action",
+      "prompt": "A person is crawling baby"
+    },
+    {
+      "manifest_id": "p3_21",
+      "stratum": "human_action",
+      "prompt": "A person is crying"
+    },
+    {
+      "manifest_id": "p3_22",
+      "stratum": "human_action",
+      "prompt": "A person is cutting nails"
+    },
+    {
+      "manifest_id": "p3_23",
+      "stratum": "human_action",
+      "prompt": "A person is cutting watermelon"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "phase": "Jev-gate-selection",
+  "generated_utc": "2026-10-13T03:21:04.116463+00:00",
+  "n": 80,
+  "positives": 56,
+  "difficulty": {
+    "youden": 0.5238095238095237,
+    "threshold": 1.72,
+    "tpr": 0.7321428571428571,
+    "fpr": 0.20833333333333334,
+    "n_flagged_fine": 46,
+    "n_total": 80,
+    "fine_fraction": 0.575
+  },
+  "coarse_drift": {
+    "youden": 0.4702380952380953,
+    "threshold": 0.36,
+    "tpr": 0.9285714285714286,
+    "fpr": 0.4583333333333333,
+    "n_flagged_fine": 64,
+    "n_total": 80,
+    "fine_fraction": 0.8
+  }
+}

@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this software or the accompanying study, please cite it as below."
+title: "Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation"
+abstract: >-
+  Official code, locked protocols, calibration freezes, and audit artifacts for a
+  hardware-conditional feasibility study of adaptive temporal granularity in causal
+  video generation. Pairing a frame-wise mode (c1-1) with a chunk-3 mode (c3-3) and a
+  near-zero-cost hold mode on Causal-rCM (Wan2.1-1.3B), the study audits three
+  preconditions: a mode that is genuinely cheaper on the deployment hardware, a signal
+  that predicts hard segments before generation, and an independent endpoint that
+  certifies the trade. Routing uses the Jev System One oracle with a two-threshold
+  controller with hysteresis and forced recovery. Audits run on a Tesla T4 and an
+  A100-SXM4-80GB, with negative and failed experiments preserved as evidence.
+type: software
+authors:
+  - family-names: "Jisan"
+    given-names: "Hossen Md"
+    email: "jisanahammed1952@gmail.com"
+    affiliation: "Department of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST), Nanjing, China"
+keywords:
+  - video generation
+  - world models
+  - autoregressive diffusion
+  - causal video generation
+  - adaptive computation
+  - temporal granularity
+  - uncertainty estimation
+  - efficient inference
+  - diffusion transformers
+  - hysteresis control
+license: MIT
+version: 1.0.0
+date-released: "2026-10-15"
+repository-code: "https://github.com/j1s4nn/jev-adaptive-granularity-WM"
+url: "https://github.com/j1s4nn/jev-adaptive-granularity-WM"
+preferred-citation:
+  type: article
+  title: "Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation"
+  authors:
+    - family-names: "Jisan"
+      given-names: "Hossen Md"
+      email: "jisanahammed1952@gmail.com"
+      affiliation: "Department of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST), Nanjing, China"
+  year: 2026
+  journal: "IEEE Transactions on Circuits and Systems for Video Technology (submission draft)"

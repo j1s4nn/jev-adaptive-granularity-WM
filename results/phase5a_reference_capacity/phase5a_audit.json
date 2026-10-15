@@ -1,0 +1,26 @@
+{
+  "phase": "phase5a-reference-capacity",
+  "source_summary": "C:\\Users\\jisan\\OneDrive\\Desktop\\research\\idea_05_adaptive_granularity_WM\\04_Experiment\\results\\phase5a_reference_capacity\\results\\phase5a_reference_capacity\\phase5a_summary.json",
+  "source_raw": "C:\\Users\\jisan\\OneDrive\\Desktop\\research\\idea_05_adaptive_granularity_WM\\04_Experiment\\results\\phase5a_reference_capacity\\results\\phase5a_reference_capacity\\results.jsonl",
+  "summary_verdict": "PASS",
+  "expected_samples": 4,
+  "observed_samples": 4,
+  "sample_keys_ok": true,
+  "shape_ok": true,
+  "alignment_metadata_ok": true,
+  "mode_records_ok": true,
+  "all_nfe_positive": true,
+  "all_peak_vram_recorded": true,
+  "reference_regret": {
+    "n": 20,
+    "mean": 0.11517718844115735,
+    "min": 0.010260239243507385,
+    "max": 0.17554262280464172
+  },
+  "limitations": [
+    "two prompts and one seed; capacity/reference gate only",
+    "decoded pixel L1 against an internal c1-1 step-4 reference, not ground truth",
+    "no signal AUROC or adaptive-policy claim is made"
+  ],
+  "verdict": "PASS"
+}

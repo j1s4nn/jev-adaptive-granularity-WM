@@ -1,0 +1,87 @@
+{
+  "run_id": "20261012_104642",
+  "phase": "A100-A2-online-policies",
+  "status": "complete",
+  "start_time": "2026-10-12T10:46:42.527420",
+  "protocol": {
+    "manifest_version": "a100-01",
+    "seed": 17,
+    "horizon": 57,
+    "prompts": [
+      {
+        "stratum": "object_class",
+        "prompt": "a cake"
+      },
+      {
+        "stratum": "object_class",
+        "prompt": "a car"
+      },
+      {
+        "stratum": "object_class",
+        "prompt": "a carrot"
+      },
+      {
+        "stratum": "scene",
+        "prompt": "botanical garden"
+      },
+      {
+        "stratum": "scene",
+        "prompt": "bridge"
+      },
+      {
+        "stratum": "scene",
+        "prompt": "cafeteria"
+      },
+      {
+        "stratum": "motion_smoothness",
+        "prompt": "a bus accelerating to gain speed"
+      },
+      {
+        "stratum": "motion_smoothness",
+        "prompt": "a bus stuck in traffic during rush hour"
+      },
+      {
+        "stratum": "motion_smoothness",
+        "prompt": "a bus turning a corner"
+      },
+      {
+        "stratum": "human_action",
+        "prompt": "A person is clapping"
+      },
+      {
+        "stratum": "human_action",
+        "prompt": "A person is clay pottery making"
+      },
+      {
+        "stratum": "human_action",
+        "prompt": "A person is cleaning windows"
+      }
+    ],
+    "policies": [
+      "fixed_coarse",
+      "fixed_fine",
+      "fixed_hold",
+      "random50",
+      "alternating50",
+      "adaptive_warp"
+    ],
+    "warp_direction": -1,
+    "warp_threshold": -12.195727348327637,
+    "random_seed": 20261025,
+    "structure": "common coarse prefix (3 latent frames) + 4 segments of 3 latent frames",
+    "metric": "decoded-pixel L1 to matched internal c1-1 step-4 reference"
+  },
+  "upstream_rcm_commit": "ed3cb14dd936f92cdc9f9381af7369991509b41f",
+  "dataset_paths": {
+    "fine": "/content/inputs/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "reference": "/content/inputs/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "coarse": "/content/inputs/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/content/inputs/wan21/Wan2.1_VAE.pth",
+    "t5": "/content/inputs/wan21/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/content/inputs/wan21/google/umt5-xxl"
+  },
+  "n_complete": 72,
+  "n_expected": 72,
+  "verdict": "PASS",
+  "end_time": "2026-10-12T12:01:01.303484"
+}

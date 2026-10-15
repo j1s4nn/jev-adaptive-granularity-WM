@@ -1,0 +1,71 @@
+{
+  "run_id": "20261005_081716",
+  "phase": "phase3-signal-calibration",
+  "status": "partial",
+  "start_time": "2026-10-05T08:17:16.790998",
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "protocol": {
+    "calibration_prompts": [
+      "In a still frame, a stop sign",
+      "A tranquil tableau of alley",
+      "A person is taking a shower",
+      "a cat drinking water"
+    ],
+    "held_out_prompts": [
+      "Splash of turquoise water in extreme slow motion, alpha channel included.",
+      "The Bund Shanghai, with an intense shaking effect",
+      "A beautiful coastal beach in spring, waves lapping on sand, watercolor painting",
+      "A cyclist rides quickly along a forest trail in bright sunlight"
+    ],
+    "seed": 17,
+    "horizon": 45,
+    "latent_frames": 12,
+    "common_segment": "3 latent frames",
+    "signals": [
+      "residual",
+      "warp",
+      "motion",
+      "complexity"
+    ],
+    "ema": "dropped: no EMA weights in verified checkpoints",
+    "action_lambda": 0.0,
+    "label": "coarse_l1 - fine_l1 > calibration margin",
+    "label_margin": null,
+    "bootstrap_reps": 2000,
+    "limitations": [
+      "temporal proxy is motion/content dependent",
+      "paired fixed-mode trajectories are not ground-truth references",
+      "small prompt/seed sample"
+    ]
+  },
+  "n_complete": 0,
+  "n_failed_or_incomplete": 8,
+  "metrics": {},
+  "distributions": {},
+  "timing": {
+    "fine_text_encode_s_mean": null,
+    "fine_checkpoint_load_s_mean": null,
+    "fine_dit_s_mean": null,
+    "fine_vae_s_mean": null,
+    "fine_total_s_mean": null,
+    "fine_peak_vram_gb_mean": null,
+    "fine_nfe_mean": null,
+    "coarse_text_encode_s_mean": null,
+    "coarse_checkpoint_load_s_mean": null,
+    "coarse_dit_s_mean": null,
+    "coarse_vae_s_mean": null,
+    "coarse_total_s_mean": null,
+    "coarse_peak_vram_gb_mean": null,
+    "coarse_nfe_mean": null,
+    "signal_compute_s_mean": null
+  },
+  "scores_file": "/kaggle/working/results/phase3_calibration/scores.jsonl",
+  "verdict": "FAIL",
+  "end_time": "2026-10-05T08:45:57.034289"
+}

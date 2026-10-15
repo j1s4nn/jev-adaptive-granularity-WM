@@ -1,0 +1,10 @@
+{
+  "id": "ajjisan/download-wan-b",
+  "title": "download-wan-b",
+  "code_file": "download_wan_b.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true
+}

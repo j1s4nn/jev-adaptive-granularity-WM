@@ -1,0 +1,36 @@
+{
+  "run_id": "20261005_023125",
+  "phase": "phase1-switch-smoke",
+  "status": "failed",
+  "start_time": "2026-10-05T02:31:25.310968",
+  "protocol": {
+    "prompt": "A cinematic shot of a snowy mountain at sunrise",
+    "sequence": [
+      "c1-1_initial",
+      "c3-3_i2v_continuation",
+      "c1-1_i2v_continuation"
+    ],
+    "action_lambda": 0.0,
+    "resolution": "480p 16:9",
+    "seed": 17
+  },
+  "env": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "gpu": "Tesla T4"
+  },
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "verdict": {
+    "overall": "FAIL",
+    "switch_sequence_completed": false
+  },
+  "error": "ValueError: --mid_t_schedules must have one schedule per --steps_per_chunk entry, got 2 and 1",
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 290, in main\n    third, third_meta = run_i2v(\"c1-1\", boundary_2, 2)\n                        ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/src/script.py\", line 272, in run_i2v\n    per_chunk = build_few_step_schedules_per_chunk(counts, steps, 1600, mid, schedules, \"cuda\")\n  File \"/kaggle/working/rcm/rcm/inference/wan2pt1_t2v_causal_infer.py\", line 140, in build_few_step_schedules_per_chunk\n    raise ValueError(\n        f\"--mid_t_schedules must have one schedule per --steps_per_chunk entry, got {len(mid_t_schedules)} and {len(steps_per_chunk)}\"\n    )\nValueError: --mid_t_schedules must have one schedule per --steps_per_chunk entry, got 2 and 1\n",
+  "end_time": "2026-10-05T02:36:26.490807"
+}

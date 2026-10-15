@@ -1,0 +1,557 @@
+{
+  "phase": "F1.1-existing-timing-audit",
+  "generated_utc": "2026-10-11T00:11:41.016350+00:00",
+  "metric_note": "Timing rows are from the already-inspected Phase 5B protocol. This audit only re-summarizes cost; it makes no quality claim and does not re-score any held-out signal.",
+  "inputs": [
+    {
+      "batch": "phase5b_heldout_00",
+      "path": "results/phase5b_heldout_00/results/phase5b_heldout_00/results.jsonl",
+      "sha256": "3290463c985a87a1d93d845eeed2e81164aa389989ea3c0b2faafd02245a00b9"
+    },
+    {
+      "batch": "phase5b_heldout_01",
+      "path": "results/phase5b_heldout_01/results/phase5b_heldout_01/results.jsonl",
+      "sha256": "056f1ba8486e874af55d75bc5d826c63fa97d8efa7e1c094fc1996d08d571eb2"
+    },
+    {
+      "batch": "phase5b_heldout_02",
+      "path": "results/phase5b_heldout_02/results/phase5b_heldout_02/results.jsonl",
+      "sha256": "6946868f67a6f6a47cdaba1e5a50378ea1c85cbe01974df418cfeb681667ac43"
+    },
+    {
+      "batch": "phase5b_heldout_03",
+      "path": "results/phase5b_heldout_03/results/phase5b_heldout_03/results.jsonl",
+      "sha256": "472200c92eb9d15ad46361f9ef1d0cac95aad62debdc3fd12d415d262d5a7d4e"
+    },
+    {
+      "batch": "phase5b_heldout_04",
+      "path": "results/phase5b_heldout_04/results/phase5b_heldout_04/results.jsonl",
+      "sha256": "3776e4e3ad7edd7682f2cc29ea9e6212405e1023afcf5a50b24dcbfdea6596bd"
+    },
+    {
+      "batch": "phase5b_heldout_05",
+      "path": "results/phase5b_heldout_05/results/phase5b_heldout_05/results.jsonl",
+      "sha256": "0dfe933476540e29327f531c5f5ef95f7a6de69ba456908f50d6e52137cbd271"
+    },
+    {
+      "batch": "phase5b_heldout_06",
+      "path": "results/phase5b_heldout_06/results/phase5b_heldout_06/results.jsonl",
+      "sha256": "1032849481f044b33bb97ccf67254825bd48d75d127bcd1b3fa7fcd8cf6bc9bf"
+    },
+    {
+      "batch": "phase5b_heldout_07",
+      "path": "results/phase5b_heldout_07/results/phase5b_heldout_07/results.jsonl",
+      "sha256": "9a7ed953893822e0f54c1a1ecd83b509c4e73f36a3942c1b1fbabc62820d2e37"
+    },
+    {
+      "batch": "phase5b_reference_calibration_a",
+      "path": "results/phase5b_reference_calibration_a/results/phase5b_reference_calibration_a/results.jsonl",
+      "sha256": "5b1bca62b37eba28b881c9c8d63c76023519ffd7e267f0f754f7fbbf9419d66a"
+    },
+    {
+      "batch": "phase5b_reference_calibration_b",
+      "path": "results/phase5b_reference_calibration_b/results/phase5b_reference_calibration_b/results.jsonl",
+      "sha256": "15f10eced7fb67d9f393bb2d264a8839562d2c06088e33947dc08ad26daef02b"
+    }
+  ],
+  "counts": {
+    "calibration": 12,
+    "held_out": 72
+  },
+  "per_mode": {
+    "calibration": {
+      "reference": {
+        "dit_s": {
+          "n": 12,
+          "mean": 51.458836356798805,
+          "median": 50.869704365730286,
+          "min": 49.140676498413086,
+          "max": 54.604536056518555,
+          "stdev": 1.7402164841325372
+        },
+        "vae_s": {
+          "n": 12,
+          "mean": 129.4996001124382,
+          "median": 129.1102672815323,
+          "min": 125.90923237800598,
+          "max": 133.87022399902344,
+          "stdev": 3.645774483949366
+        },
+        "total_s": {
+          "n": 12,
+          "mean": 212.6844422618548,
+          "median": 209.75446963310242,
+          "min": 199.75307774543762,
+          "max": 244.5363085269928,
+          "stdev": 13.304278337781948
+        },
+        "peak_vram_gb": {
+          "n": 12,
+          "mean": 11.309412002563477,
+          "median": 11.309412002563477,
+          "min": 11.309412002563477,
+          "max": 11.309412002563477,
+          "stdev": 0.0
+        },
+        "nfe": {
+          "n": 12,
+          "mean": 60.0,
+          "median": 60.0,
+          "min": 60,
+          "max": 60,
+          "stdev": 0.0
+        },
+        "checkpoint_load_s": {
+          "n": 12,
+          "mean": 29.926289836565655,
+          "median": 27.314438700675964,
+          "min": 20.709884881973267,
+          "max": 57.53961634635925,
+          "stdev": 10.429273358124288
+        },
+        "blocks": {
+          "n": 12,
+          "mean": 15.0,
+          "median": 15.0,
+          "min": 15,
+          "max": 15,
+          "stdev": 0.0
+        }
+      },
+      "fine": {
+        "dit_s": {
+          "n": 12,
+          "mean": 21.13818903764089,
+          "median": 21.144449710845947,
+          "min": 20.621986150741577,
+          "max": 22.598105669021606,
+          "stdev": 0.5207362695450967
+        },
+        "vae_s": {
+          "n": 12,
+          "mean": 130.37683629989624,
+          "median": 129.92493069171906,
+          "min": 127.5325927734375,
+          "max": 133.62990951538086,
+          "stdev": 2.764258303530498
+        },
+        "total_s": {
+          "n": 12,
+          "mean": 184.6011219819387,
+          "median": 182.23309338092804,
+          "min": 171.30845308303833,
+          "max": 202.57207083702087,
+          "stdev": 10.189611343737967
+        },
+        "peak_vram_gb": {
+          "n": 12,
+          "mean": 11.309412002563477,
+          "median": 11.309412002563477,
+          "min": 11.309412002563477,
+          "max": 11.309412002563477,
+          "stdev": 0.0
+        },
+        "nfe": {
+          "n": 12,
+          "mean": 18.0,
+          "median": 18.0,
+          "min": 18,
+          "max": 18,
+          "stdev": 0.0
+        },
+        "checkpoint_load_s": {
+          "n": 12,
+          "mean": 31.2934952378273,
+          "median": 29.095519542694092,
+          "min": 20.40394139289856,
+          "max": 46.541250467300415,
+          "stdev": 9.29874131843302
+        },
+        "blocks": {
+          "n": 12,
+          "mean": 15.0,
+          "median": 15.0,
+          "min": 15,
+          "max": 15,
+          "stdev": 0.0
+        }
+      },
+      "coarse": {
+        "dit_s": {
+          "n": 12,
+          "mean": 53.18679650624593,
+          "median": 52.79639780521393,
+          "min": 52.39789366722107,
+          "max": 54.65093970298767,
+          "stdev": 0.8889293063377082
+        },
+        "vae_s": {
+          "n": 12,
+          "mean": 129.41752608617148,
+          "median": 128.99007749557495,
+          "min": 125.7629177570343,
+          "max": 133.38733553886414,
+          "stdev": 3.666126847715118
+        },
+        "total_s": {
+          "n": 12,
+          "mean": 214.65516263246536,
+          "median": 211.8098613023758,
+          "min": 201.65177083015442,
+          "max": 233.0117633342743,
+          "stdev": 10.680922444870038
+        },
+        "peak_vram_gb": {
+          "n": 12,
+          "mean": 11.309407234191895,
+          "median": 11.309407234191895,
+          "min": 11.309407234191895,
+          "max": 11.309407234191895,
+          "stdev": 0.0
+        },
+        "nfe": {
+          "n": 12,
+          "mean": 20.0,
+          "median": 20.0,
+          "min": 20,
+          "max": 20,
+          "stdev": 0.0
+        },
+        "checkpoint_load_s": {
+          "n": 12,
+          "mean": 30.257501025994618,
+          "median": 30.235541462898254,
+          "min": 20.87185573577881,
+          "max": 43.97240400314331,
+          "stdev": 8.442135917533644
+        },
+        "blocks": {
+          "n": 12,
+          "mean": 5.0,
+          "median": 5.0,
+          "min": 5,
+          "max": 5,
+          "stdev": 0.0
+        }
+      }
+    },
+    "held_out": {
+      "reference": {
+        "dit_s": {
+          "n": 72,
+          "mean": 51.21136284205649,
+          "median": 51.15386879444122,
+          "min": 45.890883684158325,
+          "max": 57.851500034332275,
+          "stdev": 2.9461710102506893
+        },
+        "vae_s": {
+          "n": 72,
+          "mean": 131.59420343240103,
+          "median": 129.96602737903595,
+          "min": 110.85905504226685,
+          "max": 158.8344943523407,
+          "stdev": 14.922519867729005
+        },
+        "total_s": {
+          "n": 72,
+          "mean": 198.43171349167824,
+          "median": 197.43483781814575,
+          "min": 169.23102164268494,
+          "max": 241.23511385917664,
+          "stdev": 19.434904800449438
+        },
+        "peak_vram_gb": {
+          "n": 72,
+          "mean": 11.313318252563477,
+          "median": 11.313318252563477,
+          "min": 11.309412002563477,
+          "max": 11.317224502563477,
+          "stdev": 0.0032118220773165547
+        },
+        "nfe": {
+          "n": 72,
+          "mean": 60.0,
+          "median": 60.0,
+          "min": 60,
+          "max": 60,
+          "stdev": 0.0
+        },
+        "checkpoint_load_s": {
+          "n": 72,
+          "mean": 13.790991730160183,
+          "median": 9.215117692947388,
+          "min": 8.295896053314209,
+          "max": 40.676114320755005,
+          "stdev": 8.236424413450884
+        },
+        "blocks": {
+          "n": 72,
+          "mean": 15.0,
+          "median": 15.0,
+          "min": 15,
+          "max": 15,
+          "stdev": 0.0
+        }
+      },
+      "fine": {
+        "dit_s": {
+          "n": 72,
+          "mean": 21.558256583081352,
+          "median": 21.578014016151428,
+          "min": 20.02615976333618,
+          "max": 23.889941453933716,
+          "stdev": 1.0509914499182573
+        },
+        "vae_s": {
+          "n": 72,
+          "mean": 133.04066920611592,
+          "median": 131.29649138450623,
+          "min": 108.71501421928406,
+          "max": 161.29566192626953,
+          "stdev": 15.33870279967003
+        },
+        "total_s": {
+          "n": 72,
+          "mean": 169.75744878914622,
+          "median": 169.5077384710312,
+          "min": 142.74501872062683,
+          "max": 216.63103938102722,
+          "stdev": 18.41122192529043
+        },
+        "peak_vram_gb": {
+          "n": 72,
+          "mean": 11.313318252563477,
+          "median": 11.313318252563477,
+          "min": 11.309412002563477,
+          "max": 11.317224502563477,
+          "stdev": 0.0032118220773165547
+        },
+        "nfe": {
+          "n": 72,
+          "mean": 18.0,
+          "median": 18.0,
+          "min": 18,
+          "max": 18,
+          "stdev": 0.0
+        },
+        "checkpoint_load_s": {
+          "n": 72,
+          "mean": 13.329349958234364,
+          "median": 9.632428646087646,
+          "min": 8.688732147216797,
+          "max": 48.93243646621704,
+          "stdev": 7.456710980885557
+        },
+        "blocks": {
+          "n": 72,
+          "mean": 15.0,
+          "median": 15.0,
+          "min": 15,
+          "max": 15,
+          "stdev": 0.0
+        }
+      },
+      "coarse": {
+        "dit_s": {
+          "n": 72,
+          "mean": 53.41653515232934,
+          "median": 53.15574562549591,
+          "min": 47.344158411026,
+          "max": 60.35602784156799,
+          "stdev": 3.1206309442729876
+        },
+        "vae_s": {
+          "n": 72,
+          "mean": 131.61708678470717,
+          "median": 130.04717814922333,
+          "min": 105.81092882156372,
+          "max": 158.5701665878296,
+          "stdev": 15.117931517100383
+        },
+        "total_s": {
+          "n": 72,
+          "mean": 200.07837415072652,
+          "median": 199.93332815170288,
+          "min": 171.21062755584717,
+          "max": 250.38953065872192,
+          "stdev": 20.328399569961828
+        },
+        "peak_vram_gb": {
+          "n": 72,
+          "mean": 11.313313484191895,
+          "median": 11.313313484191895,
+          "min": 11.309407234191895,
+          "max": 11.317219734191895,
+          "stdev": 0.0032118220773165547
+        },
+        "nfe": {
+          "n": 72,
+          "mean": 20.0,
+          "median": 20.0,
+          "min": 20,
+          "max": 20,
+          "stdev": 0.0
+        },
+        "checkpoint_load_s": {
+          "n": 72,
+          "mean": 13.217871513631609,
+          "median": 9.34810984134674,
+          "min": 8.667858600616455,
+          "max": 38.930883169174194,
+          "stdev": 8.046980768504634
+        },
+        "blocks": {
+          "n": 72,
+          "mean": 5.0,
+          "median": 5.0,
+          "min": 5,
+          "max": 5,
+          "stdev": 0.0
+        }
+      }
+    }
+  },
+  "fine_minus_coarse": {
+    "calibration": {
+      "dit_s": {
+        "n": 12,
+        "mean": -32.04860746860504,
+        "median": -31.364559292793274,
+        "min": -33.97471904754639,
+        "max": -31.1330087184906,
+        "stdev": 1.1173012195840073
+      },
+      "vae_s": {
+        "n": 12,
+        "mean": 0.9593102137247721,
+        "median": 1.5370203256607056,
+        "min": -1.1363775730133057,
+        "max": 2.048076868057251,
+        "stdev": 1.1516725927733142
+      },
+      "total_s": {
+        "n": 12,
+        "mean": -30.054040650526684,
+        "median": -29.9123455286026,
+        "min": -46.72744178771973,
+        "max": -14.683318376541138,
+        "stdev": 7.122898319489702
+      },
+      "nfe": {
+        "n": 12,
+        "mean": -2.0,
+        "median": -2.0,
+        "min": -2,
+        "max": -2,
+        "stdev": 0.0
+      },
+      "peak_vram_gb": {
+        "n": 12,
+        "mean": 4.76837158203125e-06,
+        "median": 4.76837158203125e-06,
+        "min": 4.76837158203125e-06,
+        "max": 4.76837158203125e-06,
+        "stdev": 0.0
+      }
+    },
+    "held_out": {
+      "dit_s": {
+        "n": 72,
+        "mean": -31.858278569247986,
+        "median": -31.63768470287323,
+        "min": -36.70323348045349,
+        "max": -27.31799864768982,
+        "stdev": 2.0903856735322717
+      },
+      "vae_s": {
+        "n": 72,
+        "mean": 1.4235824214087591,
+        "median": 1.3027995824813843,
+        "min": -0.3877840042114258,
+        "max": 3.3950414657592773,
+        "stdev": 0.6434398289480401
+      },
+      "total_s": {
+        "n": 72,
+        "mean": -30.32092536158032,
+        "median": -30.22611665725708,
+        "min": -58.110203981399536,
+        "max": -10.234504461288452,
+        "stdev": 6.334782389790182
+      },
+      "nfe": {
+        "n": 72,
+        "mean": -2.0,
+        "median": -2.0,
+        "min": -2,
+        "max": -2,
+        "stdev": 0.0
+      },
+      "peak_vram_gb": {
+        "n": 72,
+        "mean": 4.76837158203125e-06,
+        "median": 4.76837158203125e-06,
+        "min": 4.76837158203125e-06,
+        "max": 4.76837158203125e-06,
+        "stdev": 0.0
+      }
+    }
+  },
+  "fractions": {
+    "calibration": {
+      "n": 12,
+      "fine_faster_total": 12,
+      "fine_faster_total_frac": 1.0,
+      "fine_faster_dit": 12,
+      "fine_faster_dit_frac": 1.0
+    },
+    "held_out": {
+      "n": 72,
+      "fine_faster_total": 72,
+      "fine_faster_total_frac": 1.0,
+      "fine_faster_dit": 72,
+      "fine_faster_dit_frac": 1.0
+    }
+  },
+  "horizons": {
+    "calibration": {
+      "57": {
+        "n": 12,
+        "fine_total_s_mean": 184.6011219819387,
+        "coarse_total_s_mean": 214.65516263246536
+      }
+    },
+    "held_out": {
+      "57": {
+        "n": 72,
+        "fine_total_s_mean": 169.75744878914622,
+        "coarse_total_s_mean": 200.07837415072652
+      }
+    }
+  },
+  "segment_observations": {
+    "calibration": {
+      "n_segments": 48,
+      "signal_s": {
+        "n": 48,
+        "mean": 0.19865402579307556,
+        "median": 0.19198822975158691,
+        "min": 0.18330001831054688,
+        "max": 0.29361677169799805,
+        "stdev": 0.019004652066531298
+      }
+    },
+    "held_out": {
+      "n_segments": 288,
+      "signal_s": {
+        "n": 288,
+        "mean": 0.20346695681413016,
+        "median": 0.1974935531616211,
+        "min": 0.1824805736541748,
+        "max": 0.3494086265563965,
+        "stdev": 0.022477911324557558
+      }
+    }
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "phase": "A100-JEV-clip",
+  "prompts_covered": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "by_policy": {
+    "fixed_coarse": {
+      "n": 7,
+      "subject_consistency": 0.9404486332620893,
+      "text_alignment": 0.2959650329181126
+    },
+    "fixed_fine": {
+      "n": 7,
+      "subject_consistency": 0.9773740257535662,
+      "text_alignment": 0.26928648139749256
+    },
+    "fixed_hold": {
+      "n": 7,
+      "subject_consistency": 0.9900442276682172,
+      "text_alignment": 0.27800064214638304
+    },
+    "random50": {
+      "n": 7,
+      "subject_consistency": 0.9547428999628339,
+      "text_alignment": 0.28692697414330076
+    },
+    "warp": {
+      "n": 7,
+      "subject_consistency": 0.9430784923689706,
+      "text_alignment": 0.2930085744176592
+    },
+    "jev_difficulty": {
+      "n": 8,
+      "subject_consistency": 0.9545051977038383,
+      "text_alignment": 0.28360305167734623
+    },
+    "jev_routed": {
+      "n": 8,
+      "subject_consistency": 0.9614337310194969,
+      "text_alignment": 0.2822205666452646
+    },
+    "jev_holdfine": {
+      "n": 8,
+      "subject_consistency": 0.9795545563101768,
+      "text_alignment": 0.2714949920773506
+    }
+  },
+  "per_video": {
+    "p10_fixed_coarse": {
+      "prompt_idx": 10,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9262517690658569,
+      "text_alignment": 0.3449186086654663
+    },
+    "p10_fixed_fine": {
+      "prompt_idx": 10,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9823586344718933,
+      "text_alignment": 0.3443882167339325
+    },
+    "p10_fixed_hold": {
+      "prompt_idx": 10,
+      "policy": "fixed_hold",
+      "subject_consistency": 0.9934845566749573,
+      "text_alignment": 0.3396768569946289
+    },
+    "p10_jev_difficulty": {
+      "prompt_idx": 10,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9823586344718933,
+      "text_alignment": 0.3443882167339325
+    },
+    "p10_jev_holdfine": {
+      "prompt_idx": 10,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.9823586344718933,
+      "text_alignment": 0.3443882167339325
+    },
+    "p10_jev_routed": {
+      "prompt_idx": 10,
+      "policy": "jev_routed",
+      "subject_consistency": 0.931130588054657,
+      "text_alignment": 0.3467899560928345
+    },
+    "p10_random50": {
+      "prompt_idx": 10,
+      "policy": "random50",
+      "subject_consistency": 0.9610081315040588,
+      "text_alignment": 0.3448871672153473
+    },
+    "p10_warp": {
+      "prompt_idx": 10,
+      "policy": "warp",
+      "subject_consistency": 0.9262517690658569,
+      "text_alignment": 0.3449186086654663
+    },
+    "p11_fixed_coarse": {
+      "prompt_idx": 11,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9196156859397888,
+      "text_alignment": 0.30310672521591187
+    },
+    "p11_fixed_fine": {
+      "prompt_idx": 11,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.979836642742157,
+      "text_alignment": 0.307345449924469
+    },
+    "p11_fixed_hold": {
+      "prompt_idx": 11,
+      "policy": "fixed_hold",
+      "subject_consistency": 0.9912973642349243,
+      "text_alignment": 0.29598796367645264
+    },
+    "p11_jev_difficulty": {
+      "prompt_idx": 11,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9239404797554016,
+      "text_alignment": 0.2954305112361908
+    },
+    "p11_jev_holdfine": {
+      "prompt_idx": 11,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.979836642742157,
+      "text_alignment": 0.307345449924469
+    },
+    "p11_jev_routed": {
+      "prompt_idx": 11,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9196156859397888,
+      "text_alignment": 0.30310672521591187
+    },
+    "p11_random50": {
+      "prompt_idx": 11,
+      "policy": "random50",
+      "subject_consistency": 0.9486619234085083,
+      "text_alignment": 0.3152763843536377
+    },
+    "p11_warp": {
+      "prompt_idx": 11,
+      "policy": "warp",
+      "subject_consistency": 0.9196156859397888,
+      "text_alignment": 0.30310672521591187
+    },
+    "p4_jev_difficulty": {
+      "prompt_idx": 4,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9472829103469849,
+      "text_alignment": 0.27305442094802856
+    },
+    "p4_jev_holdfine": {
+      "prompt_idx": 4,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.9917286038398743,
+      "text_alignment": 0.26877936720848083
+    },
+    "p4_jev_routed": {
+      "prompt_idx": 4,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9917286038398743,
+      "text_alignment": 0.26877936720848083
+    },
+    "p5_fixed_coarse": {
+      "prompt_idx": 5,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9774262309074402,
+      "text_alignment": 0.22354939579963684
+    },
+    "p5_fixed_fine": {
+      "prompt_idx": 5,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9958352446556091,
+      "text_alignment": 0.202854186296463
+    },
+    "p5_fixed_hold": {
+      "prompt_idx": 5,
+      "policy": "fixed_hold",
+      "subject_consistency": 0.9985148310661316,
+      "text_alignment": 0.20316551625728607
+    },
+    "p5_jev_difficulty": {
+      "prompt_idx": 5,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9774262309074402,
+      "text_alignment": 0.22354939579963684
+    },
+    "p5_jev_holdfine": {
+      "prompt_idx": 5,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.9980072975158691,
+      "text_alignment": 0.19917087256908417
+    },
+    "p5_jev_routed": {
+      "prompt_idx": 5,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9901217222213745,
+      "text_alignment": 0.21464404463768005
+    },
+    "p5_random50": {
+      "prompt_idx": 5,
+      "policy": "random50",
+      "subject_consistency": 0.9836703538894653,
+      "text_alignment": 0.21685324609279633
+    },
+    "p5_warp": {
+      "prompt_idx": 5,
+      "policy": "warp",
+      "subject_consistency": 0.9958352446556091,
+      "text_alignment": 0.202854186296463
+    },
+    "p6_fixed_coarse": {
+      "prompt_idx": 6,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9563907384872437,
+      "text_alignment": 0.3290154039859772
+    },
+    "p6_fixed_fine": {
+      "prompt_idx": 6,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.982022762298584,
+      "text_alignment": 0.25684699416160583
+    },
+    "p6_fixed_hold": {
+      "prompt_idx": 6,
+      "policy": "fixed_hold",
+      "subject_consistency": 0.9937006831169128,
+      "text_alignment": 0.2884574830532074
+    },
+    "p6_jev_difficulty": {
+      "prompt_idx": 6,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9563907384872437,
+      "text_alignment": 0.3290154039859772
+    },
+    "p6_jev_holdfine": {
+      "prompt_idx": 6,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.982022762298584,
+      "text_alignment": 0.25684699416160583
+    },
+    "p6_jev_routed": {
+      "prompt_idx": 6,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9563907384872437,
+      "text_alignment": 0.3290154039859772
+    },
+    "p6_random50": {
+      "prompt_idx": 6,
+      "policy": "random50",
+      "subject_consistency": 0.9518684148788452,
+      "text_alignment": 0.29901358485221863
+    },
+    "p6_warp": {
+      "prompt_idx": 6,
+      "policy": "warp",
+      "subject_consistency": 0.9563907384872437,
+      "text_alignment": 0.3290154039859772
+    },
+    "p7_fixed_coarse": {
+      "prompt_idx": 7,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9453210830688477,
+      "text_alignment": 0.309586763381958
+    },
+    "p7_fixed_fine": {
+      "prompt_idx": 7,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9816137552261353,
+      "text_alignment": 0.2777876555919647
+    },
+    "p7_fixed_hold": {
+      "prompt_idx": 7,
+      "policy": "fixed_hold",
+      "subject_consistency": 0.9825313687324524,
+      "text_alignment": 0.29964616894721985
+    },
+    "p7_jev_difficulty": {
+      "prompt_idx": 7,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9563061594963074,
+      "text_alignment": 0.3015933930873871
+    },
+    "p7_jev_holdfine": {
+      "prompt_idx": 7,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.9825313687324524,
+      "text_alignment": 0.29964616894721985
+    },
+    "p7_jev_routed": {
+      "prompt_idx": 7,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9825313687324524,
+      "text_alignment": 0.29964616894721985
+    },
+    "p7_random50": {
+      "prompt_idx": 7,
+      "policy": "random50",
+      "subject_consistency": 0.954494059085846,
+      "text_alignment": 0.3004586100578308
+    },
+    "p7_warp": {
+      "prompt_idx": 7,
+      "policy": "warp",
+      "subject_consistency": 0.9453210830688477,
+      "text_alignment": 0.309586763381958
+    },
+    "p8_fixed_coarse": {
+      "prompt_idx": 8,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9397116303443909,
+      "text_alignment": 0.3026110529899597
+    },
+    "p8_fixed_fine": {
+      "prompt_idx": 8,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9751469492912292,
+      "text_alignment": 0.2455805093050003
+    },
+    "p8_fixed_hold": {
+      "prompt_idx": 8,
+      "policy": "fixed_hold",
+      "subject_consistency": 0.9893441796302795,
+      "text_alignment": 0.269991010427475
+    },
+    "p8_jev_difficulty": {
+      "prompt_idx": 8,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9751469492912292,
+      "text_alignment": 0.2455805093050003
+    },
+    "p8_jev_holdfine": {
+      "prompt_idx": 8,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.9751469492912292,
+      "text_alignment": 0.2455805093050003
+    },
+    "p8_jev_routed": {
+      "prompt_idx": 8,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9751469492912292,
+      "text_alignment": 0.2455805093050003
+    },
+    "p8_random50": {
+      "prompt_idx": 8,
+      "policy": "random50",
+      "subject_consistency": 0.9511949419975281,
+      "text_alignment": 0.28041738271713257
+    },
+    "p8_warp": {
+      "prompt_idx": 8,
+      "policy": "warp",
+      "subject_consistency": 0.9397116303443909,
+      "text_alignment": 0.3026110529899597
+    },
+    "p9_fixed_coarse": {
+      "prompt_idx": 9,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9184232950210571,
+      "text_alignment": 0.2589672803878784
+    },
+    "p9_fixed_fine": {
+      "prompt_idx": 9,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9448041915893555,
+      "text_alignment": 0.25020235776901245
+    },
+    "p9_fixed_hold": {
+      "prompt_idx": 9,
+      "policy": "fixed_hold",
+      "subject_consistency": 0.9814366102218628,
+      "text_alignment": 0.24907949566841125
+    },
+    "p9_jev_difficulty": {
+      "prompt_idx": 9,
+      "policy": "jev_difficulty",
+      "subject_consistency": 0.9171894788742065,
+      "text_alignment": 0.2562125623226166
+    },
+    "p9_jev_holdfine": {
+      "prompt_idx": 9,
+      "policy": "jev_holdfine",
+      "subject_consistency": 0.9448041915893555,
+      "text_alignment": 0.25020235776901245
+    },
+    "p9_jev_routed": {
+      "prompt_idx": 9,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9448041915893555,
+      "text_alignment": 0.25020235776901245
+    },
+    "p9_random50": {
+      "prompt_idx": 9,
+      "policy": "random50",
+      "subject_consistency": 0.9323024749755859,
+      "text_alignment": 0.25158244371414185
+    },
+    "p9_warp": {
+      "prompt_idx": 9,
+      "policy": "warp",
+      "subject_consistency": 0.9184232950210571,
+      "text_alignment": 0.2589672803878784
+    }
+  }
+}

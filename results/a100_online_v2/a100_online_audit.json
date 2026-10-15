@@ -1,0 +1,92 @@
+{
+  "phase": "A100-A2-online-audit",
+  "generated_utc": "2026-10-13T01:20:05.567633+00:00",
+  "n_complete": 72,
+  "by_policy": {
+    "fixed_coarse": {
+      "n": 12,
+      "fine_fraction": 0.0,
+      "hold_count": 0.0,
+      "switch_count": 0.0,
+      "mean_reference_l1": 0.2727869236841798,
+      "dit_s": 2.5492310921351113,
+      "vae_s": 2.2243982354799905,
+      "signal_s": 0.0,
+      "total_s": 45.47199795643488,
+      "nfe": 8.0,
+      "peak_vram_gb": 4.297659873962402
+    },
+    "fixed_fine": {
+      "n": 12,
+      "fine_fraction": 1.0,
+      "hold_count": 0.0,
+      "switch_count": 0.0,
+      "mean_reference_l1": 0.28324153771003086,
+      "dit_s": 3.9467397133509317,
+      "vae_s": 2.223825454711914,
+      "signal_s": 0.0,
+      "total_s": 46.75506895780563,
+      "nfe": 16.0,
+      "peak_vram_gb": 4.297659873962402
+    },
+    "fixed_hold": {
+      "n": 12,
+      "fine_fraction": 0.0,
+      "hold_count": 4.0,
+      "switch_count": 0.0,
+      "mean_reference_l1": 0.26743244659155607,
+      "dit_s": 0.7653418978055319,
+      "vae_s": 2.226019779841105,
+      "signal_s": 0.0,
+      "total_s": 12.540943284829458,
+      "nfe": 4.0,
+      "peak_vram_gb": 4.297659873962402
+    },
+    "random50": {
+      "n": 12,
+      "fine_fraction": 0.5,
+      "hold_count": 0.0,
+      "switch_count": 2.25,
+      "mean_reference_l1": 0.27893073577433825,
+      "dit_s": 3.242887238661448,
+      "vae_s": 2.2246779799461365,
+      "signal_s": 0.0,
+      "total_s": 46.2035616238912,
+      "nfe": 12.0,
+      "peak_vram_gb": 4.297659873962402
+    },
+    "alternating50": {
+      "n": 12,
+      "fine_fraction": 0.5,
+      "hold_count": 0.0,
+      "switch_count": 3.0,
+      "mean_reference_l1": 0.27842841918269795,
+      "dit_s": 3.2481913367907205,
+      "vae_s": 2.225269158681234,
+      "signal_s": 0.0,
+      "total_s": 46.80813910563787,
+      "nfe": 12.0,
+      "peak_vram_gb": 4.297659873962402
+    },
+    "adaptive_warp": {
+      "n": 12,
+      "fine_fraction": 0.20833333333333334,
+      "hold_count": 0.0,
+      "switch_count": 0.08333333333333333,
+      "mean_reference_l1": 0.2733061695471406,
+      "dit_s": 2.8458415071169534,
+      "vae_s": 6.453336755434672,
+      "signal_s": 0.633332351843516,
+      "total_s": 52.26080151398977,
+      "nfe": 9.666666666666666,
+      "peak_vram_gb": 4.297659873962402
+    }
+  },
+  "verdict": {
+    "adaptive_vs_fixed_fine_quality_rel": 0.03507736980676052,
+    "adaptive_vs_fixed_fine_dit_rel": 0.27893863953325515,
+    "beats_random_same_budget": true,
+    "f2lite01_pass": true,
+    "note": "Internal-reference (diagnostic) preliminary verdict; the primary independent CLIP/classical endpoint must be computed on the A100 online videos before a final claim."
+  }
+}

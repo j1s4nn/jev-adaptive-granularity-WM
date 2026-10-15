@@ -1,0 +1,9 @@
+{
+  "time": "2026-10-06T23:26:49+08:00",
+  "message": "Heldout 02 version 5 was accepted after the cooldown, then reached ERROR with empty logs; stopped per the one-kernel audit protocol. The previous overnight monitor also stopped because scripts/update_phase5b_handoff.py is missing.",
+  "batch": 2,
+  "kernel_version": 5,
+  "status": "startup_error",
+  "remote_status": "KernelWorkerStatus.ERROR",
+  "remote_logs": []
+}

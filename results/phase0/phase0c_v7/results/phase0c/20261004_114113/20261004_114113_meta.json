@@ -1,0 +1,69 @@
+{
+  "run_id": "20261004_114113",
+  "phase": "phase0c",
+  "status": "complete",
+  "start_time": "2026-10-04T11:41:13.856462",
+  "env": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "gpu": "Tesla T4"
+  },
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "t5_tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "tests": [
+    {
+      "label": "c1-1_1step",
+      "ok": true,
+      "latent_shape": [
+        16,
+        4,
+        60,
+        104
+      ],
+      "chunks": 4,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 4.53,
+      "peak_vram_gb": 4.048,
+      "vae_s": 25.53,
+      "frames_saved": true,
+      "error": "UnboundLocalError: cannot access local variable 'net' where it is not associated with a value",
+      "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 265, in run_test\n    del net, tokenizer, samples, video\n        ^^^\nUnboundLocalError: cannot access local variable 'net' where it is not associated with a value\n"
+    },
+    {
+      "label": "c3-3_4step",
+      "ok": true,
+      "latent_shape": [
+        16,
+        6,
+        60,
+        104
+      ],
+      "chunks": 2,
+      "steps_per_chunk": [
+        4,
+        4
+      ],
+      "dit_s": 14.25,
+      "peak_vram_gb": 4.73,
+      "vae_s": 46.58,
+      "frames_saved": true,
+      "error": "UnboundLocalError: cannot access local variable 'net' where it is not associated with a value",
+      "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 265, in run_test\n    del net, tokenizer, samples, video\n        ^^^\nUnboundLocalError: cannot access local variable 'net' where it is not associated with a value\n"
+    }
+  ],
+  "verdict": {
+    "overall": "PASS",
+    "n_passed": 2
+  },
+  "end_time": "2026-10-04T11:50:21.391235"
+}

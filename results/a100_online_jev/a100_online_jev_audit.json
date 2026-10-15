@@ -1,0 +1,216 @@
+{
+  "phase": "A100-JEV-online-audit",
+  "generated_utc": "2026-10-13T07:04:20.578198+00:00",
+  "n_complete": 96,
+  "by_policy": {
+    "fixed_coarse": {
+      "n": 12,
+      "fine_fraction": 0.0,
+      "hold_count": 0.0,
+      "coarse_count": 4.0,
+      "switch_count": 0.0,
+      "mean_reference_l1": 0.2727869236841798,
+      "dit_s": 2.557314912478129,
+      "vae_s": 2.2168400486310325,
+      "jev_s": 0.0,
+      "blip_s": 0.0,
+      "total_s": 40.57257612546285,
+      "nfe": 8.0
+    },
+    "fixed_fine": {
+      "n": 12,
+      "fine_fraction": 1.0,
+      "hold_count": 0.0,
+      "coarse_count": 0.0,
+      "switch_count": 0.0,
+      "mean_reference_l1": 0.28324153771003086,
+      "dit_s": 4.007739861806233,
+      "vae_s": 2.215830147266388,
+      "jev_s": 0.0,
+      "blip_s": 0.0,
+      "total_s": 41.83511064449946,
+      "nfe": 16.0
+    },
+    "fixed_hold": {
+      "n": 12,
+      "fine_fraction": 0.0,
+      "hold_count": 4.0,
+      "coarse_count": 0.0,
+      "switch_count": 0.0,
+      "mean_reference_l1": 0.26743244659155607,
+      "dit_s": 0.7634157737096151,
+      "vae_s": 2.21770308415095,
+      "jev_s": 0.0,
+      "blip_s": 0.0,
+      "total_s": 11.530836204687754,
+      "nfe": 4.0
+    },
+    "random50": {
+      "n": 12,
+      "fine_fraction": 0.5,
+      "hold_count": 0.0,
+      "coarse_count": 2.0,
+      "switch_count": 2.25,
+      "mean_reference_l1": 0.27893073577433825,
+      "dit_s": 3.283568501472473,
+      "vae_s": 2.21594367424647,
+      "jev_s": 0.0,
+      "blip_s": 0.0,
+      "total_s": 42.13780575990677,
+      "nfe": 12.0
+    },
+    "warp": {
+      "n": 12,
+      "fine_fraction": 0.20833333333333334,
+      "hold_count": 0.0,
+      "coarse_count": 3.1666666666666665,
+      "switch_count": 0.08333333333333333,
+      "mean_reference_l1": 0.2733061695471406,
+      "dit_s": 2.854203224182129,
+      "vae_s": 6.430625279744466,
+      "jev_s": 0.0,
+      "blip_s": 0.0,
+      "total_s": 47.21543286244074,
+      "nfe": 9.666666666666666
+    },
+    "jev_difficulty": {
+      "n": 12,
+      "fine_fraction": 0.4375,
+      "hold_count": 0.0,
+      "coarse_count": 2.25,
+      "switch_count": 1.25,
+      "mean_reference_l1": 0.26777992956340313,
+      "dit_s": 3.1909944812456765,
+      "vae_s": 6.423477073510488,
+      "jev_s": 1.0298027992248535,
+      "blip_s": 0.6951015591621399,
+      "total_s": 47.73165502150854,
+      "nfe": 11.5
+    },
+    "jev_routed": {
+      "n": 12,
+      "fine_fraction": 0.20833333333333334,
+      "hold_count": 1.8333333333333333,
+      "coarse_count": 1.3333333333333333,
+      "switch_count": 0.5,
+      "mean_reference_l1": 0.2714596825341384,
+      "dit_s": 2.0378385384877524,
+      "vae_s": 6.423015673955281,
+      "jev_s": 1.0410653154055278,
+      "blip_s": 0.36330731709798175,
+      "total_s": 33.70158074299494,
+      "nfe": 7.833333333333333
+    },
+    "jev_holdfine": {
+      "n": 12,
+      "fine_fraction": 0.5625,
+      "hold_count": 1.75,
+      "coarse_count": 0.0,
+      "switch_count": 0.3333333333333333,
+      "mean_reference_l1": 0.27389072875181836,
+      "dit_s": 2.5860482454299927,
+      "vae_s": 6.423122783501943,
+      "jev_s": 1.0410593748092651,
+      "blip_s": 0.18329348166783652,
+      "total_s": 34.87018998463949,
+      "nfe": 10.75
+    }
+  },
+  "quality_clip": {
+    "fixed_coarse": {
+      "n": 7,
+      "subject_consistency": 0.9404486332620893,
+      "text_alignment": 0.2959650329181126
+    },
+    "fixed_fine": {
+      "n": 7,
+      "subject_consistency": 0.9773740257535662,
+      "text_alignment": 0.26928648139749256
+    },
+    "fixed_hold": {
+      "n": 7,
+      "subject_consistency": 0.9900442276682172,
+      "text_alignment": 0.27800064214638304
+    },
+    "random50": {
+      "n": 7,
+      "subject_consistency": 0.9547428999628339,
+      "text_alignment": 0.28692697414330076
+    },
+    "warp": {
+      "n": 7,
+      "subject_consistency": 0.9430784923689706,
+      "text_alignment": 0.2930085744176592
+    },
+    "jev_difficulty": {
+      "n": 8,
+      "subject_consistency": 0.9545051977038383,
+      "text_alignment": 0.28360305167734623
+    },
+    "jev_routed": {
+      "n": 8,
+      "subject_consistency": 0.9614337310194969,
+      "text_alignment": 0.2822205666452646
+    },
+    "jev_holdfine": {
+      "n": 8,
+      "subject_consistency": 0.9795545563101768,
+      "text_alignment": 0.2714949920773506
+    }
+  },
+  "quality_classical": {
+    "fixed_coarse": {
+      "n": 7,
+      "temporal_warp_mean": 0.04751655409571106
+    },
+    "fixed_fine": {
+      "n": 7,
+      "temporal_warp_mean": 0.024861497876985113
+    },
+    "fixed_hold": {
+      "n": 7,
+      "temporal_warp_mean": 0.02409348685569985
+    },
+    "random50": {
+      "n": 7,
+      "temporal_warp_mean": 0.037601394605542515
+    },
+    "warp": {
+      "n": 7,
+      "temporal_warp_mean": 0.044822103746606
+    },
+    "jev_difficulty": {
+      "n": 8,
+      "temporal_warp_mean": 0.03733847287730896
+    },
+    "jev_routed": {
+      "n": 8,
+      "temporal_warp_mean": 0.03281614138982799
+    },
+    "jev_holdfine": {
+      "n": 8,
+      "temporal_warp_mean": 0.024916756482655598
+    }
+  },
+  "verdict": {
+    "jev_difficulty": {
+      "quality_rel_vs_fine": 0.05458806738458178,
+      "dit_rel_vs_fine": 0.2037920146325218,
+      "total_rel_vs_fine": -0.14094726382143236,
+      "beats_random": true
+    },
+    "jev_routed": {
+      "quality_rel_vs_fine": 0.04159649488965201,
+      "dit_rel_vs_fine": 0.49152424839038167,
+      "total_rel_vs_fine": 0.19441874961489852,
+      "beats_random": true
+    },
+    "jev_holdfine": {
+      "quality_rel_vs_fine": 0.0330135510271993,
+      "dit_rel_vs_fine": 0.3547365012197932,
+      "total_rel_vs_fine": 0.16648505412225384,
+      "beats_random": true
+    }
+  },
+  "note": "Internal refL1 is a diagnostic; the independent CLIP subject-consistency is the primary endpoint. total_rel includes the Jev/BLIP signal latency (off the DiT path)."
+}

@@ -1,0 +1,171 @@
+{
+  "phase": "A100-A1-mode-cost-audit",
+  "generated_utc": "2026-10-12T10:40:08.509223+00:00",
+  "n_complete_cases": 9,
+  "break_even_ratio": 2.33,
+  "t4_reference_ratio": 3.01,
+  "by_mode": {
+    "ref_c1_1_s4": {
+      "n_cases": 9,
+      "dit_s": 9.097243150075277,
+      "vae_s": 2.522367662853665,
+      "total_s": 18.396972603268093,
+      "nfe": 64.0,
+      "peak_vram_gb": 7.296783924102783,
+      "forwards": 80.0,
+      "ref_l1": 0.0,
+      "s_per_forward": 0.11371553937594096,
+      "s_per_nfe": 0.1421444242199262
+    },
+    "fine_c1_1_s1": {
+      "n_cases": 9,
+      "dit_s": 3.9217220412360296,
+      "vae_s": 2.3802716732025146,
+      "total_s": 12.946270995669895,
+      "nfe": 19.0,
+      "peak_vram_gb": 7.296783924102783,
+      "forwards": 35.0,
+      "ref_l1": 0.1768960612706649,
+      "s_per_forward": 0.11204920117817227,
+      "s_per_nfe": 0.20640642322294891
+    },
+    "fine_c1_1_s2": {
+      "n_cases": 9,
+      "dit_s": 5.619336446126302,
+      "vae_s": 2.382945087220934,
+      "total_s": 14.67778491973877,
+      "nfe": 34.0,
+      "peak_vram_gb": 7.296783924102783,
+      "forwards": 50.0,
+      "ref_l1": 0.16971597247398817,
+      "s_per_forward": 0.11238672892252603,
+      "s_per_nfe": 0.16527460135665595
+    },
+    "coarse_c3_3_s4": {
+      "n_cases": 9,
+      "dit_s": 5.579776604970296,
+      "vae_s": 2.3865834871927896,
+      "total_s": 14.708226495318943,
+      "nfe": 21.333333333333332,
+      "peak_vram_gb": 7.438113371531169,
+      "forwards": 26.666666666666668,
+      "ref_l1": 0.27115519230182356,
+      "s_per_forward": 0.20924162268638608,
+      "s_per_nfe": 0.26155202835798264
+    },
+    "coarse_c3_3_s2": {
+      "n_cases": 9,
+      "dit_s": 3.6512664688958063,
+      "vae_s": 2.385821580886841,
+      "total_s": 12.588695287704468,
+      "nfe": 12.666666666666666,
+      "peak_vram_gb": 7.438113371531169,
+      "forwards": 18.0,
+      "ref_l1": 0.2570714488243445,
+      "s_per_forward": 0.20284813716087813,
+      "s_per_nfe": 0.28825787912335316
+    },
+    "coarse_c3_3_s1": {
+      "n_cases": 9,
+      "dit_s": 2.68517271677653,
+      "vae_s": 2.383395195007324,
+      "total_s": 11.655375321706137,
+      "nfe": 8.333333333333334,
+      "peak_vram_gb": 7.438113371531169,
+      "forwards": 13.666666666666666,
+      "ref_l1": 0.25747205584477156,
+      "s_per_forward": 0.19647605244706318,
+      "s_per_nfe": 0.3222207260131836
+    }
+  },
+  "quality_classical": {
+    "ref_c1_1_s4": {
+      "n": 9,
+      "temporal_warp_mean": 0.021454752341295538,
+      "frame_diff_l1_mean": 0.014330766384512429,
+      "flow_mag_mean": 0.47213273216626894,
+      "hist_corr_mean": 0.9968144046943819,
+      "first_last_l1": 0.12723234875334632
+    },
+    "fine_c1_1_s1": {
+      "n": 9,
+      "temporal_warp_mean": 0.022643939262098706,
+      "frame_diff_l1_mean": 0.015607625110631169,
+      "flow_mag_mean": 0.6060659117979894,
+      "hist_corr_mean": 0.9973319548966815,
+      "first_last_l1": 0.14689010050561693
+    },
+    "fine_c1_1_s2": {
+      "n": 9,
+      "temporal_warp_mean": 0.021328153396935372,
+      "frame_diff_l1_mean": 0.014902670961308033,
+      "flow_mag_mean": 0.5786420488294649,
+      "hist_corr_mean": 0.9975625913604866,
+      "first_last_l1": 0.12226122845378187
+    },
+    "coarse_c3_3_s4": {
+      "n": 9,
+      "temporal_warp_mean": 0.026196258536947424,
+      "frame_diff_l1_mean": 0.017807393917977643,
+      "flow_mag_mean": 0.637719711250979,
+      "hist_corr_mean": 0.9980474422106084,
+      "first_last_l1": 0.12238940306835705
+    },
+    "coarse_c3_3_s2": {
+      "n": 9,
+      "temporal_warp_mean": 0.03308825323997035,
+      "frame_diff_l1_mean": 0.02240277400953955,
+      "flow_mag_mean": 1.0867957208371448,
+      "hist_corr_mean": 0.9971769858207629,
+      "first_last_l1": 0.14736712641186184
+    },
+    "coarse_c3_3_s1": {
+      "n": 9,
+      "temporal_warp_mean": 0.03287756953133616,
+      "frame_diff_l1_mean": 0.022413017574100455,
+      "flow_mag_mean": 1.0728427634596647,
+      "hist_corr_mean": 0.9968188753801847,
+      "first_last_l1": 0.14855903469853932
+    }
+  },
+  "quality_clip": {
+    "ref_c1_1_s4": {
+      "n": 9,
+      "subject_consistency": 0.9913867049747043,
+      "text_alignment": 0.30209961699114907,
+      "text_alignment_std": 0.005199078172962699
+    },
+    "fine_c1_1_s1": {
+      "n": 9,
+      "subject_consistency": 0.9889676637119718,
+      "text_alignment": 0.2974274787637923,
+      "text_alignment_std": 0.005297012057983213
+    },
+    "fine_c1_1_s2": {
+      "n": 9,
+      "subject_consistency": 0.9907469484541152,
+      "text_alignment": 0.29768360820081496,
+      "text_alignment_std": 0.0055802161029229564
+    },
+    "coarse_c3_3_s4": {
+      "n": 9,
+      "subject_consistency": 0.9903252588378059,
+      "text_alignment": 0.29869794680012596,
+      "text_alignment_std": 0.005430494797312551
+    },
+    "coarse_c3_3_s2": {
+      "n": 9,
+      "subject_consistency": 0.9879659414291382,
+      "text_alignment": 0.29968880779213375,
+      "text_alignment_std": 0.0055073019789738786
+    },
+    "coarse_c3_3_s1": {
+      "n": 9,
+      "subject_consistency": 0.9879809021949768,
+      "text_alignment": 0.30100860860612655,
+      "text_alignment_std": 0.005479110378978981
+    }
+  },
+  "coarse_over_fine_per_forward_ratio": 1.7534801710423766,
+  "verdict": "TRADE-OFF EXISTS on A100: coarse/fine per-forward ratio 1.75 < break-even 2.33 -> coarse cheaper in wall-clock DiT time"
+}

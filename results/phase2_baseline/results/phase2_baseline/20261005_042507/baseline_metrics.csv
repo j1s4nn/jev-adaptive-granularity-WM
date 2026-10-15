@@ -1,0 +1,13 @@
+label,prompt,seed,num_frames_requested,decoded_frame_count,mode,nfe_from_recorded_chunk_steps,dit_s,vae_s,combined_generation_s,peak_vram_gb,temporal_mean_l1,temporal_std_l1,latent_temporal_mean_l1,temporal_stability_proxy,ok
+p0_c1-1_21f,A cat sitting on a windowsill watching birds,17,21,21,c1-1,9,6.39,42.95,49.34,4.589,0.010415,0.021968,0.174431,0.989692,True
+p0_c3-3_21f,A cat sitting on a windowsill watching birds,17,21,21,c3-3,8,13.82,45.57,59.39,4.73,0.012996,0.037437,0.219684,0.987171,True
+p0_c1-1_33f,A cat sitting on a windowsill watching birds,17,33,33,c1-1,12,9.95,73.5,83.45,5.401,0.02142,0.05755,0.235673,0.979029,True
+p0_c3-3_33f,A cat sitting on a windowsill watching birds,17,33,33,c3-3,12,23.4,76.22,99.62,5.543,0.016219,0.037048,0.180729,0.98404,True
+p0_c1-1_45f,A cat sitting on a windowsill watching birds,17,45,45,c1-1,15,14.37,104.71,119.08,6.214,0.01386,0.032384,0.187585,0.986329,True
+p0_c3-3_45f,A cat sitting on a windowsill watching birds,17,45,45,c3-3,16,34.92,108.04,142.96,6.355,0.017563,0.037022,0.178468,0.98274,True
+p1_c1-1_21f,Ocean waves crashing on a beach at sunset,17,21,21,c1-1,9,6.37,45.92,52.29,4.589,0.0381,0.062525,0.244178,0.963298,True
+p1_c3-3_21f,Ocean waves crashing on a beach at sunset,17,21,21,c3-3,8,13.88,45.96,59.84,4.73,0.037812,0.072989,0.240905,0.963566,True
+p1_c1-1_33f,Ocean waves crashing on a beach at sunset,17,33,33,c1-1,12,9.93,73.26,83.19,5.401,0.020997,0.038739,0.193147,0.979435,True
+p1_c3-3_33f,Ocean waves crashing on a beach at sunset,17,33,33,c3-3,12,23.26,75.51,98.77,5.543,0.023693,0.041075,0.191862,0.976855,True
+p1_c1-1_45f,Ocean waves crashing on a beach at sunset,17,45,45,c1-1,15,14.29,103.92,118.21,6.214,0.038601,0.056677,0.212856,0.962834,True
+p1_c3-3_45f,Ocean waves crashing on a beach at sunset,17,45,45,c3-3,16,34.88,107.84,142.72,6.355,0.036954,0.053105,0.234571,0.964363,True

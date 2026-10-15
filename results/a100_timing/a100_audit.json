@@ -1,0 +1,62 @@
+{
+  "phase": "E-JEV-2b-a100-retime",
+  "generated_utc": "2026-10-12T08:40:51.145314+00:00",
+  "gpu": "NVIDIA A100-SXM4-80GB",
+  "fine_s_per_forward": 0.1246694863444627,
+  "coarse_s_per_forward": 0.19995638579804434,
+  "coarse_over_fine_per_forward": 1.6038919519212855,
+  "break_even_ratio": 2.33,
+  "t4_reference_ratio": 3.01,
+  "rows": [
+    {
+      "mode": "fine_c1_1_s1",
+      "latent_frames": 15,
+      "dit_s": 4.684833765029907,
+      "nfe": 18,
+      "forwards": 33,
+      "s_per_forward": 0.14196465954636084
+    },
+    {
+      "mode": "coarse_c3_3_s4",
+      "latent_frames": 15,
+      "dit_s": 4.99388575553894,
+      "nfe": 20,
+      "forwards": 25,
+      "s_per_forward": 0.19975543022155762
+    },
+    {
+      "mode": "coarse_c3_3_s1",
+      "latent_frames": 15,
+      "dit_s": 2.4491798877716064,
+      "nfe": 8,
+      "forwards": 13,
+      "s_per_forward": 0.1883984529055082
+    },
+    {
+      "mode": "fine_c1_1_s1",
+      "latent_frames": 21,
+      "dit_s": 4.831844091415405,
+      "nfe": 24,
+      "forwards": 45,
+      "s_per_forward": 0.10737431314256456
+    },
+    {
+      "mode": "coarse_c3_3_s4",
+      "latent_frames": 21,
+      "dit_s": 7.853320360183716,
+      "nfe": 28,
+      "forwards": 35,
+      "s_per_forward": 0.22438058171953473
+    },
+    {
+      "mode": "coarse_c3_3_s1",
+      "latent_frames": 21,
+      "dit_s": 3.595743417739868,
+      "nfe": 10,
+      "forwards": 17,
+      "s_per_forward": 0.2115143186905805
+    }
+  ],
+  "verdict": "TRADE-OFF EXISTS on this GPU: coarse becomes cheaper than fine (ratio 1.60 < break-even 2.33). The T4 inversion is hardware-specific.",
+  "coarse_cheaper": true
+}

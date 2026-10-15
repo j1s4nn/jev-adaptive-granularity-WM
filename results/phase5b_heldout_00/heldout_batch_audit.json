@@ -1,0 +1,37 @@
+{
+  "batch": "phase5b_heldout_00",
+  "verdict": "PASS",
+  "errors": [],
+  "expected_cases": 9,
+  "observed_cases": 9,
+  "complete_cases": 9,
+  "segments": 36,
+  "prompt_indices": [
+    0,
+    1,
+    2
+  ],
+  "seeds": [
+    17,
+    29,
+    41
+  ],
+  "regret_summary": {
+    "n_segments": 36,
+    "mean": 0.08506808636917008,
+    "min": 0.003790050745010376,
+    "max": 0.12604816257953644
+  },
+  "source_hashes": {
+    "manifest_sha256": "cce4c8c35cea378a6f2bd040e5468692a04f7e66f324aaddaedba33e63188b01",
+    "calibration_lock_sha256": "3795454f60770432de3aa290bc98492d5a8a3f84c5028e619ac72b08d39690e9",
+    "raw_sha256": "3290463c985a87a1d93d845eeed2e81164aa389989ea3c0b2faafd02245a00b9",
+    "summary_sha256": "96935dfe7d94cccd8230894c47916f9353cba98242cc7544611586b27b2e21c5",
+    "job_source_sha256": "73a2d95a6a00d72ca3f75b22bbdcfba299796cccd4f4deb498f73f471f9bf48d"
+  },
+  "label_counts_at_locked_calibration_cutoff": {
+    "True": 21,
+    "False": 15
+  },
+  "scope": "single-batch data integrity only; final AUROC and RQ1 gate require all eight batches"
+}

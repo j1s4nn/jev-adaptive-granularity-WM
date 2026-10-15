@@ -1,0 +1,66 @@
+{
+  "run_id": "20261004_112609",
+  "phase": "phase0c",
+  "status": "complete",
+  "start_time": "2026-10-04T11:26:09.025831",
+  "env": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "gpu": "Tesla T4"
+  },
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "t5_tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "tests": [
+    {
+      "label": "c1-1_1step",
+      "ok": false,
+      "latent_shape": [
+        16,
+        4,
+        60,
+        104
+      ],
+      "chunks": 4,
+      "steps_per_chunk": [
+        4,
+        1,
+        1,
+        1
+      ],
+      "dit_s": 4.43,
+      "peak_vram_gb": 4.054,
+      "vae_s": 26.37,
+      "error": "RuntimeError: permute(sparse_coo): number of dimensions in the tensor input does not match the length of the desired ordering of dimensions i.e. input.dim() = 4 is not equal to len(dims) = 3",
+      "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 256, in run_test\n    frame = (px[:, fidx].permute(1, 2, 0).numpy() * 255).astype(\"uint8\")\n             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^\nRuntimeError: permute(sparse_coo): number of dimensions in the tensor input does not match the length of the desired ordering of dimensions i.e. input.dim() = 4 is not equal to len(dims) = 3\n"
+    },
+    {
+      "label": "c3-3_4step",
+      "ok": false,
+      "latent_shape": [
+        16,
+        6,
+        60,
+        104
+      ],
+      "chunks": 2,
+      "steps_per_chunk": [
+        4,
+        4
+      ],
+      "dit_s": 14.18,
+      "peak_vram_gb": 4.736,
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 7.71 GiB. GPU 0 has a total capacity of 14.56 GiB of which 2.05 GiB is free. Including non-PyTorch memory, this process has 12.51 GiB memory in use. Of the allocated memory 3.50 GiB is allocated by PyTorch, and 8.88 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)",
+      "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 249, in run_test\n    video = tokenizer.decode(samples.float())\n  File \"/kaggle/working/rcm/rcm/tokenizers/wan2pt1.py\", line 706, in decode\n    return self.model.decode(latent)\n           ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/torch/utils/_contextlib.py\", line 124, in decorate_context\n    return func(*args, **kwargs)\n  File \"/kaggle/working/rcm/rcm/tokenizers/wan2pt1.py\", line 679, in decode\n    video_recon = self.model.decode(zs, self.scale)\n  File \"/kaggle/working/rcm/rcm/tokenizers/wan2pt1.py\", line 534, in decode\n    out_ = self.decoder(x[:, :, i : i + 1, :, :], feat_cache=self._feat_map, feat_idx=self._conv_idx)\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"/kaggle/working/rcm/rcm/tokenizers/wan2pt1.py\", line 418, in forward\n    x = layer(x, feat_cache, feat_idx)\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"/kaggle/working/rcm/rcm/tokenizers/wan2pt1.py\", line 204, in forward\n    x = layer(x, feat_cache[idx])\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1779, in _wrapped_call_impl\n    return self._call_impl(*args, **kwargs)\n           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/module.py\", line 1790, in _call_impl\n    return forward_call(*args, **kwargs)\n  File \"/kaggle/working/rcm/rcm/tokenizers/wan2pt1.py\", line 55, in forward\n    return super().forward(x)\n           ~~~~~~~~~~~~~~~^^^\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 723, in forward\n    return self._conv_forward(input, self.weight, self.bias)\n           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py\", line 718, in _conv_forward\n    return F.conv3d(\n           ~~~~~~~~^\n        input, weight, bias, self.stride, self.padding, self.dilation, self.groups\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 7.71 GiB. GPU 0 has a total capacity of 14.56 GiB of which 2.05 GiB is free. Including non-PyTorch memory, this process has 12.51 GiB memory in use. Of the allocated memory 3.50 GiB is allocated by PyTorch, and 8.88 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)\n"
+    }
+  ],
+  "verdict": {
+    "overall": "FAIL",
+    "n_passed": 0
+  },
+  "end_time": "2026-10-04T11:35:17.826669"
+}

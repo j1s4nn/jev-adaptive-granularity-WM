@@ -1,0 +1,85 @@
+{
+  "source_meta": "20261005_042507_meta.json",
+  "n_success": 12,
+  "n_total": 12,
+  "summary": [
+    {
+      "mode": "c1-1",
+      "horizon_frames": 21,
+      "n": 2,
+      "dit_s_mean": 6.38,
+      "nfe_mean": 9,
+      "vae_s_mean": 44.435,
+      "dit_plus_vae_s_mean": 50.815,
+      "peak_vram_gb_max": 4.589,
+      "adjacent_frame_l1_mean": 0.024258,
+      "temporal_proxy_mean": 0.976495
+    },
+    {
+      "mode": "c1-1",
+      "horizon_frames": 33,
+      "n": 2,
+      "dit_s_mean": 9.94,
+      "nfe_mean": 12,
+      "vae_s_mean": 73.38,
+      "dit_plus_vae_s_mean": 83.32,
+      "peak_vram_gb_max": 5.401,
+      "adjacent_frame_l1_mean": 0.021208,
+      "temporal_proxy_mean": 0.979232
+    },
+    {
+      "mode": "c1-1",
+      "horizon_frames": 45,
+      "n": 2,
+      "dit_s_mean": 14.33,
+      "nfe_mean": 15,
+      "vae_s_mean": 104.315,
+      "dit_plus_vae_s_mean": 118.645,
+      "peak_vram_gb_max": 6.214,
+      "adjacent_frame_l1_mean": 0.026231,
+      "temporal_proxy_mean": 0.974581
+    },
+    {
+      "mode": "c3-3",
+      "horizon_frames": 21,
+      "n": 2,
+      "dit_s_mean": 13.85,
+      "nfe_mean": 8,
+      "vae_s_mean": 45.765,
+      "dit_plus_vae_s_mean": 59.615,
+      "peak_vram_gb_max": 4.73,
+      "adjacent_frame_l1_mean": 0.025404,
+      "temporal_proxy_mean": 0.975369
+    },
+    {
+      "mode": "c3-3",
+      "horizon_frames": 33,
+      "n": 2,
+      "dit_s_mean": 23.33,
+      "nfe_mean": 12,
+      "vae_s_mean": 75.865,
+      "dit_plus_vae_s_mean": 99.195,
+      "peak_vram_gb_max": 5.543,
+      "adjacent_frame_l1_mean": 0.019956,
+      "temporal_proxy_mean": 0.980448
+    },
+    {
+      "mode": "c3-3",
+      "horizon_frames": 45,
+      "n": 2,
+      "dit_s_mean": 34.9,
+      "nfe_mean": 16,
+      "vae_s_mean": 107.94,
+      "dit_plus_vae_s_mean": 142.84,
+      "peak_vram_gb_max": 6.355,
+      "adjacent_frame_l1_mean": 0.027258,
+      "temporal_proxy_mean": 0.973551
+    }
+  ],
+  "caveats": [
+    "two prompts and one seed only; exploratory",
+    "adjacent-frame pixel L1 depends on scene motion and is not a perceptual quality score",
+    "DiT and VAE times exclude model loading and prompt encoding; report these separately or as unaccounted overhead",
+    "no reference videos; no FVD, PSNR, or LPIPS"
+  ]
+}

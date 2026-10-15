@@ -1,0 +1,17 @@
+{
+  "id": "ajjisan/phase-0b-minimal-probe-checkpoints-only",
+  "title": "Phase 0b minimal probe (checkpoints only)",
+  "code_file": "phase0b_probe.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "ajjisan/causal-rcm-ckpts"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

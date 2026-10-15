@@ -1,0 +1,45 @@
+{
+  "verdict": "PASS",
+  "errors": [],
+  "n_policies": 5,
+  "n_segments": 20,
+  "fixed_coarse_minus_fine_reference_l1_by_segment": [
+    -0.005249202251434326,
+    0.011319220066070557,
+    0.004348635673522949,
+    0.005441814661026001
+  ],
+  "mean_fixed_coarse_minus_fine_reference_l1": 0.003965117037296295,
+  "policy_summary": {
+    "fixed_coarse": {
+      "fine_count": 0,
+      "mean_reference_l1": 0.2841809391975403,
+      "total_s": 236.31641793251038,
+      "nfe": 20
+    },
+    "fixed_fine_continuation": {
+      "fine_count": 4,
+      "mean_reference_l1": 0.280215822160244,
+      "total_s": 208.59416723251343,
+      "nfe": 16
+    },
+    "warp50": {
+      "fine_count": 0,
+      "mean_reference_l1": 0.2841809391975403,
+      "total_s": 425.1609706878662,
+      "nfe": 20
+    },
+    "random_match": {
+      "fine_count": 0,
+      "mean_reference_l1": 0.2841809391975403,
+      "total_s": 200.4525270462036,
+      "nfe": 20
+    },
+    "alternating50": {
+      "fine_count": 2,
+      "mean_reference_l1": 0.28652332723140717,
+      "total_s": 191.83861780166626,
+      "nfe": 18
+    }
+  }
+}

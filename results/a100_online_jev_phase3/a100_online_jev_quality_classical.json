@@ -1,0 +1,612 @@
+{
+  "phase": "A100-JEV-classical",
+  "by_policy": {
+    "fixed_fine": {
+      "n": 23,
+      "temporal_warp_mean": 0.02564772994679425
+    },
+    "fixed_coarse": {
+      "n": 23,
+      "temporal_warp_mean": 0.04120897129132855
+    },
+    "jev_single": {
+      "n": 23,
+      "temporal_warp_mean": 0.03388249316469329
+    },
+    "jev_routed": {
+      "n": 24,
+      "temporal_warp_mean": 0.03148780666701138
+    },
+    "latent": {
+      "n": 24,
+      "temporal_warp_mean": 0.02676020271411246
+    }
+  },
+  "per_video": {
+    "p0_jev_routed": {
+      "prompt_idx": 0,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.013040140907313409
+    },
+    "p0_latent": {
+      "prompt_idx": 0,
+      "policy": "latent",
+      "temporal_warp_mean": 0.01656348616649796
+    },
+    "p10_fixed_coarse": {
+      "prompt_idx": 10,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.034983391873538494
+    },
+    "p10_fixed_fine": {
+      "prompt_idx": 10,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.031082602999439195
+    },
+    "p10_jev_routed": {
+      "prompt_idx": 10,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.02226433643539037
+    },
+    "p10_jev_single": {
+      "prompt_idx": 10,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.023617589380592108
+    },
+    "p10_latent": {
+      "prompt_idx": 10,
+      "policy": "latent",
+      "temporal_warp_mean": 0.025211650262852863
+    },
+    "p11_fixed_coarse": {
+      "prompt_idx": 11,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.0340006649577325
+    },
+    "p11_fixed_fine": {
+      "prompt_idx": 11,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.01831328446444656
+    },
+    "p11_jev_routed": {
+      "prompt_idx": 11,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.029783504341529415
+    },
+    "p11_jev_single": {
+      "prompt_idx": 11,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.0340006649577325
+    },
+    "p11_latent": {
+      "prompt_idx": 11,
+      "policy": "latent",
+      "temporal_warp_mean": 0.019958682416472584
+    },
+    "p12_fixed_coarse": {
+      "prompt_idx": 12,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.04817406071483025
+    },
+    "p12_fixed_fine": {
+      "prompt_idx": 12,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.04735042507361088
+    },
+    "p12_jev_routed": {
+      "prompt_idx": 12,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.04735042507361088
+    },
+    "p12_jev_single": {
+      "prompt_idx": 12,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.04735042507361088
+    },
+    "p12_latent": {
+      "prompt_idx": 12,
+      "policy": "latent",
+      "temporal_warp_mean": 0.036154276092669795
+    },
+    "p13_fixed_coarse": {
+      "prompt_idx": 13,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.06275789925296392
+    },
+    "p13_fixed_fine": {
+      "prompt_idx": 13,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.03501034873936858
+    },
+    "p13_jev_routed": {
+      "prompt_idx": 13,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.06275789925296392
+    },
+    "p13_jev_single": {
+      "prompt_idx": 13,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.06275789925296392
+    },
+    "p13_latent": {
+      "prompt_idx": 13,
+      "policy": "latent",
+      "temporal_warp_mean": 0.045333306138802855
+    },
+    "p14_fixed_coarse": {
+      "prompt_idx": 14,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.05516900707568441
+    },
+    "p14_fixed_fine": {
+      "prompt_idx": 14,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.045332079620233605
+    },
+    "p14_jev_routed": {
+      "prompt_idx": 14,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.049906815867871046
+    },
+    "p14_jev_single": {
+      "prompt_idx": 14,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.05516900707568441
+    },
+    "p14_latent": {
+      "prompt_idx": 14,
+      "policy": "latent",
+      "temporal_warp_mean": 0.04797095728905073
+    },
+    "p15_fixed_coarse": {
+      "prompt_idx": 15,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.06618731312586792
+    },
+    "p15_fixed_fine": {
+      "prompt_idx": 15,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.05083597757454429
+    },
+    "p15_jev_routed": {
+      "prompt_idx": 15,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.053457161012504785
+    },
+    "p15_jev_single": {
+      "prompt_idx": 15,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.053457161012504785
+    },
+    "p15_latent": {
+      "prompt_idx": 15,
+      "policy": "latent",
+      "temporal_warp_mean": 0.049259191345689554
+    },
+    "p16_fixed_coarse": {
+      "prompt_idx": 16,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.05577497187602733
+    },
+    "p16_fixed_fine": {
+      "prompt_idx": 16,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.04731271893251687
+    },
+    "p16_jev_routed": {
+      "prompt_idx": 16,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.05577497187602733
+    },
+    "p16_jev_single": {
+      "prompt_idx": 16,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.05577497187602733
+    },
+    "p16_latent": {
+      "prompt_idx": 16,
+      "policy": "latent",
+      "temporal_warp_mean": 0.04929746840415256
+    },
+    "p17_fixed_coarse": {
+      "prompt_idx": 17,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.03814965709378677
+    },
+    "p17_fixed_fine": {
+      "prompt_idx": 17,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.022481373511254787
+    },
+    "p17_jev_routed": {
+      "prompt_idx": 17,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.03320234501734376
+    },
+    "p17_jev_single": {
+      "prompt_idx": 17,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.03814965709378677
+    },
+    "p17_latent": {
+      "prompt_idx": 17,
+      "policy": "latent",
+      "temporal_warp_mean": 0.02206063302167292
+    },
+    "p18_fixed_coarse": {
+      "prompt_idx": 18,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.04685437958687544
+    },
+    "p18_fixed_fine": {
+      "prompt_idx": 18,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.01834890999764736
+    },
+    "p18_jev_routed": {
+      "prompt_idx": 18,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.028722763202884898
+    },
+    "p18_jev_single": {
+      "prompt_idx": 18,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.01834890999764736
+    },
+    "p18_latent": {
+      "prompt_idx": 18,
+      "policy": "latent",
+      "temporal_warp_mean": 0.021766268007922918
+    },
+    "p19_fixed_coarse": {
+      "prompt_idx": 19,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.03938361746259034
+    },
+    "p19_fixed_fine": {
+      "prompt_idx": 19,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.03426476571309779
+    },
+    "p19_jev_routed": {
+      "prompt_idx": 19,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.03523474356292614
+    },
+    "p19_jev_single": {
+      "prompt_idx": 19,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.03938361746259034
+    },
+    "p19_latent": {
+      "prompt_idx": 19,
+      "policy": "latent",
+      "temporal_warp_mean": 0.033539481876817136
+    },
+    "p1_fixed_coarse": {
+      "prompt_idx": 1,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.029246970928008004
+    },
+    "p1_fixed_fine": {
+      "prompt_idx": 1,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.006918727528370384
+    },
+    "p1_jev_routed": {
+      "prompt_idx": 1,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.006552203371159392
+    },
+    "p1_jev_single": {
+      "prompt_idx": 1,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.029246970928008004
+    },
+    "p1_latent": {
+      "prompt_idx": 1,
+      "policy": "latent",
+      "temporal_warp_mean": 0.01096659352853229
+    },
+    "p20_fixed_coarse": {
+      "prompt_idx": 20,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.04011011211800256
+    },
+    "p20_fixed_fine": {
+      "prompt_idx": 20,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.02280030760448426
+    },
+    "p20_jev_routed": {
+      "prompt_idx": 20,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.04011011211800256
+    },
+    "p20_jev_single": {
+      "prompt_idx": 20,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.04011011211800256
+    },
+    "p20_latent": {
+      "prompt_idx": 20,
+      "policy": "latent",
+      "temporal_warp_mean": 0.027482227854696766
+    },
+    "p21_fixed_coarse": {
+      "prompt_idx": 21,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.03599982134931322
+    },
+    "p21_fixed_fine": {
+      "prompt_idx": 21,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.023663322274972285
+    },
+    "p21_jev_routed": {
+      "prompt_idx": 21,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.03289359636671309
+    },
+    "p21_jev_single": {
+      "prompt_idx": 21,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.03599982134931322
+    },
+    "p21_latent": {
+      "prompt_idx": 21,
+      "policy": "latent",
+      "temporal_warp_mean": 0.02310177788604051
+    },
+    "p22_fixed_coarse": {
+      "prompt_idx": 22,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.044693110776799064
+    },
+    "p22_fixed_fine": {
+      "prompt_idx": 22,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.027256738984890814
+    },
+    "p22_jev_routed": {
+      "prompt_idx": 22,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.04070017806121281
+    },
+    "p22_jev_single": {
+      "prompt_idx": 22,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.044693110776799064
+    },
+    "p22_latent": {
+      "prompt_idx": 22,
+      "policy": "latent",
+      "temporal_warp_mean": 0.035454615451661606
+    },
+    "p23_fixed_coarse": {
+      "prompt_idx": 23,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.03620605218955981
+    },
+    "p23_fixed_fine": {
+      "prompt_idx": 23,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.02654995953863753
+    },
+    "p23_jev_routed": {
+      "prompt_idx": 23,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.03620605218955981
+    },
+    "p23_jev_single": {
+      "prompt_idx": 23,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.03620605218955981
+    },
+    "p23_latent": {
+      "prompt_idx": 23,
+      "policy": "latent",
+      "temporal_warp_mean": 0.030076195893343538
+    },
+    "p2_fixed_coarse": {
+      "prompt_idx": 2,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.026833308083171557
+    },
+    "p2_fixed_fine": {
+      "prompt_idx": 2,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.00816979086084757
+    },
+    "p2_jev_routed": {
+      "prompt_idx": 2,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.008141008846515823
+    },
+    "p2_jev_single": {
+      "prompt_idx": 2,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.005951354101333501
+    },
+    "p2_latent": {
+      "prompt_idx": 2,
+      "policy": "latent",
+      "temporal_warp_mean": 0.012219230081037884
+    },
+    "p3_fixed_coarse": {
+      "prompt_idx": 3,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.03165583210232269
+    },
+    "p3_fixed_fine": {
+      "prompt_idx": 3,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.014184231919768666
+    },
+    "p3_jev_routed": {
+      "prompt_idx": 3,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.007497983394257192
+    },
+    "p3_jev_single": {
+      "prompt_idx": 3,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.007497983394257192
+    },
+    "p3_latent": {
+      "prompt_idx": 3,
+      "policy": "latent",
+      "temporal_warp_mean": 0.016007506987079978
+    },
+    "p4_fixed_coarse": {
+      "prompt_idx": 4,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.025187852553374666
+    },
+    "p4_fixed_fine": {
+      "prompt_idx": 4,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.007554844749392942
+    },
+    "p4_jev_routed": {
+      "prompt_idx": 4,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.008020840437633783
+    },
+    "p4_jev_single": {
+      "prompt_idx": 4,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.025187852553374666
+    },
+    "p4_latent": {
+      "prompt_idx": 4,
+      "policy": "latent",
+      "temporal_warp_mean": 0.011859722102859191
+    },
+    "p5_fixed_coarse": {
+      "prompt_idx": 5,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.03361750442335116
+    },
+    "p5_fixed_fine": {
+      "prompt_idx": 5,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.020176039218703017
+    },
+    "p5_jev_routed": {
+      "prompt_idx": 5,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.02991040549906237
+    },
+    "p5_jev_single": {
+      "prompt_idx": 5,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.019799995951221457
+    },
+    "p5_latent": {
+      "prompt_idx": 5,
+      "policy": "latent",
+      "temporal_warp_mean": 0.020466981763352772
+    },
+    "p6_fixed_coarse": {
+      "prompt_idx": 6,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.03972437527097229
+    },
+    "p6_fixed_fine": {
+      "prompt_idx": 6,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.01766045211115852
+    },
+    "p6_jev_routed": {
+      "prompt_idx": 6,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.020371760141902735
+    },
+    "p6_jev_single": {
+      "prompt_idx": 6,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.020371760141902735
+    },
+    "p6_latent": {
+      "prompt_idx": 6,
+      "policy": "latent",
+      "temporal_warp_mean": 0.020024925728128955
+    },
+    "p7_fixed_coarse": {
+      "prompt_idx": 7,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.04284787637048534
+    },
+    "p7_fixed_fine": {
+      "prompt_idx": 7,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.026013537077233195
+    },
+    "p7_jev_routed": {
+      "prompt_idx": 7,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.04284787637048534
+    },
+    "p7_jev_single": {
+      "prompt_idx": 7,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.04284787637048534
+    },
+    "p7_latent": {
+      "prompt_idx": 7,
+      "policy": "latent",
+      "temporal_warp_mean": 0.02535451191111601
+    },
+    "p8_fixed_coarse": {
+      "prompt_idx": 8,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.04148663271085492
+    },
+    "p8_fixed_fine": {
+      "prompt_idx": 8,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.021164581878110766
+    },
+    "p8_jev_routed": {
+      "prompt_idx": 8,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.0287419752650229
+    },
+    "p8_jev_single": {
+      "prompt_idx": 8,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.021164581878110766
+    },
+    "p8_latent": {
+      "prompt_idx": 8,
+      "policy": "latent",
+      "temporal_warp_mean": 0.02307908346743456
+    },
+    "p9_fixed_coarse": {
+      "prompt_idx": 9,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.038761927804443985
+    },
+    "p9_fixed_fine": {
+      "prompt_idx": 9,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.01745276840353784
+    },
+    "p9_jev_routed": {
+      "prompt_idx": 9,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.022218261396379342
+    },
+    "p9_jev_single": {
+      "prompt_idx": 9,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.02220996785243707
+    },
+    "p9_latent": {
+      "prompt_idx": 9,
+      "policy": "latent",
+      "temporal_warp_mean": 0.019036091460813104
+    }
+  }
+}

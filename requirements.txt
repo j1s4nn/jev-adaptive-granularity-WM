@@ -1,0 +1,33 @@
+# Core dependencies
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Video processing
+opencv-python>=4.8.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9
+av>=10.0.0
+
+# Metrics
+lpips>=0.1.4
+scikit-image>=0.21.0
+scikit-learn>=1.3.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+pillow>=10.0.0
+
+# Data handling
+pandas>=2.0.0
+pyyaml>=6.0
+tqdm>=4.65.0
+
+# Kaggle integration
+kaggle>=1.5.16
+
+# Optional (install on Kaggle)
+# flash-attn>=2.0.0  # Requires Ampere+, fallback to SDPA
+# transformer-engine  # NVIDIA only

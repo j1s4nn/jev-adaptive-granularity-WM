@@ -1,0 +1,44 @@
+{
+  "phase": "phase5b-reference-regret-calibration",
+  "created_utc": "2026-10-06T10:54:15.364239+00:00",
+  "manifest_version": "phase5-v1",
+  "manifest_sha256": "cce4c8c35cea378a6f2bd040e5468692a04f7e66f324aaddaedba33e63188b01",
+  "sources": {
+    "phase5b_reference_calibration_a": {
+      "raw_sha256": "5b1bca62b37eba28b881c9c8d63c76023519ffd7e267f0f754f7fbbf9419d66a",
+      "manifest_index_offset": 0
+    },
+    "phase5b_reference_calibration_b": {
+      "raw_sha256": "15f10eced7fb67d9f393bb2d264a8839562d2c06088e33947dc08ad26daef02b",
+      "manifest_index_offset": 6
+    }
+  },
+  "margin_rule": "median of 12 calibration prompt-seed median regrets; strictly greater is high regret",
+  "unsafe_margin": 0.08965003490447998,
+  "calibration_groups": 12,
+  "calibration_segments": 48,
+  "positive_segments": 24,
+  "signals": {
+    "residual": {
+      "direction": 1,
+      "calibration_auroc": 0.6302083333333334,
+      "youden_threshold_on_oriented_score": 1.041668176651001
+    },
+    "warp": {
+      "direction": -1,
+      "calibration_auroc": 0.6510416666666667,
+      "youden_threshold_on_oriented_score": -12.195727348327637
+    },
+    "motion": {
+      "direction": -1,
+      "calibration_auroc": 0.5798611111111112,
+      "youden_threshold_on_oriented_score": -0.831678569316864
+    },
+    "complexity": {
+      "direction": -1,
+      "calibration_auroc": 0.5260416666666667,
+      "youden_threshold_on_oriented_score": -2129.130126953125
+    }
+  },
+  "strongest_calibration_baseline": "warp"
+}

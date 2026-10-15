@@ -1,0 +1,538 @@
+{
+  "phase": "F4-lite-quality",
+  "generated_utc": "2026-10-11T13:19:45.573122+00:00",
+  "model": "openai/clip-vit-base-patch32",
+  "n_videos": 48,
+  "by_policy": {
+    "reference": {
+      "n": 8,
+      "subject_consistency": 0.9898440390825272,
+      "text_alignment": 0.2778087928891182,
+      "temporal_warp_mean": 0.043531684225724475,
+      "flow_mag_mean": 0.920961066581575,
+      "first_last_l1": 0.16283833608031273
+    },
+    "fixed_coarse": {
+      "n": 8,
+      "subject_consistency": 0.9490222558379173,
+      "text_alignment": 0.2770362365990877,
+      "temporal_warp_mean": 0.07334451106414365,
+      "flow_mag_mean": 2.0725365080538074,
+      "first_last_l1": 0.21924289967864752
+    },
+    "fixed_fine": {
+      "n": 8,
+      "subject_consistency": 0.9839731082320213,
+      "text_alignment": 0.27374302595853806,
+      "temporal_warp_mean": 0.030323946504462844,
+      "flow_mag_mean": 0.9895354988984764,
+      "first_last_l1": 0.15855689346790314
+    },
+    "random50": {
+      "n": 8,
+      "subject_consistency": 0.9645732417702675,
+      "text_alignment": 0.27617010474205017,
+      "temporal_warp_mean": 0.05257327147722078,
+      "flow_mag_mean": 1.5119090251890677,
+      "first_last_l1": 0.21066903602331877
+    },
+    "alternating50": {
+      "n": 8,
+      "subject_consistency": 0.9591004624962807,
+      "text_alignment": 0.2752222567796707,
+      "temporal_warp_mean": 0.055195472993156205,
+      "flow_mag_mean": 1.6935016796258944,
+      "first_last_l1": 0.21918148268014193
+    },
+    "adaptive_warp": {
+      "n": 8,
+      "subject_consistency": 0.9802963957190514,
+      "text_alignment": 0.27612079307436943,
+      "temporal_warp_mean": 0.04290799318966622,
+      "flow_mag_mean": 1.3241758506878145,
+      "first_last_l1": 0.1784322801977396
+    }
+  },
+  "per_video": {
+    "p0_adaptive_warp": {
+      "idx": 0,
+      "policy": "adaptive_warp",
+      "prompt": "a boat",
+      "subject_consistency": 0.9901269674301147,
+      "text_alignment": 0.26889708638191223,
+      "temporal_warp_mean": 0.03149778954684734,
+      "flow_mag_mean": 1.768488028219768,
+      "first_last_l1": 0.1460002362728119
+    },
+    "p0_alternating50": {
+      "idx": 0,
+      "policy": "alternating50",
+      "prompt": "a boat",
+      "subject_consistency": 0.9722980260848999,
+      "text_alignment": 0.27165743708610535,
+      "temporal_warp_mean": 0.04887601413897106,
+      "flow_mag_mean": 2.2610572555235455,
+      "first_last_l1": 0.14767515659332275
+    },
+    "p0_fixed_coarse": {
+      "idx": 0,
+      "policy": "fixed_coarse",
+      "prompt": "a boat",
+      "subject_consistency": 0.9499258399009705,
+      "text_alignment": 0.2849120795726776,
+      "temporal_warp_mean": 0.06166461283074958,
+      "flow_mag_mean": 2.0576631128787994,
+      "first_last_l1": 0.14601024985313416
+    },
+    "p0_fixed_fine": {
+      "idx": 0,
+      "policy": "fixed_fine",
+      "prompt": "a boat",
+      "subject_consistency": 0.9901269674301147,
+      "text_alignment": 0.26889708638191223,
+      "temporal_warp_mean": 0.03149778954684734,
+      "flow_mag_mean": 1.768488028219768,
+      "first_last_l1": 0.1460002362728119
+    },
+    "p0_random50": {
+      "idx": 0,
+      "policy": "random50",
+      "prompt": "a boat",
+      "subject_consistency": 0.9669312834739685,
+      "text_alignment": 0.27776527404785156,
+      "temporal_warp_mean": 0.04534959227644971,
+      "flow_mag_mean": 1.5982428629483496,
+      "first_last_l1": 0.1569777876138687
+    },
+    "p0_reference": {
+      "idx": 0,
+      "policy": "reference",
+      "prompt": "a boat",
+      "subject_consistency": 0.9964979290962219,
+      "text_alignment": 0.26493343710899353,
+      "temporal_warp_mean": 0.034015616601599116,
+      "flow_mag_mean": 0.9323300506387439,
+      "first_last_l1": 0.12990234792232513
+    },
+    "p1_adaptive_warp": {
+      "idx": 1,
+      "policy": "adaptive_warp",
+      "prompt": "a book",
+      "subject_consistency": 0.9977355599403381,
+      "text_alignment": 0.26528117060661316,
+      "temporal_warp_mean": 0.01341938425321132,
+      "flow_mag_mean": 0.26128898268299444,
+      "first_last_l1": 0.14736619591712952
+    },
+    "p1_alternating50": {
+      "idx": 1,
+      "policy": "alternating50",
+      "prompt": "a book",
+      "subject_consistency": 0.9879875183105469,
+      "text_alignment": 0.26730382442474365,
+      "temporal_warp_mean": 0.034760719805490226,
+      "flow_mag_mean": 1.0156941757138287,
+      "first_last_l1": 0.1413082480430603
+    },
+    "p1_fixed_coarse": {
+      "idx": 1,
+      "policy": "fixed_coarse",
+      "prompt": "a book",
+      "subject_consistency": 0.9758415222167969,
+      "text_alignment": 0.2689034640789032,
+      "temporal_warp_mean": 0.04679403123113194,
+      "flow_mag_mean": 1.5067926137042897,
+      "first_last_l1": 0.13450190424919128
+    },
+    "p1_fixed_fine": {
+      "idx": 1,
+      "policy": "fixed_fine",
+      "prompt": "a book",
+      "subject_consistency": 0.9977355599403381,
+      "text_alignment": 0.26528117060661316,
+      "temporal_warp_mean": 0.01341938425321132,
+      "flow_mag_mean": 0.26128898268299444,
+      "first_last_l1": 0.14736619591712952
+    },
+    "p1_random50": {
+      "idx": 1,
+      "policy": "random50",
+      "prompt": "a book",
+      "subject_consistency": 0.9885362982749939,
+      "text_alignment": 0.26439493894577026,
+      "temporal_warp_mean": 0.03433759050676599,
+      "flow_mag_mean": 1.025697493127414,
+      "first_last_l1": 0.15179365873336792
+    },
+    "p1_reference": {
+      "idx": 1,
+      "policy": "reference",
+      "prompt": "a book",
+      "subject_consistency": 0.9981454014778137,
+      "text_alignment": 0.262859046459198,
+      "temporal_warp_mean": 0.004842349993331092,
+      "flow_mag_mean": 0.09043849818408489,
+      "first_last_l1": 0.06068660318851471
+    },
+    "p2_adaptive_warp": {
+      "idx": 2,
+      "policy": "adaptive_warp",
+      "prompt": "baseball stadium",
+      "subject_consistency": 0.9915836453437805,
+      "text_alignment": 0.2526211142539978,
+      "temporal_warp_mean": 0.013749989007400083,
+      "flow_mag_mean": 0.21990825022969926,
+      "first_last_l1": 0.15054547786712646
+    },
+    "p2_alternating50": {
+      "idx": 2,
+      "policy": "alternating50",
+      "prompt": "baseball stadium",
+      "subject_consistency": 0.9331666827201843,
+      "text_alignment": 0.2615273594856262,
+      "temporal_warp_mean": 0.04816226966379743,
+      "flow_mag_mean": 1.0877170735704047,
+      "first_last_l1": 0.32459691166877747
+    },
+    "p2_fixed_coarse": {
+      "idx": 2,
+      "policy": "fixed_coarse",
+      "prompt": "baseball stadium",
+      "subject_consistency": 0.934823215007782,
+      "text_alignment": 0.26015016436576843,
+      "temporal_warp_mean": 0.057326475549156646,
+      "flow_mag_mean": 1.2464638043727194,
+      "first_last_l1": 0.3475891053676605
+    },
+    "p2_fixed_fine": {
+      "idx": 2,
+      "policy": "fixed_fine",
+      "prompt": "baseball stadium",
+      "subject_consistency": 0.9915836453437805,
+      "text_alignment": 0.2526211142539978,
+      "temporal_warp_mean": 0.013749989007400083,
+      "flow_mag_mean": 0.21990825022969926,
+      "first_last_l1": 0.15054547786712646
+    },
+    "p2_random50": {
+      "idx": 2,
+      "policy": "random50",
+      "prompt": "baseball stadium",
+      "subject_consistency": 0.963270366191864,
+      "text_alignment": 0.2658698558807373,
+      "temporal_warp_mean": 0.03889455945630159,
+      "flow_mag_mean": 0.8729855567216873,
+      "first_last_l1": 0.33825546503067017
+    },
+    "p2_reference": {
+      "idx": 2,
+      "policy": "reference",
+      "prompt": "baseball stadium",
+      "subject_consistency": 0.9959681630134583,
+      "text_alignment": 0.28049981594085693,
+      "temporal_warp_mean": 0.024526549203853523,
+      "flow_mag_mean": 0.3459061650293214,
+      "first_last_l1": 0.13616608083248138
+    },
+    "p3_adaptive_warp": {
+      "idx": 3,
+      "policy": "adaptive_warp",
+      "prompt": "basement",
+      "subject_consistency": 0.9726905822753906,
+      "text_alignment": 0.18617665767669678,
+      "temporal_warp_mean": 0.022928824814568673,
+      "flow_mag_mean": 0.6106499904500586,
+      "first_last_l1": 0.1768394112586975
+    },
+    "p3_alternating50": {
+      "idx": 3,
+      "policy": "alternating50",
+      "prompt": "basement",
+      "subject_consistency": 0.9345064759254456,
+      "text_alignment": 0.16326063871383667,
+      "temporal_warp_mean": 0.047410711246941774,
+      "flow_mag_mean": 1.3905836311834199,
+      "first_last_l1": 0.258400022983551
+    },
+    "p3_fixed_coarse": {
+      "idx": 3,
+      "policy": "fixed_coarse",
+      "prompt": "basement",
+      "subject_consistency": 0.9103344082832336,
+      "text_alignment": 0.1571706384420395,
+      "temporal_warp_mean": 0.06716565821053726,
+      "flow_mag_mean": 2.3241008733000075,
+      "first_last_l1": 0.2748469412326813
+    },
+    "p3_fixed_fine": {
+      "idx": 3,
+      "policy": "fixed_fine",
+      "prompt": "basement",
+      "subject_consistency": 0.9726905822753906,
+      "text_alignment": 0.18617665767669678,
+      "temporal_warp_mean": 0.022928824814568673,
+      "flow_mag_mean": 0.6106499904500586,
+      "first_last_l1": 0.1768394112586975
+    },
+    "p3_random50": {
+      "idx": 3,
+      "policy": "random50",
+      "prompt": "basement",
+      "subject_consistency": 0.9345064759254456,
+      "text_alignment": 0.16326063871383667,
+      "temporal_warp_mean": 0.047410711246941774,
+      "flow_mag_mean": 1.3905836311834199,
+      "first_last_l1": 0.258400022983551
+    },
+    "p3_reference": {
+      "idx": 3,
+      "policy": "reference",
+      "prompt": "basement",
+      "subject_consistency": 0.9907363653182983,
+      "text_alignment": 0.20275121927261353,
+      "temporal_warp_mean": 0.03137131913432053,
+      "flow_mag_mean": 0.6159643701144627,
+      "first_last_l1": 0.17131035029888153
+    },
+    "p4_adaptive_warp": {
+      "idx": 4,
+      "policy": "adaptive_warp",
+      "prompt": "a bird flying over a snowy forest",
+      "subject_consistency": 0.9630218148231506,
+      "text_alignment": 0.3605547249317169,
+      "temporal_warp_mean": 0.11796867501522813,
+      "flow_mag_mean": 2.3483573964663913,
+      "first_last_l1": 0.28353968262672424
+    },
+    "p4_alternating50": {
+      "idx": 4,
+      "policy": "alternating50",
+      "prompt": "a bird flying over a snowy forest",
+      "subject_consistency": 0.9611684679985046,
+      "text_alignment": 0.3584984540939331,
+      "temporal_warp_mean": 0.08633728631372962,
+      "flow_mag_mean": 1.6698081237929208,
+      "first_last_l1": 0.3495251536369324
+    },
+    "p4_fixed_coarse": {
+      "idx": 4,
+      "policy": "fixed_coarse",
+      "prompt": "a bird flying over a snowy forest",
+      "subject_consistency": 0.9630218148231506,
+      "text_alignment": 0.3605547249317169,
+      "temporal_warp_mean": 0.11796867501522813,
+      "flow_mag_mean": 2.3483573964663913,
+      "first_last_l1": 0.28353968262672424
+    },
+    "p4_fixed_fine": {
+      "idx": 4,
+      "policy": "fixed_fine",
+      "prompt": "a bird flying over a snowy forest",
+      "subject_consistency": 0.982601523399353,
+      "text_alignment": 0.341526061296463,
+      "temporal_warp_mean": 0.054081742984375784,
+      "flow_mag_mean": 1.1486083673579353,
+      "first_last_l1": 0.2079586684703827
+    },
+    "p4_random50": {
+      "idx": 4,
+      "policy": "random50",
+      "prompt": "a bird flying over a snowy forest",
+      "subject_consistency": 0.9672972559928894,
+      "text_alignment": 0.3554629385471344,
+      "temporal_warp_mean": 0.0767931215731161,
+      "flow_mag_mean": 1.3678441335047995,
+      "first_last_l1": 0.3026067316532135
+    },
+    "p4_reference": {
+      "idx": 4,
+      "policy": "reference",
+      "prompt": "a bird flying over a snowy forest",
+      "subject_consistency": 0.9830743074417114,
+      "text_alignment": 0.3425622582435608,
+      "temporal_warp_mean": 0.11589538279388632,
+      "flow_mag_mean": 1.5422509184905462,
+      "first_last_l1": 0.25035184621810913
+    },
+    "p5_adaptive_warp": {
+      "idx": 5,
+      "policy": "adaptive_warp",
+      "prompt": "a bird soaring gracefully in the sky",
+      "subject_consistency": 0.9826679229736328,
+      "text_alignment": 0.2948111891746521,
+      "temporal_warp_mean": 0.03399557527154684,
+      "flow_mag_mean": 1.1213682943156786,
+      "first_last_l1": 0.15815167129039764
+    },
+    "p5_alternating50": {
+      "idx": 5,
+      "policy": "alternating50",
+      "prompt": "a bird soaring gracefully in the sky",
+      "subject_consistency": 0.9581381678581238,
+      "text_alignment": 0.2991552948951721,
+      "temporal_warp_mean": 0.05853304293538843,
+      "flow_mag_mean": 1.7518045024148055,
+      "first_last_l1": 0.09362896531820297
+    },
+    "p5_fixed_coarse": {
+      "idx": 5,
+      "policy": "fixed_coarse",
+      "prompt": "a bird soaring gracefully in the sky",
+      "subject_consistency": 0.9518787264823914,
+      "text_alignment": 0.2979535460472107,
+      "temporal_warp_mean": 0.07951812133459109,
+      "flow_mag_mean": 2.0143236315676143,
+      "first_last_l1": 0.11897549778223038
+    },
+    "p5_fixed_fine": {
+      "idx": 5,
+      "policy": "fixed_fine",
+      "prompt": "a bird soaring gracefully in the sky",
+      "subject_consistency": 0.9826679229736328,
+      "text_alignment": 0.2948111891746521,
+      "temporal_warp_mean": 0.03399557527154684,
+      "flow_mag_mean": 1.1213682943156786,
+      "first_last_l1": 0.15815167129039764
+    },
+    "p5_random50": {
+      "idx": 5,
+      "policy": "random50",
+      "prompt": "a bird soaring gracefully in the sky",
+      "subject_consistency": 0.9690089225769043,
+      "text_alignment": 0.2974635362625122,
+      "temporal_warp_mean": 0.0628616107029042,
+      "flow_mag_mean": 2.0213564187288284,
+      "first_last_l1": 0.09913162142038345
+    },
+    "p5_reference": {
+      "idx": 5,
+      "policy": "reference",
+      "prompt": "a bird soaring gracefully in the sky",
+      "subject_consistency": 0.987672746181488,
+      "text_alignment": 0.288786381483078,
+      "temporal_warp_mean": 0.04187863293503012,
+      "flow_mag_mean": 1.0615428196532386,
+      "first_last_l1": 0.24767974019050598
+    },
+    "p6_adaptive_warp": {
+      "idx": 6,
+      "policy": "adaptive_warp",
+      "prompt": "A person is bungee jumping",
+      "subject_consistency": 0.9838346838951111,
+      "text_alignment": 0.27266013622283936,
+      "temporal_warp_mean": 0.02135324528041695,
+      "flow_mag_mean": 0.4857504814863205,
+      "first_last_l1": 0.11800433695316315
+    },
+    "p6_alternating50": {
+      "idx": 6,
+      "policy": "alternating50",
+      "prompt": "A person is bungee jumping",
+      "subject_consistency": 0.9609419107437134,
+      "text_alignment": 0.2752693295478821,
+      "temporal_warp_mean": 0.04869754050326135,
+      "flow_mag_mean": 1.0607984087296896,
+      "first_last_l1": 0.18763108551502228
+    },
+    "p6_fixed_coarse": {
+      "idx": 6,
+      "policy": "fixed_coarse",
+      "prompt": "A person is bungee jumping",
+      "subject_consistency": 0.9456425309181213,
+      "text_alignment": 0.2786810100078583,
+      "temporal_warp_mean": 0.06796805201364416,
+      "flow_mag_mean": 1.3049952504890305,
+      "first_last_l1": 0.2014685869216919
+    },
+    "p6_fixed_fine": {
+      "idx": 6,
+      "policy": "fixed_fine",
+      "prompt": "A person is bungee jumping",
+      "subject_consistency": 0.9838346838951111,
+      "text_alignment": 0.27266013622283936,
+      "temporal_warp_mean": 0.02135324528041695,
+      "flow_mag_mean": 0.4857504814863205,
+      "first_last_l1": 0.11800433695316315
+    },
+    "p6_random50": {
+      "idx": 6,
+      "policy": "random50",
+      "prompt": "A person is bungee jumping",
+      "subject_consistency": 0.9609419107437134,
+      "text_alignment": 0.2752693295478821,
+      "temporal_warp_mean": 0.04869754050326135,
+      "flow_mag_mean": 1.0607984087296896,
+      "first_last_l1": 0.18763108551502228
+    },
+    "p6_reference": {
+      "idx": 6,
+      "policy": "reference",
+      "prompt": "A person is bungee jumping",
+      "subject_consistency": 0.984842836856842,
+      "text_alignment": 0.2810423672199249,
+      "temporal_warp_mean": 0.04404164331832102,
+      "flow_mag_mean": 1.0721016920038633,
+      "first_last_l1": 0.16757413744926453
+    },
+    "p7_adaptive_warp": {
+      "idx": 7,
+      "policy": "adaptive_warp",
+      "prompt": "A person is canoeing or kayaking",
+      "subject_consistency": 0.9607099890708923,
+      "text_alignment": 0.3079642653465271,
+      "temporal_warp_mean": 0.08835046232811042,
+      "flow_mag_mean": 3.7775953816516057,
+      "first_last_l1": 0.2470112293958664
+    },
+    "p7_alternating50": {
+      "idx": 7,
+      "policy": "alternating50",
+      "prompt": "A person is canoeing or kayaking",
+      "subject_consistency": 0.9645964503288269,
+      "text_alignment": 0.30510571599006653,
+      "temporal_warp_mean": 0.06878619933766979,
+      "flow_mag_mean": 3.31055026607854,
+      "first_last_l1": 0.25068631768226624
+    },
+    "p7_fixed_coarse": {
+      "idx": 7,
+      "policy": "fixed_coarse",
+      "prompt": "A person is canoeing or kayaking",
+      "subject_consistency": 0.9607099890708923,
+      "text_alignment": 0.3079642653465271,
+      "temporal_warp_mean": 0.08835046232811042,
+      "flow_mag_mean": 3.7775953816516057,
+      "first_last_l1": 0.2470112293958664
+    },
+    "p7_fixed_fine": {
+      "idx": 7,
+      "policy": "fixed_fine",
+      "prompt": "A person is canoeing or kayaking",
+      "subject_consistency": 0.9705439805984497,
+      "text_alignment": 0.30797079205513,
+      "temporal_warp_mean": 0.051565020877335756,
+      "flow_mag_mean": 2.3002215964453563,
+      "first_last_l1": 0.16358914971351624
+    },
+    "p7_random50": {
+      "idx": 7,
+      "policy": "random50",
+      "prompt": "A person is canoeing or kayaking",
+      "subject_consistency": 0.9660934209823608,
+      "text_alignment": 0.3098743259906769,
+      "temporal_warp_mean": 0.06624144555202552,
+      "flow_mag_mean": 2.757763696568353,
+      "first_last_l1": 0.19055591523647308
+    },
+    "p7_reference": {
+      "idx": 7,
+      "policy": "reference",
+      "prompt": "A person is canoeing or kayaking",
+      "subject_consistency": 0.9818145632743835,
+      "text_alignment": 0.29903581738471985,
+      "temporal_warp_mean": 0.0516819798254541,
+      "flow_mag_mean": 1.7071540185383387,
+      "first_last_l1": 0.13903558254241943
+    }
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://j1s4nn.github.io/jev-adaptive-granularity-WM/sitemap.xml

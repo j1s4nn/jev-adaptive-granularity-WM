@@ -1,0 +1,32 @@
+{
+  "phase": "RQ4-with-Jev-A100",
+  "n_segments": 96,
+  "note": "fine_gap = refL1_fine - refL1_coarse (negative => fine closer). A100 Phase 3 data.",
+  "difficulty": {
+    "spearman_vs_fine_gap": 0.058518883215129804,
+    "auroc_coarse_unsafe": 0.45075584058634904,
+    "terciles_mean_fine_gap": [
+      0.01055,
+      0.01595,
+      0.01465
+    ]
+  },
+  "drift": {
+    "spearman_vs_fine_gap": -0.08607032232299383,
+    "auroc_coarse_unsafe": 0.5469537333944113,
+    "terciles_mean_fine_gap": [
+      0.02511,
+      -0.00033,
+      0.01637
+    ]
+  },
+  "motion": {
+    "spearman_vs_fine_gap": 0.08373658637337454,
+    "auroc_coarse_unsafe": 0.4484654145671095,
+    "terciles_mean_fine_gap": [
+      0.01526,
+      0.0145,
+      0.01139
+    ]
+  }
+}

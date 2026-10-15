@@ -1,0 +1,61 @@
+{
+  "run_id": "20261006_124835",
+  "phase": "phase5b-heldout-01",
+  "status": "complete",
+  "start_time": "2026-10-06T12:48:35.635622",
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c1_1_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "protocol": {
+    "split": "held_out",
+    "prompts": [
+      "a bench",
+      "a bicycle",
+      "a bird"
+    ],
+    "seeds": [
+      17,
+      29,
+      41
+    ],
+    "horizons": [
+      57
+    ],
+    "modes": [
+      "c1-1_step4_reference",
+      "c1-1_step2_fine",
+      "c3-3_step4_coarse"
+    ],
+    "signals": [
+      "residual",
+      "warp",
+      "motion",
+      "complexity"
+    ],
+    "signal_context": "preceding fixed coarse context, before target segment",
+    "prompt_embedding_cached_across_modes_and_seeds": true,
+    "metric": "decoded pixel L1 to matched reference",
+    "same_initial_noise": true,
+    "limitations": [
+      "held-out split; no threshold fitted in this kernel",
+      "reference is an internal high-compute model, not ground truth",
+      "decoded pixel L1 is a reference-defined proxy",
+      "no adaptive-policy claim"
+    ]
+  },
+  "n_complete": 9,
+  "n_failed_or_incomplete": 0,
+  "reference_regret_summary": {
+    "n_segments": 36,
+    "mean": 0.1245452037288083,
+    "min": 0.01265917718410492,
+    "max": 0.19430777430534363
+  },
+  "verdict": "PASS",
+  "end_time": "2026-10-06T14:31:03.563216"
+}

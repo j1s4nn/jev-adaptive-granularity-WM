@@ -1,0 +1,80 @@
+{
+  "run_id": "20261013_055820",
+  "phase": "A100-JEV-online-policies",
+  "status": "complete",
+  "start_time": "2026-10-13T05:58:20.786437",
+  "protocol": {
+    "manifest_version": "a100-01",
+    "seed": 17,
+    "horizon": 57,
+    "prompts": [
+      {
+        "stratum": "object_class",
+        "prompt": "a cake"
+      },
+      {
+        "stratum": "object_class",
+        "prompt": "a car"
+      },
+      {
+        "stratum": "object_class",
+        "prompt": "a carrot"
+      },
+      {
+        "stratum": "scene",
+        "prompt": "botanical garden"
+      },
+      {
+        "stratum": "scene",
+        "prompt": "bridge"
+      },
+      {
+        "stratum": "scene",
+        "prompt": "cafeteria"
+      },
+      {
+        "stratum": "motion_smoothness",
+        "prompt": "a bus accelerating to gain speed"
+      },
+      {
+        "stratum": "motion_smoothness",
+        "prompt": "a bus stuck in traffic during rush hour"
+      },
+      {
+        "stratum": "motion_smoothness",
+        "prompt": "a bus turning a corner"
+      },
+      {
+        "stratum": "human_action",
+        "prompt": "A person is clapping"
+      },
+      {
+        "stratum": "human_action",
+        "prompt": "A person is clay pottery making"
+      },
+      {
+        "stratum": "human_action",
+        "prompt": "A person is cleaning windows"
+      }
+    ],
+    "policies": [
+      "fixed_coarse",
+      "fixed_fine",
+      "fixed_hold",
+      "random50",
+      "warp",
+      "jev_difficulty",
+      "jev_routed",
+      "jev_holdfine"
+    ],
+    "warp_threshold": -4.045816421508789,
+    "jev_difficulty_threshold": 1.72,
+    "jev_rule": "static->hold, moderate->coarse, fast/scene_change->fine",
+    "structure": "common coarse prefix (3 latent frames) + 4 segments of 3 latent frames"
+  },
+  "upstream_rcm_commit": "ed3cb14dd936f92cdc9f9381af7369991509b41f",
+  "n_complete": 96,
+  "n_expected": 96,
+  "verdict": "PASS",
+  "end_time": "2026-10-13T06:59:50.052491"
+}

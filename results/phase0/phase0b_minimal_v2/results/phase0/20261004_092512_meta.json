@@ -1,0 +1,134 @@
+{
+  "run_id": "20261004_092512",
+  "phase": "phase0b-minimal",
+  "status": "failed",
+  "env": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "cuda_available": true,
+    "fa2": false,
+    "sdpa": true
+  },
+  "dataset_layout": {
+    "datasets": {
+      "n_files_shown": 25,
+      "files": [
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2.pt",
+          2838292823
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+          2838292823
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/umT5_wan_negative_emb.pt",
+          4195484
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+          2838292823
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+          2838292823
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2_noisy_ctx.pt",
+          2838353549
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-sCM-init_SF-DMD_c3-3_step4.pt",
+          2838292823
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/.gitignore",
+          1
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/CACHEDIR.TAG",
+          191
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/trees/18554de6b48df8ab2ae274972a076b27ad5cb602.json",
+          2405
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/trees/142d77a331f1516fea772607c1bf25a2785a2505.json",
+          7698
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt.lock",
+          0
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/umT5_wan_negative_emb.pt.metadata",
+          125
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/umT5_wan_negative_emb.pt.lock",
+          0
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt.lock",
+          0
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2_noisy_ctx.pt.metadata",
+          125
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt.metadata",
+          125
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-sCM-init_SF-DMD_c3-3_step4.pt.lock",
+          0
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt.metadata",
+          125
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt.metadata",
+          125
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt.lock",
+          0
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2_noisy_ctx.pt.lock",
+          0
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-sCM-init_SF-DMD_c3-3_step4.pt.metadata",
+          125
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2.pt.lock",
+          0
+        ],
+        [
+          "ajjisan/causal-rcm-ckpts/rcm_ckpts/.cache/huggingface/download/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2.pt.metadata",
+          124
+        ]
+      ]
+    }
+  },
+  "targets": [
+    {
+      "label": "c3_3_step4",
+      "loaded": false,
+      "reason": "not found in mount"
+    },
+    {
+      "label": "c1_1_step2",
+      "loaded": false,
+      "reason": "not found in mount"
+    }
+  ],
+  "error": "max() iterable argument is empty",
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 186, in main\n    (max(peaks) < 14.5 if peaks else False, f\"peak VRAM < 14.5 GB (max {max(peaks):.2f})\"),\n                                                                        ~~~^^^^^^^\nValueError: max() iterable argument is empty\n",
+  "duration_seconds": 0.3
+}

@@ -1,0 +1,47 @@
+{
+  "run_id": "20261006_053010",
+  "phase": "phase5a-reference-capacity",
+  "status": "complete",
+  "start_time": "2026-10-06T05:30:10.955299",
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c1_1_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "protocol": {
+    "prompts": [
+      "A blue ceramic vase sits on a wooden table in a sunlit room",
+      "A red train travels through a snowy mountain valley"
+    ],
+    "seed": 17,
+    "horizons": [
+      57,
+      81
+    ],
+    "modes": [
+      "c1-1_step4_reference",
+      "c1-1_step2_fine",
+      "c3-3_step4_coarse"
+    ],
+    "metric": "decoded pixel L1 to matched reference",
+    "same_initial_noise": true,
+    "limitations": [
+      "reference is an internal high-compute model, not ground truth",
+      "capacity probe uses two prompts",
+      "no perceptual feature metric is claimed"
+    ]
+  },
+  "n_complete": 4,
+  "n_failed_or_incomplete": 0,
+  "reference_regret_summary": {
+    "n_segments": 20,
+    "mean": 0.11517718844115735,
+    "min": 0.010260239243507385,
+    "max": 0.17554262280464172
+  },
+  "verdict": "PASS",
+  "end_time": "2026-10-06T06:46:15.690954"
+}

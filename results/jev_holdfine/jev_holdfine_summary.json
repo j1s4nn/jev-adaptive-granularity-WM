@@ -1,0 +1,78 @@
+{
+  "run_id": "20261012_041607",
+  "phase": "E-JEV-3b-holdfine",
+  "status": "complete",
+  "start_time": "2026-10-12T04:16:07.086799",
+  "protocol": {
+    "seed": 17,
+    "horizon": 57,
+    "policies": [
+      "fixed_fine",
+      "jev_holdfine"
+    ],
+    "routing": {
+      "0": [
+        "fine",
+        "fine",
+        "fine",
+        "fine"
+      ],
+      "1": [
+        "hold",
+        "hold",
+        "hold",
+        "hold"
+      ],
+      "2": [
+        "hold",
+        "hold",
+        "fine",
+        "hold"
+      ],
+      "3": [
+        "fine",
+        "fine",
+        "hold",
+        "hold"
+      ],
+      "4": [
+        "fine",
+        "fine",
+        "fine",
+        "fine"
+      ],
+      "5": [
+        "fine",
+        "fine",
+        "fine",
+        "fine"
+      ],
+      "6": [
+        "fine",
+        "fine",
+        "fine",
+        "fine"
+      ],
+      "7": [
+        "fine",
+        "fine",
+        "fine",
+        "fine"
+      ]
+    }
+  },
+  "gpu": "Tesla T4",
+  "upstream_rcm_commit": "ed3cb14dd936f92cdc9f9381af7369991509b41f",
+  "dataset_paths": {
+    "fine": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "reference": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "coarse": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "n_complete": 16,
+  "n_expected": 16,
+  "verdict": "PASS",
+  "end_time": "2026-10-12T05:54:52.716665"
+}

@@ -1,0 +1,49 @@
+{
+  "manifest_version": "a100-01",
+  "source": "results/phase3_calibration_rerun/rcm/evaluation/vbench_text2video/prompts.json",
+  "selection_rule": "fresh VBench candidates, disjoint from phase5-v1 (12 calibration + 24 held-out + 8 prior) and f4lite-v1 (8)",
+  "excluded_prior_manifests": ["phase5-v1", "f4lite-v1"],
+  "n_excluded_prompts": 52,
+  "horizons": [45, 57, 81],
+  "calibration_seeds": [17],
+  "held_out_seeds": [17, 29, 41],
+  "strata": ["object_class", "scene", "motion_smoothness", "human_action"],
+
+  "a1_dev_prompts": [
+    {"id": "dev_object", "stratum": "object_class", "prompt": "a banana", "note": "same as F1.3 for T4-vs-A100 comparability"},
+    {"id": "dev_motion", "stratum": "motion_deformation", "prompt": "a bear catching a salmon in its powerful jaws", "note": "same as F1.3"},
+    {"id": "dev_human", "stratum": "human_action", "prompt": "A person is air drumming", "note": "same as F1.3"}
+  ],
+
+  "calibration": [
+    {"manifest_id": "a100_cal_00", "split": "calibration", "stratum": "object_class", "prompt": "a bottle", "vbench_dimensions": ["object_class"]},
+    {"manifest_id": "a100_cal_01", "split": "calibration", "stratum": "object_class", "prompt": "a bowl", "vbench_dimensions": ["object_class"]},
+    {"manifest_id": "a100_cal_02", "split": "calibration", "stratum": "object_class", "prompt": "a bus", "vbench_dimensions": ["object_class"]},
+    {"manifest_id": "a100_cal_03", "split": "calibration", "stratum": "scene", "prompt": "bathroom", "vbench_dimensions": ["scene", "background_consistency"]},
+    {"manifest_id": "a100_cal_04", "split": "calibration", "stratum": "scene", "prompt": "beach", "vbench_dimensions": ["scene", "background_consistency"]},
+    {"manifest_id": "a100_cal_05", "split": "calibration", "stratum": "scene", "prompt": "bedroom", "vbench_dimensions": ["scene", "background_consistency"]},
+    {"manifest_id": "a100_cal_06", "split": "calibration", "stratum": "motion_smoothness", "prompt": "a boat accelerating to gain speed", "vbench_dimensions": ["motion_smoothness", "dynamic_degree", "subject_consistency"]},
+    {"manifest_id": "a100_cal_07", "split": "calibration", "stratum": "motion_smoothness", "prompt": "a boat sailing smoothly on a calm lake", "vbench_dimensions": ["motion_smoothness", "dynamic_degree", "subject_consistency"]},
+    {"manifest_id": "a100_cal_08", "split": "calibration", "stratum": "motion_smoothness", "prompt": "a boat slowing down to stop", "vbench_dimensions": ["motion_smoothness", "dynamic_degree", "subject_consistency"]},
+    {"manifest_id": "a100_cal_09", "split": "calibration", "stratum": "human_action", "prompt": "A person is catching or throwing baseball", "vbench_dimensions": ["human_action"]},
+    {"manifest_id": "a100_cal_10", "split": "calibration", "stratum": "human_action", "prompt": "A person is catching or throwing frisbee", "vbench_dimensions": ["human_action"]},
+    {"manifest_id": "a100_cal_11", "split": "calibration", "stratum": "human_action", "prompt": "A person is cheerleading", "vbench_dimensions": ["human_action"]}
+  ],
+
+  "held_out": [
+    {"manifest_id": "a100_held_00", "split": "held_out", "stratum": "object_class", "prompt": "a cake", "vbench_dimensions": ["object_class"]},
+    {"manifest_id": "a100_held_01", "split": "held_out", "stratum": "object_class", "prompt": "a car", "vbench_dimensions": ["object_class"]},
+    {"manifest_id": "a100_held_02", "split": "held_out", "stratum": "object_class", "prompt": "a carrot", "vbench_dimensions": ["object_class"]},
+    {"manifest_id": "a100_held_03", "split": "held_out", "stratum": "scene", "prompt": "botanical garden", "vbench_dimensions": ["scene", "background_consistency"]},
+    {"manifest_id": "a100_held_04", "split": "held_out", "stratum": "scene", "prompt": "bridge", "vbench_dimensions": ["scene", "background_consistency"]},
+    {"manifest_id": "a100_held_05", "split": "held_out", "stratum": "scene", "prompt": "cafeteria", "vbench_dimensions": ["scene", "background_consistency"]},
+    {"manifest_id": "a100_held_06", "split": "held_out", "stratum": "motion_smoothness", "prompt": "a bus accelerating to gain speed", "vbench_dimensions": ["motion_smoothness", "dynamic_degree", "subject_consistency"]},
+    {"manifest_id": "a100_held_07", "split": "held_out", "stratum": "motion_smoothness", "prompt": "a bus stuck in traffic during rush hour", "vbench_dimensions": ["motion_smoothness", "dynamic_degree", "subject_consistency"]},
+    {"manifest_id": "a100_held_08", "split": "held_out", "stratum": "motion_smoothness", "prompt": "a bus turning a corner", "vbench_dimensions": ["motion_smoothness", "dynamic_degree", "subject_consistency"]},
+    {"manifest_id": "a100_held_09", "split": "held_out", "stratum": "human_action", "prompt": "A person is clapping", "vbench_dimensions": ["human_action"]},
+    {"manifest_id": "a100_held_10", "split": "held_out", "stratum": "human_action", "prompt": "A person is clay pottery making", "vbench_dimensions": ["human_action"]},
+    {"manifest_id": "a100_held_11", "split": "held_out", "stratum": "human_action", "prompt": "A person is cleaning windows", "vbench_dimensions": ["human_action"]}
+  ],
+
+  "status": "locked_protocol_only; no A100 results yet"
+}

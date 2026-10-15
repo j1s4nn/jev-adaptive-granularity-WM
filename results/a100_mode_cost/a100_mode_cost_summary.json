@@ -1,0 +1,20 @@
+{
+  "run_id": "20261012_095942",
+  "phase": "A100-A1-mode-cost",
+  "status": "complete",
+  "start_time": "2026-10-12T09:59:42.842801",
+  "rcm_commit": "ed3cb14dd936f92cdc9f9381af7369991509b41f",
+  "dataset_paths": {
+    "c1_1_step2": "/content/inputs/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c1_1_step4": "/content/inputs/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "c3_3_step2": "/content/inputs/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2.pt",
+    "c3_3_step4": "/content/inputs/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/content/inputs/wan21/Wan2.1_VAE.pth",
+    "t5": "/content/inputs/wan21/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/content/inputs/wan21/google/umt5-xxl"
+  },
+  "n_complete": 9,
+  "n_expected": 9,
+  "verdict": "PASS",
+  "end_time": "2026-10-12T10:36:38.739879"
+}

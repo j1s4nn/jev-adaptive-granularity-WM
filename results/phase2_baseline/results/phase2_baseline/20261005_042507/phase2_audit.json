@@ -1,0 +1,9 @@
+{
+  "run_id": "20261005_042507",
+  "source_metadata": "20261005_042507_meta.json",
+  "audited_outcome": "PASS",
+  "successful_runs": 12,
+  "total_runs": 12,
+  "finding": "All 12 test entries have ok=true and frames_saved=true. The kernel script had a hard-coded success threshold of exactly two runs, so its overall label FAIL is a classification bug, not a generation failure. Source code now uses n_success == n_total; corrected code was syntax-checked but not rerun on Kaggle.",
+  "scope": "exploratory fixed-mode baseline only"
+}

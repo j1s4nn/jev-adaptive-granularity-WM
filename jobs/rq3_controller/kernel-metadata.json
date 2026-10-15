@@ -1,0 +1,19 @@
+{
+  "id": "ajjisan/f-rq3-controller-ablation",
+  "title": "F RQ3 Controller Ablation",
+  "code_file": "rq3_controller.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "ajjisan/causal-rcm-ckpts",
+    "ajjisan/wan21-t5",
+    "ajjisan/wan21-dit-vae"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

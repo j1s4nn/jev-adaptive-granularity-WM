@@ -1,0 +1,19 @@
+{
+  "id": "ajjisan/f-rq4-monotonicity",
+  "title": "F RQ4 Monotonicity",
+  "code_file": "rq4_monotonicity.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "ajjisan/causal-rcm-ckpts",
+    "ajjisan/wan21-t5",
+    "ajjisan/wan21-dit-vae"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

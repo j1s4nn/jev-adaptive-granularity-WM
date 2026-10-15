@@ -1,0 +1,289 @@
+{
+  "run_id": "20261005_085540",
+  "phase": "phase3-signal-calibration",
+  "status": "complete",
+  "verdict": "PASS",
+  "source_results": "results\\phase3_calibration_rerun\\results\\phase3_calibration\\results.jsonl",
+  "n_complete": 8,
+  "n_failed_or_incomplete": 0,
+  "protocol": {
+    "calibration_prompts": [
+      "In a still frame, a stop sign",
+      "A tranquil tableau of alley",
+      "A person is taking a shower",
+      "a cat drinking water"
+    ],
+    "held_out_prompts": [
+      "Splash of turquoise water in extreme slow motion, alpha channel included.",
+      "The Bund Shanghai, with an intense shaking effect",
+      "A beautiful coastal beach in spring, waves lapping on sand, watercolor painting",
+      "A cyclist rides quickly along a forest trail in bright sunlight"
+    ],
+    "seed": 17,
+    "horizon": 45,
+    "latent_frames": 12,
+    "common_segment": "3 latent frames",
+    "signals": [
+      "residual",
+      "warp",
+      "motion",
+      "complexity"
+    ],
+    "ema": "dropped: no EMA weights in verified checkpoints",
+    "action_lambda": 0.0,
+    "label": "coarse c3-3 adjacent-pixel temporal L1 minus fine c1-1 adjacent-pixel temporal L1 exceeds calibration margin",
+    "label_margin": 0.003341895411722362,
+    "bootstrap_reps": 2000,
+    "limitations": [
+      "proxy is motion/content dependent",
+      "fixed fine output is a pseudo-reference, not ground truth",
+      "8 prompts and 1 seed; 12 segments per split",
+      "all held-out labels are not independent because 3 segments per prompt"
+    ]
+  },
+  "label_balance": {
+    "calibration_positive": 6,
+    "calibration_n": 12,
+    "held_out_positive": 9,
+    "held_out_n": 12
+  },
+  "metrics": {
+    "residual": {
+      "calibration": {
+        "auroc": 0.888888888888889,
+        "ci95": [
+          0.6666666666666666,
+          1.0
+        ],
+        "n": 12,
+        "positive": 6,
+        "prompt_count": 4
+      },
+      "held_out": {
+        "auroc": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n": 12,
+        "positive": 9,
+        "prompt_count": 4
+      },
+      "threshold_calibration_youden": 1.0357918739318848,
+      "held_out_threshold_metrics": {
+        "threshold": 1.0357918739318848,
+        "accuracy": 0.5,
+        "precision": 1.0,
+        "recall": 0.3333333333333333,
+        "specificity": 1.0,
+        "confusion": {
+          "tp": 3,
+          "fp": 0,
+          "tn": 3,
+          "fn": 6
+        }
+      }
+    },
+    "warp": {
+      "calibration": {
+        "auroc": 0.4444444444444445,
+        "ci95": [
+          0.11111111111111112,
+          1.0
+        ],
+        "n": 12,
+        "positive": 6,
+        "prompt_count": 4
+      },
+      "held_out": {
+        "auroc": 0.8518518518518519,
+        "ci95": [
+          0.5555555555555556,
+          1.0
+        ],
+        "n": 12,
+        "positive": 9,
+        "prompt_count": 4
+      },
+      "threshold_calibration_youden": 9.150155067443848,
+      "held_out_threshold_metrics": {
+        "threshold": 9.150155067443848,
+        "accuracy": 0.8333333333333334,
+        "precision": 1.0,
+        "recall": 0.7777777777777778,
+        "specificity": 1.0,
+        "confusion": {
+          "tp": 7,
+          "fp": 0,
+          "tn": 3,
+          "fn": 2
+        }
+      }
+    },
+    "motion": {
+      "calibration": {
+        "auroc": 0.19444444444444442,
+        "ci95": [
+          0.0,
+          0.33333333333333337
+        ],
+        "n": 12,
+        "positive": 6,
+        "prompt_count": 4
+      },
+      "held_out": {
+        "auroc": 0.5185185185185185,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "n": 12,
+        "positive": 9,
+        "prompt_count": 4
+      },
+      "threshold_calibration_youden": 0.20959903299808502,
+      "held_out_threshold_metrics": {
+        "threshold": 0.20959903299808502,
+        "accuracy": 0.75,
+        "precision": 0.75,
+        "recall": 1.0,
+        "specificity": 0.0,
+        "confusion": {
+          "tp": 9,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0
+        }
+      }
+    },
+    "complexity": {
+      "calibration": {
+        "auroc": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n": 12,
+        "positive": 6,
+        "prompt_count": 4
+      },
+      "held_out": {
+        "auroc": 1.0,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "n": 12,
+        "positive": 9,
+        "prompt_count": 4
+      },
+      "threshold_calibration_youden": 1370.908203125,
+      "held_out_threshold_metrics": {
+        "threshold": 1370.908203125,
+        "accuracy": 0.75,
+        "precision": 1.0,
+        "recall": 0.6666666666666666,
+        "specificity": 1.0,
+        "confusion": {
+          "tp": 6,
+          "fp": 0,
+          "tn": 3,
+          "fn": 3
+        }
+      }
+    }
+  },
+  "distributions": {
+    "residual": {
+      "calibration": {
+        "n": 12,
+        "mean": 1.034324824810028,
+        "std": 0.011998317036615365,
+        "median": 1.0328258872032166,
+        "min": 1.01454758644104,
+        "max": 1.0519651174545288
+      },
+      "held_out": {
+        "n": 12,
+        "mean": 0.9912096659342448,
+        "std": 0.03458925963327665,
+        "median": 0.9945687651634216,
+        "min": 0.9316147565841675,
+        "max": 1.0405915975570679
+      }
+    },
+    "warp": {
+      "calibration": {
+        "n": 12,
+        "mean": 9.670925378799438,
+        "std": 4.4643444050553285,
+        "median": 8.835096836090088,
+        "min": 2.8346030712127686,
+        "max": 18.686294555664062
+      },
+      "held_out": {
+        "n": 12,
+        "mean": 16.180016835530598,
+        "std": 8.740068130622456,
+        "median": 13.369226932525635,
+        "min": 7.642419815063477,
+        "max": 30.004535675048828
+      }
+    },
+    "motion": {
+      "calibration": {
+        "n": 12,
+        "mean": 1.653129971275727,
+        "std": 1.3722513747277951,
+        "median": 1.1593531966209412,
+        "min": 0.20959903299808502,
+        "max": 5.637437343597412
+      },
+      "held_out": {
+        "n": 12,
+        "mean": 2.823659439881643,
+        "std": 1.1784789932337074,
+        "median": 2.912689685821533,
+        "min": 1.0510610342025757,
+        "max": 4.589004993438721
+      }
+    },
+    "complexity": {
+      "calibration": {
+        "n": 12,
+        "mean": 1438.3995666503906,
+        "std": 383.535524973785,
+        "median": 1336.3646240234375,
+        "min": 1030.3848876953125,
+        "max": 2139.988037109375
+      },
+      "held_out": {
+        "n": 12,
+        "mean": 1314.7130076090496,
+        "std": 500.00356193284944,
+        "median": 1384.8589477539062,
+        "min": 532.2025756835938,
+        "max": 2166.63134765625
+      }
+    }
+  },
+  "timing": {
+    "fine_text_encode_s_mean": 155.5776045024395,
+    "fine_checkpoint_load_s_mean": 21.317699044942856,
+    "fine_dit_s_mean": 13.897580832242966,
+    "fine_vae_s_mean": 83.4845370054245,
+    "fine_total_s_mean": 275.8622145652771,
+    "fine_peak_vram_gb_mean": 11.27649450302124,
+    "fine_nfe_mean": 15.0,
+    "coarse_text_encode_s_mean": 151.63576915860176,
+    "coarse_checkpoint_load_s_mean": 23.493774473667145,
+    "coarse_dit_s_mean": 33.467302054166794,
+    "coarse_vae_s_mean": 85.30505913496017,
+    "coarse_total_s_mean": 295.4786498248577,
+    "coarse_peak_vram_gb_mean": 11.276490688323975,
+    "coarse_nfe_mean": 16.0,
+    "signal_compute_s_mean": 0.18327608704566956
+  },
+  "scores_file": "results\\phase3_calibration_rerun\\results\\phase3_calibration\\scores.jsonl",
+  "audit_note": "Raw generations completed; the remote summary had a prompt_idx flattening bug and was recomputed locally from unchanged raw results.jsonl."
+}

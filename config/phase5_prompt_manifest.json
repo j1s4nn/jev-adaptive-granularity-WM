@@ -1,0 +1,390 @@
+{
+  "manifest_version": "phase5-v1",
+  "source": "results\\phase3_calibration_rerun\\rcm\\evaluation\\vbench_text2video\\prompts.json",
+  "selection_rule": "first sorted candidates per VBench dimension after excluding prior pilot prompts",
+  "excluded_prior_prompts": [
+    "A beautiful coastal beach in spring, waves lapping on sand, watercolor painting",
+    "A cyclist rides quickly along a forest trail in bright sunlight",
+    "A person is taking a shower",
+    "A tranquil tableau of alley",
+    "In a still frame, a stop sign",
+    "Splash of turquoise water in extreme slow motion, alpha channel included.",
+    "The Bund Shanghai, with an intense shaking effect",
+    "a cat drinking water"
+  ],
+  "calibration_seeds": [
+    17
+  ],
+  "held_out_seeds": [
+    17,
+    29,
+    41
+  ],
+  "horizons_requested": [
+    45,
+    57,
+    81
+  ],
+  "categories": [
+    "object_class",
+    "scene",
+    "dynamic_degree",
+    "human_action"
+  ],
+  "calibration": [
+    {
+      "manifest_id": "calibration_00",
+      "split": "calibration",
+      "prompt": "a backpack",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 353
+    },
+    {
+      "manifest_id": "calibration_01",
+      "split": "calibration",
+      "prompt": "a banana",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 375
+    },
+    {
+      "manifest_id": "calibration_02",
+      "split": "calibration",
+      "prompt": "a baseball bat",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 363
+    },
+    {
+      "manifest_id": "calibration_03",
+      "split": "calibration",
+      "prompt": "alley",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 774
+    },
+    {
+      "manifest_id": "calibration_04",
+      "split": "calibration",
+      "prompt": "amusement park",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 775
+    },
+    {
+      "manifest_id": "calibration_05",
+      "split": "calibration",
+      "prompt": "aquarium",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 776
+    },
+    {
+      "manifest_id": "calibration_06",
+      "split": "calibration",
+      "prompt": "a bear catching a salmon in its powerful jaws",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 319
+    },
+    {
+      "manifest_id": "calibration_07",
+      "split": "calibration",
+      "prompt": "a bear climbing a tree",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 321
+    },
+    {
+      "manifest_id": "calibration_08",
+      "split": "calibration",
+      "prompt": "a bear hunting for prey",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 322
+    },
+    {
+      "manifest_id": "calibration_09",
+      "split": "calibration",
+      "prompt": "A person is air drumming",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 199
+    },
+    {
+      "manifest_id": "calibration_10",
+      "split": "calibration",
+      "prompt": "A person is archery",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 236
+    },
+    {
+      "manifest_id": "calibration_11",
+      "split": "calibration",
+      "prompt": "A person is arranging flowers",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 241
+    }
+  ],
+  "held_out": [
+    {
+      "manifest_id": "held_out_00",
+      "split": "held_out",
+      "prompt": "a baseball glove",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 364
+    },
+    {
+      "manifest_id": "held_out_01",
+      "split": "held_out",
+      "prompt": "a bear",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 350
+    },
+    {
+      "manifest_id": "held_out_02",
+      "split": "held_out",
+      "prompt": "a bed",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 388
+    },
+    {
+      "manifest_id": "held_out_03",
+      "split": "held_out",
+      "prompt": "a bench",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 342
+    },
+    {
+      "manifest_id": "held_out_04",
+      "split": "held_out",
+      "prompt": "a bicycle",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 330
+    },
+    {
+      "manifest_id": "held_out_05",
+      "split": "held_out",
+      "prompt": "a bird",
+      "vbench_dimensions": [
+        "object_class"
+      ],
+      "source_index": 343
+    },
+    {
+      "manifest_id": "held_out_06",
+      "split": "held_out",
+      "prompt": "arch",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 777
+    },
+    {
+      "manifest_id": "held_out_07",
+      "split": "held_out",
+      "prompt": "art gallery",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 778
+    },
+    {
+      "manifest_id": "held_out_08",
+      "split": "held_out",
+      "prompt": "bakery shop",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 780
+    },
+    {
+      "manifest_id": "held_out_09",
+      "split": "held_out",
+      "prompt": "ballroom",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 781
+    },
+    {
+      "manifest_id": "held_out_10",
+      "split": "held_out",
+      "prompt": "bar",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 782
+    },
+    {
+      "manifest_id": "held_out_11",
+      "split": "held_out",
+      "prompt": "barn",
+      "vbench_dimensions": [
+        "scene",
+        "background_consistency"
+      ],
+      "source_index": 783
+    },
+    {
+      "manifest_id": "held_out_12",
+      "split": "held_out",
+      "prompt": "a bear sniffing the air for scents of food",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 320
+    },
+    {
+      "manifest_id": "held_out_13",
+      "split": "held_out",
+      "prompt": "a bicycle accelerating to gain speed",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 267
+    },
+    {
+      "manifest_id": "held_out_14",
+      "split": "held_out",
+      "prompt": "a bicycle gliding through a snowy field",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 265
+    },
+    {
+      "manifest_id": "held_out_15",
+      "split": "held_out",
+      "prompt": "a bicycle leaning against a tree",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 264
+    },
+    {
+      "manifest_id": "held_out_16",
+      "split": "held_out",
+      "prompt": "a bicycle slowing down to stop",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 266
+    },
+    {
+      "manifest_id": "held_out_17",
+      "split": "held_out",
+      "prompt": "a bird building a nest from twigs and leaves",
+      "vbench_dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ],
+      "source_index": 296
+    },
+    {
+      "manifest_id": "held_out_18",
+      "split": "held_out",
+      "prompt": "A person is baby waking up",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 224
+    },
+    {
+      "manifest_id": "held_out_19",
+      "split": "held_out",
+      "prompt": "A person is bandaging",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 185
+    },
+    {
+      "manifest_id": "held_out_20",
+      "split": "held_out",
+      "prompt": "A person is barbequing",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 251
+    },
+    {
+      "manifest_id": "held_out_21",
+      "split": "held_out",
+      "prompt": "A person is bending back",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 183
+    },
+    {
+      "manifest_id": "held_out_22",
+      "split": "held_out",
+      "prompt": "A person is bending metal",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 242
+    },
+    {
+      "manifest_id": "held_out_23",
+      "split": "held_out",
+      "prompt": "A person is brushing teeth",
+      "vbench_dimensions": [
+        "human_action"
+      ],
+      "source_index": 226
+    }
+  ],
+  "status": "locked_protocol_only; no results"
+}

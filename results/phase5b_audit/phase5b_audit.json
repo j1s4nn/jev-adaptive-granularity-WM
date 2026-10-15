@@ -1,0 +1,416 @@
+{
+  "phase": "phase5b-reference-regret-calibration",
+  "verdict": "PASS",
+  "calibration_lock": {
+    "path": "C:\\Users\\jisan\\OneDrive\\Desktop\\research\\idea_05_adaptive_granularity_WM\\04_Experiment\\results\\phase5b_calibration_lock.json",
+    "sha256": "3795454f60770432de3aa290bc98492d5a8a3f84c5028e619ac72b08d39690e9",
+    "matches_recomputed_choices": true
+  },
+  "batches": {
+    "phase5b_reference_calibration_a": {
+      "manifest_index_offset": 0,
+      "raw_rows": 6,
+      "complete": 6,
+      "summary_verdict": "PASS",
+      "summary_complete": 6,
+      "raw_sha256": "5b1bca62b37eba28b881c9c8d63c76023519ffd7e267f0f754f7fbbf9419d66a",
+      "summary_sha256": "4d49b0e2e0fce3a276f5ebf7d3533eb019cf31c609a315f57eb43330dc467671",
+      "job_source_sha256": "6f4fc555b4232f356e55695f64e33425b6843e9a40c468012e5d347c3982bb59"
+    },
+    "phase5b_reference_calibration_b": {
+      "manifest_index_offset": 6,
+      "raw_rows": 6,
+      "complete": 6,
+      "summary_verdict": "PASS",
+      "summary_complete": 6,
+      "raw_sha256": "15f10eced7fb67d9f393bb2d264a8839562d2c06088e33947dc08ad26daef02b",
+      "summary_sha256": "43544b9cdeaeb4204ee051bd0b8d16c2c373beb77a917f0da2c44847302c0134",
+      "job_source_sha256": "3ef432c1fc28e15b2e98963764317a70a9371932defaf85e8164dd31e3e9497a"
+    },
+    "phase5b_heldout_00": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "3290463c985a87a1d93d845eeed2e81164aa389989ea3c0b2faafd02245a00b9",
+      "summary_sha256": "96935dfe7d94cccd8230894c47916f9353cba98242cc7544611586b27b2e21c5",
+      "job_source_sha256": "73a2d95a6a00d72ca3f75b22bbdcfba299796cccd4f4deb498f73f471f9bf48d"
+    },
+    "phase5b_heldout_01": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "056f1ba8486e874af55d75bc5d826c63fa97d8efa7e1c094fc1996d08d571eb2",
+      "summary_sha256": "f8112ebb6b2933eed60438023c8e292e1b4ad769e7e9017f41d3ccfbe0ee20fd",
+      "job_source_sha256": "b3a83a608a2da37525905ac25b00bac9f59200a04b3ff548324ec1fb866e6518"
+    },
+    "phase5b_heldout_02": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "6946868f67a6f6a47cdaba1e5a50378ea1c85cbe01974df418cfeb681667ac43",
+      "summary_sha256": "e5ab52d9555d3c19217c2765afb62a34656e88255a199565b6cf4635769633f4",
+      "job_source_sha256": "6822ebd50071c3c1fec3f8539655e8c0f36323adfeebdc1d75dc43dcc8b893d6"
+    },
+    "phase5b_heldout_03": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "472200c92eb9d15ad46361f9ef1d0cac95aad62debdc3fd12d415d262d5a7d4e",
+      "summary_sha256": "c2893edc6b666e635aac69f620966712d87c108b9f576f84d05c4cf2ea189359",
+      "job_source_sha256": "4f41175cbdc65099f4216042af478f8b3056edfa95ee3139a86582d10c71cb3a"
+    },
+    "phase5b_heldout_04": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "3776e4e3ad7edd7682f2cc29ea9e6212405e1023afcf5a50b24dcbfdea6596bd",
+      "summary_sha256": "e912c381e7ef63c45428369200dd0e3a7ba9b7718317f92c28fa4c0c01c2208f",
+      "job_source_sha256": "9e31cd09ad8318c488e3b2ddd6d25464e0039e7d0acad1327b93cd22efa877f6"
+    },
+    "phase5b_heldout_05": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "0dfe933476540e29327f531c5f5ef95f7a6de69ba456908f50d6e52137cbd271",
+      "summary_sha256": "9b9650a003c9396cec2c8dcf21f423c752184fb1b610ae3d507c51f0dbe6dcae",
+      "job_source_sha256": "abfc1eaf2c71dd6d8526424c2f8628f0e8cbdec22734b3a2dbbcd910452df74d"
+    },
+    "phase5b_heldout_06": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "1032849481f044b33bb97ccf67254825bd48d75d127bcd1b3fa7fcd8cf6bc9bf",
+      "summary_sha256": "1d5a5f381816646d9fc588625ba8bcc25063198541948667826ab014fa7af829",
+      "job_source_sha256": "f8c8ad2ea008e7aaa80653deddd564435c3aac6950a594da8c65ff38acd62838"
+    },
+    "phase5b_heldout_07": {
+      "manifest_index_offset": 0,
+      "raw_rows": 9,
+      "complete": 9,
+      "summary_verdict": "PASS",
+      "summary_complete": 9,
+      "raw_sha256": "9a7ed953893822e0f54c1a1ecd83b509c4e73f36a3942c1b1fbabc62820d2e37",
+      "summary_sha256": "522ec7b0c1790b0630d95e97c53dcd06d261167a53f694f95611d9880b4473bf",
+      "job_source_sha256": "9ae1ea30d3fa431ca74465d84d4d20be86c92cf06c4c58ffd8649db222a6a7c8"
+    }
+  },
+  "integrity": {
+    "calibration": {
+      "expected_groups": 12,
+      "observed_groups": 12,
+      "duplicate_groups": 0,
+      "missing_groups": 0,
+      "unexpected_groups": 0,
+      "failures": [],
+      "shape_ok": true,
+      "seed_noise_metadata_ok": true,
+      "segment_index_ok": true,
+      "regret_arithmetic_ok": true,
+      "finite_signals_ok": true,
+      "positive_nfe_and_vram_ok": true
+    },
+    "held_out": {
+      "expected_groups": 72,
+      "observed_groups": 72,
+      "duplicate_groups": 0,
+      "missing_groups": 0,
+      "unexpected_groups": 0,
+      "failures": [],
+      "shape_ok": true,
+      "seed_noise_metadata_ok": true,
+      "segment_index_ok": true,
+      "regret_arithmetic_ok": true,
+      "finite_signals_ok": true,
+      "positive_nfe_and_vram_ok": true
+    }
+  },
+  "metric": "decoded-pixel L1 to matched internal c1-1 step-4 reference",
+  "unsafe_margin_rule": "median of 12 calibration prompt-seed median regrets; strictly greater is unsafe",
+  "unsafe_margin": 0.08965003490447998,
+  "label_counts": {
+    "calibration": {
+      "1": 24,
+      "0": 24
+    },
+    "held_out": {
+      "1": 160,
+      "0": 128
+    }
+  },
+  "regret_summary": {
+    "calibration": {
+      "n_segments": 48,
+      "mean": 0.10037903813645244,
+      "min": -0.050118595361709595,
+      "max": 0.20372288674116135
+    },
+    "held_out": {
+      "n_segments": 288,
+      "mean": 0.09612253018551403,
+      "min": -0.05064326524734497,
+      "max": 0.2225092649459839
+    }
+  },
+  "signal_direction_fitted_on_calibration": {
+    "residual": 1,
+    "warp": -1,
+    "motion": -1,
+    "complexity": -1
+  },
+  "calibration_youden_thresholds_on_oriented_scores": {
+    "residual": 1.041668176651001,
+    "warp": -12.195727348327637,
+    "motion": -0.831678569316864,
+    "complexity": -2129.130126953125
+  },
+  "fixed_threshold_confusion": {
+    "calibration": {
+      "residual": {
+        "tp": 17,
+        "fp": 10,
+        "tn": 14,
+        "fn": 7
+      },
+      "warp": {
+        "tp": 23,
+        "fp": 13,
+        "tn": 11,
+        "fn": 1
+      },
+      "motion": {
+        "tp": 14,
+        "fp": 7,
+        "tn": 17,
+        "fn": 10
+      },
+      "complexity": {
+        "tp": 17,
+        "fp": 12,
+        "tn": 12,
+        "fn": 7
+      }
+    },
+    "held_out": {
+      "residual": {
+        "tp": 98,
+        "fp": 78,
+        "tn": 50,
+        "fn": 62
+      },
+      "warp": {
+        "tp": 125,
+        "fp": 104,
+        "tn": 24,
+        "fn": 35
+      },
+      "motion": {
+        "tp": 65,
+        "fp": 49,
+        "tn": 79,
+        "fn": 95
+      },
+      "complexity": {
+        "tp": 84,
+        "fp": 108,
+        "tn": 20,
+        "fn": 76
+      }
+    }
+  },
+  "auroc": {
+    "calibration": {
+      "prompt_seed": {
+        "residual": {
+          "auroc": 0.6302083333333334,
+          "ci95": [
+            0.3845716783216783,
+            0.8446806318681317
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "warp": {
+          "auroc": 0.6510416666666667,
+          "ci95": [
+            0.29624183006535953,
+            0.9250231481481479
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "motion": {
+          "auroc": 0.5798611111111112,
+          "ci95": [
+            0.27962673611111116,
+            0.8350843167249417
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "complexity": {
+          "auroc": 0.5260416666666667,
+          "ci95": [
+            0.19641296203796205,
+            0.8559172453703703
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        }
+      },
+      "prompt": {
+        "residual": {
+          "auroc": 0.6302083333333334,
+          "ci95": [
+            0.36781870039682535,
+            0.8425992063492064
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "warp": {
+          "auroc": 0.6510416666666667,
+          "ci95": [
+            0.2553208705357143,
+            0.9230902777777776
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "motion": {
+          "auroc": 0.5798611111111112,
+          "ci95": [
+            0.23736286181139124,
+            0.8357198660714286
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "complexity": {
+          "auroc": 0.5260416666666667,
+          "ci95": [
+            0.18329545454545457,
+            0.8555827505827504
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        }
+      }
+    },
+    "held_out": {
+      "prompt_seed": {
+        "residual": {
+          "auroc": 0.490869140625,
+          "ci95": [
+            0.39338219916344913,
+            0.5887683906577394
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "warp": {
+          "auroc": 0.454150390625,
+          "ci95": [
+            0.34340891049629446,
+            0.5658060022533029
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "motion": {
+          "auroc": 0.4875,
+          "ci95": [
+            0.3764894035109209,
+            0.6002080582397322
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "complexity": {
+          "auroc": 0.30087890624999997,
+          "ci95": [
+            0.19671305764070735,
+            0.4120107620120486
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        }
+      },
+      "prompt": {
+        "residual": {
+          "auroc": 0.490869140625,
+          "ci95": [
+            0.3781266771632577,
+            0.6165603857888373
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "warp": {
+          "auroc": 0.454150390625,
+          "ci95": [
+            0.3301857242946329,
+            0.5881615864464866
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "motion": {
+          "auroc": 0.4875,
+          "ci95": [
+            0.3667639980374866,
+            0.6141479905045407
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        },
+        "complexity": {
+          "auroc": 0.30087890624999997,
+          "ci95": [
+            0.20499708447396126,
+            0.4068388503600959
+          ],
+          "bootstrap_valid": 2000,
+          "bootstrap_skipped_single_class": 0
+        }
+      }
+    }
+  },
+  "strongest_calibration_baseline": "warp",
+  "residual_minus_baseline": {
+    "calibration": {
+      "difference": -0.02083333333333337,
+      "ci95": [
+        -0.24305555555555558,
+        0.24800420168067222
+      ]
+    },
+    "held_out": {
+      "difference": 0.03671874999999997,
+      "ci95": [
+        -0.049303395343257436,
+        0.11935161464431548
+      ]
+    }
+  },
+  "rq1_supported": false,
+  "limitations": [
+    "reference-defined decoded-pixel metric, not ground-truth perceptual quality",
+    "signals use a fixed coarse trajectory; online controllers have different contexts",
+    "prompt-seed intervals may understate shared-prompt dependence; prompt-cluster intervals are also reported",
+    "calibration margin is a relative high-regret cutoff, not an absolute safety threshold"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "stopped",
+  "batch": 2,
+  "version": 7,
+  "startup_retries": 1,
+  "next_check_utc": "2026-10-06T17:06:27+00:00",
+  "note": "Version 6 was submitted after v4/v5 errors; track the exact version.",
+  "updated_utc": "2026-10-06T16:48:12.162599+00:00",
+  "last_remote_status": "ERROR",
+  "last_checked_utc": "2026-10-06T16:36:17+00:00",
+  "reason": "Kaggle CLI ignores /version for status/logs/output; multiple versions may be running. Automatic submissions disabled."
+}

@@ -1,0 +1,64 @@
+{
+  "run_id": "20261007_051907",
+  "phase": "phase5c-online-feasibility-pilot",
+  "status": "complete",
+  "start_time": "2026-10-07T05:19:07.783704",
+  "protocol": {
+    "split": "calibration",
+    "prompt_idx": 6,
+    "prompt": "a bear catching a salmon in its powerful jaws",
+    "seed": 17,
+    "horizon": 57,
+    "policies": [
+      "fixed_coarse",
+      "fixed_fine_continuation",
+      "warp50",
+      "random_match",
+      "alternating50"
+    ],
+    "initial_mode": "coarse",
+    "initial_prefix_latent_frames": 3,
+    "warp_direction": -1,
+    "warp_threshold": -8.452908515930176,
+    "random_seed": 20261024,
+    "manifest_sha256": "cce4c8c35cea378a6f2bd040e5468692a04f7e66f324aaddaedba33e63188b01",
+    "calibration_lock_sha256": "3795454f60770432de3aa290bc98492d5a8a3f84c5028e619ac72b08d39690e9",
+    "metric": "decoded-pixel L1 to matched internal c1-1 step-4 reference",
+    "scope": "one calibration prompt-seed; no held-out/RQ2 claim"
+  },
+  "upstream_rcm_commit": "ed3cb14dd936f92cdc9f9381af7369991509b41f",
+  "dataset_paths": {
+    "fine": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "reference": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "coarse": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "text_encode_s": 187.4369819164276,
+  "initial_noise_sha256": "db3bc8afb912374877f46c5a9db018fb05ad39a29d3daface731daf1aa652e7b",
+  "reference": {
+    "checkpoint_load_s": 36.392269134521484,
+    "dit_s": 46.257863998413086,
+    "vae_s": 114.76652002334595,
+    "nfe": 60,
+    "peak_vram_gb": 11.3038330078125,
+    "total_s": 199.58075547218323,
+    "decoded_shape": [
+      57,
+      480,
+      832,
+      3
+    ]
+  },
+  "n_complete": 5,
+  "n_failed_or_incomplete": 0,
+  "verdict": "PASS",
+  "results_file": "/kaggle/working/results/phase5c_online_pilot/results.jsonl",
+  "limitations": [
+    "one calibration case only",
+    "common coarse prefix for all policy continuations",
+    "no residual controller, held-out inference, or RQ2 claim"
+  ],
+  "end_time": "2026-10-07T05:48:28.253822"
+}

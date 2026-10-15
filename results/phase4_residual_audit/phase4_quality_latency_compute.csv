@@ -1,0 +1,6 @@
+method,quality_proxy_mean_adjacent_pixel_l1,mean_total_s,mean_nfe,mean_fine_fraction,mean_switches_per_prompt,latency_status
+residual_threshold_online_R0,0.0419325134716928,344.00572872161865,16.0,0.0,0.0,measured end-to-end; total includes prompt encoding; loads; controller path; sampling; and final decode
+fixed_fine_c1_1,0.032369718576471015,270.3092891573906,15.0,1.0,0.0,measured fixed-mode Phase 3 end-to-end run; paired prompt/seed
+fixed_coarse_c3_3,0.04395349184051156,292.0578708052635,16.0,0.0,0.0,measured fixed-mode Phase 3 end-to-end run; paired prompt/seed
+offline_segment_oracle,0.029805886714408796,,,,,not measured; per-segment min(fine; coarse) uses both future fixed outcomes
+complexity_threshold_online_R0,0.02844188602951666,548.8050074577332,14.5,0.5,0.0,measured online; separate pilot kernel using decoded-frame complexity signal

@@ -1,0 +1,20 @@
+{
+  "id": "ajjisan/jev-p100-timing",
+  "title": "Jev P100 Timing",
+  "code_file": "jev_p100_timing.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaP100",
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "ajjisan/causal-rcm-ckpts",
+    "ajjisan/wan21-t5",
+    "ajjisan/wan21-dit-vae"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

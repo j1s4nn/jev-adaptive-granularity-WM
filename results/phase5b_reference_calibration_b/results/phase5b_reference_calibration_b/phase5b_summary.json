@@ -1,0 +1,60 @@
+{
+  "run_id": "20261006_092440",
+  "phase": "phase5b-reference-calibration-b",
+  "status": "complete",
+  "start_time": "2026-10-06T09:24:40.075280",
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c1_1_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "protocol": {
+    "split": "calibration",
+    "prompts": [
+      "a bear catching a salmon in its powerful jaws",
+      "a bear climbing a tree",
+      "a bear hunting for prey",
+      "A person is air drumming",
+      "A person is archery",
+      "A person is arranging flowers"
+    ],
+    "seed": 17,
+    "horizons": [
+      57
+    ],
+    "modes": [
+      "c1-1_step4_reference",
+      "c1-1_step2_fine",
+      "c3-3_step4_coarse"
+    ],
+    "signals": [
+      "residual",
+      "warp",
+      "motion",
+      "complexity"
+    ],
+    "signal_context": "preceding fixed coarse context, before target segment",
+    "prompt_embedding_cached_across_modes": true,
+    "metric": "decoded pixel L1 to matched reference",
+    "same_initial_noise": true,
+    "limitations": [
+      "calibration split only",
+      "reference is an internal high-compute model, not ground truth",
+      "decoded pixel L1 is a reference-defined proxy",
+      "no adaptive-policy claim"
+    ]
+  },
+  "n_complete": 6,
+  "n_failed_or_incomplete": 0,
+  "reference_regret_summary": {
+    "n_segments": 24,
+    "mean": 0.07561756670475006,
+    "min": -0.050118595361709595,
+    "max": 0.1673075407743454
+  },
+  "verdict": "PASS",
+  "end_time": "2026-10-06T10:47:58.216241"
+}

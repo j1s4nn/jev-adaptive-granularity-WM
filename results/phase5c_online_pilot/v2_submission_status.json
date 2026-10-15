@@ -1,0 +1,9 @@
+{
+  "kernel": "ajjisan/phase-5c-online-feasibility-pilot",
+  "version": 2,
+  "submission": "accepted",
+  "immediate_status": "KernelWorkerStatus.RUNNING",
+  "phase5c_result_audited": false,
+  "watcher_started": false,
+  "automatic_retry_started": false
+}

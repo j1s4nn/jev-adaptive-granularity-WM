@@ -1,0 +1,309 @@
+{
+  "phase": "phase4-adaptive-controller",
+  "status": "complete",
+  "verdict": "PASS_EXPLORATORY_ONLINE",
+  "online_artifact": "C:\\Users\\jisan\\OneDrive\\Desktop\\research\\idea_05_adaptive_granularity_WM\\04_Experiment\\results\\phase4_online_v2_download\\results\\phase4_adaptive_online",
+  "protocol": {
+    "prompts": [
+      "Splash of turquoise water in extreme slow motion, alpha channel included.",
+      "The Bund Shanghai, with an intense shaking effect",
+      "A beautiful coastal beach in spring, waves lapping on sand, watercolor painting",
+      "A cyclist rides quickly along a forest trail in bright sunlight"
+    ],
+    "seed": 17,
+    "horizon": 45,
+    "signal": "decoded-frame complexity",
+    "tau_low": 1146.01034546,
+    "tau_high": 1370.908203125,
+    "threshold_fit": "Phase 3 calibration split only",
+    "initial_mode": "coarse",
+    "lambda_action": 0.0
+  },
+  "n_prompts": 4,
+  "n_segments": 12,
+  "prompt_results": [
+    {
+      "prompt_idx": 0,
+      "prompt": "Splash of turquoise water in extreme slow motion, alpha channel included.",
+      "adaptive_mean_adjacent_pixel_l1": 0.025801494096716244,
+      "fixed_fine_mean_adjacent_pixel_l1": 0.03215630725026131,
+      "fixed_coarse_mean_adjacent_pixel_l1": 0.021900979802012444,
+      "oracle_mean_adjacent_pixel_l1": 0.021900979802012444,
+      "fine_fraction": 0.0,
+      "switch_count": 0,
+      "adaptive_modes": [
+        "coarse",
+        "coarse",
+        "coarse"
+      ],
+      "segments": [
+        {
+          "group": 1,
+          "complexity": 1277.6546630859375,
+          "mode": "coarse",
+          "adaptive_l1": 0.025696298107504845,
+          "fixed_fine_l1": 0.03804641589522362,
+          "fixed_coarse_l1": 0.02364443987607956,
+          "oracle_l1": 0.02364443987607956
+        },
+        {
+          "group": 2,
+          "complexity": 1355.294921875,
+          "mode": "coarse",
+          "adaptive_l1": 0.02330435998737812,
+          "fixed_fine_l1": 0.03175634890794754,
+          "fixed_coarse_l1": 0.0211748369038105,
+          "oracle_l1": 0.0211748369038105
+        },
+        {
+          "group": 3,
+          "complexity": 332.91357421875,
+          "mode": "coarse",
+          "adaptive_l1": 0.02840382419526577,
+          "fixed_fine_l1": 0.026666156947612762,
+          "fixed_coarse_l1": 0.02088366262614727,
+          "oracle_l1": 0.02088366262614727
+        }
+      ],
+      "timing": {
+        "checkpoint_load_s": 43.370261430740356,
+        "dit_s": 28.418885469436646,
+        "vae_s": 320.49195742607117,
+        "signal_s": 0.10605096817016602,
+        "total_s": 555.8323829174042,
+        "nfe": 16,
+        "peak_vram_gb": 3.918137550354004
+      }
+    },
+    {
+      "prompt_idx": 1,
+      "prompt": "The Bund Shanghai, with an intense shaking effect",
+      "adaptive_mean_adjacent_pixel_l1": 0.01319011269758145,
+      "fixed_fine_mean_adjacent_pixel_l1": 0.017311640704671543,
+      "fixed_coarse_mean_adjacent_pixel_l1": 0.052880752831697464,
+      "oracle_mean_adjacent_pixel_l1": 0.017311640704671543,
+      "fine_fraction": 1.0,
+      "switch_count": 0,
+      "adaptive_modes": [
+        "fine",
+        "fine",
+        "fine"
+      ],
+      "segments": [
+        {
+          "group": 1,
+          "complexity": 2418.72607421875,
+          "mode": "fine",
+          "adaptive_l1": 0.014677558094263077,
+          "fixed_fine_l1": 0.016946034505963326,
+          "fixed_coarse_l1": 0.04885353147983551,
+          "oracle_l1": 0.016946034505963326
+        },
+        {
+          "group": 2,
+          "complexity": 2465.15380859375,
+          "mode": "fine",
+          "adaptive_l1": 0.013050071895122528,
+          "fixed_fine_l1": 0.01744012162089348,
+          "fixed_coarse_l1": 0.053905732929706573,
+          "oracle_l1": 0.01744012162089348
+        },
+        {
+          "group": 3,
+          "complexity": 2690.799072265625,
+          "mode": "fine",
+          "adaptive_l1": 0.011842708103358746,
+          "fixed_fine_l1": 0.01754876598715782,
+          "fixed_coarse_l1": 0.05588299408555031,
+          "oracle_l1": 0.01754876598715782
+        }
+      ],
+      "timing": {
+        "checkpoint_load_s": 42.667176961898804,
+        "dit_s": 15.457939147949219,
+        "vae_s": 325.71066641807556,
+        "signal_s": 0.09644794464111328,
+        "total_s": 536.7821474075317,
+        "nfe": 13,
+        "peak_vram_gb": 3.918137550354004
+      }
+    },
+    {
+      "prompt_idx": 2,
+      "prompt": "A beautiful coastal beach in spring, waves lapping on sand, watercolor painting",
+      "adaptive_mean_adjacent_pixel_l1": 0.03282525514562925,
+      "fixed_fine_mean_adjacent_pixel_l1": 0.016520430023471516,
+      "fixed_coarse_mean_adjacent_pixel_l1": 0.023762645820776623,
+      "oracle_mean_adjacent_pixel_l1": 0.016520430023471516,
+      "fine_fraction": 0.0,
+      "switch_count": 0,
+      "adaptive_modes": [
+        "coarse",
+        "coarse",
+        "coarse"
+      ],
+      "segments": [
+        {
+          "group": 1,
+          "complexity": 1242.9901123046875,
+          "mode": "coarse",
+          "adaptive_l1": 0.032777201384305954,
+          "fixed_fine_l1": 0.017007295042276382,
+          "fixed_coarse_l1": 0.02612786926329136,
+          "oracle_l1": 0.017007295042276382
+        },
+        {
+          "group": 2,
+          "complexity": 1086.0870361328125,
+          "mode": "coarse",
+          "adaptive_l1": 0.03393303602933884,
+          "fixed_fine_l1": 0.016852466389536858,
+          "fixed_coarse_l1": 0.023766716942191124,
+          "oracle_l1": 0.016852466389536858
+        },
+        {
+          "group": 3,
+          "complexity": 1020.9628295898438,
+          "mode": "coarse",
+          "adaptive_l1": 0.03176552802324295,
+          "fixed_fine_l1": 0.015701528638601303,
+          "fixed_coarse_l1": 0.02139335125684738,
+          "oracle_l1": 0.015701528638601303
+        }
+      ],
+      "timing": {
+        "checkpoint_load_s": 44.29798245429993,
+        "dit_s": 28.804269552230835,
+        "vae_s": 325.62302112579346,
+        "signal_s": 0.08996438980102539,
+        "total_s": 554.5829782485962,
+        "nfe": 16,
+        "peak_vram_gb": 3.918137550354004
+      }
+    },
+    {
+      "prompt_idx": 3,
+      "prompt": "A cyclist rides quickly along a forest trail in bright sunlight",
+      "adaptive_mean_adjacent_pixel_l1": 0.04195068217813969,
+      "fixed_fine_mean_adjacent_pixel_l1": 0.06349049632747968,
+      "fixed_coarse_mean_adjacent_pixel_l1": 0.07726958890755971,
+      "oracle_mean_adjacent_pixel_l1": 0.06349049632747968,
+      "fine_fraction": 1.0,
+      "switch_count": 0,
+      "adaptive_modes": [
+        "fine",
+        "fine",
+        "fine"
+      ],
+      "segments": [
+        {
+          "group": 1,
+          "complexity": 2496.578857421875,
+          "mode": "fine",
+          "adaptive_l1": 0.058244965970516205,
+          "fixed_fine_l1": 0.0681997612118721,
+          "fixed_coarse_l1": 0.07661595195531845,
+          "oracle_l1": 0.0681997612118721
+        },
+        {
+          "group": 2,
+          "complexity": 2300.336669921875,
+          "mode": "fine",
+          "adaptive_l1": 0.04598689079284668,
+          "fixed_fine_l1": 0.06293656677007675,
+          "fixed_coarse_l1": 0.07999835908412933,
+          "oracle_l1": 0.06293656677007675
+        },
+        {
+          "group": 3,
+          "complexity": 1952.2255859375,
+          "mode": "fine",
+          "adaptive_l1": 0.021620189771056175,
+          "fixed_fine_l1": 0.05933516100049019,
+          "fixed_coarse_l1": 0.07519445568323135,
+          "oracle_l1": 0.05933516100049019
+        }
+      ],
+      "timing": {
+        "checkpoint_load_s": 43.355061292648315,
+        "dit_s": 15.509347200393677,
+        "vae_s": 325.96795296669006,
+        "signal_s": 0.09125757217407227,
+        "total_s": 548.0225212574005,
+        "nfe": 13,
+        "peak_vram_gb": 3.918137550354004
+      }
+    }
+  ],
+  "aggregate_proxy": {
+    "adaptive": 0.02844188602951666,
+    "fixed_fine": 0.032369718576471015,
+    "fixed_coarse": 0.04395349184051156,
+    "oracle": 0.029805886714408796
+  },
+  "adaptive_minus_baseline_paired_bootstrap": {
+    "fixed_fine": {
+      "mean_difference_adaptive_minus_baseline": -0.0039278325469543525,
+      "prompt_paired_bootstrap_ci95": [
+        -0.017185242613777515,
+        0.010639915553232035
+      ],
+      "n_prompts": 4,
+      "bootstrap_reps": 20000,
+      "limitation": "prompt-level resampling with four prompts; exploratory only"
+    },
+    "fixed_coarse": {
+      "mean_difference_adaptive_minus_baseline": -0.015511605810994901,
+      "prompt_paired_bootstrap_ci95": [
+        -0.037504773431768015,
+        0.0064815618097782135
+      ],
+      "n_prompts": 4,
+      "bootstrap_reps": 20000,
+      "limitation": "prompt-level resampling with four prompts; exploratory only"
+    },
+    "offline_oracle": {
+      "mean_difference_adaptive_minus_baseline": -0.0013640006848921367,
+      "prompt_paired_bootstrap_ci95": [
+        -0.015179732038329043,
+        0.011198236839845777
+      ],
+      "n_prompts": 4,
+      "bootstrap_reps": 20000,
+      "limitation": "prompt-level resampling with four prompts; exploratory only"
+    }
+  },
+  "aggregate_online_usage": {
+    "fine_fraction": 0.5,
+    "coarse_fraction": 0.5,
+    "mean_switch_count_per_prompt": 0.0,
+    "timing_means": {
+      "checkpoint_load_s": 43.42262053489685,
+      "dit_s": 22.047610342502594,
+      "vae_s": 324.44839948415756,
+      "signal_s": 0.09593021869659424,
+      "total_s": 548.8050074577332,
+      "nfe": 14.5,
+      "peak_vram_gb": 3.918137550354004
+    },
+    "vae_timing_caveat": "The recorded VAE component omits the initial coarse-prefix decode used to compute the first online signal; that decode is included in total_s. Therefore vae_s is a lower bound, while total_s includes observed setup, all decodes, controller/signal work, model loads, and generation."
+  },
+  "comparison_caveat": "Fixed-mode and adaptive runs are prompt/seed paired but follow different trajectories; oracle uses both fixed outcomes and is offline only.",
+  "limitations": [
+    "four held-out prompts and one seed; bootstrap intervals are exploratory",
+    "adjacent-pixel temporal L1 depends on motion/content and is not perceptual quality",
+    "oracle is offline and uses the paired fixed-mode outcomes",
+    "online run uses the calibration-fitted complexity selector, while the earlier residual analysis is an offline secondary analysis",
+    "the per-component VAE timer omits the initial prefix decode; full total_s includes that decode"
+  ],
+  "proposal_coverage": {
+    "RQ2": "real online adaptive generation completed; exploratory comparison against fixed modes and offline oracle",
+    "RQ3": "not evaluated in this phase; recovery is Phase 5",
+    "deviations": [
+      "text-to-video, not action/camera-conditioned",
+      "lambda_action=0",
+      "no EMA",
+      "no reference-video quality metrics"
+    ]
+  }
+}

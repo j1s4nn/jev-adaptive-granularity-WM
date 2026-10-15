@@ -1,0 +1,10 @@
+{
+  "id": "j1s4nn/download-wan-a",
+  "title": "download-wan-a",
+  "code_file": "download_wan_a.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": true
+}

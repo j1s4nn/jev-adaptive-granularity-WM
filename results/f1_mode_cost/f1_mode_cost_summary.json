@@ -1,0 +1,101 @@
+{
+  "run_id": "20261011_011751",
+  "phase": "f1-mode-cost",
+  "status": "complete",
+  "start_time": "2026-10-11T01:17:51.906319",
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c1_1_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "c3_3_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "protocol": {
+    "prompts": [
+      "a banana",
+      "a bear catching a salmon in its powerful jaws",
+      "A person is air drumming"
+    ],
+    "seed": 17,
+    "horizons": [
+      45,
+      57,
+      81
+    ],
+    "modes": {
+      "ref_c1_1_s4": {
+        "ckpt": "c1_1_step4",
+        "first": 1,
+        "chunk": 1,
+        "steps": null,
+        "schedule": "",
+        "default_steps": 4
+      },
+      "fine_c1_1_s1": {
+        "ckpt": "c1_1_step2",
+        "first": 1,
+        "chunk": 1,
+        "steps": [
+          4,
+          1
+        ],
+        "schedule": "15/16,5/6,5/8;",
+        "default_steps": 4
+      },
+      "fine_c1_1_s2": {
+        "ckpt": "c1_1_step2",
+        "first": 1,
+        "chunk": 1,
+        "steps": [
+          4,
+          2
+        ],
+        "schedule": "15/16,5/6,5/8;5/6",
+        "default_steps": 4
+      },
+      "coarse_c3_3_s4": {
+        "ckpt": "c3_3_step4",
+        "first": 3,
+        "chunk": 3,
+        "steps": null,
+        "schedule": "",
+        "default_steps": 4
+      },
+      "coarse_c3_3_s2": {
+        "ckpt": "c3_3_step2",
+        "first": 3,
+        "chunk": 3,
+        "steps": [
+          4,
+          2
+        ],
+        "schedule": "15/16,5/6,5/8;5/6",
+        "default_steps": 2
+      },
+      "coarse_c3_3_s1": {
+        "ckpt": "c3_3_step2",
+        "first": 3,
+        "chunk": 3,
+        "steps": [
+          4,
+          1
+        ],
+        "schedule": "15/16,5/6,5/8;",
+        "default_steps": 1
+      }
+    },
+    "fps": 8,
+    "split": "development (Phase 5B calibration prompts only)",
+    "limitations": [
+      "reference is an internal high-compute model, not ground truth",
+      "3 prompts",
+      "single seed"
+    ]
+  },
+  "n_complete": 9,
+  "n_expected": 9,
+  "verdict": "PASS",
+  "end_time": "2026-10-11T04:38:54.839195"
+}

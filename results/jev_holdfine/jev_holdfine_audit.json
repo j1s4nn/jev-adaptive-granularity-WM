@@ -1,0 +1,39 @@
+{
+  "phase": "E-JEV-3b-holdfine-audit",
+  "generated_utc": "2026-10-12T06:01:46.009146+00:00",
+  "input_sha256": "b8784823b24d2eab106c4eb0ca43f9a07f63258e965b641f102ecf5cc708b2ae",
+  "n_rollouts": 16,
+  "by_policy": {
+    "fixed_fine": {
+      "n": 8,
+      "mean_reference_l1": 0.29982313700020313,
+      "terminal_reference_l1": 0.29782301001250744,
+      "dit_s": 18.594246089458466,
+      "vae_s": 128.6917334496975,
+      "total_s": 183.24232178926468,
+      "forwards": 29.0,
+      "hold_count": 0.0,
+      "fine_count": 4.0
+    },
+    "jev_holdfine": {
+      "n": 8,
+      "mean_reference_l1": 0.2988106431439519,
+      "terminal_reference_l1": 0.298813683912158,
+      "dit_s": 15.07310375571251,
+      "vae_s": 128.57450392842293,
+      "total_s": 167.02851608395576,
+      "forwards": 22.25,
+      "hold_count": 1.125,
+      "fine_count": 2.875
+    }
+  },
+  "paired": {
+    "jev_holdfine_vs_fixed_fine": {
+      "regret_diff_mean": -0.0010124938562512398,
+      "total_s_diff_mean": -16.213805705308914,
+      "dit_s_diff_mean": -3.5211423337459564,
+      "vae_s_diff_mean": -0.11722952127456665,
+      "n": 8
+    }
+  }
+}

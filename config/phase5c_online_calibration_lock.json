@@ -1,0 +1,26 @@
+{
+  "phase": "phase5c-online-coarse-context-calibration",
+  "scope": "online signal distribution on 11 unused calibration prompts; no held-out policies or quality claim",
+  "manifest_sha256": "cce4c8c35cea378a6f2bd040e5468692a04f7e66f324aaddaedba33e63188b01",
+  "pilot_lock_sha256": "79a98b7685f633c23822ce7147fb9a42582ba0c00455057e22eb282de9fe8002",
+  "calibration_prompt_indices": [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11],
+  "excluded_pilot_prompt_index": 6,
+  "seed": 17,
+  "horizon": 57,
+  "initial_prefix_latent_frames": 3,
+  "continuation_mode": "coarse",
+  "scored_decisions_per_prompt": 4,
+  "signals": ["warp", "motion", "complexity"],
+  "signal_context": "decoded prior coarse trajectory before each target segment",
+  "threshold_fit_after_audit": {
+    "signal": "warp",
+    "direction": -1,
+    "target_fine_fractions": [0.25, 0.5, 0.75],
+    "rule": "For target fraction b, take the linear empirical quantile at 1-b of the 44 direction-oriented online coarse-context scores; select fine when score >= threshold. Fit only after all 11 calibration cases pass the local audit."
+  },
+  "limitations": [
+    "coarse-context scores may shift once fine modes are selected",
+    "pilot prompt 6 is excluded from threshold fitting because its scores were already inspected",
+    "no residual probe, reference video, independent quality endpoint, or held-out result"
+  ]
+}

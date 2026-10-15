@@ -1,0 +1,9 @@
+# Phase 0: baseline_fine_step1
+tau_high: 0.5
+tau_low: 0.2
+recovery_length: 5
+lambda_action: 0.0  # Text-only (no action checkpoint)
+initial_mode: coarse
+
+# Will be calibrated in E2 from AUROC analysis
+# These are initial estimates based on E1 error curves

@@ -1,0 +1,611 @@
+﻿% ============================================================
+%  Research proposal: Uncertainty-Guided Adaptive Temporal
+%  Granularity with Hysteretic Error Recovery for Interactive
+%  Video World Models
+%
+%  Sources: W01_Research_Planning.md, W02_Proposal_Outline.md,
+%  W03_figure_table_plan.md, W04_proposal_source_map.md
+%  Bibliography: ../references.bib (Zotero-managed, biblatex)
+%  Compile: latexmk -pdf  (pdflatex + biber)
+% ============================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{amsthm}
+\newtheorem{proposition}{Proposition}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{url}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, fit, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+
+\usepackage{csquotes}
+\usepackage[backend=biber, style=authoryear-comp, sorting=nyt,
+            maxcitenames=2, maxbibnames=99, dashed=false]{biblatex}
+\addbibresource{../references.bib}
+
+\usepackage[colorlinks=true, linkcolor=black, citecolor=blue!50!black,
+            urlcolor=blue!50!black]{hyperref}
+
+\setlength{\parskip}{0.35em}
+\setlength{\parindent}{0pt}
+\emergencystretch=2.5em
+
+\title{\large\bfseries Uncertainty-Guided Adaptive Temporal Granularity\\ with Hysteretic Error Recovery\\ for Interactive Video World Models}
+\author{Hossen Md Jisan\\[2pt]
+        \small B.Sc.\ (Hons.) in Artificial Intelligence, 4th year\\[2pt]
+        \small School of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST)\\[2pt]
+        \small \texttt{jisanahammed1952@gmail.com}}
+\date{September 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\noindent Interactive video world models must generate future frames causally and do so at low latency. The Causal Forcing family demonstrates fixed frame-wise ($K=1$) and chunk-wise ($K=3$) regimes, while Causal-rCM releases a matched pair of checkpoints and reports fragility in long frame-wise rollouts. This proposal studies a lightweight controller that estimates a pre-generation signal, selects frame-wise or chunk-wise generation with two thresholds, and forces a short fine-grained recovery spell after a spike. The controller operates on frozen Causal-rCM checkpoints; no world-model training is required. The updated evaluation defines a coarse-unsafe moment by \emph{reference regret}: the coarse segment is farther from a fixed high-compute c1-1 step-4 internal reference than the fine segment by a calibrated margin. The study tests whether uncertainty predicts this reference-defined regret better than motion or complexity, whether budget-matched switching improves the quality--latency--compute frontier over fixed and random same-budget policies, and whether recovery + hysteresis reduces switching and long-horizon regret. The verified environment is text-to-video; action-conditioned control is retained as future work because no compatible checkpoint is available. All hypotheses remain untested and negative results are pre-registered as informative outcomes.
+\end{abstract}
+
+\section{Background and Problem}\label{sec:background}
+
+An interactive video world model is a generative model that streams future frames of a scene conditioned on past frames and on user control, typically camera movement. Three requirements follow from this definition: (i) \emph{causal rollout}, in which each frame is generated from past context only so that generation can stream; (ii) \emph{controllable generation}, in which the model responds to actions such as camera trajectories; and (iii) \emph{low-latency generation}, in which frames arrive quickly enough for interaction \parencite{zhaoMinWMFullStackOpenSource2026a}.
+
+The motivating application is interactive, but the verified Causal-rCM checkpoints available in this environment are text-to-video. The empirical study therefore tests the causal granularity and recovery mechanism under text conditioning; it does not claim action response or camera control.
+
+Recent work on autoregressive (AR) diffusion distillation has made such models practical in real time. The Causal Forcing family converts bidirectional video diffusion models into few-step causal generators, and two generation granularities have been demonstrated. Throughout this proposal, $K$ denotes the number of frames generated per AR step and $S$ the number of denoising steps applied to that segment.
+
+\begin{itemize}[leftmargin=1.6em, itemsep=2pt]
+\item \textbf{Causal Forcing (CF)} generates chunk-wise: $K=3$ latent frames per step with $S=4$ sampling steps, reporting a first-frame latency of $0.60$--$0.69$\,s and a VBench total score of $84.04$ \parencite{zhuCausalForcingAutoregressive2026a}.
+\item \textbf{Causal Forcing++ (CF++)} studies the more aggressive frame-wise regime: $K=1$ frame per step with $S\in\{1,2,4\}$ sampling steps, reporting a first-frame latency of $0.27$\,s (a 50\% reduction over CF) and VBench totals of $84.14$ (2-step), $83.35$ (1-step), and $84.10$ (4-step) \parencite{zhaoCausalForcingScalable2026a}.
+\item \textbf{minWM} packages this line of work into a full-stack, open-source, camera-controllable few-step world-model pipeline \parencite{zhaoMinWMFullStackOpenSource2026a}.
+\item \textbf{Causal-rCM} unifies teacher-forcing consistency distillation with self-forcing DMD into a single open recipe and releases \emph{matched} frame-wise (c1-1, $K=1$) and chunk-wise (c3-3, $K=3$) checkpoints distilled from the same base model, reaching state-of-the-art streaming scores in both regimes and a VBench-T2V total of $84.63$ with only 1--2 sampling steps \parencite{zhengCausalrCMUnifiedTeacherForcing2026}.
+\end{itemize}
+
+Both regimes are trained with \emph{teacher forcing}: the model is supervised on ground-truth past frames, but at inference it must condition on its own generated frames. This train--test mismatch is known as \emph{exposure bias} \parencite{huangSelfForcingBridging2025}. The authors of CF++ analyze the frame-wise regime directly: reducing the chunk size increases the number of AR calls per video while fewer sampling steps increase the approximation error within each call, and the two effects compound during self-rollout, amplifying exposure bias \parencite[Sec.~3.1]{zhaoCausalForcingScalable2026a}.
+
+The two regimes therefore trade opposing properties. Frame-wise generation offers fine response granularity and low first-frame latency, but it is the regime the authors flag for error accumulation. Chunk-wise generation amortizes a four-step denoising pass over three frames and is the more stable of the two published regimes, but it responds more coarsely and with higher first-frame latency. Today this choice is made once, per model, at design time. Causal-rCM's matched c1-1/c3-3 pair supplies both regimes from one recipe, one base model, and one training distribution, so differences measured between them are attributable to granularity itself rather than to confounded recipes; this proposal adopts that pair as its experimental backbone. Within the reviewed literature, no method decides at run time, during a rollout, whether the next segment should be generated frame-wise or chunk-wise. Moreover, the published evaluations cover only short clips of roughly $10$--$81$ frames \parencite{zhuCausalForcingAutoregressive2026a,zhaoCausalForcingScalable2026a,zhaoMinWMFullStackOpenSource2026a}, so the behavior of either regime beyond this horizon remains unquantified.
+
+Figure~\ref{fig:evolution} summarizes how the field reached real-time generation and where the decision problem sits.
+
+\begin{figure}[t]
+\centering
+\input{figures/fig_research_evolution.tex}
+\caption{Research evolution from bidirectional diffusion to real-time causal generation, and the remaining challenge addressed by this proposal. Causal-rCM's matched c1-1/c3-3 pair is the backbone; data points are published numbers (CF, CF++, Causal-rCM).}
+\label{fig:evolution}
+\end{figure}
+
+\section{Motivation}\label{sec:motivation}
+
+Causal-rCM, the backbone of this proposal, states its own core limitation directly: ``frame-wise T2V training with long rollout depth is still fragile'' \parencite{zhengCausalrCMUnifiedTeacherForcing2026}. The paper reports that its 4-step frame-wise model develops \emph{camera drift} after extended training --- a consistent directional camera bias that persists across samples --- and can be trained stably for only about 1{,}000 iterations, whereas the 1--2-step frame-wise variants largely suppress this drift. The paper's own suggested fix is action conditioning: when actions provide an explicit motion prior, the ambiguity of camera evolution is reduced. The verified text-to-video checkpoints expose no action interface, so the present study records action-augmented control as future work and isolates the visual granularity question.
+
+Real-time interactive generation with competitive quality exists in two fixed regimes, but the granularity decision is fixed per model, and the signal that should drive such a decision is open. Adjacent adaptive methods allocate computation by \emph{motion}, \emph{content}, or \emph{device budget}: action-guided variable-length chunking \parencite{shangLongScapeAdvancingLongHorizon2025}, content-adaptive token allocation \parencite{xiongEVATokAdaptiveLength2026,liLearningAdaptiveTemporally2025}, motion-weighted caching \parencite{xuMotionAwareCachingEfficient2026}, and budget-driven flexible chunking \parencite{maFlexForcingUnifiedAutoregressive2026}. None of these selects generation granularity from \emph{predictive uncertainty}.
+
+The limitation matters because interactive sessions last minutes and involve hundreds to thousands of frames, whereas published evaluations stop at roughly $10$--$81$ frames. If frame-wise error accumulation grows with rollout length, the regime that responds fastest may be the regime that degrades the longest sessions. No published study quantifies this: the authors of CF++ flag the issue as unresolved, and Causal-rCM documents the drift failure mode directly.
+
+The research motivation is therefore two-fold in the verified environment: (i) to test whether predictive uncertainty --- the model's own estimate of its upcoming prediction error --- is a more useful signal for choosing generation granularity than motion or scene complexity; and (ii) to test whether a recovery + hysteresis mechanism that reacts to detected spikes can control long-horizon reference regret. Causal-rCM's action-conditioning suggestion remains a documented future extension because the verified text-to-video checkpoints expose no action interface. Table~\ref{tab:motivation} condenses this chain.
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.4cm} >{\raggedright\arraybackslash}p{4.4cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Existing capability} & \textbf{Remaining limitation} & \textbf{Motivation} \\
+\midrule
+Real-time AR video generation with high quality (CF, CF++, minWM, Causal-rCM) & Granularity is fixed per model; no run-time choice between fine and coarse & If fine/coarse can be chosen per moment, the quality--latency--compute trade-off may improve over any fixed mode \emph{[assumption --- that is what this study tests]} \\
+Frame-wise first-frame latency $0.27$\,s & The CF++ analysis: the two effects ``compound during self-rollout, amplifying exposure bias'' & Long interactive sessions are where error accumulation matters most; no paper quantifies it beyond $\sim$81 frames \\
+Causal-rCM matched c1-1/c3-3 checkpoints; its 4-step frame-wise model develops camera drift after extended training & The verified checkpoints expose no action-conditioned interface & The present study isolates visual signals; action-augmented control is future work \emph{[explicit scope limitation]} \\
+Adaptive allocation of tokens, caches, and chunking exists (LongScape, EVATok, AdapTok, MotionCache, Flex-Forcing) & None selects granularity from \emph{prediction uncertainty}; none recovers from an uncertainty spike and re-stabilizes & Uncertainty reflects the model's own expected error --- a candidate \emph{direct} signal \emph{[assumption --- tested in RQ1]} \\
+\bottomrule
+\end{tabularx}
+\caption{Existing capability, remaining limitation, and motivation. Evidence-backed rows cite the Causal Forcing family (including Causal-rCM) and the adaptive neighbors; the rows marked ``assumption'' are the claims this proposal tests.}
+\label{tab:motivation}
+\end{table}
+
+\section{Related Work}\label{sec:related}
+
+Related work is organized by research theme rather than paper by paper. Table~\ref{tab:themes} summarizes the themes; Table~\ref{tab:claimboundary} states the precise claim boundary against the closest adjacent systems.
+
+\textbf{Theme A --- Autoregressive diffusion distillation for real-time interactive video.}
+Early attempts to convert bidirectional video diffusion models directly into causal AR students achieved real-time speeds but suffered quality degradation; the Causal Forcing line attributes this to an architectural gap and a violation of frame-level injectivity, and proposes causal-teacher distillation to bridge it \parencite{zhuCausalForcingAutoregressive2026a,huangSelfForcingBridging2025}. CF++ replaces trajectory-based ODE distillation with causal consistency distillation, reducing stage-2 training cost by roughly $4\times$ and first-frame latency by 50\% while maintaining quality \parencite{zhaoCausalForcingScalable2026a}. minWM extends the family to camera-controllable few-step world models within a full-stack open-source framework \parencite{zhaoMinWMFullStackOpenSource2026a}, and MAGI-1 demonstrates chunk-wise AR generation at scale \parencite{aiMAGI1AutoregressiveVideo2025}. \emph{Strength:} real-time, high-quality causal generation. \emph{Limitation:} granularity is a design-time constant, and long-rollout error accumulation is acknowledged but neither quantified nor mitigated.
+
+\textbf{Theme B --- Temporal generation granularity.}
+Generation granularity is a recognized design axis. Frame-wise ($K=1$) and chunk-wise ($K=3$) generation are the two published points of the Causal Forcing family; semi-autoregressive block prediction \parencite{renNextBlockPrediction2025} and non-quantized frame-by-frame AR generation \parencite{dengAutoregressiveVideoGeneration2025} explore other intermediate units; Flex-Forcing makes chunking flexible over the temporal axis and denoising steps according to device budgets, reporting better long-video stability than rigid schedules \parencite{maFlexForcingUnifiedAutoregressive2026}. \emph{Strength:} granularity can be flexibly configured and measurably affects quality, latency, and stability. \emph{Limitation:} the selection is budget-driven or fixed ahead of time; no reviewed method selects granularity per moment from a prediction-quality signal at run time.
+
+\textbf{Theme C --- Adaptive temporal allocation.}
+Several methods move from uniform to adaptive temporal budgets. LongScape partitions embodied world-model rollouts into variable-length chunks guided by the semantic context of robotic actions, using shorter chunks around gripper changes and substantial motion \parencite{shangLongScapeAdvancingLongHorizon2025}. EVATok and AdapTok allocate tokens adaptively across frames according to video content \parencite{xiongEVATokAdaptiveLength2026,liLearningAdaptiveTemporally2025}, and DLFR-VAE and VFRTok vary the latent frame rate by content complexity \parencite{yuanDLFRVAEDynamicLatent2025,zhongVFRTokVariableFrame2025}. \emph{Strength:} sample-wise, content-aware allocation is established. \emph{Limitation:} the driving signal is action, motion, or content complexity, not the model's predicted error; LongScape chunks by semantic action context rather than by expected rollout error, and no method recovers from a detected instability.
+
+\textbf{Theme D --- Adaptive computation and caching.}
+Adaptive computation in AR video is also established. FlowCache applies chunk-wise flow caching with joint importance--redundancy KV compression, achieving $2.38\times$ and $6.7\times$ speedups on MAGI-1 and SkyReels-V2 \parencite{maFlowCachingAutoregressive2026}. MotionCache links high-motion pixels to additional denoising ``to prevent error accumulation,'' achieving $6.28\times$ and $1.64\times$ speedups \parencite{xuMotionAwareCachingEfficient2026}. At the system level, SlackServe reallocates serving resources by playout slack \parencite{xiaAdaptiveResourceManagement2026}; SANTS adapts denoising depth for video-to-action world models \parencite{sunSANTSStateAdaptiveScheduler2026}; and Focused Forcing adapts KV selection per generated frame and per head \parencite{caiFocusedForcingContentAware2026}. The principle that computation should follow input difficulty has classical precedents: Adaptive Computation Time \parencite{gravesAdaptiveComputationTime2017}, SkipNet \parencite{wangSkipNetLearningDynamic2018}, and BranchyNet \parencite{teerapittayanonBranchyNetFastInference2017}. \emph{Strength:} input-dependent computation is a mature principle. \emph{Limitation:} these methods adapt caching, denoising depth, KV budgets, or serving resources --- not the \emph{temporal generation granularity} --- and use motion or similarity rather than predictive uncertainty as the signal.
+
+\textbf{Theme E --- Causal world modeling, multi-chunk prediction, and uncertainty.}
+Next Forcing frames AR video generation as causal world modeling and predicts several future chunks simultaneously with lightweight auxiliary modules, improving convergence and RoboTwin accuracy \parencite{xuNextForcingCausal2026}. Diagonal Distillation uses an asymmetric step schedule (more steps early, fewer later) to reduce error propagation in streaming generation \parencite{liuStreamingAutoregressiveVideo2026}, and Causal-rCM unifies teacher-forcing and self-forcing objectives for AR distillation \parencite{zhengCausalrCMUnifiedTeacherForcing2026}. \emph{Strength:} multi-horizon prediction and streaming recipes. \emph{Limitation:} prediction horizons and step schedules are fixed; no method uses uncertainty to choose the granularity of the current rollout step. A broader uncertainty-aware video-prediction literature exists, but no work has yet been identified that uses predictive uncertainty specifically to select frame-wise versus chunk-wise generation during interactive rollouts; a dedicated re-search is scheduled for Week~7 to re-confirm this before submission.
+
+\textbf{Theme F --- Concurrent uncertainty-adaptive computation.}
+Work published during this proposal's drafting uses the model's own prediction statistics as a compute-allocation signal. Surprise Forcing treats memory eviction and denoising depth as online resource-allocation problems: a surprise-gated memory bank summarizes evicted frames with value-token descriptors, and surprise-aware denoising estimates chunk difficulty from the maximum adjacent-frame cosine distance after the first denoising pass, skipping intermediate steps for comparatively easy chunks \parencite{shiSurpriseForcingWhat2026}. DSA trains a lightweight confidence head jointly with the generator under a distribution-matching distillation objective to estimate per-frame denoising reliability; simple frames terminate early, while complex frames receive additional refinement \parencite{leDSADynamicStep2026}. Entropy-Guided $k$-Guard (ENkG) adapts the candidate set of each token to the entropy of its predicted distribution, suppressing error accumulation in long-horizon generation \parencite{hanEntropyGuidedKGuard2026}. \emph{Strength:} independent, concurrent evidence that the model's own prediction statistics are a usable allocation signal. \emph{Limitation:} these methods do not switch between the matched c1-1 and c3-3 temporal granularities in the present text-to-video setting; action-augmented control is outside the verified scope.
+
+\textbf{Theme G --- Hysteresis switching and surprise-based boundary detection.}
+Two adjacent settings already use thresholded, evidence-accumulating mode decisions. DASH-OPD performs adaptive, bidirectional executor switching (student$\leftrightarrow$teacher) in on-policy distillation: drift and recovery evidence are accumulated over multiple turns, and the executor switches only when either type of evidence exceeds its corresponding threshold, explicitly introducing hysteresis to prevent rapid switching triggered by transient discrepancy fluctuations \parencite{xiaDASHOPDDiscrepancy2026}. SUNTA drives chunk boundaries in hierarchical state-space video prediction by prediction error, using internal inconsistency as a top-down surprise metric so that chunking follows the intrinsic temporal structure of the data \parencite{iiyamaSUNTAHierarchical2026}. \emph{Strength:} precedent for two-threshold, evidence-accumulating mode switching (DASH-OPD) and for error-driven temporal segmentation (SUNTA). \emph{Limitation:} DASH-OPD switches executors during training-time distillation, not generation granularity during an interactive rollout; SUNTA segments latent sequence models, not few-step video diffusion checkpoints; neither includes a control-input term.
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.7cm} >{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Theme} & \textbf{Representative methods} & \textbf{Main capability} & \textbf{Limitation} \\
+\midrule
+A. AR distillation for real-time video & Self-Forcing, CF, CF++, minWM, Causal-rCM, MAGI-1 & Real-time, high-quality causal generation; matched c1-1/c3-3 pair from one recipe (VBench-T2V 84.63) & Fixed granularity; long-rollout error unaddressed; frame-wise camera drift reported (Causal-rCM) \\
+B. Generation granularity & CF ($K{=}3$), CF++ ($K{=}1$), Causal-rCM (c1-1/c3-3), Next Block Prediction, Flex-Forcing & Granularity as a design axis; flexible chunking by budget; matched fine/coarse checkpoints & No run-time, per-moment granularity selection \\
+C. Adaptive temporal allocation & LongScape, EVATok, AdapTok, DLFR-VAE, VFRTok & Content/action-adaptive chunk and token allocation & Signal is motion/content/action, not uncertainty \\
+D. Adaptive computation and caching & FlowCache, MotionCache, SlackServe, SANTS, ACT, SkipNet, BranchyNet & Computation follows content, motion, or load & Adapts caching effort, not generation granularity \\
+E. Causal world modeling, multi-chunk prediction & Next Forcing, Diagonal Distillation, Causal-rCM & Multi-horizon prediction; unified teacher/self-forcing recipe & Fixed horizons; no uncertainty-driven granularity control; action-conditioning remedy is a training-time prior \\
+F. Concurrent uncertainty-adaptive computation & Surprise Forcing, DSA, ENkG & Uncertainty/surprise/entropy-guided adaptive compute & Prompt-conditioned, non-interactive; no control term; no granularity switching \\
+G. Hysteresis switching; surprise-based boundaries & DASH-OPD, SUNTA & Thresholded, evidence-accumulating switching; error-driven chunking & Switches executors/segments, not run-time granularity in interactive video diffusion \\
+\bottomrule
+\end{tabularx}
+\caption{Related work organized by research theme.}
+\label{tab:themes}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.1cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Existing work} & \textbf{What it adapts} & \textbf{What remains different from the proposed study} \\
+\midrule
+Causal Forcing++ & Frame-wise vs.\ chunk-wise generation models & Does not establish uncertainty-driven online granularity selection \\
+Causal-rCM & Matched frame-wise c1-1 ($K{=}1$) and chunk-wise c3-3 ($K{=}3$) checkpoints from one recipe; VBench-T2V 84.63 & Does not select granularity from uncertainty at run time; its action-conditioning remedy is a training-time prior, not a run-time controller \\
+LongScape & Action/motion-guided variable chunk length & Uses action/motion context rather than rollout uncertainty; no spike recovery \\
+Flex-Forcing & Flexible temporal/denoising chunking by device budget & Budget-driven; no uncertainty-triggered online switching as the central policy \\
+EVATok / AdapTok / DLFR-VAE / VFRTok & Video token length and latent frame rate & Tokenization/representation, not interactive rollout granularity \\
+FlowCache / MotionCache & Chunk-level cache computation by similarity/motion & Cache reuse, not generation granularity; motion signal, not uncertainty \\
+Next Forcing / Diagonal Distillation & Multi-chunk future prediction; fixed asymmetric step schedule & Fixed horizons/schedules; no uncertainty-controlled granularity \\
+Surprise Forcing / DSA / ENkG & Uncertainty-adaptive denoising steps, memory, or sampling & Non-interactive; no control input; no frame-vs-chunk granularity decision \\
+DASH-OPD / SUNTA & Evidence-thresholded executor switching; surprise-based chunk boundaries & Training-time executors or latent segmentation, not run-time granularity in interactive video diffusion \\
+\addlinespace
+\textbf{Proposed study} & \textbf{Prediction-uncertainty-guided temporal granularity + recovery/hysteresis} & \textbf{Research question to be validated} \\
+\bottomrule
+\end{tabularx}
+\caption{Claim boundary: what adjacent systems adapt versus what this proposal investigates. The last row is a research question to be validated, not a novelty claim.}
+\label{tab:claimboundary}
+\end{table}
+
+The synthesis is direct: adaptive computation for AR video is established (Themes C--D), temporal granularity itself is flexible (Themes B--C), concurrent work confirms that prediction statistics are a usable allocation signal but does not switch the matched c1-1/c3-3 temporal unit (Theme F), and hysteresis-style thresholded switching has precedent in adjacent tasks (Theme G). What the reviewed literature does not do is (i) treat predictive uncertainty as the run-time signal for selecting between these two temporal granularities, or (ii) add a recovery + hysteresis mechanism that reacts to uncertainty spikes and re-stabilizes. Action augmentation is outside the verified checkpoint scope.
+
+\section{Research Gap}\label{sec:gap}
+
+The gap follows a five-step logic.
+
+\begin{enumerate}[leftmargin=2.2em, itemsep=2pt]
+\item \textbf{Existing capability.} Two fixed generation regimes exist and are validated on short clips: frame-wise ($K=1$, $S\in\{1,2,4\}$, CF++) and chunk-wise ($K=3$, $S=4$, CF) \parencite{zhaoCausalForcingScalable2026a,zhuCausalForcingAutoregressive2026a}; Causal-rCM later released \emph{matched} frame-wise (c1-1) and chunk-wise (c3-3) checkpoints from a single recipe \parencite{zhengCausalrCMUnifiedTeacherForcing2026}. Flexible and adaptive temporal allocation exists in neighboring work, driven by action, motion, content, or device budget \parencite{shangLongScapeAdvancingLongHorizon2025,maFlexForcingUnifiedAutoregressive2026,xiongEVATokAdaptiveLength2026,liLearningAdaptiveTemporally2025,xuMotionAwareCachingEfficient2026}.
+\item \textbf{Remaining limitation.} No reviewed method selects between fine and coarse generation at run time; no adaptive method uses predictive uncertainty as the decision signal; no method reacts to an uncertainty \emph{spike} by switching finer and then \emph{returns} to coarse only after uncertainty stays low (recovery + hysteresis); and long-horizon error accumulation is acknowledged \parencite{zhaoCausalForcingScalable2026a,zhengCausalrCMUnifiedTeacherForcing2026} but neither quantified beyond short clips nor mitigated.
+\item \textbf{Why it matters.} The quantity that compounds over a rollout is the model's own prediction error, and interactive sessions are long by construction. A signal that directly reflects expected error is therefore a natural candidate for deciding when careful (fine) generation is worth its cost --- but this remains an untested hypothesis. Causal-rCM's camera-drift report adds a second, control-side candidate: the paper's own suggested remedy (action conditioning) exists only as a training-time prior today.
+\item \textbf{Research opportunity.} Combine (a) a pre-generation predictive-uncertainty score, (b) a run-time fine/coarse threshold controller, and (c) a recovery + hysteresis mechanism, and compare this combination against fixed, random same-budget, and motion/complexity-driven controllers under matched compute. An action-augmented extension is left for future work.
+\item \textbf{Proposed investigation.} This project: a lightweight controller on frozen, pre-trained Causal-rCM checkpoints (matched c1-1/c3-3), evaluated on 45--81-frame text-to-video rollouts with an internal high-compute reference. Camera-controlled action conditioning is outside the verified scope.
+\end{enumerate}
+
+The gap is stated precisely, not globally: \emph{within interactive autoregressive video world models built on the Causal Forcing family, no reviewed method selects fine versus coarse generation granularity at run time from predictive uncertainty, and none combines that selection with a recovery + hysteresis mechanism to control long-horizon error.} Adjacent prior art covers other signals, other decision targets, or fixed horizons. A targeted novelty screen against the closest adjacent systems (SlackServe, SANTS, Focused Forcing, DLFR-VAE, VFRTok, Diagonal Distillation, Causal-rCM) \parencite{xiaAdaptiveResourceManagement2026,sunSANTSStateAdaptiveScheduler2026,caiFocusedForcingContentAware2026,yuanDLFRVAEDynamicLatent2025,zhongVFRTokVariableFrame2025,liuStreamingAutoregressiveVideo2026,zhengCausalrCMUnifiedTeacherForcing2026} found no exact direct match for uncertainty-conditioned frame/chunk mode switching, and the project's novelty assessment explicitly warns against global novelty claims. Table~\ref{tab:gapevidence} collects the evidence behind the gap, and Figure~\ref{fig:gap} visualizes the chain.
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{4.2cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Current state} & \textbf{Limitation} & \textbf{Evidence} \\
+\midrule
+Two fixed regimes, validated on short clips & No run-time selection between fine and coarse & CF/CF++/minWM/Causal-rCM evaluate $\sim$10--81-frame clips; the literature review records no systematic $(K,S)$ study and no run-time selection \\
+Adaptive neighbors use motion / content / budget & No predictive-uncertainty signal & LongScape (action/motion); MotionCache (motion); EVATok/AdapTok (content); Flex-Forcing (device budget); Surprise Forcing/DSA/ENkG use prediction statistics but are non-interactive \\
+No recovery mechanism & No reaction to uncertainty spikes, no re-stabilization & Absence in the reviewed set (novelty screen); DASH-OPD applies hysteresis only to training-time executor switching \\
+Long-horizon error acknowledged & Not quantified beyond $\sim$81 frames; no mitigation & CF++ Sec.~3.1 exposure-bias analysis; Causal-rCM's camera-drift report; all four papers' short-clip evaluations \\
+\bottomrule
+\end{tabularx}
+\caption{Evidence behind the research gap.}
+\label{tab:gapevidence}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\input{figures/fig_gap.tex}
+\caption{Research gap: from current methods, through the unresolved problem, to the research opportunity of this proposal.}
+\label{fig:gap}
+\end{figure}
+
+\textbf{Scope (what this project does).} Reuse frozen, pre-trained Causal-rCM checkpoints: the matched frame-wise c1-1 ($K=1$) and chunk-wise c3-3 ($K=3$) pair, plus the available c1-1 step-4 checkpoint as a high-compute internal reference. Build a cheap pre-generation signal, a threshold controller, and a recovery + hysteresis mechanism. Compare uncertainty, residual, warp, motion, and complexity signals at pre-registered fine-budget operating points against fixed, random same-budget, and offline-oracle policies. Measure reference regret, temporal stability, latency, compute, and memory over 45--81-frame rollouts where the T4 permits. \textbf{Out of scope (what this project does not claim).} Action-conditioned or camera-controlled generation (no verified compatible checkpoint is available); training a new world model; intermediate granularities $K=2$ or $K=4$; reinforcement-learning policies; human studies; and formal error-propagation theory. Reference regret is an internal teacher-reference measure, not ground-truth video quality.
+
+\section{Research Questions}\label{sec:rq}
+
+\textbf{MRQ (main research question).} Can predictive uncertainty (``how unsure the model is'') be used at run time to decide whether to generate one frame or several frames in an interactive video world-model rollout, and does adding a recovery + hysteresis mechanism improve the quality--latency--compute trade-off over fixed modes?
+
+\begin{itemize}[leftmargin=1.6em, itemsep=2pt]
+\item \textbf{RQ1 (the signal).} Does a calibrated uncertainty score detect segments with higher coarse-versus-fine regret relative to a fixed high-compute reference, with higher grouped AUROC than motion-only and complexity-only scores? \emph{Maps to the gap: the missing signal.}
+\item \textbf{RQ2 (the switch).} At matched fine-decision budgets, does uncertainty-guided switching improve reference regret or the latency--compute frontier over fixed and random same-budget policies? \emph{Maps to the gap: the missing run-time selection.}
+\item \textbf{RQ3 (recovery + hysteresis).} At matched fine-decision budgets, does recovery + hysteresis reduce mode oscillation and terminal/area-under-horizon reference regret compared with threshold-only switching? \emph{Maps to the gap: the missing recovery mechanism and the unquantified long-horizon error.}
+\item \textbf{RQ4 (monotonicity).} Does $K$-switching behave monotonically with uncertainty, given Causal-rCM's own report of non-monotonic $S$-behavior (1-/2-step models outperforming 4-step in frame-wise generation) \parencite{zhengCausalrCMUnifiedTeacherForcing2026}? \emph{Maps to the gap: whether ``more refinement'' reliably helps determines whether a threshold policy on the uncertainty axis is the right policy shape at all.}
+\end{itemize}
+
+\section{Hypotheses}\label{sec:hyp}
+
+The hypotheses H1--H3 are stated in if/then/because form and are \textbf{untested assumptions}; H4 is exploratory and makes no directional prediction. The premise that per-frame error compounds over rollouts is evidence-backed (CF++ Sec.~3.1; Causal-rCM's drift report), but the rest of each hypothesis is exactly what the experiments test.
+
+\textbf{H1 (tests RQ1).} \emph{If} a calibrated uncertainty score is used as the signal, \emph{then} it will identify reference-defined coarse-regret moments with higher grouped AUROC than motion-only or complexity-only scores under the same prompt-seed groups, \emph{because} uncertainty should reflect impending model disagreement while motion and complexity are indirect observables. (IV: signal type; DV: grouped AUROC against reference-regret labels; condition: identical prompt-seed groups and a locked reference.)
+
+\textbf{H2 (tests RQ2, the core hypothesis).} \emph{If} the controller switches fine$\leftrightarrow$coarse by uncertainty at matched fine-decision budgets, \emph{then} reference regret will be lower (or equal at lower measured latency/compute) than fixed and random same-budget policies, \emph{because} fine generation is spent where the calibrated signal predicts the largest coarse regret. (IV: policy; DV: reference regret, latency, compute, temporal stability at 45/57/81 frames; condition: matched prompt-seed groups and frozen checkpoints.)
+
+\textbf{H3 (tests RQ3).} \emph{If} recovery + hysteresis is added, \emph{then} the controller will switch modes less often and keep terminal and area-under-horizon reference regret the same or better than threshold-only switching at the same fine budget, \emph{because} two thresholds stop boundary flipping and the recovery spell repairs a detected spike before returning to coarse. (IV: mechanism; DV: grouped switch count, transition cost, terminal/area-under-horizon regret; condition: switch-producing held-out rollouts.)
+
+\textbf{H4 (tests RQ4, exploratory).} No directional prediction is made. Causal-rCM's frame-wise results are non-monotone in the number of denoising steps (1-/2-step models outperform the 4-step variant), which raises the same question one level up: the benefit of switching to fine generation may grow monotonically with uncertainty, or it may peak at intermediate uncertainty. The analysis reports the measured uncertainty--benefit relationship as a finding either way \parencite{zhengCausalrCMUnifiedTeacherForcing2026}. (IV: the uncertainty level of a segment; DV: the fine-vs-coarse quality gap at that uncertainty level; condition: reuse of E3/E4 data, no separate experiment.)
+
+\section{Proposed Method}\label{sec:method}
+
+The method is a thin controller \emph{on top of} existing models: \textbf{existing components} (frozen, pre-trained checkpoints) $+$ \textbf{proposed modifications} (pre-generation signal, threshold controller, recovery + hysteresis) $=$ \textbf{the research method}. No new world-model training is required. In the verified text-to-video experiment the decision potential is visual-only, $\Psi_i=u_i$; the action term and its gain $\lambda$ are a future extension, not an evaluated component.
+
+\subsection{Existing components (borrowed, frozen)}
+
+The backbone is the \textbf{matched Causal-rCM pair}: the frame-wise c1-1 checkpoint ($K=1$, one latent frame per AR step) and the chunk-wise c3-3 checkpoint ($K=3$, three latent frames per AR step), both distilled from the same base model under one unified recipe (repository: \url{https://github.com/NVlabs/rcm}) \parencite{zhengCausalrCMUnifiedTeacherForcing2026}. The available c1-1 step-4 checkpoint is used only as a fixed high-compute internal reference for segment regret; it is not treated as human ground truth. Using one recipe for both operating modes keeps the fine/coarse pair matched in architecture, data, and training. The verified environment is text-to-video and exposes no action-conditioned interface, so $a_i$ and the control gain are excluded from the primary experiment. Feature/perceptual distance and decoded-pixel distance are reported only with their declared reference limitations. CF and CF++ are optional cross-recipe checks and are never live, hot-swappable backbones in the primary study.
+
+\subsection{Notation}
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} \\
+\midrule
+$x_0^{1:N}$ & clean video frames $1$ to $N$ generated during a rollout; $x_0^{<i}$ denotes all past frames before index $i$ \\
+$x_t^i$ & frame $i$ at noise level $t$ during denoising \\
+$G_\theta$ & the few-step autoregressive student generator (frozen), mapping a noisy frame and past context to a clean-frame estimate \\
+$K,\ S$ & frames generated per AR step (chunk size) and denoising steps per segment \\
+$m_i$ & mode selected at decision step $i$: fine $F$ ($K=1$) or coarse $C$ ($K=3$) \\
+$u_i$ & uncertainty score computed \emph{before} generating segment $i$, from pre-generation context only \\
+$\tau_{\mathrm{high}}, \tau_{\mathrm{low}}$ & upper (enter-fine) and lower (exit-fine) thresholds, $0<\tau_{\mathrm{low}}<\tau_{\mathrm{high}}$ \\
+$r_i$ & recovery counter: number of forced fine steps remaining after a spike \\
+$R$ & recovery length: fine steps forced after an uncertainty spike \\
+$c(F), c(C)$ & measured per-segment generation cost of each mode (GPU time or FLOPs, from E1) \\
+$\Psi_i$ & decision potential at decision step $i$; in this text-only study $\Psi_i=u_i$ \\
+$\Lambda$ & hysteresis band width: $\Lambda = \tau_{\mathrm{high}} - \tau_{\mathrm{low}}$ \\
+$\sigma_u$ & noise scale of the uncertainty estimate $u_i$: the estimation noise satisfies $|\varepsilon_i| \le \sigma_u$ (Section~\ref{sec:guarantees}) \\
+$\kappa(m)$ & per-step generation cost of mode $m$: $\kappa(F) = c(F)$, $\kappa(C) = c(C)$, both measured in E1; total rollout cost $C = \sum_i \kappa(m_i)$ (Eq.~\eqref{eq:compute}) \\
+\bottomrule
+\end{tabularx}
+\caption{Notation used in Section~\ref{sec:method}.}
+\label{tab:notation}
+\end{table}
+
+\subsection{The rollout error being controlled}
+
+Autoregressive generation factorizes the video distribution as
+\begin{equation}
+p(x_0^{1:N}) \;=\; \prod_{i=1}^{N} p\bigl(x_0^{i} \mid x_0^{<i}\bigr),
+\label{eq:ar}
+\end{equation}
+so each frame is sampled from a model conditioned on previously \emph{generated} frames. The per-frame prediction error is
+\begin{equation}
+\varepsilon_i \;=\; \bigl\|\, G_\theta\bigl(x_t^{i},\, x^{<i},\, t\bigr) \;-\; x_0^{i} \,\bigr\|,
+\label{eq:err}
+\end{equation}
+where at training time the context $x^{<i}$ is ground truth (teacher forcing), while at inference it is the model's own output. This substitution is exposure bias \parencite{huangSelfForcingBridging2025}: an error $\varepsilon_i$ at step $i$ changes the conditioning for all later steps, which is the mechanism by which frame-level errors can compound. Equation~\eqref{eq:err} is the quantity this proposal aims to control \emph{indirectly}, by choosing $K$ per moment rather than retraining the model.
+
+\subsection{Proposed component 1: a pre-generation signal}
+
+The score $u_i$ must be computable \emph{before} segment $i$ is generated. The verified checkpoints expose no EMA copy, so the primary candidates are the denoising residual and decoded-frame warp mismatch; motion and spatial complexity are comparator signals:
+\begin{align}
+u_i^{\mathrm{res}} &= d\bigl(\,\text{prediction of segment } i \text{ made at step } i,\;\; \text{prediction made at step } i-1 \,\bigr), \label{eq:ures}\\[2pt]
+u_i^{\mathrm{warp}} &= d\bigl(\,x_{i-1},\;\; \hat{x}_{i-1}^{\mathrm{warp}}\,\bigr), \qquad \hat{x}_{i-1}^{\mathrm{warp}} = W\bigl(x_{i-2};\; f_{i-2\to i-1}\bigr), \label{eq:uwarp}
+\end{align}
+where $d(\cdot,\cdot)$ is a pixel or declared perceptual distance. The residual measures denoising self-disagreement, while the warp score measures how poorly the recent context follows a locally estimated motion field. The composite score is
+\begin{equation}
+u_i \;=\; g_\varphi\bigl(u_i^{\mathrm{res}},\, u_i^{\mathrm{warp}}\bigr),
+\label{eq:ucmp}
+\end{equation}
+with $g_\varphi$ a fixed normalized combination. Thresholds are calibrated against reference-defined coarse regret in E5B, using calibration prompt-seed groups only.
+
+In the current text-to-video experiment the decision potential is simply
+\begin{equation}
+\Psi_i \;=\; u_i,
+\label{eq:psi}
+\end{equation}
+because no compatible action-conditioned checkpoint is available. The original action-augmented form $\Psi_i=u_i+\lambda\,\Delta a_i$ is retained only as future work and is not estimated, tuned, or used in any result.
+
+\subsubsection{Action-augmented extension (not evaluated)}\label{sec:whycontrol}
+
+The original design included $\Psi_i=u_i+\lambda\,\Delta a_i$, where $\Delta a_i$ is a camera/action change. The verified Wan2.1 text-to-video checkpoints expose no compatible action input, so this term is not part of the present experiment. It remains a future experiment with an action-conditioned checkpoint.
+\subsection{Proposed component 2: the threshold controller (Part A)}
+
+The controller maps the potential to a mode with two thresholds and a keep-band:
+\begin{equation}
+m_i \;=\;
+\begin{cases}
+F, & \text{if } \Psi_i \ge \tau_{\mathrm{high}},\\[2pt]
+C, & \text{if } \Psi_i \le \tau_{\mathrm{low}},\\[2pt]
+m_{i-1}, & \text{otherwise (keep the previous mode)}.
+\end{cases}
+\label{eq:threshold}
+\end{equation}
+In words: when the visual potential is high, generate one frame at a time; when it is low, generate three frames at once; in between, do not flip --- the band between $\tau_{\mathrm{low}}$ and $\tau_{\mathrm{high}}$ already acts as hysteresis.
+
+\subsection{Proposed component 3: recovery + hysteresis (Part B, the key add-on)}
+
+Part B adds a recovery counter: after a spike the controller stays fine for $R$ steps and returns to coarse only when the potential remains low:
+\begin{equation}
+(m_i,\, r_i) \;=\;
+\begin{cases}
+(F,\, R),         & \text{if } \Psi_i \ge \tau_{\mathrm{high}} \quad \text{(spike: enter fine, start recovery)},\\[2pt]
+(F,\, r_{i-1}-1), & \text{if } r_{i-1} > 0 \quad \text{(recovery in progress: stay fine)},\\[2pt]
+(C,\, 0),         & \text{if } \Psi_i \le \tau_{\mathrm{low}} \quad \text{(safe: return to coarse)},\\[2pt]
+(m_{i-1},\, 0),   & \text{otherwise (keep mode)}.
+\end{cases}
+\label{eq:recovery}
+\end{equation}
+Setting $R=0$ recovers the plain threshold controller of Eq.~\eqref{eq:threshold}; the contribution of Part B is therefore isolated cleanly as an ablation. The intended effect is a mode trace that reacts to genuine spikes once and then stabilizes, instead of oscillating at every threshold crossing (Figure~\ref{fig:systemflow}).
+
+\subsection{Fair comparison at matched compute}
+
+Let $\kappa(F) = c(F)$ and $\kappa(C) = c(C)$ be the measured per-segment costs of the two modes (from E5A/E5C). The total rollout cost of a policy is
+\begin{equation}
+C \;=\; \sum_{i} \kappa(m_i),
+\label{eq:compute}
+\end{equation}
+and all methods are compared at matched fine-decision budgets and measured cost $C$, including signal-probe and checkpoint-switch overhead. The primary compute metric is GPU-seconds per segment, reported alongside NFE and memory; FLOPs are not inferred when the implementation does not expose them.
+
+\subsection{Gap-to-method mapping}
+
+\begin{itemize}[leftmargin=1.6em, itemsep=2pt]
+\item \emph{Gap: no uncertainty signal} $\to$ Component~1 supplies the pre-generation score; RQ1 tests it against motion and complexity.
+\item \emph{Gap: no run-time switch} $\to$ Component~2 performs the fine/coarse selection; RQ2 tests it against the best fixed mode.
+\item \emph{Gap: no recovery/hysteresis; long-horizon error unquantified} $\to$ Component~3 reacts to spikes and re-stabilizes; RQ3 tests it against the threshold-only controller; E5D supplies the matched-budget regret curves.
+\end{itemize}
+
+Figure~\ref{fig:systemflow} consolidates the controller: past frames determine the visual potential $\Psi_i=u_i$; the potential crosses the hysteresis band $[\tau_{\mathrm{low}}, \tau_{\mathrm{high}}]$ (width $\Lambda$); and the selected mode determines how many frames the frozen Causal-rCM checkpoint commits before the next decision point. An action term is future work.
+
+\begin{figure}[t]
+\centering
+\input{figures/system_flow.tex}
+\caption{Consolidated system flow. Past frames determine the visual potential $\Psi_i=u_i$; when the potential crosses the hysteresis band $[\tau_{\mathrm{low}}, \tau_{\mathrm{high}}]$ of width $\Lambda$, the recovery counter $r_i$ starts or continues a fine spell, and the mode commits one frame (fine, c1-1) or three frames (coarse, c3-3) before the next decision point. The thresholds and recovery length are calibrated; both checkpoints are frozen. Action augmentation is not evaluated.}
+\label{fig:systemflow}
+\end{figure}
+
+\subsection{Structural guarantees}\label{sec:guarantees}
+
+The controller defined by Eqs.~\eqref{eq:psi}, \eqref{eq:threshold}, and \eqref{eq:recovery} admits three structural properties that hold by construction. They constrain the controller's worst-case behavior; they do not predict whether that behavior produces better videos.
+
+\begin{proposition}[Noise-Immunity]\label{prop:noise}
+If $\Lambda > 2\sigma_u$, the controller cannot switch modes more than once per genuine regime change.
+\end{proposition}
+\begin{proof}
+Write the observed potential as $\Psi_i = \bar{\Psi}_i + \varepsilon_i$, where $\bar{\Psi}_i$ is the noise-free potential and the estimation noise of $u_i$ satisfies $|\varepsilon_i| \le \sigma_u$. A fine$\to$coarse switch requires $\Psi_i \le \tau_{\mathrm{low}}$, and a later coarse$\to$fine switch requires $\Psi_j \ge \tau_{\mathrm{high}}$; the observed potential must therefore rise by at least $\Lambda = \tau_{\mathrm{high}} - \tau_{\mathrm{low}}$ between the two crossings. Between consecutive decision steps, noise alone can move the observed potential by at most $2\sigma_u$; when $\Lambda > 2\sigma_u$, noise cannot supply the rise, so every switch cycle must be driven by a genuine change in $\bar{\Psi}$ of at least $\Lambda - 2\sigma_u > 0$. One genuine regime change can thus trigger at most one switch, rather than the repeated flips that a single threshold admits.
+\end{proof}
+
+\begin{proposition}[Bounded Recovery Termination]\label{prop:recovery}
+The recovery counter $r_i$ strictly decreases to 0 within $R$ steps of any spike; the controller cannot lock permanently into fine mode.
+\end{proposition}
+\begin{proof}
+Immediate from $r_i = r_{i-1} - 1$ in the recovery update rule (Eq.~\eqref{eq:recovery}): after a spike sets $r_i = R$, the second case applies on every subsequent step until $r_i$ reaches 0, after which only the last two cases can apply.
+\end{proof}
+
+These are structural properties of the threshold and recovery state machine under the stated assumptions on $\sigma_u$ and $\Lambda$; they say nothing about whether switching improves video quality --- that remains the empirical question tested by H1--H4. The action-gain guarantee from the original design is removed because action conditioning is not evaluated.
+
+\section{Experimental Plan}\label{sec:experiments}
+
+The updated plan separates the completed exploratory pilot from the confirmatory phases. The environment is a Kaggle Tesla T4 running frozen Causal-rCM checkpoints at 480p. The verified checkpoints are text-to-video, so the confirmatory study uses prompt-seed groups and a fixed internal reference rather than camera-controlled ground-truth videos. Table~\ref{tab:experiments} maps the updated phases to questions, baselines, and metrics.
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{2.9cm} >{\raggedright\arraybackslash}p{1.7cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.6cm}}
+\toprule
+\textbf{Exp} & \textbf{Experiment} & \textbf{RQ} & \textbf{Baseline} & \textbf{Proposed method} & \textbf{Metric} \\
+\midrule
+E0--E4 & Completed feasibility, fixed-mode, signal, and online-controller pilot & exploratory RQ1--RQ2 & fixed modes and initial signal/controller pilots & --- & real inference, timing, proxy AUROC, and failure audit \\
+E5A & Reference and capacity probe & RQ1--RQ2 & c1-1 step-2 and c3-3 step-4 & c1-1 step-4 internal reference; 57/81-frame capacity test & reference distance; alignment; latency; memory \\
+E5B & Reference-regret calibration & RQ1 & motion, warp, complexity, residual & calibrated uncertainty signals on locked prompt-seed groups & grouped AUROC and confidence intervals \\
+E5C & Budgeted online selection & RQ2 & fixed, random same-budget, oracle, baseline signals & uncertainty controller at 25/50/75\% fine-decision budgets & regret--latency--compute frontier; NFE; VRAM \\
+E5D & Recovery and hysteresis stress test & RQ3 & threshold-only, hysteresis-only, recovery-only & full recovery+hysteresis at matched fine budget & grouped switches; transition cost; horizon regret \\
+E5E & Robustness and claim audit & RQ1--RQ4 & seed/horizon sensitivity & locked final protocol and claim-to-artifact mapping & grouped intervals; leakage/failure audit \\
+\bottomrule
+\end{tabularx}
+\caption{Updated experimental plan. Phases E0--E4 are the exploratory pilot already completed. E5A--E5E are the confirmatory reference-regret, budget-matched, recovery, and robustness phases.}
+\label{tab:experiments}
+\end{table}
+\FloatBarrier
+
+\textbf{E5A --- Reference and capacity probe.} Run c1-1 step-4 as a fixed high-compute internal reference with the same prompt, seed, and initial noise as the fine and coarse candidates. Verify alignment, implement a declared feature/perceptual distance with a decoded-pixel fallback, and probe 57/81-frame rollouts. If 81-frame decoding exceeds T4 memory, use segment/latent decoding and record 57 as the pre-declared fallback.
+
+\textbf{E5B --- Reference-regret calibration.} Lock at least 12 calibration and 24 held-out prompts before fitting thresholds, with three held-out seeds where feasible. For each group compute $D(\text{coarse},\text{reference})-D(\text{fine},\text{reference})$ per segment. Fit the unsafe margin and score residual, warp, motion, complexity, and composite uncertainty on calibration groups only; report grouped held-out AUROC and confidence intervals.
+
+\textbf{E5C --- Budgeted online selection.} Evaluate fixed coarse, fixed fine, residual/uncertainty, warp, motion, complexity, random same-budget, and offline oracle policies at pre-registered fine-decision budgets near 25\%, 50\%, and 75\%. Recompute any residual probe at every decision, include its cost, and compare reference regret, latency, NFE, VRAM, and secondary temporal stability with grouped paired intervals.
+
+\textbf{E5D --- Recovery + hysteresis stress test.} Compare threshold-only, hysteresis-only, recovery-only, and full recovery+hysteresis controllers at matched fine budgets using switch-producing thresholds selected on calibration groups. Measure grouped switch count, mode-run length, transition cost, terminal regret, and area under regret versus horizon. If no spikes occur in a stratum, report RQ3 as unexercised there.
+
+\textbf{E5E --- Robustness and claim audit.} Repeat the primary comparison over 45/57/81 frames where feasible, audit seed sensitivity and prompt/threshold leakage, preserve all failure records, and map every paper number to a raw artifact, manifest, and audit script. The action term and cross-recipe transfer remain future work unless compatible checkpoints are verified.
+
+\section{Baselines}\label{sec:baselines}
+
+Table~\ref{tab:baselines} lists the baselines and what each one tests. CF and CF++ are optional secondary transfer checks only; they are never held resident and live-switched alongside the Causal-rCM pair in the primary study.
+
+\begin{table}[t]
+\centering
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.4cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.0cm}}
+\toprule
+\textbf{Baseline} & \textbf{Why selected} & \textbf{What it tests} & \textbf{Controlling equation} \\
+\midrule
+Fixed coarse ($K{=}3$, c3-3, $S{=}4$) & The stable, slower-to-respond published regime & Stability reference; lower bound on response latency advantage & $m_i = C \;\forall i$ \\
+Fixed fine ($K{=}1$, c1-1, $S\in\{1,2,4\}$) & The fast, drift-prone published regime & The regime Causal-rCM flags for camera drift in long rollouts & $m_i = F \;\forall i$ \\
+High-compute reference (c1-1 step-4) & Fixed internal reference for regret measurement & Provides a declared upper-quality proxy under the same prompt/seed/noise & $m_i = F_{S=4} \;\forall i$ \\
+Threshold-only controller (no recovery, $R=0$) & Isolates the contribution of Part B & Ablation for recovery + hysteresis & Eq.~\eqref{eq:threshold} with $R=0$ \\
+Full controller (proposed) & Combines the potential, two thresholds, and recovery & Whether hysteresis and the control term help end-to-end & Eq.~\eqref{eq:recovery} with $\Psi_i$ (Eq.~\eqref{eq:psi}) \\
+Random same-budget controller & Randomly assigns modes at the observed fine fraction & Controls for benefits caused only by spending more fine computation & matched fine fraction \\
+Offline oracle & Uses the reference regret after generation to choose the lower-regret mode & Upper bound on attainable selection benefit; never available online & $\arg\min_m D(m,\text{reference})$ \\
+Motion-based controller & Motion is the signal used by LongScape / MotionCache & Whether a non-uncertainty signal suffices & Eq.~\eqref{eq:threshold} with a motion score in place of $u_i$ \\
+Complexity-based controller & Content/complexity is used by LongScape / EVATok / AdapTok & Whether content signals suffice & Eq.~\eqref{eq:threshold} with a complexity score in place of $u_i$ \\
+Surprise Forcing-style S-only controller (Phase 0 feasibility) & Closest concurrent uncertainty-adaptive signal (chunk difficulty after the first denoising pass), ported to c1-1/c3-3 if feasible & Whether an uncalibrated surprise score suffices without the control term & Eq.~\eqref{eq:threshold} with the surprise score in place of $u_i$ \\
+Flex-Forcing-style budget chunking (reference only) & Closest flexible-chunking system & Situates the run-time policy vs.\ budget-driven chunking & budget-driven schedule (no threshold rule) \\
+\bottomrule
+\end{tabularx}
+\caption{Baselines and the controlling equation of each. The primary study uses frozen Causal-rCM checkpoints and compares fixed, random same-budget, signal-driven, and offline-oracle policies. The high-compute c1-1 step-4 run is an internal reference, not ground truth.}
+\label{tab:baselines}
+\end{table}
+\FloatBarrier
+
+\section{Evaluation}\label{sec:evaluation}
+
+\subsection{Metrics}
+
+Table~\ref{tab:metrics} defines the metrics and the question each one serves. The primary quality target is reference regret against the available high-compute c1-1 step-4 run. FVD, PSNR, LPIPS, or VBench-style metrics are reported only when their required reference/features are actually available; they are not inferred from text-to-video outputs.
+
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.1cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{1.8cm}}
+\toprule
+\textbf{Metric} & \textbf{What it measures} & \textbf{Why appropriate} & \textbf{RQ} \\
+\midrule
+Reference regret & $D(\text{coarse},\text{reference})-D(\text{fine},\text{reference})$ per segment & Primary coarse-unsafe target; reference-defined, not ground truth & RQ1--RQ4 \\
+Feature/perceptual distance & Distance from the fixed c1-1 step-4 reference & Less sensitive than raw adjacent-pixel L1 when an available feature extractor is declared & RQ1--RQ3 \\
+Temporal stability proxy & Optical-flow-compensated or adjacent-pixel variation & Secondary stability description; motion/content dependent & RQ2, RQ3 \\
+Latency (ms/frame) & Responsiveness & The primary trade-off axis reported by CF/CF++/Causal-rCM & RQ2 \\
+Compute (GPU time or FLOPs per segment) & Cost at matched compute & Required for a fair RQ2 comparison; measured in E1 & RQ2 \\
+AUROC (signal vs.\ reference-regret labels) & Signal quality & Directly operationalizes RQ1 with prompt-seed grouped bootstrap & RQ1 \\
+Switch count & Mode oscillation & Directly tests the hysteresis claim & RQ3 \\
+Switch cost (quality dip at a mode change) & Seam/transition artifact & Measures the risk that switching checkpoints is visible; no established metric exists, so it is defined operationally in this proposal & RQ3 \\
+Fine-decision fraction & Fraction of segments generated in fine mode & Defines matched-budget operating points and prevents a single all-coarse threshold from standing in for adaptive selection & RQ2, RQ3 \\
+Random same-budget controller & Random mode assignment at the observed fine fraction & Controls for gains caused only by spending more fine computation & RQ2 \\
+\bottomrule
+\end{tabularx}
+\caption{Metrics and their roles.}
+\label{tab:metrics}
+\end{table}
+\FloatBarrier
+
+\subsection{What would support or weaken each hypothesis}
+
+\begin{itemize}[leftmargin=1.6em, itemsep=2pt]
+\item \textbf{H1 (RQ1).} Support: the proposed signal has higher grouped held-out AUROC for reference regret than the strongest baseline, with a confidence interval for the difference. A tie or baseline win is reported as a comparative/negative result.
+\item \textbf{H2 (RQ2).} Support: an adaptive policy improves reference regret over fixed and random same-budget controls, or achieves the same regret at lower measured cost. Otherwise H2 is rejected or unresolved.
+\item \textbf{H3 (RQ3).} Support: recovery+hysteresis reduces switches and does not worsen terminal or area-under-horizon reference regret at the same fine budget. If no spikes occur, RQ3 is reported as unexercised for that stratum.
+\item \textbf{H4 (RQ4, exploratory).} Any finding is a result: a monotone relationship between uncertainty and the fine/coarse benefit, or a non-monotone one mirroring Causal-rCM's step-count results, is reported as such; no support/weaken criterion is pre-registered.
+\end{itemize}
+
+No universal numerical success threshold is assumed. The updated protocol pre-registers fine-decision budgets near 25\%, 50\%, and 75\% and evaluates reference regret over 45/57/81 frames where feasible. The adaptive policy must beat fixed and random same-budget controls, or achieve the same regret at lower measured cost, before H2 is supported.
+
+\section{Ablation Studies}\label{sec:ablations}
+
+Table~\ref{tab:ablations} lists the planned ablations.
+
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{1.8cm}}
+\toprule
+\textbf{Ablation} & \textbf{Component changed} & \textbf{Purpose} & \textbf{RQ} \\
+\midrule
+Signal components & uncertainty $=$ \{residual, warp\} each alone vs.\ combined, with motion and complexity baselines & Which source of information matters; EMA is unavailable in the verified checkpoints & RQ1 \\
+Budget operating points & thresholds chosen on calibration groups to target approximately 25/50/75\% fine decisions & Separates policy quality from the trivial all-coarse operating point & RQ2 \\
+Reference metric & feature/perceptual distance versus decoded-pixel fallback & Sensitivity of the reference-regret conclusion to the declared distance & RQ1--RQ3 \\
+Recovery length sweep & $R$ steps after a spike & How long the fine spell must be & RQ3 \\
+Hysteresis band width & $\Lambda = \tau_{\mathrm{high}}-\tau_{\mathrm{low}} \in \{0.5\sigma_u, \sigma_u, 2\sigma_u, 4\sigma_u\}$ & Whether the band reduces oscillation by itself; spans both sides of Proposition~\ref{prop:noise}'s bound $\Lambda = 2\sigma_u$ & RQ3 \\
+Random same-budget control & random mode assignments at each adaptive fine fraction & Tests whether any gain comes only from using more fine segments & RQ2 \\
+Fine-step choice & $S \in \{1,2,4\}$ inside fine mode & Cost/quality of the fine branch; Causal-rCM's non-monotone report (1-/2-step frame-wise beating 4-step) motivates RQ4 & RQ2, RQ4 \\
+Backbone recipe & optional transfer to CF/CF++ only after the core protocol & Whether the calibrated signal transfers across recipes & secondary \\
+Regret margin $\Delta$ & reference-regret labeling criterion fit on calibration groups & Robustness of the RQ1 comparison & RQ1 \\
+Matched-compute normalization & measured GPU time/NFE including probe and switching overhead & Fairness of the RQ2 comparison & RQ2 \\
+\bottomrule
+\end{tabularx}
+\caption{Planned ablations.}
+\label{tab:ablations}
+\end{table}
+\FloatBarrier
+\newpage
+\section{Expected Contributions}\label{sec:contributions}
+
+Expected, not confirmed.
+
+\emph{Method contributions (what this project aims to develop):} (1) a cheap, pre-generation uncertainty score for AR world-model rollouts, augmented into a control-aware decision potential, with candidate formulations compared; (2) a run-time granularity controller (threshold policy) on frozen, matched Causal-rCM checkpoints; (3) a recovery + hysteresis mechanism (two thresholds plus a forced short fine spell) for stabilizing mode switching.
+
+\emph{Experimental contributions (what the experiments may provide):} (4) a reference-regret characterization of fixed fine vs.\ fixed coarse over 45/57/81-frame rollouts; (5) a grouped AUROC comparison of uncertainty vs.\ motion vs.\ complexity for predicting reference-defined coarse regret; (6) a matched-budget mechanism study of switch count, transition cost, and long-horizon regret with and without recovery/hysteresis.
+
+\emph{Research understanding (what may be learned even if the hypotheses fail):} (7) which observable signal carries information about reference-defined coarse regret (a negative H1 still answers this); (8) whether fixed modes are already near-optimal after controlling the fine-compute budget (a negative H2 is informative); (9) a reproducible protocol for studying run-time granularity selection in text-conditioned causal video generation, with action-conditioned control left as future work.
+
+\newpage
+\section{Risks and Backup Plan}\label{sec:risks}
+
+Table~\ref{tab:risks} lists the risks with their likelihood and impact, reflecting what is currently known about the Causal-rCM backbone rather than the original draft's guesses.
+
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.3cm} >{\raggedright\arraybackslash}p{1.7cm} >{\raggedright\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Risk} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Mitigation} & \textbf{Backup} \\
+\midrule
+VRAM insufficient for Causal-rCM c1-1/c3-3 on T4 at long horizons & Medium & High & Phase 5A capacity gate; reduce horizon only under the declared fallback & Report feasible horizon and failure boundary \\
+Camera drift in frame-wise long rollouts (Causal-rCM's own reported failure mode) & High (source-documented) & Medium & Expected; treat as the phenomenon under study, not a surprise & Cap frame-wise segment length in E1 baseline \\
+Non-monotonic quality-vs-refinement behavior (Causal-rCM reports 1-/2-step beating 4-step in frame-wise) & High (source-documented) & Medium & Addressed directly via RQ4/H4 (Section~\ref{sec:rq}) & Report as a finding, not a failure \\
+Matched-compute normalization across policies & Medium & Medium & Match fine-decision fractions and report measured GPU/NFE overhead & Report frontier only where budgets are actually matched \\
+No action-conditioned checkpoint & Confirmed & Medium & Exclude action term and camera-control claim from the primary study & Future action-conditioned extension \\
+Negative result ($K$-switching $\approx$ fixed modes) & Medium & Low (pre-registered as informative) & Framed as valid outcome throughout & Characterization study remains the contribution \\
+No ground-truth future video for text-to-video & Confirmed & High & Use internal reference regret and label it as reference-defined, not ground truth & Do not claim FVD/PSNR/reference LPIPS without valid references \\
+\bottomrule
+\end{tabularx}
+\caption{Risks with likelihood and impact for the verified text-to-video/T4 protocol. The absence of an action-conditioned checkpoint and future-frame ground truth are explicit scope limitations, not hidden assumptions.}
+\label{tab:risks}
+\end{table}
+\clearpage
+\section{Timeline}\label{sec:timeline}
+
+Given the pace of this subfield, the timeline is now organized around auditable gates rather than a fixed number of GPU-days. The completed pilot and the publication-grade Phase 5A--5E sequence are shown in Table~\ref{tab:timeline}; each phase stops for an audit before the next phase begins.
+
+\begin{table}[ht]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Period} & \textbf{Task} & \textbf{Deliverable} \\
+\midrule
+Completed pilot & Phases 0--4: feasibility, fixed modes, exploratory proxy calibration, and initial online controllers & Audited exploratory artifacts and explicit limitations \\
+Phase 5A & Internal c1-1 step-4 reference and 57/81-frame capacity gate & Alignment, reference distance, timing, and VRAM audit \\
+Phase 5B & Reference-regret calibration on locked prompt-seed groups & Grouped AUROC and calibration-only thresholds \\
+Phase 5C & Budget-matched online policies and random/oracle controls & Regret--latency--compute frontiers \\
+Phase 5D & Recovery/hysteresis stress test at matched fine budget & Switch, transition, and horizon-regret statistics \\
+Phase 5E & Robustness, leakage, failure, and claim audit & Claim-to-artifact matrix and reproducibility release \\
+\bottomrule
+\end{tabularx}
+\caption{Audit-gated execution timeline. The Phase 0--4 pilot is historical; Phase 5A--5E is the updated publication protocol.}
+\label{tab:timeline}
+\end{table}
+\FloatBarrier
+
+The Phase 5A reference/capacity gate is the current go/no-go point for the confirmatory evaluation; it passed on the T4 at 81 frames.
+
+\section*{Data and reproducibility}
+All checkpoints, code, and metrics are open source (see Section~\ref{sec:method}); the reproducibility protocol (rollout prompts, thresholds, and evaluation scripts) will be released with the report.
+
+\FloatBarrier
+\printbibliography[heading=bibintoc, title={References}]
+
+\end{document}

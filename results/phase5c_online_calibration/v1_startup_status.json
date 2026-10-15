@@ -1,0 +1,12 @@
+{
+  "kernel": "ajjisan/phase-5c-online-signal-calibration",
+  "version": 1,
+  "submission": "accepted",
+  "immediate_status": "KernelWorkerStatus.ERROR",
+  "failure_message": null,
+  "remote_logs": [],
+  "output_files": [],
+  "calibration_cases_complete": 0,
+  "interpretation": "Startup failure before script output; cause undetermined",
+  "automatic_retry_started": false
+}

@@ -1,0 +1,46 @@
+{
+  "phase": "E-JEV-1-auroc",
+  "generated_utc": "2026-10-12T00:34:25.919108+00:00",
+  "n_segments": 80,
+  "positives": 56,
+  "signals": {
+    "jev_drift": {
+      "auroc": 0.7380952380952381,
+      "ci_low": 0.47854545454545455,
+      "ci_high": 0.945
+    },
+    "jev_difficulty": {
+      "auroc": 0.7875744047619048,
+      "ci_low": 0.575378538512179,
+      "ci_high": 0.9464285714285714
+    },
+    "jev_motion": {
+      "auroc": 0.703125,
+      "ci_low": 0.4716919025674786,
+      "ci_high": 0.8728590250329381
+    },
+    "warp": {
+      "auroc": 0.5855654761904762,
+      "ci_low": 0.2222222222222222,
+      "ci_high": 0.8363636363636363
+    },
+    "motion": {
+      "auroc": 0.6071428571428571,
+      "ci_low": 0.26,
+      "ci_high": 0.8568665377176016
+    },
+    "complexity": {
+      "auroc": 0.36755952380952384,
+      "ci_low": 0.1840277777777778,
+      "ci_high": 0.5620915032679739
+    }
+  },
+  "signal_cost": {
+    "jev_latency_mean_s": 0.6724709868431091,
+    "note": "Jev ~0.7 s per decision vs the warp signal which required a VAE decode (~156 s @57f) per decision"
+  },
+  "best_jev_signal": "jev_difficulty",
+  "best_handcrafted_signal": "motion",
+  "auroc_gain_jev_over_handcrafted": 0.18043154761904767,
+  "reference_phase5b_residual_auroc": 0.491
+}

@@ -1,0 +1,375 @@
+{
+  "phase": "RQ4-monotonicity-with-Jev",
+  "generated_utc": "2026-10-13T03:20:13.990000+00:00",
+  "source": "results/jev_signal/jev_answers.jsonl",
+  "note": "fine_gap = regret_fine - regret_coarse; negative => fine closer. Warp is the prior (T4) signal; Jev is the new signal.",
+  "all": {
+    "n": 80,
+    "_diff": {
+      "spearman_vs_fine_gap": -0.5171835819340102,
+      "auroc_coarse_unsafe": 0.7875744047619048,
+      "terciles": [
+        {
+          "n": 26,
+          "signal_range": [
+            0.4,
+            1.61
+          ],
+          "mean_fine_gap": 0.0005669656854409438
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            1.62,
+            2.0
+          ],
+          "mean_fine_gap": -0.04302732701654787
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            2.05,
+            3.39
+          ],
+          "mean_fine_gap": -0.05581536778697261
+        }
+      ]
+    },
+    "_drift": {
+      "spearman_vs_fine_gap": -0.43832858723070234,
+      "auroc_coarse_unsafe": 0.7380952380952381,
+      "terciles": [
+        {
+          "n": 26,
+          "signal_range": [
+            0.2,
+            0.47
+          ],
+          "mean_fine_gap": -0.006421764882711263
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            0.47,
+            0.63
+          ],
+          "mean_fine_gap": -0.035932251148753695
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            0.64,
+            0.85
+          ],
+          "mean_fine_gap": -0.056180554959509105
+        }
+      ]
+    },
+    "warp": {
+      "spearman_vs_fine_gap": -0.09791373652133145,
+      "auroc_coarse_unsafe": 0.5855654761904762,
+      "terciles": [
+        {
+          "n": 26,
+          "signal_range": [
+            0.29429736733436584,
+            2.4609880447387695
+          ],
+          "mean_fine_gap": -0.017840533875502072
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            2.4693331718444824,
+            6.136202335357666
+          ],
+          "mean_fine_gap": -0.0616673904436606
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            6.139833927154541,
+            22.810041427612305
+          ],
+          "mean_fine_gap": -0.019449564041914762
+        }
+      ]
+    },
+    "_motion": {
+      "spearman_vs_fine_gap": -0.4464959497240975,
+      "auroc_coarse_unsafe": 0.703125,
+      "terciles": [
+        {
+          "n": 26,
+          "signal_range": [
+            0,
+            1
+          ],
+          "mean_fine_gap": -0.001221608083981734
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            1,
+            1
+          ],
+          "mean_fine_gap": -0.027428030415817543
+        },
+        {
+          "n": 27,
+          "signal_range": [
+            1,
+            2
+          ],
+          "mean_fine_gap": -0.06969233409122184
+        }
+      ]
+    }
+  },
+  "h57": {
+    "n": 32,
+    "_diff": {
+      "spearman_vs_fine_gap": -0.4582531409586283,
+      "auroc_coarse_unsafe": 0.8470588235294118,
+      "terciles": [
+        {
+          "n": 10,
+          "signal_range": [
+            0.85,
+            1.5
+          ],
+          "mean_fine_gap": 0.009094637632369996
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            1.54,
+            2.05
+          ],
+          "mean_fine_gap": -0.03513928299600428
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            2.13,
+            3.39
+          ],
+          "mean_fine_gap": -0.02768403020772067
+        }
+      ]
+    },
+    "_drift": {
+      "spearman_vs_fine_gap": -0.30608334462487413,
+      "auroc_coarse_unsafe": 0.7803921568627451,
+      "terciles": [
+        {
+          "n": 10,
+          "signal_range": [
+            0.27,
+            0.43
+          ],
+          "mean_fine_gap": -0.003325161337852478
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            0.45,
+            0.63
+          ],
+          "mean_fine_gap": -0.028733230449936607
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            0.64,
+            0.83
+          ],
+          "mean_fine_gap": -0.022799356417222458
+        }
+      ]
+    },
+    "warp": {
+      "spearman_vs_fine_gap": 0.013929618768328444,
+      "auroc_coarse_unsafe": 0.6431372549019608,
+      "terciles": [
+        {
+          "n": 10,
+          "signal_range": [
+            0.7756072282791138,
+            2.4609880447387695
+          ],
+          "mean_fine_gap": 0.0063638553023338314
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            2.4693331718444824,
+            6.139833927154541
+          ],
+          "mean_fine_gap": -0.059220518578182564
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            6.429619789123535,
+            20.369230270385742
+          ],
+          "mean_fine_gap": -0.001120265234600414
+        }
+      ]
+    },
+    "_motion": {
+      "spearman_vs_fine_gap": -0.3594989416323893,
+      "auroc_coarse_unsafe": 0.7431372549019608,
+      "terciles": [
+        {
+          "n": 10,
+          "signal_range": [
+            0,
+            1
+          ],
+          "mean_fine_gap": 0.009094637632369996
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            1,
+            1
+          ],
+          "mean_fine_gap": -0.05158734998919747
+        },
+        {
+          "n": 11,
+          "signal_range": [
+            1,
+            2
+          ],
+          "mean_fine_gap": -0.011235963214527477
+        }
+      ]
+    }
+  },
+  "h81": {
+    "n": 48,
+    "_diff": {
+      "spearman_vs_fine_gap": -0.5813316015859925,
+      "auroc_coarse_unsafe": 0.7663817663817664,
+      "terciles": [
+        {
+          "n": 16,
+          "signal_range": [
+            0.4,
+            1.63
+          ],
+          "mean_fine_gap": -0.009909768588840961
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            1.67,
+            1.97
+          ],
+          "mean_fine_gap": -0.0422630375251174
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            2.0,
+            3.39
+          ],
+          "mean_fine_gap": -0.07619604282081127
+        }
+      ]
+    },
+    "_drift": {
+      "spearman_vs_fine_gap": -0.5880181792839335,
+      "auroc_coarse_unsafe": 0.7549857549857549,
+      "terciles": [
+        {
+          "n": 16,
+          "signal_range": [
+            0.2,
+            0.47
+          ],
+          "mean_fine_gap": -0.009991577826440334
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            0.49,
+            0.63
+          ],
+          "mean_fine_gap": -0.039247142150998116
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            0.64,
+            0.85
+          ],
+          "mean_fine_gap": -0.07913012895733118
+        }
+      ]
+    },
+    "warp": {
+      "spearman_vs_fine_gap": -0.1634824142422927,
+      "auroc_coarse_unsafe": 0.5299145299145299,
+      "terciles": [
+        {
+          "n": 16,
+          "signal_range": [
+            0.29429736733436584,
+            2.41361665725708
+          ],
+          "mean_fine_gap": -0.03296827711164951
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            2.542886972427368,
+            5.645768165588379
+          ],
+          "mean_fine_gap": -0.06319051329046488
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            6.136202335357666,
+            22.810041427612305
+          ],
+          "mean_fine_gap": -0.03221005853265524
+        }
+      ]
+    },
+    "_motion": {
+      "spearman_vs_fine_gap": -0.51157142973857,
+      "auroc_coarse_unsafe": 0.6937321937321937,
+      "terciles": [
+        {
+          "n": 16,
+          "signal_range": [
+            0,
+            1
+          ],
+          "mean_fine_gap": -0.006445481441915035
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            1,
+            1
+          ],
+          "mean_fine_gap": -0.04436542559415102
+        },
+        {
+          "n": 16,
+          "signal_range": [
+            1,
+            2
+          ],
+          "mean_fine_gap": -0.07755794189870358
+        }
+      ]
+    }
+  }
+}

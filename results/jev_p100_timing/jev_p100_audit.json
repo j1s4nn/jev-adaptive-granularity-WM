@@ -1,0 +1,41 @@
+{
+  "phase": "E-JEV-2-hardware-retime",
+  "generated_utc": "2026-10-12T01:07:16.503364+00:00",
+  "gpu": "Tesla T4",
+  "n": 16,
+  "by_mode": {
+    "ref_c1_1_s4": {
+      "n": 4,
+      "dit_s": 61.40433490276337,
+      "nfe": 72.0,
+      "forwards": 90.0,
+      "s_per_forward": 0.6699955903916132
+    },
+    "fine_c1_1_s1": {
+      "n": 4,
+      "dit_s": 25.863035261631012,
+      "nfe": 21.0,
+      "forwards": 39.0,
+      "s_per_forward": 0.6520267263807431
+    },
+    "coarse_c3_3_s4": {
+      "n": 4,
+      "dit_s": 64.78438001871109,
+      "nfe": 24.0,
+      "forwards": 30.0,
+      "s_per_forward": 2.123937215464456
+    },
+    "coarse_c3_3_s1": {
+      "n": 4,
+      "dit_s": 29.7850923538208,
+      "nfe": 9.0,
+      "forwards": 15.0,
+      "s_per_forward": 1.960319780116707
+    }
+  },
+  "coarse_over_fine_per_forward": 3.0065021889486196,
+  "coarse_over_fine_dit": 1.151647208168499,
+  "nfe_ratio_coarse_over_fine": 0.42857142857142855,
+  "breakeven_per_forward_ratio": 2.3333333333333335,
+  "coarse_cheaper": false
+}

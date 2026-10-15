@@ -1,0 +1,909 @@
+{
+  "phase": "A100-JEV-clip",
+  "prompts_covered": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "by_policy": {
+    "fixed_coarse": {
+      "n": 23,
+      "subject_consistency": 0.9411435878795126,
+      "text_alignment": 0.28088475180708844
+    },
+    "fixed_fine": {
+      "n": 23,
+      "subject_consistency": 0.9821109046106753,
+      "text_alignment": 0.27604480735633685
+    },
+    "jev_routed": {
+      "n": 24,
+      "subject_consistency": 0.9648480887214342,
+      "text_alignment": 0.27573835973938304
+    },
+    "jev_single": {
+      "n": 23,
+      "subject_consistency": 0.9618671458700429,
+      "text_alignment": 0.2773506006468897
+    },
+    "latent": {
+      "n": 24,
+      "subject_consistency": 0.9691797544558843,
+      "text_alignment": 0.2724909993509452
+    },
+    "reference": {
+      "n": 24,
+      "subject_consistency": 0.9918589120109876,
+      "text_alignment": 0.2674116076280673
+    }
+  },
+  "per_video": {
+    "p0_jev_routed": {
+      "prompt_idx": 0,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9817373156547546,
+      "text_alignment": 0.27040955424308777
+    },
+    "p0_latent": {
+      "prompt_idx": 0,
+      "policy": "latent",
+      "subject_consistency": 0.9725598096847534,
+      "text_alignment": 0.27698034048080444
+    },
+    "p0_reference": {
+      "prompt_idx": 0,
+      "policy": "reference",
+      "subject_consistency": 0.9948567152023315,
+      "text_alignment": 0.24828137457370758
+    },
+    "p10_fixed_coarse": {
+      "prompt_idx": 10,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9550185799598694,
+      "text_alignment": 0.289948970079422
+    },
+    "p10_fixed_fine": {
+      "prompt_idx": 10,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9903812408447266,
+      "text_alignment": 0.2941913902759552
+    },
+    "p10_jev_routed": {
+      "prompt_idx": 10,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9863430857658386,
+      "text_alignment": 0.2916630804538727
+    },
+    "p10_jev_single": {
+      "prompt_idx": 10,
+      "policy": "jev_single",
+      "subject_consistency": 0.9934597611427307,
+      "text_alignment": 0.3002241849899292
+    },
+    "p10_latent": {
+      "prompt_idx": 10,
+      "policy": "latent",
+      "subject_consistency": 0.9794278740882874,
+      "text_alignment": 0.2922060191631317
+    },
+    "p10_reference": {
+      "prompt_idx": 10,
+      "policy": "reference",
+      "subject_consistency": 0.9962376356124878,
+      "text_alignment": 0.29453766345977783
+    },
+    "p11_fixed_coarse": {
+      "prompt_idx": 11,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9290967583656311,
+      "text_alignment": 0.22109125554561615
+    },
+    "p11_fixed_fine": {
+      "prompt_idx": 11,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9740437865257263,
+      "text_alignment": 0.23756512999534607
+    },
+    "p11_jev_routed": {
+      "prompt_idx": 11,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9436175227165222,
+      "text_alignment": 0.22196131944656372
+    },
+    "p11_jev_single": {
+      "prompt_idx": 11,
+      "policy": "jev_single",
+      "subject_consistency": 0.9290967583656311,
+      "text_alignment": 0.22109125554561615
+    },
+    "p11_latent": {
+      "prompt_idx": 11,
+      "policy": "latent",
+      "subject_consistency": 0.9589182138442993,
+      "text_alignment": 0.22858810424804688
+    },
+    "p11_reference": {
+      "prompt_idx": 11,
+      "policy": "reference",
+      "subject_consistency": 0.9970774054527283,
+      "text_alignment": 0.18229083716869354
+    },
+    "p12_fixed_coarse": {
+      "prompt_idx": 12,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.94697105884552,
+      "text_alignment": 0.27368858456611633
+    },
+    "p12_fixed_fine": {
+      "prompt_idx": 12,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9837708473205566,
+      "text_alignment": 0.25607672333717346
+    },
+    "p12_jev_routed": {
+      "prompt_idx": 12,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9837708473205566,
+      "text_alignment": 0.25607672333717346
+    },
+    "p12_jev_single": {
+      "prompt_idx": 12,
+      "policy": "jev_single",
+      "subject_consistency": 0.9837708473205566,
+      "text_alignment": 0.25607672333717346
+    },
+    "p12_latent": {
+      "prompt_idx": 12,
+      "policy": "latent",
+      "subject_consistency": 0.9646292328834534,
+      "text_alignment": 0.25951045751571655
+    },
+    "p12_reference": {
+      "prompt_idx": 12,
+      "policy": "reference",
+      "subject_consistency": 0.9879644513130188,
+      "text_alignment": 0.25199249386787415
+    },
+    "p13_fixed_coarse": {
+      "prompt_idx": 13,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9325920343399048,
+      "text_alignment": 0.24845707416534424
+    },
+    "p13_fixed_fine": {
+      "prompt_idx": 13,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.985099732875824,
+      "text_alignment": 0.20160694420337677
+    },
+    "p13_jev_routed": {
+      "prompt_idx": 13,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9325920343399048,
+      "text_alignment": 0.24845707416534424
+    },
+    "p13_jev_single": {
+      "prompt_idx": 13,
+      "policy": "jev_single",
+      "subject_consistency": 0.9325920343399048,
+      "text_alignment": 0.24845707416534424
+    },
+    "p13_latent": {
+      "prompt_idx": 13,
+      "policy": "latent",
+      "subject_consistency": 0.9757459759712219,
+      "text_alignment": 0.20061561465263367
+    },
+    "p13_reference": {
+      "prompt_idx": 13,
+      "policy": "reference",
+      "subject_consistency": 0.9892427325248718,
+      "text_alignment": 0.25327208638191223
+    },
+    "p14_fixed_coarse": {
+      "prompt_idx": 14,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9172889590263367,
+      "text_alignment": 0.2796540856361389
+    },
+    "p14_fixed_fine": {
+      "prompt_idx": 14,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9833855032920837,
+      "text_alignment": 0.257144033908844
+    },
+    "p14_jev_routed": {
+      "prompt_idx": 14,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9329846501350403,
+      "text_alignment": 0.2556372880935669
+    },
+    "p14_jev_single": {
+      "prompt_idx": 14,
+      "policy": "jev_single",
+      "subject_consistency": 0.9172889590263367,
+      "text_alignment": 0.2796540856361389
+    },
+    "p14_latent": {
+      "prompt_idx": 14,
+      "policy": "latent",
+      "subject_consistency": 0.9633116722106934,
+      "text_alignment": 0.22597235441207886
+    },
+    "p14_reference": {
+      "prompt_idx": 14,
+      "policy": "reference",
+      "subject_consistency": 0.9882715344429016,
+      "text_alignment": 0.2767004072666168
+    },
+    "p15_fixed_coarse": {
+      "prompt_idx": 15,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9291753768920898,
+      "text_alignment": 0.25962167978286743
+    },
+    "p15_fixed_fine": {
+      "prompt_idx": 15,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9749056696891785,
+      "text_alignment": 0.22014057636260986
+    },
+    "p15_jev_routed": {
+      "prompt_idx": 15,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9894422888755798,
+      "text_alignment": 0.2096192091703415
+    },
+    "p15_jev_single": {
+      "prompt_idx": 15,
+      "policy": "jev_single",
+      "subject_consistency": 0.9894422888755798,
+      "text_alignment": 0.2096192091703415
+    },
+    "p15_latent": {
+      "prompt_idx": 15,
+      "policy": "latent",
+      "subject_consistency": 0.9693180918693542,
+      "text_alignment": 0.2230643630027771
+    },
+    "p15_reference": {
+      "prompt_idx": 15,
+      "policy": "reference",
+      "subject_consistency": 0.9834990501403809,
+      "text_alignment": 0.27388522028923035
+    },
+    "p16_fixed_coarse": {
+      "prompt_idx": 16,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9454354047775269,
+      "text_alignment": 0.31884676218032837
+    },
+    "p16_fixed_fine": {
+      "prompt_idx": 16,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9646239280700684,
+      "text_alignment": 0.32820722460746765
+    },
+    "p16_jev_routed": {
+      "prompt_idx": 16,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9454354047775269,
+      "text_alignment": 0.31884676218032837
+    },
+    "p16_jev_single": {
+      "prompt_idx": 16,
+      "policy": "jev_single",
+      "subject_consistency": 0.9454354047775269,
+      "text_alignment": 0.31884676218032837
+    },
+    "p16_latent": {
+      "prompt_idx": 16,
+      "policy": "latent",
+      "subject_consistency": 0.9651276469230652,
+      "text_alignment": 0.32054445147514343
+    },
+    "p16_reference": {
+      "prompt_idx": 16,
+      "policy": "reference",
+      "subject_consistency": 0.9709771275520325,
+      "text_alignment": 0.300512433052063
+    },
+    "p17_fixed_coarse": {
+      "prompt_idx": 17,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.964447021484375,
+      "text_alignment": 0.28118351101875305
+    },
+    "p17_fixed_fine": {
+      "prompt_idx": 17,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9894527196884155,
+      "text_alignment": 0.2739381492137909
+    },
+    "p17_jev_routed": {
+      "prompt_idx": 17,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9684448838233948,
+      "text_alignment": 0.2806265950202942
+    },
+    "p17_jev_single": {
+      "prompt_idx": 17,
+      "policy": "jev_single",
+      "subject_consistency": 0.964447021484375,
+      "text_alignment": 0.28118351101875305
+    },
+    "p17_latent": {
+      "prompt_idx": 17,
+      "policy": "latent",
+      "subject_consistency": 0.9850683808326721,
+      "text_alignment": 0.2719780504703522
+    },
+    "p17_reference": {
+      "prompt_idx": 17,
+      "policy": "reference",
+      "subject_consistency": 0.9871126413345337,
+      "text_alignment": 0.27606016397476196
+    },
+    "p18_fixed_coarse": {
+      "prompt_idx": 18,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9144473075866699,
+      "text_alignment": 0.30077680945396423
+    },
+    "p18_fixed_fine": {
+      "prompt_idx": 18,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9826095700263977,
+      "text_alignment": 0.2934199571609497
+    },
+    "p18_jev_routed": {
+      "prompt_idx": 18,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9594286680221558,
+      "text_alignment": 0.28854691982269287
+    },
+    "p18_jev_single": {
+      "prompt_idx": 18,
+      "policy": "jev_single",
+      "subject_consistency": 0.9826095700263977,
+      "text_alignment": 0.2934199571609497
+    },
+    "p18_latent": {
+      "prompt_idx": 18,
+      "policy": "latent",
+      "subject_consistency": 0.9674707651138306,
+      "text_alignment": 0.2887047529220581
+    },
+    "p18_reference": {
+      "prompt_idx": 18,
+      "policy": "reference",
+      "subject_consistency": 0.9908755421638489,
+      "text_alignment": 0.2650400400161743
+    },
+    "p19_fixed_coarse": {
+      "prompt_idx": 19,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.892989456653595,
+      "text_alignment": 0.25335803627967834
+    },
+    "p19_fixed_fine": {
+      "prompt_idx": 19,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9414216876029968,
+      "text_alignment": 0.28094682097435
+    },
+    "p19_jev_routed": {
+      "prompt_idx": 19,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9030459523200989,
+      "text_alignment": 0.26185888051986694
+    },
+    "p19_jev_single": {
+      "prompt_idx": 19,
+      "policy": "jev_single",
+      "subject_consistency": 0.892989456653595,
+      "text_alignment": 0.25335803627967834
+    },
+    "p19_latent": {
+      "prompt_idx": 19,
+      "policy": "latent",
+      "subject_consistency": 0.9177355170249939,
+      "text_alignment": 0.27297958731651306
+    },
+    "p19_reference": {
+      "prompt_idx": 19,
+      "policy": "reference",
+      "subject_consistency": 0.9896495938301086,
+      "text_alignment": 0.2635369598865509
+    },
+    "p1_fixed_coarse": {
+      "prompt_idx": 1,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9320077300071716,
+      "text_alignment": 0.2682703733444214
+    },
+    "p1_fixed_fine": {
+      "prompt_idx": 1,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9793456792831421,
+      "text_alignment": 0.24336335062980652
+    },
+    "p1_jev_routed": {
+      "prompt_idx": 1,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9867439270019531,
+      "text_alignment": 0.24978099763393402
+    },
+    "p1_jev_single": {
+      "prompt_idx": 1,
+      "policy": "jev_single",
+      "subject_consistency": 0.9320077300071716,
+      "text_alignment": 0.2682703733444214
+    },
+    "p1_latent": {
+      "prompt_idx": 1,
+      "policy": "latent",
+      "subject_consistency": 0.976852297782898,
+      "text_alignment": 0.24832382798194885
+    },
+    "p1_reference": {
+      "prompt_idx": 1,
+      "policy": "reference",
+      "subject_consistency": 0.9945306777954102,
+      "text_alignment": 0.25327470898628235
+    },
+    "p20_fixed_coarse": {
+      "prompt_idx": 20,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9600163698196411,
+      "text_alignment": 0.32040145993232727
+    },
+    "p20_fixed_fine": {
+      "prompt_idx": 20,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9903775453567505,
+      "text_alignment": 0.31383511424064636
+    },
+    "p20_jev_routed": {
+      "prompt_idx": 20,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9600163698196411,
+      "text_alignment": 0.32040145993232727
+    },
+    "p20_jev_single": {
+      "prompt_idx": 20,
+      "policy": "jev_single",
+      "subject_consistency": 0.9600163698196411,
+      "text_alignment": 0.32040145993232727
+    },
+    "p20_latent": {
+      "prompt_idx": 20,
+      "policy": "latent",
+      "subject_consistency": 0.9798785448074341,
+      "text_alignment": 0.3117966055870056
+    },
+    "p20_reference": {
+      "prompt_idx": 20,
+      "policy": "reference",
+      "subject_consistency": 0.9936946034431458,
+      "text_alignment": 0.29056665301322937
+    },
+    "p21_fixed_coarse": {
+      "prompt_idx": 21,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9663677215576172,
+      "text_alignment": 0.284868061542511
+    },
+    "p21_fixed_fine": {
+      "prompt_idx": 21,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9930496215820312,
+      "text_alignment": 0.2771282196044922
+    },
+    "p21_jev_routed": {
+      "prompt_idx": 21,
+      "policy": "jev_routed",
+      "subject_consistency": 0.968417227268219,
+      "text_alignment": 0.28484469652175903
+    },
+    "p21_jev_single": {
+      "prompt_idx": 21,
+      "policy": "jev_single",
+      "subject_consistency": 0.9663677215576172,
+      "text_alignment": 0.284868061542511
+    },
+    "p21_latent": {
+      "prompt_idx": 21,
+      "policy": "latent",
+      "subject_consistency": 0.9824837446212769,
+      "text_alignment": 0.2845129370689392
+    },
+    "p21_reference": {
+      "prompt_idx": 21,
+      "policy": "reference",
+      "subject_consistency": 0.998813271522522,
+      "text_alignment": 0.2682640254497528
+    },
+    "p22_fixed_coarse": {
+      "prompt_idx": 22,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9317564368247986,
+      "text_alignment": 0.3058847486972809
+    },
+    "p22_fixed_fine": {
+      "prompt_idx": 22,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9576115012168884,
+      "text_alignment": 0.30211398005485535
+    },
+    "p22_jev_routed": {
+      "prompt_idx": 22,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9467858672142029,
+      "text_alignment": 0.30880361795425415
+    },
+    "p22_jev_single": {
+      "prompt_idx": 22,
+      "policy": "jev_single",
+      "subject_consistency": 0.9317564368247986,
+      "text_alignment": 0.3058847486972809
+    },
+    "p22_latent": {
+      "prompt_idx": 22,
+      "policy": "latent",
+      "subject_consistency": 0.9505330920219421,
+      "text_alignment": 0.3057191073894501
+    },
+    "p22_reference": {
+      "prompt_idx": 22,
+      "policy": "reference",
+      "subject_consistency": 0.9777783155441284,
+      "text_alignment": 0.2745206356048584
+    },
+    "p23_fixed_coarse": {
+      "prompt_idx": 23,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9581647515296936,
+      "text_alignment": 0.3277771770954132
+    },
+    "p23_fixed_fine": {
+      "prompt_idx": 23,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9843893647193909,
+      "text_alignment": 0.33767879009246826
+    },
+    "p23_jev_routed": {
+      "prompt_idx": 23,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9581647515296936,
+      "text_alignment": 0.3277771770954132
+    },
+    "p23_jev_single": {
+      "prompt_idx": 23,
+      "policy": "jev_single",
+      "subject_consistency": 0.9581647515296936,
+      "text_alignment": 0.3277771770954132
+    },
+    "p23_latent": {
+      "prompt_idx": 23,
+      "policy": "latent",
+      "subject_consistency": 0.9669537544250488,
+      "text_alignment": 0.3370617926120758
+    },
+    "p23_reference": {
+      "prompt_idx": 23,
+      "policy": "reference",
+      "subject_consistency": 0.9913281202316284,
+      "text_alignment": 0.3132753372192383
+    },
+    "p2_fixed_coarse": {
+      "prompt_idx": 2,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9391099810600281,
+      "text_alignment": 0.28304317593574524
+    },
+    "p2_fixed_fine": {
+      "prompt_idx": 2,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9891007542610168,
+      "text_alignment": 0.2815439999103546
+    },
+    "p2_jev_routed": {
+      "prompt_idx": 2,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9775623679161072,
+      "text_alignment": 0.2828291952610016
+    },
+    "p2_jev_single": {
+      "prompt_idx": 2,
+      "policy": "jev_single",
+      "subject_consistency": 0.9965501427650452,
+      "text_alignment": 0.25751978158950806
+    },
+    "p2_latent": {
+      "prompt_idx": 2,
+      "policy": "latent",
+      "subject_consistency": 0.9687434434890747,
+      "text_alignment": 0.29570433497428894
+    },
+    "p2_reference": {
+      "prompt_idx": 2,
+      "policy": "reference",
+      "subject_consistency": 0.9965229034423828,
+      "text_alignment": 0.27937188744544983
+    },
+    "p3_fixed_coarse": {
+      "prompt_idx": 3,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9618722796440125,
+      "text_alignment": 0.31140872836112976
+    },
+    "p3_fixed_fine": {
+      "prompt_idx": 3,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9852386116981506,
+      "text_alignment": 0.30532464385032654
+    },
+    "p3_jev_routed": {
+      "prompt_idx": 3,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9980935454368591,
+      "text_alignment": 0.31115227937698364
+    },
+    "p3_jev_single": {
+      "prompt_idx": 3,
+      "policy": "jev_single",
+      "subject_consistency": 0.9980935454368591,
+      "text_alignment": 0.31115227937698364
+    },
+    "p3_latent": {
+      "prompt_idx": 3,
+      "policy": "latent",
+      "subject_consistency": 0.9834203124046326,
+      "text_alignment": 0.30295225977897644
+    },
+    "p3_reference": {
+      "prompt_idx": 3,
+      "policy": "reference",
+      "subject_consistency": 0.9970542192459106,
+      "text_alignment": 0.28288617730140686
+    },
+    "p4_fixed_coarse": {
+      "prompt_idx": 4,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9550922513008118,
+      "text_alignment": 0.3004688620567322
+    },
+    "p4_fixed_fine": {
+      "prompt_idx": 4,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.996062159538269,
+      "text_alignment": 0.28900307416915894
+    },
+    "p4_jev_routed": {
+      "prompt_idx": 4,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9806544184684753,
+      "text_alignment": 0.2870479226112366
+    },
+    "p4_jev_single": {
+      "prompt_idx": 4,
+      "policy": "jev_single",
+      "subject_consistency": 0.9550922513008118,
+      "text_alignment": 0.3004688620567322
+    },
+    "p4_latent": {
+      "prompt_idx": 4,
+      "policy": "latent",
+      "subject_consistency": 0.9690853953361511,
+      "text_alignment": 0.2868580222129822
+    },
+    "p4_reference": {
+      "prompt_idx": 4,
+      "policy": "reference",
+      "subject_consistency": 0.9972254633903503,
+      "text_alignment": 0.2825155258178711
+    },
+    "p5_fixed_coarse": {
+      "prompt_idx": 5,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9655575752258301,
+      "text_alignment": 0.30475515127182007
+    },
+    "p5_fixed_fine": {
+      "prompt_idx": 5,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.986289918422699,
+      "text_alignment": 0.3082975745201111
+    },
+    "p5_jev_routed": {
+      "prompt_idx": 5,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9748825430870056,
+      "text_alignment": 0.30445289611816406
+    },
+    "p5_jev_single": {
+      "prompt_idx": 5,
+      "policy": "jev_single",
+      "subject_consistency": 0.9972057342529297,
+      "text_alignment": 0.3041438162326813
+    },
+    "p5_latent": {
+      "prompt_idx": 5,
+      "policy": "latent",
+      "subject_consistency": 0.9812527298927307,
+      "text_alignment": 0.3064734637737274
+    },
+    "p5_reference": {
+      "prompt_idx": 5,
+      "policy": "reference",
+      "subject_consistency": 0.9947596788406372,
+      "text_alignment": 0.29048511385917664
+    },
+    "p6_fixed_coarse": {
+      "prompt_idx": 6,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.949091911315918,
+      "text_alignment": 0.2863624691963196
+    },
+    "p6_fixed_fine": {
+      "prompt_idx": 6,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9930505752563477,
+      "text_alignment": 0.2858583629131317
+    },
+    "p6_jev_routed": {
+      "prompt_idx": 6,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9953495860099792,
+      "text_alignment": 0.28385066986083984
+    },
+    "p6_jev_single": {
+      "prompt_idx": 6,
+      "policy": "jev_single",
+      "subject_consistency": 0.9953495860099792,
+      "text_alignment": 0.28385066986083984
+    },
+    "p6_latent": {
+      "prompt_idx": 6,
+      "policy": "latent",
+      "subject_consistency": 0.9826350808143616,
+      "text_alignment": 0.27630114555358887
+    },
+    "p6_reference": {
+      "prompt_idx": 6,
+      "policy": "reference",
+      "subject_consistency": 0.9974040389060974,
+      "text_alignment": 0.25628748536109924
+    },
+    "p7_fixed_coarse": {
+      "prompt_idx": 7,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9201095700263977,
+      "text_alignment": 0.23417264223098755
+    },
+    "p7_fixed_fine": {
+      "prompt_idx": 7,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9850733876228333,
+      "text_alignment": 0.23470383882522583
+    },
+    "p7_jev_routed": {
+      "prompt_idx": 7,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9201095700263977,
+      "text_alignment": 0.23417264223098755
+    },
+    "p7_jev_single": {
+      "prompt_idx": 7,
+      "policy": "jev_single",
+      "subject_consistency": 0.9201095700263977,
+      "text_alignment": 0.23417264223098755
+    },
+    "p7_latent": {
+      "prompt_idx": 7,
+      "policy": "latent",
+      "subject_consistency": 0.9606056213378906,
+      "text_alignment": 0.2233620136976242
+    },
+    "p7_reference": {
+      "prompt_idx": 7,
+      "policy": "reference",
+      "subject_consistency": 0.9974268674850464,
+      "text_alignment": 0.23187720775604248
+    },
+    "p8_fixed_coarse": {
+      "prompt_idx": 8,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9322504997253418,
+      "text_alignment": 0.21396388113498688
+    },
+    "p8_fixed_fine": {
+      "prompt_idx": 8,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9854410290718079,
+      "text_alignment": 0.22307679057121277
+    },
+    "p8_jev_routed": {
+      "prompt_idx": 8,
+      "policy": "jev_routed",
+      "subject_consistency": 0.9701828956604004,
+      "text_alignment": 0.22036585211753845
+    },
+    "p8_jev_single": {
+      "prompt_idx": 8,
+      "policy": "jev_single",
+      "subject_consistency": 0.9854410290718079,
+      "text_alignment": 0.22307679057121277
+    },
+    "p8_latent": {
+      "prompt_idx": 8,
+      "policy": "latent",
+      "subject_consistency": 0.9628127217292786,
+      "text_alignment": 0.20406495034694672
+    },
+    "p8_reference": {
+      "prompt_idx": 8,
+      "policy": "reference",
+      "subject_consistency": 0.9950646758079529,
+      "text_alignment": 0.21887053549289703
+    },
+    "p9_fixed_coarse": {
+      "prompt_idx": 9,
+      "policy": "fixed_coarse",
+      "subject_consistency": 0.9474434852600098,
+      "text_alignment": 0.29234579205513
+    },
+    "p9_fixed_fine": {
+      "prompt_idx": 9,
+      "policy": "fixed_fine",
+      "subject_consistency": 0.9938259720802307,
+      "text_alignment": 0.30386587977409363
+    },
+    "p9_jev_routed": {
+      "prompt_idx": 9,
+      "policy": "jev_routed",
+      "subject_consistency": 0.992548406124115,
+      "text_alignment": 0.29853782057762146
+    },
+    "p9_jev_single": {
+      "prompt_idx": 9,
+      "policy": "jev_single",
+      "subject_consistency": 0.9956573843955994,
+      "text_alignment": 0.29554635286331177
+    },
+    "p9_latent": {
+      "prompt_idx": 9,
+      "policy": "latent",
+      "subject_consistency": 0.9757441878318787,
+      "text_alignment": 0.2955094277858734
+    },
+    "p9_reference": {
+      "prompt_idx": 9,
+      "policy": "reference",
+      "subject_consistency": 0.9972466230392456,
+      "text_alignment": 0.289573609828949
+    }
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "phase": "A100-JEV-classical",
+  "by_policy": {
+    "fixed_fine": {
+      "n": 6,
+      "temporal_warp_mean": 0.015909238968950894
+    },
+    "fixed_coarse": {
+      "n": 6,
+      "temporal_warp_mean": 0.03548178208542855
+    },
+    "jev_routed": {
+      "n": 6,
+      "temporal_warp_mean": 0.01740743874965812
+    },
+    "jev_single": {
+      "n": 6,
+      "temporal_warp_mean": 0.019233722350604478
+    },
+    "latent": {
+      "n": 6,
+      "temporal_warp_mean": 0.018463419958217337
+    }
+  },
+  "per_video": {
+    "p0_fixed_coarse": {
+      "prompt_idx": 0,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.030847860911827802
+    },
+    "p0_fixed_fine": {
+      "prompt_idx": 0,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.008067318074089209
+    },
+    "p0_jev_routed": {
+      "prompt_idx": 0,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.007426142376581473
+    },
+    "p0_jev_single": {
+      "prompt_idx": 0,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.007426142376581473
+    },
+    "p0_latent": {
+      "prompt_idx": 0,
+      "policy": "latent",
+      "temporal_warp_mean": 0.012958022150477129
+    },
+    "p1_fixed_coarse": {
+      "prompt_idx": 1,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.044014041045946736
+    },
+    "p1_fixed_fine": {
+      "prompt_idx": 1,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.017686406067306443
+    },
+    "p1_jev_routed": {
+      "prompt_idx": 1,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.01103529175660307
+    },
+    "p1_jev_single": {
+      "prompt_idx": 1,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.017686406067306443
+    },
+    "p1_latent": {
+      "prompt_idx": 1,
+      "policy": "latent",
+      "temporal_warp_mean": 0.02027257570132081
+    },
+    "p2_fixed_coarse": {
+      "prompt_idx": 2,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.023350801011214832
+    },
+    "p2_fixed_fine": {
+      "prompt_idx": 2,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.009297668272795687
+    },
+    "p2_jev_routed": {
+      "prompt_idx": 2,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.009640736898290925
+    },
+    "p2_jev_single": {
+      "prompt_idx": 2,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.0076610798797836265
+    },
+    "p2_latent": {
+      "prompt_idx": 2,
+      "policy": "latent",
+      "temporal_warp_mean": 0.011773532932108668
+    },
+    "p3_fixed_coarse": {
+      "prompt_idx": 3,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.04699957897953157
+    },
+    "p3_fixed_fine": {
+      "prompt_idx": 3,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.023235105435430472
+    },
+    "p3_jev_routed": {
+      "prompt_idx": 3,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.03885399955158521
+    },
+    "p3_jev_single": {
+      "prompt_idx": 3,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.04699957897953157
+    },
+    "p3_latent": {
+      "prompt_idx": 3,
+      "policy": "latent",
+      "temporal_warp_mean": 0.028301193628327122
+    },
+    "p4_fixed_coarse": {
+      "prompt_idx": 4,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.04004997836558947
+    },
+    "p4_fixed_fine": {
+      "prompt_idx": 4,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.028401656209358146
+    },
+    "p4_jev_routed": {
+      "prompt_idx": 4,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.029219607656289424
+    },
+    "p4_jev_single": {
+      "prompt_idx": 4,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.029219607656289424
+    },
+    "p4_latent": {
+      "prompt_idx": 4,
+      "policy": "latent",
+      "temporal_warp_mean": 0.026055669819470495
+    },
+    "p5_fixed_coarse": {
+      "prompt_idx": 5,
+      "policy": "fixed_coarse",
+      "temporal_warp_mean": 0.027628432198460878
+    },
+    "p5_fixed_fine": {
+      "prompt_idx": 5,
+      "policy": "fixed_fine",
+      "temporal_warp_mean": 0.008767279754725419
+    },
+    "p5_jev_routed": {
+      "prompt_idx": 5,
+      "policy": "jev_routed",
+      "temporal_warp_mean": 0.008268854258598626
+    },
+    "p5_jev_single": {
+      "prompt_idx": 5,
+      "policy": "jev_single",
+      "temporal_warp_mean": 0.00640951914413433
+    },
+    "p5_latent": {
+      "prompt_idx": 5,
+      "policy": "latent",
+      "temporal_warp_mean": 0.011419525517599791
+    }
+  }
+}

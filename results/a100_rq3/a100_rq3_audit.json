@@ -1,0 +1,71 @@
+{
+  "phase": "A100-A3-rq3-audit",
+  "generated_utc": "2026-10-14T01:03:02.275857+00:00",
+  "n_complete": 72,
+  "by_controller": {
+    "threshold_only": {
+      "n": 12,
+      "switch_count": 0.5,
+      "fine_fraction": 0.5,
+      "auh_reference_l1": 0.27670860414703685,
+      "terminal_reference_l1": 0.295518575857083,
+      "switch_adjacent_l1": 0.0672474555671215,
+      "interior_adjacent_l1": 0.03051554326278468
+    },
+    "hysteresis_only": {
+      "n": 12,
+      "switch_count": 0.4166666666666667,
+      "fine_fraction": 0.5208333333333334,
+      "auh_reference_l1": 0.2772457056368391,
+      "terminal_reference_l1": 0.2976669818162918,
+      "switch_adjacent_l1": 0.06011689081788063,
+      "interior_adjacent_l1": 0.03028499016848703
+    },
+    "recovery_only": {
+      "n": 12,
+      "switch_count": 0.4166666666666667,
+      "fine_fraction": 0.5208333333333334,
+      "auh_reference_l1": 0.2772457056368391,
+      "terminal_reference_l1": 0.2976669818162918,
+      "switch_adjacent_l1": 0.06011689081788063,
+      "interior_adjacent_l1": 0.03028499016848703
+    },
+    "full": {
+      "n": 12,
+      "switch_count": 0.4166666666666667,
+      "fine_fraction": 0.5208333333333334,
+      "auh_reference_l1": 0.2772457056368391,
+      "terminal_reference_l1": 0.2976669818162918,
+      "switch_adjacent_l1": 0.06011689081788063,
+      "interior_adjacent_l1": 0.03028499016848703
+    },
+    "threshold_only_noisy": {
+      "n": 12,
+      "switch_count": 0.9166666666666666,
+      "fine_fraction": 0.4791666666666667,
+      "auh_reference_l1": 0.27414732209096354,
+      "terminal_reference_l1": 0.2996503946681817,
+      "switch_adjacent_l1": 0.07933255564421415,
+      "interior_adjacent_l1": 0.03264699263187746
+    },
+    "full_noisy": {
+      "n": 12,
+      "switch_count": 0.5,
+      "fine_fraction": 0.5625,
+      "auh_reference_l1": 0.2718157346049945,
+      "terminal_reference_l1": 0.2920668398340543,
+      "switch_adjacent_l1": 0.05507080815732479,
+      "interior_adjacent_l1": 0.03147319292960068
+    }
+  },
+  "verdict": {
+    "switches_threshold_to_full": [
+      0.5,
+      0.4166666666666667
+    ],
+    "switches_reduction_real": 0.08333333333333331,
+    "switches_noisy_reduction": 0.41666666666666663,
+    "auh_reference_l1_full_minus_threshold": 0.0005371014898022386,
+    "terminal_reference_l1_full_minus_threshold": 0.002148405959208788
+  }
+}

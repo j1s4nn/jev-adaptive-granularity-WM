@@ -1,0 +1,49 @@
+{
+  "run_id": "20261006_032323",
+  "phase": "phase4-residual-adaptive-online",
+  "status": "complete",
+  "protocol": {
+    "prompts": [
+      "Splash of turquoise water in extreme slow motion, alpha channel included.",
+      "The Bund Shanghai, with an intense shaking effect",
+      "A beautiful coastal beach in spring, waves lapping on sand, watercolor painting",
+      "A cyclist rides quickly along a forest trail in bright sunlight"
+    ],
+    "seed": 17,
+    "horizon": 45,
+    "signal": "denoising residual between adjacent predictions in preceding coarse segment",
+    "tau_low": 1.0250263810157776,
+    "tau_high": 1.0357918739318848,
+    "threshold_fit": "Phase 3 calibration split only",
+    "initial_mode": "coarse",
+    "lambda_action": 0.0,
+    "recovery_length": 0
+  },
+  "dataset_paths": {
+    "c1": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "n_complete": 4,
+  "n_failed": 0,
+  "results_file": "/kaggle/working/results/phase4_adaptive_online/results.jsonl",
+  "limitations": [
+    "four held-out prompts, one seed",
+    "residual thresholds calibrated on Phase 3 calibration split",
+    "pixel L1 is a temporal proxy, not perceptual quality",
+    "fine-mode steps retain the latest residual observed in a coarse segment"
+  ],
+  "mean_timing": {
+    "text_encode_s": 144.90639024972916,
+    "checkpoint_load_s": 40.15324765443802,
+    "dit_s": 33.45779001712799,
+    "vae_s": 120.89037907123566,
+    "signal_s": 2.2649765014648438e-06,
+    "total_s": 344.00572872161865,
+    "nfe": 16.0,
+    "peak_vram_gb": 4.187045097351074
+  },
+  "end_time": "2026-10-06T03:48:11.072227"
+}

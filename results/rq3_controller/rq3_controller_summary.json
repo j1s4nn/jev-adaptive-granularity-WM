@@ -1,0 +1,40 @@
+{
+  "run_id": "20261011_153555",
+  "phase": "rq3-controller-ablation",
+  "status": "complete",
+  "start_time": "2026-10-11T15:35:55.553677",
+  "protocol": {
+    "manifest_version": "f4lite-v1",
+    "seed": 17,
+    "horizon": 57,
+    "tau_psi": -4.416192173957825,
+    "sigma_u": 3.915166421304675,
+    "lambda": 7.83033284260935,
+    "recovery_r": 2,
+    "noise_sigma": 7.83033284260935,
+    "noise_seed": 20261026,
+    "controllers": [
+      "threshold_only",
+      "hysteresis_only",
+      "recovery_only",
+      "full",
+      "threshold_only_noisy",
+      "full_noisy"
+    ],
+    "structure": "shared coarse prefix + 4 segment decisions of 3 latent frames",
+    "metric": "decoded-pixel L1 to matched internal c1-1 step-4 reference"
+  },
+  "upstream_rcm_commit": "ed3cb14dd936f92cdc9f9381af7369991509b41f",
+  "dataset_paths": {
+    "fine": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "reference": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "coarse": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "n_complete": 48,
+  "n_expected": 48,
+  "verdict": "PASS",
+  "end_time": "2026-10-11T19:12:24.935121"
+}

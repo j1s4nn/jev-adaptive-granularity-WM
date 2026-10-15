@@ -1,0 +1,5 @@
+prompt_idx,prompt,adaptive_l1,fixed_fine_l1,fixed_coarse_l1,oracle_l1,fine_fraction,switch_count
+0,"Splash of turquoise water in extreme slow motion, alpha channel included.",0.025801494096716244,0.03215630725026131,0.021900979802012444,0.021900979802012444,0.0,0
+1,"The Bund Shanghai, with an intense shaking effect",0.01319011269758145,0.017311640704671543,0.052880752831697464,0.017311640704671543,1.0,0
+2,"A beautiful coastal beach in spring, waves lapping on sand, watercolor painting",0.03282525514562925,0.016520430023471516,0.023762645820776623,0.016520430023471516,0.0,0
+3,"A cyclist rides quickly along a forest trail in bright sunlight",0.04195068217813969,0.06349049632747968,0.07726958890755971,0.06349049632747968,1.0,0

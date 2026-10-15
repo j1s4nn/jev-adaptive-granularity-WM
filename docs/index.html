@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Jev-Routed Temporal Granularity for Causal Video Generation | Hossen Md Jisan</title>
+  <meta name="description" content="Official project page for a hardware-conditional feasibility study of adaptive temporal granularity in causal video generation. Frame-wise, chunk-3, and hold modes on Causal-rCM (Wan2.1-1.3B), routed by the Jev System One oracle with a recovery and hysteresis controller, audited on Tesla T4 and A100-80GB." />
+  <meta name="keywords" content="causal video generation, world models, autoregressive diffusion, adaptive computation, temporal granularity, efficient inference, diffusion transformer, uncertainty estimation, hysteresis control, Causal-rCM, Wan2.1, Jev oracle" />
+  <meta name="author" content="Hossen Md Jisan" />
+  <link rel="canonical" href="https://j1s4nn.github.io/jev-adaptive-granularity-WM/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation" />
+  <meta property="og:description" content="Adaptive per-segment temporal granularity for causal video generation is real but conditional: it needs a GPU where coarse chunks are actually cheaper, a pre-generation signal that predicts unsafe segments, and an independent quality endpoint." />
+  <meta property="og:url" content="https://j1s4nn.github.io/jev-adaptive-granularity-WM/" />
+  <meta property="og:image" content="https://j1s4nn.github.io/jev-adaptive-granularity-WM/assets/figures/fig_cost_pareto.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jev-Routed Temporal Granularity for Causal Video Generation" />
+  <meta name="twitter:description" content="A hardware-conditional feasibility study of adaptive temporal granularity in causal video generation." />
+  <meta name="twitter:image" content="https://j1s4nn.github.io/jev-adaptive-granularity-WM/assets/figures/fig_cost_pareto.png" />
+
+  <style>
+    :root { --fg:#1a1a1a; --muted:#555; --accent:#0b5fa5; --bg:#ffffff; --line:#e2e2e2; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--fg);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.6; }
+    main { max-width:900px; margin:0 auto; padding:48px 20px 80px; }
+    h1 { font-size:1.9rem; line-height:1.25; margin:0 0 .4rem; }
+    h2 { font-size:1.25rem; margin:2.4rem 0 .6rem; border-bottom:1px solid var(--line); padding-bottom:.3rem; }
+    h3 { font-size:1.05rem; margin:1.6rem 0 .4rem; }
+    .authors { color:var(--muted); margin:.2rem 0 1.2rem; }
+    .lead { font-size:1.05rem; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .links a { display:inline-block; margin:0 .8rem .4rem 0; font-weight:600; }
+    figure { margin:1.4rem 0; }
+    figure img { width:100%; height:auto; border:1px solid var(--line); border-radius:6px; }
+    figcaption { color:var(--muted); font-size:.9rem; margin-top:.5rem; }
+    table { border-collapse:collapse; width:100%; font-size:.92rem; margin:1rem 0; }
+    th, td { border:1px solid var(--line); padding:.45rem .6rem; text-align:left; }
+    th { background:#f6f8fa; }
+    code { background:#f4f4f4; padding:.1rem .35rem; border-radius:4px; font-size:.9em; }
+    ul { padding-left:1.2rem; }
+    footer { color:var(--muted); font-size:.88rem; margin-top:3rem; border-top:1px solid var(--line); padding-top:1rem; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation",
+    "name": "Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation",
+    "author": {
+      "@type": "Person",
+      "name": "Hossen Md Jisan",
+      "email": "jisanahammed1952@gmail.com",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Nanjing University of Information Science and Technology (NUIST)"
+      }
+    },
+    "datePublished": "2026-10-15",
+    "inLanguage": "en",
+    "keywords": "causal video generation, world models, autoregressive diffusion, adaptive computation, temporal granularity, efficient inference, uncertainty estimation, hysteresis control",
+    "license": "https://opensource.org/licenses/MIT",
+    "isAccessibleForFree": true,
+    "url": "https://j1s4nn.github.io/jev-adaptive-granularity-WM/",
+    "sameAs": "https://github.com/j1s4nn/jev-adaptive-granularity-WM"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "jev-adaptive-granularity-WM",
+    "description": "Official code, locked protocols, calibration freezes, and audit artifacts for a hardware-conditional feasibility study of adaptive temporal granularity in causal video generation.",
+    "codeRepository": "https://github.com/j1s4nn/jev-adaptive-granularity-WM",
+    "programmingLanguage": "Python",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": { "@type": "Person", "name": "Hossen Md Jisan" }
+  }
+  </script>
+</head>
+<body>
+<main>
+  <h1>Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation</h1>
+  <p class="authors">Hossen Md Jisan &middot; Department of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST), Nanjing, China</p>
+
+  <p class="links">
+    <a href="https://github.com/j1s4nn/jev-adaptive-granularity-WM">GitHub repository</a>
+    <a href="https://github.com/j1s4nn/jev-adaptive-granularity-WM/blob/main/paper/main_updated2.pdf">Manuscript (PDF)</a>
+    <a href="https://www.kaggle.com/ajjisan">Kaggle artifacts</a>
+  </p>
+
+  <h2>Overview</h2>
+  <p class="lead">
+    Causal video generators produce a rollout one temporal chunk at a time, which invites a simple
+    efficiency idea: spend fine per-frame computation only where a segment is hard, and use cheaper
+    coarse chunks, or even reuse, elsewhere. Realizing this idea requires three preconditions that are
+    usually assumed rather than measured: a mode that is genuinely cheaper on the deployment hardware,
+    a signal that predicts hard segments before generation, and an independent endpoint that certifies
+    the trade. This project audits all three on Causal-rCM, a Wan2.1-1.3B text-to-video causal diffusion
+    model, pairing a frame-wise mode with a chunk-3 mode and a near-zero-cost hold mode, and routing
+    among them with a two-threshold controller with hysteresis and forced recovery. The audit runs on a
+    Tesla T4 and an A100-SXM4-80GB, because the cost precondition turns out to be a property of the
+    hardware, not of the model. Negative and failed experiments are preserved as evidence.
+  </p>
+
+  <h2>Key findings</h2>
+  <ul>
+    <li><strong>Hardware-conditional cost inversion.</strong> On the T4 each coarse forward is 3.01&times; a fine forward against a 2.33&times; break-even point, so coarse is never cheaper; on the A100 the ratio falls to 1.60&ndash;1.75 and coarse is 1.46&times; faster in DiT time.</li>
+    <li><strong>A preregistered hand-crafted signal fails; a text-only oracle succeeds.</strong> The locked residual signal reaches AUROC 0.491, whereas the Jev System One oracle reaches AUROC 0.788 [0.575, 0.946] at 0.67&nbsp;s per decision, off the generation path.</li>
+    <li><strong>Recovery and hysteresis stabilize switching.</strong> Switches drop from 0.50 to 0.38 on the T4 and from 0.92 to 0.50 under signal noise on the A100, without worsening regret.</li>
+    <li><strong>A trade-off, not dominance.</strong> On 24 fresh A100 prompts a single-decision Jev policy saves 1.78&nbsp;s of DiT time and 7.39&nbsp;s of total time (both significant) at a small significant &minus;0.020 CLIP subject-consistency cost.</li>
+    <li><strong>Monotonicity is signal- and endpoint-dependent.</strong> The fine-versus-coarse benefit is monotone in the Jev difficulty signal on the T4 but flat on the A100 diagnostic split.</li>
+  </ul>
+
+  <h2>Results</h2>
+
+  <figure>
+    <img src="assets/figures/fig_hw_scaling.png" alt="Rollout DiT latency and the coarse/fine per-forward ratio against the 2.33 break-even point on T4 and A100." />
+    <figcaption>Cost precondition across hardware. The same model pair lies above break-even on the T4 (coarse slower) and below it on the A100 (coarse faster).</figcaption>
+  </figure>
+
+  <table>
+    <caption>Cost precondition across hardware and context regime.</caption>
+    <thead>
+      <tr><th>Setting</th><th>fine s/fwd</th><th>coarse s/fwd</th><th>ratio</th><th>coarse cheaper?</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>T4, clean context</td><td>1.32</td><td>3.58</td><td>3.01</td><td>no</td></tr>
+      <tr><td>T4, noisy context</td><td>0.71</td><td>2.10</td><td>2.94</td><td>no</td></tr>
+      <tr><td>A100, timing arm</td><td>0.125</td><td>0.200</td><td>1.60</td><td>yes</td></tr>
+      <tr><td>A100, full-decode arm</td><td>0.112</td><td>0.196</td><td>1.75</td><td>yes</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    <img src="assets/figures/fig_cost_pareto.png" alt="Six-mode cost-quality sweep on the Tesla T4 and the A100-80GB." />
+    <figcaption>Six-mode cost&ndash;quality sweep. Fewer NFEs do not imply lower DiT time: on the T4 every coarse mode sits above and to the right of fine c1-1 s1, while on the A100 the coarse family occupies a cheaper, less accurate frontier point.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/figures/fig_auroc.png" alt="Held-out AUROC of hand-crafted signals versus Jev outputs." />
+    <figcaption>Signal discrimination. The Jev outputs outperform every hand-crafted signal; the dashed line marks the preregistered residual result (0.491) and the dotted line is chance.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/figures/fig_jev_routing.png" alt="Per-segment Jev routing traces over eight prompts." />
+    <figcaption>Jev routing traces (F = fine, C = coarse, H = hold). Static content is held, fast motion is routed to fine, and moderate motion to coarse.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/figures/fig_rq3.png" alt="Controller ablation: switch counts and seam cost on T4 and A100." />
+    <figcaption>Controller ablation. Recovery plus hysteresis cuts switches on both GPUs and reduces the noisy-arm seam cost at switch boundaries.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/figures/fig_phase3_ci.png" alt="Prompt-paired bootstrap differences against fixed fine on 24 fresh A100 prompts." />
+    <figcaption>Confirmatory study. Both Jev policies pay a small, significant subject-consistency cost; the DiT and total-time savings are significant for the single-decision policy.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="assets/figures/qualitative_grid.png" alt="Representative decoded frames from matched rollouts across policies." />
+    <figcaption>Representative decoded frames from matched rollouts. Fast-motion prompts preserve the subject under fine and Jev-routed policies, while the coarse rollout drifts.</figcaption>
+  </figure>
+
+  <h2>Citation</h2>
+  <pre><code>@article{jisan2026jev,
+  title   = {Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation},
+  author  = {Jisan, Hossen Md},
+  year    = {2026},
+  note    = {Manuscript prepared for IEEE Transactions on Circuits and Systems for Video Technology}
+}</code></pre>
+
+  <footer>
+    Released under the MIT License. Code, locked protocols, and audit artifacts are available at
+    <a href="https://github.com/j1s4nn/jev-adaptive-granularity-WM">github.com/j1s4nn/jev-adaptive-granularity-WM</a>.
+  </footer>
+</main>
+</body>
+</html>

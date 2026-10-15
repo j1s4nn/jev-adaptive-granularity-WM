@@ -1,0 +1,61 @@
+{
+  "run_id": "20261007_012206",
+  "phase": "phase5b-heldout-06",
+  "status": "complete",
+  "start_time": "2026-10-07T01:22:06.067300",
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c1_1_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step4.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "protocol": {
+    "split": "held_out",
+    "prompts": [
+      "A person is baby waking up",
+      "A person is bandaging",
+      "A person is barbequing"
+    ],
+    "seeds": [
+      17,
+      29,
+      41
+    ],
+    "horizons": [
+      57
+    ],
+    "modes": [
+      "c1-1_step4_reference",
+      "c1-1_step2_fine",
+      "c3-3_step4_coarse"
+    ],
+    "signals": [
+      "residual",
+      "warp",
+      "motion",
+      "complexity"
+    ],
+    "signal_context": "preceding fixed coarse context, before target segment",
+    "prompt_embedding_cached_across_modes_and_seeds": true,
+    "metric": "decoded pixel L1 to matched reference",
+    "same_initial_noise": true,
+    "limitations": [
+      "held-out split; no threshold fitted in this kernel",
+      "reference is an internal high-compute model, not ground truth",
+      "decoded pixel L1 is a reference-defined proxy",
+      "no adaptive-policy claim"
+    ]
+  },
+  "n_complete": 9,
+  "n_failed_or_incomplete": 0,
+  "reference_regret_summary": {
+    "n_segments": 36,
+    "mean": 0.08108252017862266,
+    "min": -0.038393571972846985,
+    "max": 0.17594076693058014
+  },
+  "verdict": "PASS",
+  "end_time": "2026-10-07T02:52:19.433976"
+}

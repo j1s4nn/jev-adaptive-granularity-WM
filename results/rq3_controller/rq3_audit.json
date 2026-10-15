@@ -1,0 +1,144 @@
+{
+  "phase": "RQ3-controller-ablation-audit",
+  "generated_utc": "2026-10-11T19:20:50.715939+00:00",
+  "input_sha256": "40d08d7f3620efe84d87d0dfa026ee4eeb8d5d6504908c9696b3bb4d4eb56420",
+  "n_rollouts": 48,
+  "by_controller": {
+    "threshold_only": {
+      "n": 8,
+      "switch_count_mean": 0.5,
+      "fine_fraction_mean": 0.5,
+      "mean_reference_l1": 0.3132751095108688,
+      "terminal_reference_l1": 0.31709292344748974,
+      "auh_reference_l1": 0.3132751095108688,
+      "dit_s": 29.055017411708832,
+      "total_s": 201.67569851875305,
+      "switch_adjacent_l1": 0.03644073257843653,
+      "interior_adjacent_l1": 0.027968627808149904,
+      "mode_run_length_mean": 3.1666666666666665
+    },
+    "hysteresis_only": {
+      "n": 8,
+      "switch_count_mean": 0.375,
+      "fine_fraction_mean": 0.53125,
+      "mean_reference_l1": 0.3115908927284181,
+      "terminal_reference_l1": 0.31035605631768703,
+      "auh_reference_l1": 0.3115908927284181,
+      "dit_s": 28.011597365140915,
+      "total_s": 199.50459256768227,
+      "switch_adjacent_l1": 0.03209118669231733,
+      "interior_adjacent_l1": 0.027324101829435676,
+      "mode_run_length_mean": 3.25
+    },
+    "recovery_only": {
+      "n": 8,
+      "switch_count_mean": 0.375,
+      "fine_fraction_mean": 0.53125,
+      "mean_reference_l1": 0.3115908927284181,
+      "terminal_reference_l1": 0.31035605631768703,
+      "auh_reference_l1": 0.3115908927284181,
+      "dit_s": 28.02509993314743,
+      "total_s": 199.56082278490067,
+      "switch_adjacent_l1": 0.03209118669231733,
+      "interior_adjacent_l1": 0.027324101829435676,
+      "mode_run_length_mean": 3.25
+    },
+    "full": {
+      "n": 8,
+      "switch_count_mean": 0.375,
+      "fine_fraction_mean": 0.53125,
+      "mean_reference_l1": 0.3115908927284181,
+      "terminal_reference_l1": 0.31035605631768703,
+      "auh_reference_l1": 0.3115908927284181,
+      "dit_s": 27.932664185762405,
+      "total_s": 199.44058242440224,
+      "switch_adjacent_l1": 0.03209118669231733,
+      "interior_adjacent_l1": 0.027324101829435676,
+      "mode_run_length_mean": 3.25
+    },
+    "threshold_only_noisy": {
+      "n": 8,
+      "switch_count_mean": 1.125,
+      "fine_fraction_mean": 0.53125,
+      "mean_reference_l1": 0.3159138332121074,
+      "terminal_reference_l1": 0.31715921871364117,
+      "auh_reference_l1": 0.3159138332121074,
+      "dit_s": 27.879401743412018,
+      "total_s": 203.43578425049782,
+      "switch_adjacent_l1": 0.06298117029170196,
+      "interior_adjacent_l1": 0.028988293488509953,
+      "mode_run_length_mean": 2.2916666666666665
+    },
+    "full_noisy": {
+      "n": 8,
+      "switch_count_mean": 0.625,
+      "fine_fraction_mean": 0.65625,
+      "mean_reference_l1": 0.31495419749990106,
+      "terminal_reference_l1": 0.31387885473668575,
+      "auh_reference_l1": 0.31495419749990106,
+      "dit_s": 25.53142848610878,
+      "total_s": 197.36451640725136,
+      "switch_adjacent_l1": 0.039869973063468934,
+      "interior_adjacent_l1": 0.02596091543091461,
+      "mode_run_length_mean": 2.75
+    }
+  },
+  "paired": {
+    "real": {
+      "switch_diff_mean": -0.125,
+      "auh_regret_diff_mean": -0.001684216782450676,
+      "terminal_regret_diff_mean": -0.006736867129802704,
+      "n": 8
+    },
+    "noisy": {
+      "switch_diff_mean": -0.5,
+      "auh_regret_diff_mean": -0.0009596357122063637,
+      "terminal_regret_diff_mean": -0.003280363976955414,
+      "n": 8
+    }
+  },
+  "lambda_sweep": {
+    "0.5": {
+      "lambda": 1.9575832106523374,
+      "total_switches_hysteresis_only": 3,
+      "total_switches_full": 3
+    },
+    "1.0": {
+      "lambda": 3.915166421304675,
+      "total_switches_hysteresis_only": 3,
+      "total_switches_full": 3
+    },
+    "2.0": {
+      "lambda": 7.83033284260935,
+      "total_switches_hysteresis_only": 3,
+      "total_switches_full": 3
+    },
+    "4.0": {
+      "lambda": 15.6606656852187,
+      "total_switches_hysteresis_only": 3,
+      "total_switches_full": 3
+    }
+  },
+  "recovery_sweep": {
+    "1": {
+      "R": 1,
+      "total_switches_recovery_only": 3,
+      "total_switches_full": 3
+    },
+    "2": {
+      "R": 2,
+      "total_switches_recovery_only": 3,
+      "total_switches_full": 3
+    },
+    "3": {
+      "R": 3,
+      "total_switches_recovery_only": 3,
+      "total_switches_full": 3
+    }
+  },
+  "verdict": {
+    "rq3_supported_real_signal": true,
+    "rq3_supported_noisy_stress": true,
+    "note": "RQ3 supported iff recovery+hysteresis reduces switches without worsening terminal/AUH regret at matched fine budget."
+  }
+}

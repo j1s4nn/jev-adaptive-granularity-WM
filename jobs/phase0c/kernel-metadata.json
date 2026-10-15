@@ -1,0 +1,19 @@
+{
+  "id": "ajjisan/phase-0c-real-causal-rcm-inference-test-on-t4",
+  "title": "Phase 0c: Real Causal-rCM Inference Test on T4",
+  "code_file": "phase0c_infer.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "dataset_sources": [
+    "ajjisan/causal-rcm-ckpts",
+    "ajjisan/wan21-t5",
+    "ajjisan/wan21-dit-vae"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

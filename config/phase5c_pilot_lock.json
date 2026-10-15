@@ -1,0 +1,21 @@
+{
+  "phase": "phase5c-online-feasibility-pilot",
+  "scope": "single calibration prompt-seed; feasibility only, not an RQ2 estimate",
+  "manifest_sha256": "cce4c8c35cea378a6f2bd040e5468692a04f7e66f324aaddaedba33e63188b01",
+  "phase5b_calibration_lock_sha256": "3795454f60770432de3aa290bc98492d5a8a3f84c5028e619ac72b08d39690e9",
+  "calibration_prompt_index": 6,
+  "prompt": "a bear catching a salmon in its powerful jaws",
+  "seed": 17,
+  "horizon": 57,
+  "initial_prefix_latent_frames": 3,
+  "scored_decisions": 4,
+  "warp_direction": -1,
+  "warp_threshold_rule": "median of direction-oriented warp scores from all 48 Phase 5B calibration segments; scores at or above threshold select fine",
+  "warp_threshold_on_oriented_score": -8.452908515930176,
+  "target_fine_decision_fraction": 0.5,
+  "policies": ["fixed_coarse", "fixed_fine_continuation", "warp50", "random_match", "alternating50"],
+  "random_seed": 20261024,
+  "reference": "c1-1_step4 full 57-frame rollout from shared initial noise",
+  "output_metric": "decoded-pixel L1 to the matched internal reference",
+  "limitations": ["one calibration case only", "common coarse prefix for all policy continuations", "no residual controller or held-out inference in this pilot"]
+}

@@ -1,0 +1,82 @@
+{
+  "phase": "E-JEV-3-hold-mode-audit",
+  "generated_utc": "2026-10-12T04:13:50.769547+00:00",
+  "input_sha256": "917bb4fa29bdc85eb81c60871154ea97c9436d0aa268d54f41f13ec32a69fbbf",
+  "n_rollouts": 40,
+  "by_policy": {
+    "fixed_fine": {
+      "n": 8,
+      "mean_reference_l1": 0.29982313700020313,
+      "terminal_reference_l1": 0.29782301001250744,
+      "dit_s": 19.651015281677246,
+      "vae_s": 134.00182136893272,
+      "total_s": 193.94088500738144,
+      "forwards": 29.0,
+      "hold_count": 0.0,
+      "fine_count": 4.0,
+      "coarse_count": 0.0
+    },
+    "fixed_coarse": {
+      "n": 8,
+      "mean_reference_l1": 0.31857657665386796,
+      "terminal_reference_l1": 0.320542486384511,
+      "dit_s": 37.69481509923935,
+      "vae_s": 133.92448022961617,
+      "total_s": 205.5229671895504,
+      "forwards": 25.0,
+      "hold_count": 0.0,
+      "fine_count": 0.0,
+      "coarse_count": 4.0
+    },
+    "fixed_hold": {
+      "n": 8,
+      "mean_reference_l1": 0.3108499045483768,
+      "terminal_reference_l1": 0.3199212569743395,
+      "dit_s": 6.482800722122192,
+      "vae_s": 133.79027977585793,
+      "total_s": 136.42890998721123,
+      "forwards": 5.0,
+      "hold_count": 4.0,
+      "fine_count": 0.0,
+      "coarse_count": 0.0
+    },
+    "jev_routed": {
+      "n": 8,
+      "mean_reference_l1": 0.30853910418227315,
+      "terminal_reference_l1": 0.309433376416564,
+      "dit_s": 24.879825919866562,
+      "vae_s": 134.2468765079975,
+      "total_s": 182.34625524282455,
+      "forwards": 20.25,
+      "hold_count": 1.125,
+      "fine_count": 0.875,
+      "coarse_count": 2.0
+    },
+    "jev_routed_nohold": {
+      "n": 8,
+      "mean_reference_l1": 0.31305408710613847,
+      "terminal_reference_l1": 0.3175406288355589,
+      "dit_s": 33.70811581611633,
+      "vae_s": 133.89829674363136,
+      "total_s": 201.39918956160545,
+      "forwards": 25.875,
+      "hold_count": 0.0,
+      "fine_count": 0.875,
+      "coarse_count": 3.125
+    }
+  },
+  "paired": {
+    "jev_routed_vs_fixed_fine": {
+      "regret_diff_mean": 0.008715967182070017,
+      "total_s_diff_mean": -11.594629764556885,
+      "dit_s_diff_mean": 5.228810638189316,
+      "n": 8
+    },
+    "jev_routed_vs_jev_routed_nohold": {
+      "regret_diff_mean": -0.004514982923865318,
+      "total_s_diff_mean": -19.0529343187809,
+      "dit_s_diff_mean": -8.828289896249771,
+      "n": 8
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "run_id": "20261005_085540",
+  "phase": "phase3-signal-calibration",
+  "status": "failed",
+  "start_time": "2026-10-05T08:55:40.400510",
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "error": "KeyError: 'prompt_idx'",
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 386, in main\n    metrics[name] = {\"calibration\": bootstrap_auc([o[name] for o in cal_obs], [o[\"label\"] for o in cal_obs], [o[\"prompt_idx\"] for o in cal_obs]), \"held_out\": bootstrap_auc([o[name] for o in test_obs], [o[\"label\"] for o in test_obs], [o[\"prompt_idx\"] for o in test_obs]), \"threshold_calibration_youden\": fitted_threshold, \"held_out_threshold_metrics\": threshold_metrics([o[name] for o in test_obs], [o[\"label\"] for o in test_obs], fitted_threshold)}\n                                                                                                              ~^^^^^^^^^^^^^^\nKeyError: 'prompt_idx'\n",
+  "end_time": "2026-10-05T10:14:01.785932"
+}

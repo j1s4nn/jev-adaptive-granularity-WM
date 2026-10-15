@@ -1,0 +1,73 @@
+{
+  "manifest_version": "f4lite-v1",
+  "source": "prompts.json",
+  "selection_rule": "first sorted fresh candidates per stratum, disjoint from phase5-v1",
+  "n_per_stratum": 2,
+  "seed": 17,
+  "horizon": 57,
+  "prompts": [
+    {
+      "stratum": "object_class",
+      "prompt": "a boat",
+      "dimensions": [
+        "object_class"
+      ]
+    },
+    {
+      "stratum": "object_class",
+      "prompt": "a book",
+      "dimensions": [
+        "object_class"
+      ]
+    },
+    {
+      "stratum": "scene",
+      "prompt": "baseball stadium",
+      "dimensions": [
+        "scene",
+        "background_consistency"
+      ]
+    },
+    {
+      "stratum": "scene",
+      "prompt": "basement",
+      "dimensions": [
+        "scene",
+        "background_consistency"
+      ]
+    },
+    {
+      "stratum": "motion",
+      "prompt": "a bird flying over a snowy forest",
+      "dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ]
+    },
+    {
+      "stratum": "motion",
+      "prompt": "a bird soaring gracefully in the sky",
+      "dimensions": [
+        "motion_smoothness",
+        "dynamic_degree",
+        "subject_consistency"
+      ]
+    },
+    {
+      "stratum": "human_action",
+      "prompt": "A person is bungee jumping",
+      "dimensions": [
+        "human_action"
+      ]
+    },
+    {
+      "stratum": "human_action",
+      "prompt": "A person is canoeing or kayaking",
+      "dimensions": [
+        "human_action"
+      ]
+    }
+  ],
+  "status": "locked_protocol_only; no results"
+}

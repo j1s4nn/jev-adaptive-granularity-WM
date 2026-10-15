@@ -1,0 +1,21 @@
+{
+  "run_id": "20261004_095002",
+  "phase": "phase0c",
+  "status": "failed",
+  "start_time": "2026-10-04T09:50:02.990042",
+  "env": {
+    "torch": "2.11.0+cu128",
+    "python": "3.13.15",
+    "gpu": "Tesla T4"
+  },
+  "dataset_paths": {
+    "c1_1_step2": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c1-1_step2.pt",
+    "c3_3_step4": "/kaggle/input/datasets/ajjisan/causal-rcm-ckpts/rcm_ckpts/Causal_rCM_Wan2.1_T2V_1.3B_480p_TF-dCM-init_SF-DMD_c3-3_step4.pt",
+    "vae": "/kaggle/input/datasets/ajjisan/wan21-dit-vae/wan21_dit_vae/Wan2.1_VAE.pth",
+    "t5": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/models_t5_umt5-xxl-enc-bf16.pth",
+    "t5_tokenizer": "/kaggle/input/datasets/ajjisan/wan21-t5/wan21_t5/google/umt5-xxl"
+  },
+  "error": "No module named 'fvcore'",
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 132, in main\n    from imaginaire.lazy_config import instantiate\n  File \"/kaggle/working/rcm/imaginaire/lazy_config/__init__.py\", line 20, in <module>\n    from imaginaire.lazy_config.instantiate import instantiate\n  File \"/kaggle/working/rcm/imaginaire/lazy_config/instantiate.py\", line 22, in <module>\n    from imaginaire.lazy_config.registry import _convert_target_to_string, locate\n  File \"/kaggle/working/rcm/imaginaire/lazy_config/registry.py\", line 19, in <module>\n    from fvcore.common.registry import Registry  # for backward compatibility.\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nModuleNotFoundError: No module named 'fvcore'\n",
+  "end_time": "2026-10-04T09:50:33.193967"
+}
