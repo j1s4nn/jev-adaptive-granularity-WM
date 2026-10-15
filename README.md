@@ -8,7 +8,7 @@ Official code, locked protocols, calibration freezes, and audit artifacts for th
 
 **Links:**
 [GitHub repository](https://github.com/j1s4nn/jev-adaptive-granularity-WM) ·
-[Manuscript (PDF)](paper/main_updated2.pdf) ·
+[Manuscript (PDF)](paper/Jev-Routed-Temporal-Granularity-with-Recovery-and-Hysteresis.pdf) ·
 [Project page](https://j1s4nn.github.io/jev-adaptive-granularity-WM/) ·
 [Result figures (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-figures) ·
 [Result videos (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-videos)
@@ -317,7 +317,7 @@ The small JSON/JSONL audit outputs behind every table and figure in the manuscri
 │   ├── main_updated2.tex
 │   ├── references_ieee.bib
 │   ├── figures/            All manuscript figures (PDF + PNG)
-│   └── main_updated2.pdf
+│   └── Jev-Routed-Temporal-Granularity-with-Recovery-and-Hysteresis.pdf
 ├── docs/                   Protocols, audit notes, and the project Pages site
 │   ├── A100_PROTOCOL.md
 │   ├── F1_AUDIT.md
