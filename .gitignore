@@ -71,6 +71,7 @@ checkpoints/
 **/*.zip
 results/*/videos/
 results/**/rcm/
+results/**/frames/
 
 # ---------------------------------------------------------------------------
 # Agent / tooling state (never publish)
