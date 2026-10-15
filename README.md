@@ -11,7 +11,7 @@ Official code, locked protocols, calibration freezes, and audit artifacts for th
 [Manuscript (PDF)](paper/main_updated2.pdf) ·
 [Project page](https://j1s4nn.github.io/jev-adaptive-granularity-WM/) ·
 [Result figures (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-figures) ·
-[Result videos (Kaggle)](https://www.kaggle.com/datasets/ajjisan/f4lite-videos)
+[Result videos (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-videos)
 
 ---
 
@@ -280,9 +280,24 @@ Large result media are hosted on Kaggle rather than committed to Git, keeping cl
 | Resource | Link | Contents |
 |---|---|---|
 | Result figures | [ajjisan/jev-adaptive-granularity-figures](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-figures) | All manuscript figures (T4, A100, Jev), qualitative frame grids, and contact sheets |
-| Result videos | [ajjisan/f4lite-videos](https://www.kaggle.com/datasets/ajjisan/f4lite-videos) | Generated rollout videos for the online policy study |
+| Result videos (all experiments) | [ajjisan/jev-adaptive-granularity-videos](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-videos) | All 430 generated rollout videos across the T4 and A100 arms (402 MB) |
+| Result videos (T4 online subset) | [ajjisan/f4lite-videos](https://www.kaggle.com/datasets/ajjisan/f4lite-videos) | The original T4 online-policy video set |
 | Code and audits | [j1s4nn/jev-adaptive-granularity-WM](https://github.com/j1s4nn/jev-adaptive-granularity-WM) | Source, locked protocols, calibration freezes, and small JSON/JSONL audit artifacts |
 | Kaggle profile | [kaggle.com/ajjisan](https://www.kaggle.com/ajjisan) | All kernels and datasets for this project |
+
+The complete video set is organized by experiment; each filename is prefixed by group.
+
+| Prefix | Videos | Experiment |
+|---|---:|---|
+| `a100online_` | 84 | A100 online policies, 12 fresh prompts (fixed coarse/fine/hold, random-50, alternating-50, adaptive warp, reference) |
+| `a100rq3_` | 84 | A100 controller ablation, 12 prompts (threshold-only, hysteresis-only, recovery-only, full, and 2σ-noise variants) |
+| `f1_` | 54 | T4 six-mode cost/quality sweep (45/57/81 frames; fine c1-1 s1/s2/s4 and coarse c3-3 s1/s2/s4) |
+| `f1noisy_` | 26 | T4 noisy-context sweep (context reused from the final denoising forward) |
+| `f4lite_` | 48 | T4 online policy study, 8 fresh prompts |
+| `holdmode_` | 48 | T4 hold-mode routing study, 8 prompts |
+| `holdfine_` | 6 | T4 Jev-holdfine study subset |
+| `rq3_` | 56 | T4 controller ablation, 8 prompts |
+| `rq4_` | 24 | T4 monotonicity study, 8 prompts (fixed fine, fixed coarse, reference) |
 
 The small JSON/JSONL audit outputs behind every table and figure in the manuscript are committed under `results/`.
 
