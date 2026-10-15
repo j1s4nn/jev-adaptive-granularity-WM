@@ -1,22 +1,74 @@
+![Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation](assets/banner.png)
+
 # Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation
 
 **Hossen Md Jisan** — Department of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST), Nanjing, China
 
-Official code, locked protocols, calibration freezes, and audit artifacts for the manuscript *"Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation."* Every reported experiment is reproducible from the artifacts in this repository.
+Official code, locked protocols, calibration freezes, and audit artifacts for the manuscript above. Every reported experiment is reproducible from the artifacts in this repository.
+
+**Links:**
+[GitHub repository](https://github.com/j1s4nn/jev-adaptive-granularity-WM) ·
+[Manuscript (PDF)](paper/main_updated2.pdf) ·
+[Project page](https://j1s4nn.github.io/jev-adaptive-granularity-WM/) ·
+[Result figures (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-figures) ·
+[Result videos (Kaggle)](https://www.kaggle.com/datasets/ajjisan/f4lite-videos)
+
+---
+
+## Table of contents
+
+- [Overview](#overview)
+- [Key findings](#key-findings)
+- [The three preconditions](#the-three-preconditions)
+- [Research questions](#research-questions)
+- [The operating-point trap](#the-operating-point-trap)
+- [Method: Jev-routed granularity control](#method-jev-routed-granularity-control)
+- [Results](#results)
+  - [Cost is hardware-conditional (RQ2)](#cost-is-hardware-conditional-rq2)
+  - [Signal: hand-crafted fails, Jev succeeds (RQ1)](#signal-hand-crafted-fails-jev-succeeds-rq1)
+  - [Online routing on the T4](#online-routing-on-the-t4)
+  - [A hold mode makes routing profitable on the T4](#a-hold-mode-makes-routing-profitable-on-the-t4)
+  - [The A100 online arm](#the-a100-online-arm)
+  - [Recovery and hysteresis stabilize switching (RQ3)](#recovery-and-hysteresis-stabilize-switching-rq3)
+  - [Monotonicity is signal- and endpoint-dependent (RQ4)](#monotonicity-is-signal-and-endpoint-dependent-rq4)
+  - [Confirmatory study: a trade-off, not dominance](#confirmatory-study-a-trade-off-not-dominance)
+  - [Qualitative evidence](#qualitative-evidence)
+- [Videos, figures, and datasets](#videos-figures-and-datasets)
+- [Repository layout](#repository-layout)
+- [Reproducing the audit](#reproducing-the-audit)
+- [Hardware](#hardware)
+- [Citation](#citation)
+- [License](#license)
 
 ---
 
 ## Overview
 
-Causal video generators produce a rollout one temporal chunk at a time, which invites a simple efficiency idea: spend fine per-frame computation only where a segment is hard, and use cheaper coarse chunks, or even reuse, elsewhere. Realizing this idea requires three preconditions that are usually assumed rather than measured:
-
-- **(P1) Cost.** The coarse mode must be cheaper in wall-clock time at usable quality *on the deployment hardware* — fewer denoising steps do not imply lower latency when each step becomes heavier.
-- **(P2) Signal.** A quantity available *before* generation must identify the segments where coarse generation would hurt.
-- **(P3) Endpoint.** The quality gain or loss must be certified by an endpoint *independent* of the modes being compared; an internal reference can silently favor one family.
+Causal video generators produce a rollout one temporal chunk at a time, which invites a simple efficiency idea: spend fine per-frame computation only where a segment is hard, and use cheaper coarse chunks, or even reuse, elsewhere. Realizing this idea requires three preconditions that are usually assumed rather than measured: a mode that is genuinely cheaper on the deployment hardware, a signal that predicts hard segments before generation, and an independent endpoint that certifies the trade.
 
 This work audits all three preconditions end to end on **Causal-rCM**, a Wan2.1-1.3B text-to-video causal diffusion model, pairing a frame-wise mode (`c1-1`) with a chunk-3 mode (`c3-3`) and a near-zero-cost **hold** mode, and routing among them with a two-threshold controller with hysteresis and forced recovery. The audit runs on two GPUs with very different compute characters — a 16 GB Tesla T4 and an A100-SXM4-80GB — because the cost precondition turns out to be a property of the hardware, not of the model.
 
 The study is deliberately evidence-preserving: **negative and failed experiments are reported as evidence**, and no claim of universal adaptive superiority is made. The value is a reproducible account of *when* the three preconditions hold, *what breaks* when they do not, and a working routing mechanism for the regime in which they do.
+
+---
+
+## Key findings
+
+- **The fine/coarse cost inversion is hardware-conditional (RQ2).** On the T4, each coarse forward is **3.01×** a fine forward against a **2.33×** break-even point, so coarse is never cheaper; on the A100 the ratio falls to **1.60–1.75** and coarse is **1.46× faster** in diffusion-transformer (DiT) time. The same model pair lies on opposite sides of break-even on different GPUs.
+- **A preregistered hand-crafted signal fails; a text-only oracle succeeds (RQ1).** On 72 locked held-out cases the hand-crafted residual signal reaches AUROC **0.491**. A text-only *System One* decision model (**Jev**) reaches AUROC **0.788** [0.575, 0.946] at **0.67 s** per decision, computed off the generation path.
+- **Recovery and hysteresis stabilize switching on both GPUs (RQ3).** Switches drop from **0.50 → 0.38** on the T4 and from **0.92 → 0.50** under injected signal noise on the A100, without worsening regret. Switching carries a directly measured *seam* cost.
+- **On fresh A100 prompts, the result is a trade-off, not dominance (RQ2).** A single-decision Jev policy saves **1.78 s** of DiT time and **7.39 s** of total time (both significant) at a small significant **−0.020** CLIP subject-consistency cost.
+- **Monotonicity is signal- and endpoint-dependent (RQ4).** The fine-versus-coarse benefit is monotone in the Jev difficulty signal on the T4 but flat on the A100 diagnostic split.
+
+---
+
+## The three preconditions
+
+| | Precondition | Tested by |
+|---|---|---|
+| **P1** | **Cost.** The coarse mode must be cheaper in wall-clock time at usable quality *on the deployment hardware* — fewer denoising steps do not imply lower latency when each step becomes heavier. | RQ2 |
+| **P2** | **Signal.** A quantity available *before* generation must identify the segments where coarse generation would hurt. | RQ1 |
+| **P3** | **Endpoint.** The quality gain or loss must be certified by an endpoint *independent* of the modes being compared; an internal reference can silently favor one family. | RQ1, RQ2, RQ4 |
 
 ---
 
@@ -31,16 +83,6 @@ The study is deliberately evidence-preserving: **negative and failed experiments
 
 ---
 
-## Key findings
-
-- **The fine/coarse cost inversion is hardware-conditional (RQ2).** On the T4, each coarse forward is **3.01×** a fine forward against a **2.33×** break-even point, so coarse is never cheaper; on the A100 the ratio falls to **1.60–1.75** and coarse is **1.46× faster** in diffusion-transformer (DiT) time. The same model pair lies on opposite sides of break-even on different GPUs.
-- **A preregistered hand-crafted signal fails; a text-only oracle succeeds (RQ1).** On 72 locked held-out cases, the hand-crafted residual signal reaches AUROC **0.491**. A text-only *System One* decision model (**Jev**) reaches AUROC **0.788** [0.575, 0.946] at **0.67 s** per decision, computed off the generation path.
-- **Recovery and hysteresis stabilize switching on both GPUs (RQ3).** Switches drop from **0.50 → 0.38** on the T4 and from **0.92 → 0.50** under injected signal noise on the A100, without worsening regret. Switching carries a directly measured *seam* cost (elevated adjacent-frame L₁ at switch boundaries).
-- **On fresh A100 prompts, the result is a trade-off, not dominance (RQ2).** A single-decision Jev policy saves **1.78 s** of DiT time and **7.39 s** of total time (both significant) at a small significant **−0.020** CLIP subject-consistency cost.
-- **Monotonicity is signal- and endpoint-dependent (RQ4).** The fine-versus-coarse benefit is monotone in the Jev difficulty signal on the T4 but flat on the A100 diagnostic split, because the internal reference there favors the coarse family.
-
----
-
 ## The operating-point trap
 
 An early comparison paired `c1-1` in its one-step regime against `c3-3` in its four-step regime and found coarse slower in **72/72** held-out cases, which naively reads as "coarse is broken" but is in fact a schedule mismatch. Coarse is cheaper in wall-clock DiT time only if
@@ -50,19 +92,6 @@ An early comparison paired `c1-1` in its one-step regime against `c3-3` in its f
 ```
 
 For the one-step regimes used throughout (NFE 19 vs. 8.33), the break-even ratio is **2.33**. The measured per-forward ratio is **3.01** on the T4 but **1.60** on the A100: the Ampere-class A100 with FlashAttention amortizes the heavier three-frame forward far better than the Turing T4 with SDPA.
-
-### Cost precondition across hardware and context regime
-
-| Setting | fine s/fwd | coarse s/fwd | ratio | coarse cheaper? |
-|---|---:|---:|---:|:---:|
-| T4, clean context | 1.32 | 3.58 | 3.01 | no |
-| T4, noisy context | 0.71 | 2.10 | 2.94 | no |
-| A100, timing arm | 0.125 | 0.200 | 1.60 | yes |
-| A100, full-decode arm | 0.112 | 0.196 | 1.75 | yes |
-
-![Cost precondition across hardware](paper/figures/fig_hw_scaling.png)
-
-*Rollout DiT latency (left) and the coarse/fine per-forward ratio against the 2.33 break-even point (right). The same model pair lies above break-even on the T4 and below it on the A100.*
 
 ---
 
@@ -90,9 +119,41 @@ Thresholds are calibrated on a development split only. The Jev router uses a mot
 
 ## Results
 
-### Signal discrimination (RQ1)
+### Cost is hardware-conditional (RQ2)
+
+Six-mode cost–quality sweep, T4 vs. A100-80GB. Fewer NFEs do not imply lower DiT time: on the T4 every coarse mode sits above and to the right of fine `c1-1` s1, while on the A100 the coarse family occupies a cheaper, less accurate frontier point.
+
+![Cost–quality Pareto on T4 and A100](paper/figures/fig_cost_pareto.png)
+
+| Mode | T4 DiT (s) | T4 NFE | T4 refL1 | A100 DiT (s) | A100 NFE | A100 refL1 |
+|---|---:|---:|---:|---:|---:|---:|
+| ref `c1-1` s4 | 59.42 | 64.0 | 0.0000 | 9.10 | 64.0 | 0.0000 |
+| fine `c1-1` s1 | **25.16** | 19.0 | **0.2019** | 3.92 | 19.0 | **0.1769** |
+| fine `c1-1` s2 | 36.73 | 34.0 | 0.1930 | 5.62 | 34.0 | 0.1697 |
+| coarse `c3-3` s4 | 62.05 | 21.3 | 0.2750 | 5.58 | 21.3 | 0.2712 |
+| coarse `c3-3` s2 | 40.63 | 12.7 | 0.2615 | 3.65 | 12.7 | 0.2571 |
+| coarse `c3-3` s1 | 29.72 | **8.3** | 0.2588 | **2.69** | **8.3** | 0.2575 |
+
+VAE decode falls from ≈156 s (T4) to ≈2.4 s (A100) and stops dominating the total. **The quality–cost trade-off exists on the A100 and is absent on the T4.**
+
+![Cost precondition across hardware](paper/figures/fig_hw_scaling.png)
+
+*Rollout DiT latency (left) and the coarse/fine per-forward ratio against the 2.33 break-even point (right). The same model pair lies above break-even on the T4 and below it on the A100.*
+
+### Cost precondition across hardware and context regime
+
+| Setting | fine s/fwd | coarse s/fwd | ratio | coarse cheaper? |
+|---|---:|---:|---:|:---:|
+| T4, clean context | 1.32 | 3.58 | 3.01 | no |
+| T4, noisy context | 0.71 | 2.10 | 2.94 | no |
+| A100, timing arm | 0.125 | 0.200 | 1.60 | yes |
+| A100, full-decode arm | 0.112 | 0.196 | 1.75 | yes |
+
+### Signal: hand-crafted fails, Jev succeeds (RQ1)
 
 Held-out AUROC for predicting coarse-unsafe segments. The locked study scores 72 held-out cases (288 segments); the Jev audit uses 80 paired segments from 8 fresh prompts.
+
+![Signal discrimination](paper/figures/fig_auroc.png)
 
 | Study | Signal | AUROC | 95% CI |
 |---|---|---:|---|
@@ -109,28 +170,61 @@ Held-out AUROC for predicting coarse-unsafe segments. The locked study scores 72
 
 The preregistered hypothesis fails on locked data: the residual signal's held-out AUROC is **0.491**, and its paired advantage over the strongest calibration baseline (warp) is 0.0367 with 95% CI [−0.0493, 0.1194] including zero. Re-labeling the same 80 paired segments with the Jev oracle reverses the conclusion. **The signal content, not the label, was the bottleneck.**
 
-![Signal discrimination](paper/figures/fig_auroc.png)
+### Online routing on the T4
 
-### Cost–quality sweep (RQ2)
+Budgeted online policies on eight fresh T4 prompts (57 frames). With no real cost gap on the T4, fixed fine is best on both independent quality and cost; the adaptive warp policy gains only on the internal reference, costs **2.2×** the best fixed policy in total wall-clock, and makes **zero** within-video switches.
 
-Six-mode sweep, T4 vs. A100-80GB. Fewer NFEs do not imply lower DiT time: on the T4 every coarse mode sits above and to the right of fine `c1-1` s1, while on the A100 the coarse family occupies a cheaper, less accurate frontier point.
+![T4 online policy Pareto](paper/figures/f4lite_policy_pareto.png)
 
-| Mode | T4 DiT (s) | T4 NFE | T4 refL1 | A100 DiT (s) | A100 NFE | A100 refL1 |
+| Policy | refL1 | DiT (s) | Total (s) | CLIP subj. | warp |
+|---|---:|---:|---:|---:|---:|
+| fixed coarse | 0.3186 | 35.0 | 202.1 | 0.9490 | 0.0733 |
+| **fixed fine** | **0.2998** | **18.1** | **184.1** | **0.9840** | **0.0303** |
+| random-50 | 0.3102 | 26.5 | 187.5 | 0.9646 | 0.0526 |
+| alternating-50 | 0.3058 | 26.5 | 187.3 | 0.9591 | 0.0552 |
+| adaptive warp | 0.2949 | 22.1 | 397.8 | 0.9803 | 0.0429 |
+
+### A hold mode makes routing profitable on the T4
+
+Since the coarse mode is not cheaper on the T4, a genuinely cheap **hold** mode is added and routed with the motion-class rule. Routing "moderate" segments to coarse is counterproductive on this GPU, but holding static segments beats re-generating them.
+
+![Hold-mode study on the T4](paper/figures/jev_hold_mode.png)
+
+| Policy | hold | fine | coarse | refL1 | DiT (s) | Total (s) |
 |---|---:|---:|---:|---:|---:|---:|
-| ref `c1-1` s4 | 59.42 | 64.0 | 0.0000 | 9.10 | 64.0 | 0.0000 |
-| fine `c1-1` s1 | **25.16** | 19.0 | **0.2019** | 3.92 | 19.0 | **0.1769** |
-| fine `c1-1` s2 | 36.73 | 34.0 | 0.1930 | 5.62 | 34.0 | 0.1697 |
-| coarse `c3-3` s4 | 62.05 | 21.3 | 0.2750 | 5.58 | 21.3 | 0.2712 |
-| coarse `c3-3` s2 | 40.63 | 12.7 | 0.2615 | 3.65 | 12.7 | 0.2571 |
-| coarse `c3-3` s1 | 29.72 | **8.3** | 0.2588 | **2.69** | **8.3** | 0.2575 |
+| fixed fine | 0.0 | 4.0 | 0.0 | 0.2998 | 18.6 | 183.2 |
+| fixed coarse | 0.0 | 0.0 | 4.0 | 0.3186 | 37.7 | 205.5 |
+| fixed hold | 4.0 | 0.0 | 0.0 | 0.3108 | 6.5 | 136.4 |
+| Jev-routed | 1.1 | 0.9 | 2.0 | 0.3085 | 24.9 | 182.3 |
+| Jev-routed no-hold | 0.0 | 0.9 | 3.1 | 0.3131 | 33.7 | 201.4 |
+| **Jev-holdfine** | 1.1 | 2.9 | 0.0 | **0.2988** | **15.1** | **167.0** |
 
-![Cost–quality Pareto](paper/figures/fig_cost_pareto.png)
+**Jev-holdfine** (static → hold, else → fine) beats fixed fine on both axes, with total time −16.2 s (−8.8%) and DiT time −3.5 s (−19%). The margin is small and the sample is eight prompts, so this is labeled a weak positive; it matters because it isolates *where* the saving comes from — a mode that is actually cheaper.
 
-VAE decode falls from ≈156 s (T4) to ≈2.4 s (A100) and stops dominating the total. **The quality–cost trade-off exists on the A100 and is absent on the T4.**
+### The A100 online arm
 
-### Controller ablation (RQ3)
+On the A100 the cost gap is real, so the online test is informative. The adaptive warp policy passes the *internal* gate but the independent endpoint reverses the verdict, and its extra VAE decodes push total wall-clock above fixed fine. The Jev policies, queried in-loop, behave differently.
+
+![A100 online policies](paper/figures/fig_a100_online.png)
+
+| Policy | refL1 | DiT (s) | Total (s) | CLIP subj. | warp |
+|---|---:|---:|---:|---:|---:|
+| fixed coarse | 0.2728 | 2.55 | 45.5 | 0.9430 | 0.0435 |
+| fixed fine | 0.2832 | 3.95 | 46.8 | **0.9836** | **0.0217** |
+| fixed hold | 0.2674 | **0.77** | **12.5** | 0.9926 | 0.0223 |
+| random-50 | 0.2789 | 3.24 | 46.2 | 0.9588 | — |
+| adaptive warp | 0.2733 | 2.85 | 52.3 | 0.9492 | 0.0394 |
+| Jev-difficulty | 0.2678 | 3.19 | 47.7 | 0.9545 | — |
+| Jev-routed | 0.2715 | 2.04 | 33.7 | 0.9614 | — |
+| Jev-holdfine | 0.2739 | 2.59 | 34.9 | **0.9796** | — |
+
+A second hazard appears on the A100 split: the internal reference flatters the **coarse** family (fixed coarse refL1 0.2728 < fixed fine 0.2832), the opposite direction from the T4. A diagnostic endpoint cannot be trusted in either direction, and precondition P3 binds on both GPUs.
+
+### Recovery and hysteresis stabilize switching (RQ3)
 
 Switches are per rollout; AUH is area-under-horizon refL1 regret; seam/interior are adjacent-frame L₁ at switch boundaries and interior positions.
+
+![Controller ablation](paper/figures/fig_rq3.png)
 
 | GPU | Controller | switches | AUH | terminal | seam / interior |
 |---|---|---:|---:|---:|---|
@@ -143,21 +237,31 @@ Switches are per rollout; AUH is area-under-horizon refL1 regret; seam/interior 
 | A100 | threshold (noisy) | 0.92 | 0.2741 | 0.2997 | 0.0793 / 0.0326 |
 | A100 | **full (noisy)** | **0.50** | **0.2718** | **0.2921** | 0.0551 / 0.0315 |
 
-![Controller ablation](paper/figures/fig_rq3.png)
-
 Recovery plus hysteresis reduces switching without worsening regret: **0.50 → 0.38** switches on the T4 and **0.92 → 0.50** (−45%) under noise on the A100. The mechanism's premise — that switching has a cost — is directly measured: adjacent-frame L₁ at switch boundaries exceeds interior positions (0.0364 vs. 0.0280 on the T4; 0.0672 vs. 0.0305 on the A100).
 
-### Confirmatory study: a trade-off, not dominance (RQ2)
+### Monotonicity is signal- and endpoint-dependent (RQ4)
+
+The fine-versus-coarse benefit is monotone in the Jev difficulty signal on the T4 (Spearman ρ = −0.517) but non-monotone for the hand-crafted warp signal (ρ = −0.099), and flat on the A100 diagnostic split (ρ = +0.059, AUROC 0.451). The earlier non-monotonicity was a *signal-quality artifact*, not a property of the modes.
+
+![Fine-versus-coarse gap across signal terciles](paper/figures/fig_rq4.png)
+
+| Split | Signal | Spearman ρ | Reading |
+|---|---|---:|---|
+| T4 (80 segments) | Jev difficulty | **−0.517** | monotone, fine benefit grows with difficulty |
+| T4 (80 segments) | warp (hand-crafted) | −0.099 | non-monotone (mid tercile peaks) |
+| A100 (confirmatory) | Jev difficulty | +0.059 | flat; reference favors coarse |
+
+### Confirmatory study: a trade-off, not dominance
 
 Prompt-paired bootstrap differences against fixed fine (24 fresh A100 prompts, 10,000 resamples, 95% CIs). Significant intervals are bold.
+
+![Confirmatory bootstrap](paper/figures/fig_phase3_ci.png)
 
 | Policy | ΔCLIP subj. cons. | ΔCLIP text align. | ΔDiT (s) | ΔTotal (s) |
 |---|---|---|---|---|
 | **Jev-single** | **−0.0202** [−0.0304, −0.0103] | +0.0013 [−0.0048, +0.0078] | **−1.78** [−2.20, −1.37] | **−7.39** [−12.39, −3.16] |
 | **Jev-routed** | **−0.0180** [−0.0264, −0.0100] | −0.0001 [−0.0045, +0.0055] | **−1.81** [−2.20, −1.41] | −2.58 [−6.62, +1.26] |
 | latent refresh | **−0.0131** [−0.0163, −0.0099] | −0.0037 [−0.0077, −0.0003] | −0.35 [−0.36, −0.34] | −0.35 [−0.43, −0.26] |
-
-![Confirmatory bootstrap](paper/figures/fig_phase3_ci.png)
 
 The honest reading is a trade-off: Jev-single saves DiT and total time — both significant — at a small significant loss in CLIP subject consistency; text alignment is unchanged. Signal accuracy alone does not certify the system; the independent endpoint is what turns the saving into a measured price.
 
@@ -169,10 +273,26 @@ Representative decoded frames from matched 57-frame T4 rollouts for four prompts
 
 ---
 
+## Videos, figures, and datasets
+
+Large result media are hosted on Kaggle rather than committed to Git, keeping clones fast while keeping every artifact public.
+
+| Resource | Link | Contents |
+|---|---|---|
+| Result figures | [ajjisan/jev-adaptive-granularity-figures](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-figures) | All manuscript figures (T4, A100, Jev), qualitative frame grids, and contact sheets |
+| Result videos | [ajjisan/f4lite-videos](https://www.kaggle.com/datasets/ajjisan/f4lite-videos) | Generated rollout videos for the online policy study |
+| Code and audits | [j1s4nn/jev-adaptive-granularity-WM](https://github.com/j1s4nn/jev-adaptive-granularity-WM) | Source, locked protocols, calibration freezes, and small JSON/JSONL audit artifacts |
+| Kaggle profile | [kaggle.com/ajjisan](https://www.kaggle.com/ajjisan) | All kernels and datasets for this project |
+
+The small JSON/JSONL audit outputs behind every table and figure in the manuscript are committed under `results/`.
+
+---
+
 ## Repository layout
 
 ```
 .
+├── assets/                 Banner and repository media
 ├── README.md               This document
 ├── LICENSE                 MIT License
 ├── CITATION.cff            Citation metadata
@@ -194,10 +314,8 @@ Representative decoded frames from matched 57-frame T4 rollouts for four prompts
 ├── scripts/                Audit and figure-generation scripts
 ├── jobs/                   Reproducible job definitions (Kaggle kernel sources)
 ├── colab/                  A100 Colab arm (timing, sweep, online, RQ3)
-└── results/                Small JSON/JSONL audit artifacts (no media; see below)
+└── results/                Small JSON/JSONL audit artifacts (no media; see above)
 ```
-
-Large result media (video files and video archives) are **not** tracked in this repository in order to keep clones fast. They are hosted on Kaggle and are linked from the [Videos and raw media](#videos-and-raw-media) section.
 
 ---
 
@@ -209,7 +327,7 @@ The locked protocols, calibration freezes, and audit scripts are included so tha
 # 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Model checkpoints and text encoder/VAE are hosted on Kaggle (see links below).
+# 2. Model checkpoints and text encoder/VAE are hosted on Kaggle (see links above).
 #    Set the Jev (TypeSafe) key in the environment; it is never committed.
 export TYPESAFE_API_KEY=...        # Windows PowerShell: $env:TYPESAFE_API_KEY="..."
 
@@ -245,18 +363,6 @@ All A100 runs pin upstream commit `ed3cb14dd936f92cdc9f9381af7369991509b41f` of 
 | VAE decode (57 frames) | ≈156 s | ≈2.4 s |
 | Coarse/fine per-forward ratio | 3.01 | 1.60–1.75 |
 | Coarse cheaper? | No | Yes |
-
----
-
-## Videos and raw media
-
-To keep the repository lightweight, full result videos are hosted on Kaggle rather than committed to Git. The relevant artifacts:
-
-- Kaggle profile: [kaggle.com/ajjisan](https://www.kaggle.com/ajjisan)
-- Controller ablation (RQ3): [ajjisan/f-rq3-controller-ablation](https://www.kaggle.com/code/ajjisan/f-rq3-controller-ablation)
-- Monotonicity (RQ4): [ajjisan/f-rq4-monotonicity](https://www.kaggle.com/code/ajjisan/f-rq4-monotonicity)
-
-The small JSON/JSONL audit outputs behind every table and figure in the manuscript are committed under `results/`.
 
 ---
 
