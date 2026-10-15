@@ -31,6 +31,7 @@ keywords:
 license: MIT
 version: 1.0.0
 date-released: "2026-10-15"
+doi: "10.5281/zenodo.23395414"
 repository-code: "https://github.com/j1s4nn/jev-adaptive-granularity-WM"
 url: "https://github.com/j1s4nn/jev-adaptive-granularity-WM"
 preferred-citation:
@@ -42,4 +43,5 @@ preferred-citation:
       email: "jisanahammed1952@gmail.com"
       affiliation: "Department of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST), Nanjing, China"
   year: 2026
+  doi: "10.5281/zenodo.23395414"
   journal: "IEEE Transactions on Circuits and Systems for Video Technology (submission draft)"

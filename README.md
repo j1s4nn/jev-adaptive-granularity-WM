@@ -2,6 +2,8 @@
 
 # Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23395414.svg)](https://doi.org/10.5281/zenodo.23395414)
+
 **Hossen Md Jisan** — Department of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST), Nanjing, China
 
 Official code, locked protocols, calibration freezes, and audit artifacts for the manuscript above. Every reported experiment is reproducible from the artifacts in this repository.
@@ -9,6 +11,7 @@ Official code, locked protocols, calibration freezes, and audit artifacts for th
 **Links:**
 [GitHub repository](https://github.com/j1s4nn/jev-adaptive-granularity-WM) ·
 [Manuscript (PDF)](paper/Jev-Routed-Temporal-Granularity-with-Recovery-and-Hysteresis.pdf) ·
+[DOI (Zenodo)](https://doi.org/10.5281/zenodo.23395414) ·
 [Project page](https://j1s4nn.github.io/jev-adaptive-granularity-WM/) ·
 [Result figures (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-figures) ·
 [Result videos (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-videos)
@@ -390,9 +393,13 @@ If you use this work, please cite:
   title   = {Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation},
   author  = {Jisan, Hossen Md},
   year    = {2026},
-  note    = {Manuscript prepared for IEEE Transactions on Circuits and Systems for Video Technology}
+  note    = {Manuscript prepared for IEEE Transactions on Circuits and Systems for Video Technology},
+  doi     = {10.5281/zenodo.23395414},
+  url     = {https://doi.org/10.5281/zenodo.23395414}
 }
 ```
+
+Archived version of the code and artifacts: [10.5281/zenodo.23395414](https://doi.org/10.5281/zenodo.23395414).
 
 See [`CITATION.cff`](CITATION.cff) for machine-readable metadata.
 
