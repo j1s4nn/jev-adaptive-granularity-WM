@@ -2,7 +2,7 @@
 
 # Jev-Routed Temporal Granularity with Recovery and Hysteresis for Causal Video Generation
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23395414.svg)](https://doi.org/10.5281/zenodo.23395414)
+[![DOI v1](https://zenodo.org/badge/DOI/10.5281/zenodo.23395414.svg)](https://doi.org/10.5281/zenodo.23395414) [![DOI v2](https://zenodo.org/badge/DOI/10.5281/zenodo.23984346.svg)](https://doi.org/10.5281/zenodo.23984346)
 
 **Hossen Md Jisan** — Department of Artificial Intelligence, Nanjing University of Information Science and Technology (NUIST), Nanjing, China
 
@@ -11,7 +11,8 @@ Official code, locked protocols, calibration freezes, and audit artifacts for th
 **Links:**
 [GitHub repository](https://github.com/j1s4nn/jev-adaptive-granularity-WM) ·
 [Manuscript (PDF)](paper/Jev-Routed-Temporal-Granularity-with-Recovery-and-Hysteresis.pdf) ·
-[DOI (Zenodo)](https://doi.org/10.5281/zenodo.23395414) ·
+[DOI v1 (Zenodo)](https://doi.org/10.5281/zenodo.23395414) ·
+[DOI v2 (Zenodo)](https://doi.org/10.5281/zenodo.23984346) ·
 [Project page](https://j1s4nn.github.io/jev-adaptive-granularity-WM/) ·
 [Result figures (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-figures) ·
 [Result videos (Kaggle)](https://www.kaggle.com/datasets/ajjisan/jev-adaptive-granularity-videos)
