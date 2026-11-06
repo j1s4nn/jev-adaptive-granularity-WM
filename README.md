@@ -10,7 +10,7 @@ Official code, locked protocols, calibration freezes, and audit artifacts for th
 
 **Links:**
 [GitHub repository](https://github.com/j1s4nn/jev-adaptive-granularity-WM) ·
-[Manuscript (PDF)](paper/Jev-Routed-Temporal-Granularity-with-Recovery-and-Hysteresis.pdf) ·
+[Manuscript (PDF)](mta_submission/main_v2.pdf) ·
 [DOI v1 (Zenodo)](https://doi.org/10.5281/zenodo.23395414) ·
 [DOI v2 (Zenodo)](https://doi.org/10.5281/zenodo.23984346) ·
 [Project page](https://j1s4nn.github.io/jev-adaptive-granularity-WM/) ·
@@ -103,7 +103,7 @@ For the one-step regimes used throughout (NFE 19 vs. 8.33), the break-even ratio
 
 For each segment, a feature state (prompt, BLIP caption of the pre-decision context frame, segment index, motion statistics) is sent to the **Jev** oracle, which returns typed difficulty, drift-risk, and motion-class outputs. The controller state (threshold, hysteresis band, recovery counter) maps these to an action in **{fine, coarse, hold}**, and the selected mode executes the next causal segment. Every decision is recorded with its generated frames, independent quality measures, timing, and switch-boundary cost; all measurements are prompt-paired, and the internal `c1-1` reference is diagnostic only.
 
-![System architecture](paper/figures/architecture.png)
+![System architecture](docs/assets/figures/architecture.png)
 
 Routing uses a two-threshold controller with a hysteresis band Λ around the operating point τ and a forced recovery window of R segments after a quality spike:
 
@@ -115,7 +115,7 @@ a_t =  fine         if  Ψ_t ≥ τ_high  or recovery active
 
 Thresholds are calibrated on a development split only. The Jev router uses a motion-class rule (static → hold, moderate → coarse, fast/scene_change → fine) with a difficulty gate (τ_Jev = 1.72).
 
-![Jev routing traces](paper/figures/fig_jev_routing.png)
+![Jev routing traces](docs/assets/figures/fig_jev_routing.png)
 
 *Per-segment decisions over eight T4 prompts (F = fine, C = coarse, H = hold). Traces are non-degenerate: static content is held, fast motion is routed to fine, moderate motion to coarse.*
 
@@ -127,7 +127,7 @@ Thresholds are calibrated on a development split only. The Jev router uses a mot
 
 Six-mode cost–quality sweep, T4 vs. A100-80GB. Fewer NFEs do not imply lower DiT time: on the T4 every coarse mode sits above and to the right of fine `c1-1` s1, while on the A100 the coarse family occupies a cheaper, less accurate frontier point.
 
-![Cost–quality Pareto on T4 and A100](paper/figures/fig_cost_pareto.png)
+![Cost–quality Pareto on T4 and A100](docs/assets/figures/fig_cost_pareto.png)
 
 | Mode | T4 DiT (s) | T4 NFE | T4 refL1 | A100 DiT (s) | A100 NFE | A100 refL1 |
 |---|---:|---:|---:|---:|---:|---:|
@@ -140,7 +140,7 @@ Six-mode cost–quality sweep, T4 vs. A100-80GB. Fewer NFEs do not imply lower D
 
 VAE decode falls from ≈156 s (T4) to ≈2.4 s (A100) and stops dominating the total. **The quality–cost trade-off exists on the A100 and is absent on the T4.**
 
-![Cost precondition across hardware](paper/figures/fig_hw_scaling.png)
+![Cost precondition across hardware](docs/assets/figures/fig_hw_scaling.png)
 
 *Rollout DiT latency (left) and the coarse/fine per-forward ratio against the 2.33 break-even point (right). The same model pair lies above break-even on the T4 and below it on the A100.*
 
@@ -157,7 +157,7 @@ VAE decode falls from ≈156 s (T4) to ≈2.4 s (A100) and stops dominating the 
 
 Held-out AUROC for predicting coarse-unsafe segments. The locked study scores 72 held-out cases (288 segments); the Jev audit uses 80 paired segments from 8 fresh prompts.
 
-![Signal discrimination](paper/figures/fig_auroc.png)
+![Signal discrimination](docs/assets/figures/fig_auroc.png)
 
 | Study | Signal | AUROC | 95% CI |
 |---|---|---:|---|
@@ -178,7 +178,7 @@ The preregistered hypothesis fails on locked data: the residual signal's held-ou
 
 Budgeted online policies on eight fresh T4 prompts (57 frames). With no real cost gap on the T4, fixed fine is best on both independent quality and cost; the adaptive warp policy gains only on the internal reference, costs **2.2×** the best fixed policy in total wall-clock, and makes **zero** within-video switches.
 
-![T4 online policy Pareto](paper/figures/f4lite_policy_pareto.png)
+![T4 online policy Pareto](docs/figures/f4lite_policy_pareto.png)
 
 | Policy | refL1 | DiT (s) | Total (s) | CLIP subj. | warp |
 |---|---:|---:|---:|---:|---:|
@@ -192,7 +192,7 @@ Budgeted online policies on eight fresh T4 prompts (57 frames). With no real cos
 
 Since the coarse mode is not cheaper on the T4, a genuinely cheap **hold** mode is added and routed with the motion-class rule. Routing "moderate" segments to coarse is counterproductive on this GPU, but holding static segments beats re-generating them.
 
-![Hold-mode study on the T4](paper/figures/jev_hold_mode.png)
+![Hold-mode study on the T4](docs/figures/jev_hold_mode.png)
 
 | Policy | hold | fine | coarse | refL1 | DiT (s) | Total (s) |
 |---|---:|---:|---:|---:|---:|---:|
@@ -209,7 +209,7 @@ Since the coarse mode is not cheaper on the T4, a genuinely cheap **hold** mode 
 
 On the A100 the cost gap is real, so the online test is informative. The adaptive warp policy passes the *internal* gate but the independent endpoint reverses the verdict, and its extra VAE decodes push total wall-clock above fixed fine. The Jev policies, queried in-loop, behave differently.
 
-![A100 online policies](paper/figures/fig_a100_online.png)
+![A100 online policies](docs/figures/fig_a100_online.png)
 
 | Policy | refL1 | DiT (s) | Total (s) | CLIP subj. | warp |
 |---|---:|---:|---:|---:|---:|
@@ -228,7 +228,7 @@ A second hazard appears on the A100 split: the internal reference flatters the *
 
 Switches are per rollout; AUH is area-under-horizon refL1 regret; seam/interior are adjacent-frame L₁ at switch boundaries and interior positions.
 
-![Controller ablation](paper/figures/fig_rq3.png)
+![Controller ablation](docs/assets/figures/fig_rq3.png)
 
 | GPU | Controller | switches | AUH | terminal | seam / interior |
 |---|---|---:|---:|---:|---|
@@ -247,7 +247,7 @@ Recovery plus hysteresis reduces switching without worsening regret: **0.50 → 
 
 The fine-versus-coarse benefit is monotone in the Jev difficulty signal on the T4 (Spearman ρ = −0.517) but non-monotone for the hand-crafted warp signal (ρ = −0.099), and flat on the A100 diagnostic split (ρ = +0.059, AUROC 0.451). The earlier non-monotonicity was a *signal-quality artifact*, not a property of the modes.
 
-![Fine-versus-coarse gap across signal terciles](paper/figures/fig_rq4.png)
+![Fine-versus-coarse gap across signal terciles](docs/figures/fig_rq4.png)
 
 | Split | Signal | Spearman ρ | Reading |
 |---|---|---:|---|
@@ -259,7 +259,7 @@ The fine-versus-coarse benefit is monotone in the Jev difficulty signal on the T
 
 Prompt-paired bootstrap differences against fixed fine (24 fresh A100 prompts, 10,000 resamples, 95% CIs). Significant intervals are bold.
 
-![Confirmatory bootstrap](paper/figures/fig_phase3_ci.png)
+![Confirmatory bootstrap](docs/assets/figures/fig_phase3_ci.png)
 
 | Policy | ΔCLIP subj. cons. | ΔCLIP text align. | ΔDiT (s) | ΔTotal (s) |
 |---|---|---|---|---|
@@ -271,7 +271,7 @@ The honest reading is a trade-off: Jev-single saves DiT and total time — both 
 
 ### Qualitative evidence
 
-![Qualitative grid](paper/figures/qualitative_grid.png)
+![Qualitative grid](docs/assets/figures/qualitative_grid.png)
 
 Representative decoded frames from matched 57-frame T4 rollouts for four prompts. For a fast-motion human-action prompt the fixed coarse rollout drifts to a different person over a different background, while fixed fine and the Jev-routed rollout preserve the subject. These images are qualitative context only; every claim uses the numeric audits and the independent endpoints.
 
@@ -317,21 +317,16 @@ The small JSON/JSONL audit outputs behind every table and figure in the manuscri
 ├── CITATION.cff            Citation metadata
 ├── requirements.txt        Python dependencies
 ├── proposal.tex            Research specification
-├── paper/                  Manuscript source, bibliography, figures, compiled PDF
-│   ├── main_updated2.tex
-│   ├── references_ieee.bib
-│   ├── figures/            All manuscript figures (PDF + PNG)
-│   └── Jev-Routed-Temporal-Granularity-with-Recovery-and-Hysteresis.pdf
-├── docs/                   Protocols, audit notes, and the project Pages site
+├── mta_submission/         Manuscript (main_v2.pdf)
+├── docs/                   Protocols, audit notes, figures, and the project Pages site
 │   ├── A100_PROTOCOL.md
 │   ├── F1_AUDIT.md
 │   ├── F2_PROTOCOL.md
-│   ├── PAPER.md
+│   ├── figures/            Manuscript figures (PNG)
 │   └── index.html          Static landing page (SEO)
 ├── config/                 Locked manifests and calibration freezes
 ├── src/                    Core packages (inference, controller, uncertainty, evaluation)
 ├── scripts/                Audit and figure-generation scripts
-├── jobs/                   Reproducible job definitions (Kaggle kernel sources)
 ├── colab/                  A100 Colab arm (timing, sweep, online, RQ3)
 └── results/                Small JSON/JSONL audit artifacts (no media; see above)
 ```
